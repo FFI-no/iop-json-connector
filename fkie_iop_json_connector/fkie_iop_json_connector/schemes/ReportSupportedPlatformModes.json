@@ -1,0 +1,89 @@
+{
+  "name": "ReportSupportedPlatformModes",
+  "messageId": "ff24",
+  "isCommand": false,
+  "description": "Sent in response to a Query Supported Platform Modes message.  Reports the support platform modes.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff24"
+        }
+      }
+    },
+    "SupportedPlatformModesList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "PlatformModeRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "PlatformMode"
+            ],
+            "properties": {
+              "PlatformMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 175.0,
+                      "maximum": 255.0,
+                      "interpretation": ""
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Standard_Operating"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Training"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Maintenance"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Standard_Operating",
+                  "Training",
+                  "Maintenance"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SupportedPlatformModesList"
+  ]
+}

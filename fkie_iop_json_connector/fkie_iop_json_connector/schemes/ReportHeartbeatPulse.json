@@ -1,0 +1,27 @@
+{
+  "name": "ReportHeartbeatPulse",
+  "messageId": "4202",
+  "isCommand": false,
+  "description": "This message notifies the receiver that the sender is alive.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4202"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

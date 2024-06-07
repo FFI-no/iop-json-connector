@@ -1,0 +1,155 @@
+{
+  "name": "ReportServices",
+  "messageId": "4b03",
+  "isCommand": false,
+  "description": "This message allows a component to publish its capabilities, according to the Service Dictionary presented below.  If a component ID is specified in the RA, it may report only one service in beyond the core message support, and this service must be equal to the component ID.  If a component ID is not listed in the RA, it may report any number of services.  For example, a component with ID 33 must provide only service 33.   The exception to this rule is component ID 1 (the Node Manager) which may provide any number of services in addition to core message support.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4b03"
+        }
+      }
+    },
+    "NodeList": {
+      "type": "array",
+      "comment": "# of Nodes reported. For a single Node Report this field shall be 1",
+      "required": [
+        "NodeSeq"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "NodeRec",
+              "ComponentList"
+            ],
+            "properties": {
+              "NodeRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "NodeID"
+                ],
+                "properties": {
+                  "NodeID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "Node ID. For single Node or Component reporting this field shall contain the Node ID as specified in the Destination Address of the Query Configuration message"
+                  }
+                }
+              },
+              "ComponentList": {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "ComponentSeq"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "ComponentRec",
+                        "ServiceList"
+                      ],
+                      "properties": {
+                        "ComponentRec": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "ComponentID",
+                            "InstanceID"
+                          ],
+                          "properties": {
+                            "ComponentID": {
+                              "type": "number",
+                              "jausType": "unsigned byte",
+                              "comment": "Component ID. For Single Component reporting this field shall contain the Component ID as specified in the Destination Address of the Query Configuration message and shall be the only Component reported"
+                            },
+                            "InstanceID": {
+                              "type": "number",
+                              "jausType": "unsigned byte",
+                              "comment": "Inst ID when legacy Components are reported; a value of zero (0) shall be used for non-legacy components."
+                            }
+                          }
+                        },
+                        "ServiceList": {
+                          "type": "array",
+                          "comment": "",
+                          "required": [
+                            "ServiceRec"
+                          ],
+                          "items": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "URI",
+                                  "MajorVersionNumber",
+                                  "MinorVersionNumber"
+                                ],
+                                "properties": {
+                                  "URI": {
+                                    "type": "string",
+                                    "jausType": "unsigned byte",
+                                    "comment": "",
+                                    "minLength": 0,
+                                    "maxLength": 255
+                                  },
+                                  "MajorVersionNumber": {
+                                    "type": "number",
+                                    "jausType": "unsigned byte",
+                                    "comment": ""
+                                  },
+                                  "MinorVersionNumber": {
+                                    "type": "number",
+                                    "jausType": "unsigned byte",
+                                    "comment": ""
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "jausType": "unsigned byte",
+                          "minItems": 0,
+                          "maxItems": 255,
+                          "isVariant": false
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "NodeList"
+  ]
+}

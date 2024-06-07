@@ -1,0 +1,27 @@
+{
+  "name": "QueryIntelligentVehicleStatus",
+  "messageId": "ddd3",
+  "isCommand": false,
+  "description": "This message is used to query the current status of the intelligent vehicle behaviors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ddd3"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

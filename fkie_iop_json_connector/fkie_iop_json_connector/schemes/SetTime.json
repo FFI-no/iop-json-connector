@@ -1,0 +1,202 @@
+{
+  "name": "SetTime",
+  "messageId": "0011",
+  "isCommand": true,
+  "description": "Time is configured within a JAUS system using the following message.  Accuracy of the time may be dependent on latencies in the transmission of the message.  Proper systems engineering procedures should be used to insure the accuracy of the time messages are within the system tolerance.  All times are in Coordinated Universal Time (UTC).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0011"
+        }
+      }
+    },
+    "TimeRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "TimeStamp": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "Milliseconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "bitRange": {
+                "from": 0,
+                "to": 9
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 999.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Seconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "bitRange": {
+                "from": 10,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 59.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Minutes": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "bitRange": {
+                "from": 16,
+                "to": 21
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 59.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Hour": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "bitRange": {
+                "from": 22,
+                "to": 26
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 23.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Day": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "bitRange": {
+                "from": 27,
+                "to": 31
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 31.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned integer"
+        },
+        "DateStamp": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "Day": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 0,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 31.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Month": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 5,
+                "to": 8
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 12.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Year": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 9,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 127.0,
+                    "interpretation": "Where 0 is 2000, 1 is 2001, etc."
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned short integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TimeRec"
+  ]
+}

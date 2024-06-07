@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>fkie_iop_json_connector</name>
+  <version>0.1.0</version>
+  <description>IOP JSON Connector - Translates IOP Messages to/from JSON.</description>
+
+  <maintainer email="alexander.tiderko@fkie.fraunhofer.de">Alexander Tiderko</maintainer>
+  <author email="alexander.tiderko@fkie.fraunhofer.de">Alexander Tiderko</author>
+  <license>MIT</license>
+
+  <buildtool_depend condition="$ROS_VERSION == 1">catkin</buildtool_depend>
+  <buildtool_depend condition="$ROS_VERSION == 2">ament_cmake</buildtool_depend>
+
+  <depend>python3-ruamel.yaml</depend>
+
+  <depend condition="$ROS_VERSION == 2">rclpy</depend>
+  <!-- <depend>python3-simple-websocket-server</depend> -->
+
+  <test_depend condition="$ROS_VERSION == 2">ament_copyright</test_depend>
+  <test_depend condition="$ROS_VERSION == 2">ament_flake8</test_depend>
+  <test_depend condition="$ROS_VERSION == 2">ament_pep257</test_depend>
+  <test_depend condition="$ROS_VERSION == 2">python3-pytest</test_depend>
+
+  <export>
+    <build_type condition="$ROS_VERSION == 1">catkin</build_type>
+    <build_type condition="$ROS_VERSION == 2">ament_cmake</build_type>
+    <rosdoc config="rosdoc.yaml" />
+  </export>
+
+</package>

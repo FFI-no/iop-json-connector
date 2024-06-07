@@ -1,0 +1,27 @@
+{
+  "name": "QueryPlatformState",
+  "messageId": "ff26",
+  "isCommand": false,
+  "description": "Causes the service to issue a ReportPlatformState message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff26"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

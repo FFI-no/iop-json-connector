@@ -1,0 +1,56 @@
+{
+  "name": "SetPanTiltJointEffort",
+  "messageId": "0621",
+  "isCommand": true,
+  "description": "This message is used to control the two joint actuators for a pan tilt mechanism in an open loop fashion. The command states the percentage level of effort that each actuator should exercise in order to move its corresponding joint.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0621"
+        }
+      }
+    },
+    "PanTiltJointEffortRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Joint1Effort",
+        "Joint2Effort"
+      ],
+      "properties": {
+        "Joint1Effort": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "Joint2Effort": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Percent of Maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PanTiltJointEffortRec"
+  ]
+}

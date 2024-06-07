@@ -1,0 +1,235 @@
+{
+  "name": "ReportAnalogVideoSensorCapabilities",
+  "messageId": "4810",
+  "isCommand": false,
+  "description": "This message is used to report the \n            sensors\u2019 capabilities upon reciept of a Query Analog Video Sensor\n            Capabilities message. Capabilities include sensor properties, \n            values and ranges which can be modified by the Set Analog Video \n            Sensor Configuration message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4810"
+        }
+      }
+    },
+    "AnalogVideoSensorCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "AnalogVideoSensorCapabilitiesRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "SupportedAnalogFormats"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "SupportedAnalogFormats": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "NTSCM",
+                  "NTSCJ",
+                  "PALN",
+                  "PALM",
+                  "SECAML",
+                  "SECAMBG"
+                ],
+                "properties": {
+                  "NTSCM": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "NTSCJ": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "PALN": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "PALM": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "SECAML": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 4,
+                      "to": 4
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "SECAMBG": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 5,
+                      "to": 5
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned byte"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "AnalogVideoSensorCapabilitiesList"
+  ]
+}

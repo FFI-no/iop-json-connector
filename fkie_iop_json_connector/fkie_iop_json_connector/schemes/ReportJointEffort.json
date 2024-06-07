@@ -1,0 +1,61 @@
+{
+  "name": "ReportJointEffort",
+  "messageId": "4601",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the percent effort that is currently being applied to the individual manipulator joints.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4601"
+        }
+      }
+    },
+    "JointEffortList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "JointEffortRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "JointEffort"
+            ],
+            "properties": {
+              "JointEffort": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Percent of maximum effort for this joint. Each joint must have a corresponding entry in the list.",
+                "scaleRange": {
+                  "scaleFactor": 0.0030518043793392844,
+                  "bias": -100.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "JointEffortList"
+  ]
+}

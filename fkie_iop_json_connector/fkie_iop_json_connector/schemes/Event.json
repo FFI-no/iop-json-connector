@@ -1,0 +1,73 @@
+{
+  "name": "Event",
+  "messageId": "41f1",
+  "isCommand": false,
+  "description": "The Event message is sent when event is triggered. It includes the Event ID and a\n      sequence number to allow the client to keep track of event processing.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "41f1"
+        }
+      }
+    },
+    "EventRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "EventID",
+        "SequenceNumber",
+        "ReportMessage"
+      ],
+      "properties": {
+        "EventID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique identifier of the enclosed event"
+        },
+        "SequenceNumber": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Sequential count of the number of times this event has been issued"
+        },
+        "ReportMessage": {
+          "type": "object",
+          "comment": "The JAUS Report message including the message header",
+          "required": [
+            "payloadMessageId",
+            "payload"
+          ],
+          "properties": {
+            "payloadMessageId": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "message id of the payload message"
+            },
+            "payload": {
+              "type": "object",
+              "comment": "The JAUS Report message including the message header",
+              "required": [],
+              "properties": {}
+            }
+          },
+          "minLength": 2,
+          "jausType": "unsigned integer",
+          "fieldFormat": "JAUS MESSAGE"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "EventRec"
+  ]
+}

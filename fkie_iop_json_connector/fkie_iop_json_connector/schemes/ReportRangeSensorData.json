@@ -1,0 +1,425 @@
+{
+  "name": "ReportRangeSensorData",
+  "messageId": "4803",
+  "isCommand": false,
+  "description": "This message is sent by a receiving \n            component upon receipt of a Query Range Sensor Data message. This \n            message reports a list of detected data points for a given time. \n            The RangeSensorDataSeq is used to report the data from a given \n            sensor along with meta data such as sensor ID and timestamp. The \n            timestamp defines the time at which the collected data was valid. \n            Data points are defined by range, bearing and inclination with \n            respect to either the native coordinate system or the vehicle \n            coordinate system. Data is only reported for sensors which are \n            in the active state. If data is queried for a sensor which is \n            not active, the RangeSensorDataErrorRec is returned for that \n            sensor ID report.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4803"
+        }
+      }
+    },
+    "RangeSensorDataList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "RangeSensorDataVariant"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "array",
+            "comment": "",
+            "required": [
+              "RangeSensorDataErrorRec",
+              "RangeSensorDataSeq"
+            ],
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "comment": "",
+                  "required": [
+                    "SensorID",
+                    "DataErrorCode",
+                    "ErrorMessage"
+                  ],
+                  "properties": {
+                    "SensorID": {
+                      "type": "number",
+                      "jausType": "unsigned short integer",
+                      "comment": ""
+                    },
+                    "DataErrorCode": {
+                      "type": "string",
+                      "jausType": "unsigned byte",
+                      "comment": "",
+                      "valueSet": [
+                        {
+                          "valueEnum": {
+                            "enumIndex": 0,
+                            "enumConst": "Sensor is not Active"
+                          }
+                        },
+                        {
+                          "valueEnum": {
+                            "enumIndex": 1,
+                            "enumConst": "Invalid compression format"
+                          }
+                        },
+                        {
+                          "valueEnum": {
+                            "enumIndex": 255,
+                            "enumConst": "Unknown Error / Failure"
+                          }
+                        }
+                      ],
+                      "enum": [
+                        "Sensor is not Active",
+                        "Invalid compression format",
+                        "Unknown Error / Failure"
+                      ]
+                    },
+                    "ErrorMessage": {
+                      "type": "string",
+                      "jausType": "unsigned byte",
+                      "comment": "",
+                      "minLength": 0,
+                      "maxLength": 255
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "comment": "",
+                  "required": [
+                    "RangeSensorDataRec",
+                    "RangeSensorDataPointList"
+                  ],
+                  "properties": {
+                    "RangeSensorDataRec": {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "SensorID",
+                        "ReportCoordinateSystem",
+                        "TimeStamp"
+                      ],
+                      "properties": {
+                        "SensorID": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": ""
+                        },
+                        "ReportCoordinateSystem": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 0,
+                                "enumConst": "Native Coordinate System"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "Vehicle Coordinate System"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "Native Coordinate System",
+                            "Vehicle Coordinate System"
+                          ]
+                        },
+                        "TimeStamp": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "Milliseconds",
+                            "Seconds",
+                            "Minutes",
+                            "Hour",
+                            "Day"
+                          ],
+                          "properties": {
+                            "Milliseconds": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 0,
+                                "to": 9
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 999.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "Seconds": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 10,
+                                "to": 15
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 59.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "Minutes": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 16,
+                                "to": 21
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 59.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "Hour": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 22,
+                                "to": 26
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 23.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "Day": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 27,
+                                "to": 31
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 1.0,
+                                    "maximum": 31.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "bitField": "unsigned integer"
+                        }
+                      }
+                    },
+                    "RangeSensorDataPointList": {
+                      "type": "array",
+                      "comment": "",
+                      "required": [
+                        "RangeSensorDataPointRec"
+                      ],
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "comment": "",
+                            "required": [
+                              "presenceVector",
+                              "Range",
+                              "Bearing",
+                              "Inclination"
+                            ],
+                            "properties": {
+                              "presenceVector": {
+                                "type": "number",
+                                "jausType": "unsigned short integer",
+                                "comment": ""
+                              },
+                              "PointID": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": ""
+                              },
+                              "Range": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 0.00023283064370807974,
+                                  "bias": 0.0
+                                }
+                              },
+                              "RangeValidity": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "False"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "True"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "False",
+                                  "True"
+                                ]
+                              },
+                              "RangeErrorRMS": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 2.3283064370807974e-05,
+                                  "bias": 0.0
+                                }
+                              },
+                              "Bearing": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 1.4629180796077717e-09,
+                                  "bias": -3.141592653589793
+                                }
+                              },
+                              "BearingValidity": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "False"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "True"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "False",
+                                  "True"
+                                ]
+                              },
+                              "BearingErrorRMS": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 7.314590398038859e-10,
+                                  "bias": 0.0
+                                }
+                              },
+                              "Inclination": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 1.4629180796077717e-09,
+                                  "bias": -3.141592653589793
+                                }
+                              },
+                              "InclinationValidity": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "False"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "True"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "False",
+                                  "True"
+                                ]
+                              },
+                              "InclinationErrorRMS": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 7.314590398038859e-10,
+                                  "bias": 0.0
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "jausType": "unsigned short integer",
+                      "minItems": 0,
+                      "maxItems": 65535,
+                      "isVariant": false
+                    }
+                  }
+                }
+              ]
+            },
+            "jausType": "unsigned byte",
+            "minItems": 0,
+            "maxItems": 1,
+            "isVariant": true
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RangeSensorDataList"
+  ]
+}

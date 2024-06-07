@@ -1,0 +1,66 @@
+{
+  "name": "QueryPowerPlantConfiguration",
+  "messageId": "2506",
+  "isCommand": false,
+  "description": "Queries current powerplant state",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "2506"
+        }
+      }
+    },
+    "idList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "powerPlantID"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "powerPlantID"
+            ],
+            "properties": {
+              "powerPlantID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "A list of IDs to query. If the list is empty (count_field=0), all vehicle powerplants will be returned.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 0.0,
+                      "maximum": 255.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "idList"
+  ]
+}

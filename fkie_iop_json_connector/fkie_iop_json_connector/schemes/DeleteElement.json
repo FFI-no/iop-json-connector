@@ -1,0 +1,81 @@
+{
+  "name": "DeleteElement",
+  "messageId": "041b",
+  "isCommand": true,
+  "description": "This message is used to delete one or more elements from a list.  Each element is uniquely identified by the UID.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "041b"
+        }
+      }
+    },
+    "DeleteElementSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestIDRec",
+        "DeleteElementList"
+      ],
+      "properties": {
+        "RequestIDRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "RequestID"
+          ],
+          "properties": {
+            "RequestID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "ID of the request. This ID will be returned in the response message."
+            }
+          }
+        },
+        "DeleteElementList": {
+          "type": "array",
+          "comment": "",
+          "required": [
+            "DeleteElementRec"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ElementUID"
+                ],
+                "properties": {
+                  "ElementUID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "UID of the element to be deleted, where a value of 65535 represents all element in the list."
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": null,
+          "maxItems": null,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DeleteElementSeq"
+  ]
+}

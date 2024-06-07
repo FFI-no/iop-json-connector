@@ -1,0 +1,154 @@
+{
+  "name": "AddNoGoZone",
+  "messageId": "d740",
+  "isCommand": true,
+  "description": "This message is used to request a client-specified no-go zone.  Upon acceptance by the service, the cells traversed or contained by the polygon formed by imaginary lines connecting the sequenced list of vertices shall be considered maximum cost (non-traversable).",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d740"
+        }
+      }
+    },
+    "NoGoZoneSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestIDRec",
+        "VertexVar"
+      ],
+      "properties": {
+        "RequestIDRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "RequestID"
+          ],
+          "properties": {
+            "RequestID": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "This value will be returned in the AddNoGoZoneResponse message to enable a client to match set and response pairs. The value is established by the client."
+            }
+          }
+        },
+        "VertexVar": {
+          "type": "array",
+          "comment": "",
+          "required": [
+            "GlobalVertexList",
+            "LocalVertexList"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "GlobalVertexRec"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "Latitude",
+                        "Longitude"
+                      ],
+                      "properties": {
+                        "Latitude": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 4.190951586745435e-08,
+                            "bias": -90.0
+                          }
+                        },
+                        "Longitude": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 8.38190317349087e-08,
+                            "bias": -180.0
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              },
+              {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "LocalVertexRec"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "X",
+                        "Y"
+                      ],
+                      "properties": {
+                        "X": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 4.656612874161595e-05,
+                            "bias": -100000.0
+                          }
+                        },
+                        "Y": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 4.656612874161595e-05,
+                            "bias": -100000.0
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 1,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "NoGoZoneSeq"
+  ]
+}

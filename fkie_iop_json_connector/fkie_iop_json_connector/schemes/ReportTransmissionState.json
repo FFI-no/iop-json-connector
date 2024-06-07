@@ -1,0 +1,280 @@
+{
+  "name": "ReportTransmissionState",
+  "messageId": "4509",
+  "isCommand": false,
+  "description": "Returns current transmission state",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "4509"
+        }
+      }
+    },
+    "reportTransmissionStateRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestedTransmissionState",
+        "ActualTransmissionState"
+      ],
+      "properties": {
+        "RequestedTransmissionState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "DEFAULT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "PARK"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "NEUTRAL"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "REVERSE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "DRIVE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "OVERDRIVE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "L1"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "L2"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "L3"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 9,
+                "enumConst": "L4"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 10,
+                "enumConst": "L5"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 11,
+                "enumConst": "L6"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 12,
+                "enumConst": "L7"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 13,
+                "enumConst": "L8"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 14,
+                "enumConst": "L9"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 15,
+                "enumConst": "L10"
+              }
+            }
+          ],
+          "enum": [
+            "DEFAULT",
+            "PARK",
+            "NEUTRAL",
+            "REVERSE",
+            "DRIVE",
+            "OVERDRIVE",
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6",
+            "L7",
+            "L8",
+            "L9",
+            "L10"
+          ]
+        },
+        "ActualTransmissionState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "DEFAULT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "PARK"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "NEUTRAL"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "REVERSE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "DRIVE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "OVERDRIVE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "L1"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "L2"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "L3"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 9,
+                "enumConst": "L4"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 10,
+                "enumConst": "L5"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 11,
+                "enumConst": "L6"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 12,
+                "enumConst": "L7"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 13,
+                "enumConst": "L8"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 14,
+                "enumConst": "L9"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 15,
+                "enumConst": "L10"
+              }
+            }
+          ],
+          "enum": [
+            "DEFAULT",
+            "PARK",
+            "NEUTRAL",
+            "REVERSE",
+            "DRIVE",
+            "OVERDRIVE",
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6",
+            "L7",
+            "L8",
+            "L9",
+            "L10"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "reportTransmissionStateRec"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "name": "QueryRangeSensorCompressedData",
+  "messageId": "2804",
+  "isCommand": false,
+  "description": "This message shall cause the \n\t\t\treceiving service to reply to the requestor with a Report Range \n\t\t\tSensor Compressed Data message. A logical AND shall be \n\t\t\tperformed on the requested presence vector and that representing \n\t\t\tthe available fields from the responder. The resulting message \n\t\t\tshall contain the fields indicated by the result of this logical \n\t\t\tAND operation. The third field specifies which coordinate system \n\t\t\tthe data should be reported in, either the sensor\u2019s native \n\t\t\tcoordinate system or, if supported, a coordinate system specified \n\t\t\tby a Set Specified Sensor Coordinate System message. The fourth \n\t\t\tfield specifies the data compression algorithm. Three compression \n\t\t\talgorithms are supported: DEFLATE, bzip2 and LZMA.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2804"
+        }
+      }
+    },
+    "QueryRangeSensorCompressedDataList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "QueryRangeSensorCompressedDataRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "ReportCoordinateSystem",
+              "DataCompression",
+              "QueryPresenceVector"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "ReportCoordinateSystem": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Native Coordinate System"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Vehicle Coordinate System"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Native Coordinate System",
+                  "Vehicle Coordinate System"
+                ]
+              },
+              "DataCompression": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "None"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "DEFLATE"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "bzip2"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "LZMA"
+                    }
+                  }
+                ],
+                "enum": [
+                  "None",
+                  "DEFLATE",
+                  "bzip2",
+                  "LZMA"
+                ]
+              },
+              "QueryPresenceVector": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryRangeSensorCompressedDataList"
+  ]
+}

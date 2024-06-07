@@ -1,0 +1,60 @@
+{
+  "name": "ReportTimeout",
+  "messageId": "4003",
+  "isCommand": false,
+  "description": "This message is used to report the timeout period of this message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4003"
+        }
+      }
+    },
+    "ReportTimoutRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Timeout"
+      ],
+      "properties": {
+        "Timeout": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "TIMEOUT_FEATURE _DISABLED"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 255.0,
+                "interpretation": ""
+              }
+            }
+          ],
+          "enum": [
+            "TIMEOUT_FEATURE _DISABLED"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportTimoutRec"
+  ]
+}

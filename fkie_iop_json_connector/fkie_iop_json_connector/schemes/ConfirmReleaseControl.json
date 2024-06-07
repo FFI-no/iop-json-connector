@@ -1,0 +1,88 @@
+{
+  "name": "ConfirmReleaseControl",
+  "messageId": "ff39",
+  "isCommand": false,
+  "description": "Used to confirm, deny, or defer decision on handoff requests to the controlling client.\tAt most one request can be confirmed, and in that case, all other requests must be denied.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff39"
+        }
+      }
+    },
+    "ReleaseControlList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "ReleaseControlRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "ID",
+              "ResponseCode"
+            ],
+            "properties": {
+              "ID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "Matches the ID from a RequestReleaseControlToRec in the RequestReleaseControl message."
+              },
+              "ResponseCode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "GRANTED"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "DENIED"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "WAIT"
+                    }
+                  }
+                ],
+                "enum": [
+                  "GRANTED",
+                  "DENIED",
+                  "WAIT"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReleaseControlList"
+  ]
+}

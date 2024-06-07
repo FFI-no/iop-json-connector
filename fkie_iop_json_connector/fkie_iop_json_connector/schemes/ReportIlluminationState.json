@@ -1,0 +1,458 @@
+{
+  "name": "ReportIlluminationState",
+  "messageId": "4513",
+  "isCommand": false,
+  "description": "Reports current illumination state",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "4513"
+        }
+      }
+    },
+    "illuminationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "illumination"
+      ],
+      "properties": {
+        "illumination": {
+          "type": "object",
+          "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+          "required": [
+            "VariableLight3",
+            "VariableLight4",
+            "Headlights",
+            "LeftTurnSignal",
+            "RightTurnSignal",
+            "RunningLights",
+            "BrakeLights",
+            "BackupLights",
+            "VisibleLightSource",
+            "IRLightSource",
+            "VariableLight1",
+            "VariableLight2",
+            "HighBeams",
+            "ParkingLights",
+            "FogLights",
+            "HazardLights"
+          ],
+          "properties": {
+            "VariableLight3": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 16,
+                "to": 19
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "VariableLight4": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 20,
+                "to": 23
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Headlights": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "LeftTurnSignal": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "RightTurnSignal": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "RunningLights": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "BrakeLights": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 4,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "BackupLights": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 5,
+                "to": 5
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "VisibleLightSource": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 6,
+                "to": 6
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "IRLightSource": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 7,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "VariableLight1": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 8,
+                "to": 11
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "VariableLight2": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 12,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "HighBeams": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 24,
+                "to": 24
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "ParkingLights": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 25,
+                "to": 25
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "FogLights": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 26,
+                "to": 26
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            },
+            "HazardLights": {
+              "type": "string",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 27,
+                "to": 27
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "OFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ON"
+                  }
+                }
+              ],
+              "enum": [
+                "OFF",
+                "ON"
+              ]
+            }
+          },
+          "bitField": "unsigned integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "illuminationRec"
+  ]
+}

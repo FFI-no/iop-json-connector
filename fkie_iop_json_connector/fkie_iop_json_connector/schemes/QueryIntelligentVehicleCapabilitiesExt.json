@@ -1,0 +1,27 @@
+{
+  "name": "QueryIntelligentVehicleCapabilitiesExt",
+  "messageId": "ddd8",
+  "isCommand": false,
+  "description": "This message is used to query the capabilities of the underlying platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ddd8"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

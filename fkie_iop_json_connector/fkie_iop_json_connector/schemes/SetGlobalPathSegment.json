@@ -1,0 +1,119 @@
+{
+  "name": "SetGlobalPathSegment",
+  "messageId": "040f",
+  "isCommand": true,
+  "description": "This message is used to set the path segment data based on the global coordinate system.  A global \n      path segment is defined in this message using three points, P0, P1 and P2 and a weighting factor.  \n      For the first path segment, i.e. the first element in a list of path segments, P0 is assumed to be the \n      current location of the platform as defined by Report Global Pose.  For each successive path segments,\n      i.e. where the path segment number is greater than zero, P0 is equal to the previous path segment's P2.  \n      Therefore, for each message, only P1, P2, and a weighting factor must be set in order to define a path \n      segment.  Each point is defined in the Global Coordinate System by setting its Latitude, Longitude and \n      Altitude, as specified by the WGS 84 standard.  Both the Latitude and Longitude are required fields, \n      but the Altitude field is optional.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "040f"
+        }
+      }
+    },
+    "GlobalPathSegmentRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "P1_Latitude",
+        "P1_Longitude",
+        "P2_Latitude",
+        "P2_Longitude",
+        "WeightingFactor"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "P1_Latitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.190951586745435e-08,
+            "bias": -90.0
+          }
+        },
+        "P1_Longitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 8.38190317349087e-08,
+            "bias": -180.0
+          }
+        },
+        "P1_Altitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "P2_Latitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.190951586745435e-08,
+            "bias": -90.0
+          }
+        },
+        "P2_Longitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 8.38190317349087e-08,
+            "bias": -180.0
+          }
+        },
+        "P2_Altitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "WeightingFactor": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "A value of zero (0) is a straight line",
+          "scaleRange": {
+            "scaleFactor": 0.007629510948348211,
+            "bias": 0.0
+          }
+        },
+        "PathTolerance": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "A value of zero (0) is used for infinite tolerance",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-05,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GlobalPathSegmentRec"
+  ]
+}

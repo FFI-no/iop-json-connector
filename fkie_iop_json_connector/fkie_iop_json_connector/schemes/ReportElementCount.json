@@ -1,0 +1,42 @@
+{
+  "name": "ReportElementCount",
+  "messageId": "441c",
+  "isCommand": false,
+  "description": "This message is used to report the number of elements in a list.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "441c"
+        }
+      }
+    },
+    "ElementCountRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ElementCount"
+      ],
+      "properties": {
+        "ElementCount": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Number of elements currently in the list"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ElementCountRec"
+  ]
+}

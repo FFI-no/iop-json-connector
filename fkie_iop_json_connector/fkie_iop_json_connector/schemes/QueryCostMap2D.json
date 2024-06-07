@@ -1,0 +1,162 @@
+{
+  "name": "QueryCostMap2D",
+  "messageId": "d738",
+  "isCommand": false,
+  "description": "This message is used to query for cost map data.  An optional maximum map size may be specified to limit the amount of data returned.  If no values are specified, the service may still return a subset of the cost map stored internally, with emphasis on the immediate vicinity of the platform.  An optional map center and orientation may be specified.  If the map center lies outside the bounds of the known cost map, the data returned should reflect the unknown (zero confidence) elements.  If the map center is specified in an unsupported coordinate frame, or the map center is not specified, the returned map should be based on the current vehicle location.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d738"
+        }
+      }
+    },
+    "QueryCostMap2DSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "QueryCostMap2DRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "MaxWidth",
+            "MaxHeight"
+          ],
+          "properties": {
+            "MaxWidth": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.15259021896696423,
+                "bias": 0.0
+              }
+            },
+            "MaxHeight": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.15259021896696423,
+                "bias": 0.0
+              }
+            }
+          }
+        },
+        "QueryCostMap2DCenterVar": {
+          "type": "array",
+          "comment": "",
+          "required": [
+            "CostMap2DGlobalPoseRec",
+            "CostMap2DLocalPoseRec"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "MapCenterLatitude",
+                  "MapCenterLongitude",
+                  "MapRotation"
+                ],
+                "properties": {
+                  "MapCenterLatitude": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.190951586745435e-08,
+                      "bias": -90.0
+                    }
+                  },
+                  "MapCenterLongitude": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 8.38190317349087e-08,
+                      "bias": -180.0
+                    }
+                  },
+                  "MapRotation": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Rotation about the global Z axis.",
+                    "scaleRange": {
+                      "scaleFactor": 9.587526218325454e-05,
+                      "bias": -3.141592653589793
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "MapCenterX",
+                  "MapCenterY",
+                  "MapRotation"
+                ],
+                "properties": {
+                  "MapCenterX": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-05,
+                      "bias": -100000.0
+                    }
+                  },
+                  "MapCenterY": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-05,
+                      "bias": -100000.0
+                    }
+                  },
+                  "MapRotation": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Rotation about the local Z axis.",
+                    "scaleRange": {
+                      "scaleFactor": 9.587526218325454e-05,
+                      "bias": -3.141592653589793
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 1,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "QueryCostMap2DSeq"
+  ]
+}

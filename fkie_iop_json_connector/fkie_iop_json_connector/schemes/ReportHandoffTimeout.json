@@ -1,0 +1,42 @@
+{
+  "name": "ReportHandoffTimeout",
+  "messageId": "ff36",
+  "isCommand": false,
+  "description": "Sent in response to a Query Handoff Timeout message.\tThe handoff timeout is the amount of time that must pass from when this service first requests a handoff from the current controlling client before the requester is notified that the handoff failed due to a timeout.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff36"
+        }
+      }
+    },
+    "ReportHandoffTimeoutRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Timeout"
+      ],
+      "properties": {
+        "Timeout": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Service must receive handoff confirmation from the current controller before this timeout expires. A value of zero indicates this feature is disabled."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportHandoffTimeoutRec"
+  ]
+}

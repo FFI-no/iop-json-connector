@@ -1,0 +1,371 @@
+{
+  "name": "ReportRangeSensorCapabilities",
+  "messageId": "4801",
+  "isCommand": false,
+  "description": "This message is used to report the \n            range sensors\u2019 capabilities upon reciept of a Query Range Sensor \n            Capabilities message. Capabilities include both static sensor \n            properties and valid values and ranges for properties which \n            can be modified by the Set Range Sensor Capabilities Message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4801"
+        }
+      }
+    },
+    "RangeSensorCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "RangeSensorCapabilitiesRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID",
+              "SensorName"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "SensorName": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "minLength": 0,
+                "maxLength": 255
+              },
+              "SupportedStates": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "Active": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "Standby": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "Off": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned byte"
+              },
+              "MinimumHorizontalFieldOfViewStartAngle": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 1.4629180796077717e-09,
+                  "bias": -3.141592653589793
+                }
+              },
+              "MaximumHorizontalFieldOfViewStopAngle": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 1.4629180796077717e-09,
+                  "bias": -3.141592653589793
+                }
+              },
+              "MinimumVerticalFieldOfViewStartAngle": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 1.4629180796077717e-09,
+                  "bias": -3.141592653589793
+                }
+              },
+              "MaximumVerticalFieldOfViewStopAngle": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 1.4629180796077717e-09,
+                  "bias": -3.141592653589793
+                }
+              },
+              "MiniumumUpdateRate": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.015259021896696421,
+                  "bias": 0.0
+                }
+              },
+              "MaximumUpdateRate": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.015259021896696421,
+                  "bias": 0.0
+                }
+              },
+              "MinimumRange": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.00023283064370807974,
+                  "bias": 0.0
+                }
+              },
+              "MaximumRange": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.00023283064370807974,
+                  "bias": 0.0
+                }
+              },
+              "SupportedCompression": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "NoCompression": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "DEFLATE": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "bzip2": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "LZMA": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned byte"
+              },
+              "CoordinateTransformationSupported": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "False"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "True"
+                    }
+                  }
+                ],
+                "enum": [
+                  "False",
+                  "True"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RangeSensorCapabilitiesList"
+  ]
+}

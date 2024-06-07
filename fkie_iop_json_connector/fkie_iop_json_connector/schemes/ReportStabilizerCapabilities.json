@@ -1,0 +1,140 @@
+{
+  "name": "ReportStabilizerCapabilities",
+  "messageId": "4505",
+  "isCommand": false,
+  "description": "Reports vehicle stabilizer configuration",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4505"
+        }
+      }
+    },
+    "StabilizerCapabilities": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "StabilizerCapabilitiesSeq"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "StabilizerCapabilitiesRec",
+              "StabilizerDimensionsList"
+            ],
+            "properties": {
+              "StabilizerCapabilitiesRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "StabilizerID",
+                  "MaximumUpAngle",
+                  "MaximumDownAngle"
+                ],
+                "properties": {
+                  "StabilizerID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "MaximumUpAngle": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.793759060044251e-05,
+                      "bias": 0.0
+                    }
+                  },
+                  "MaximumDownAngle": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.793743801022354e-05,
+                      "bias": -3.14158
+                    }
+                  }
+                }
+              },
+              "StabilizerDimensionsList": {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "Points"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "PointX",
+                        "PointY",
+                        "PointZ"
+                      ],
+                      "properties": {
+                        "PointX": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.00045777065690089265,
+                            "bias": 0.0
+                          }
+                        },
+                        "PointY": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.00045777065690089265,
+                            "bias": 0.0
+                          }
+                        },
+                        "PointZ": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.00045777065690089265,
+                            "bias": 0.0
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "StabilizerCapabilities"
+  ]
+}

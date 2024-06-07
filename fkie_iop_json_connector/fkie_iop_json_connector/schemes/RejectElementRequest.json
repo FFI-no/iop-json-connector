@@ -1,0 +1,101 @@
+{
+  "name": "RejectElementRequest",
+  "messageId": "041d",
+  "isCommand": false,
+  "description": "This message is used to reject an operation on an element list.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "041d"
+        }
+      }
+    },
+    "RejectElementRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "ResponseCode"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the request that generated this confirmation message."
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "ID of the request that generated this confirmation message.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Invalid element ID"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Invalid previous element"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Invalid next element"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Unsupported element type"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Element ID not found"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "Out of memory"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "Unspecified error"
+              }
+            }
+          ],
+          "enum": [
+            "Invalid element ID",
+            "Invalid previous element",
+            "Invalid next element",
+            "Unsupported element type",
+            "Element ID not found",
+            "Out of memory",
+            "Unspecified error"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RejectElementRec"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "QueryAnalogVideoSensorCapabilities",
+  "messageId": "2810",
+  "isCommand": false,
+  "description": "This message shall cause the \n\t\t\treceiving service to reply to the requestor with a Report \n\t\t\tAnalog Video Sensor Capabilities message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2810"
+        }
+      }
+    },
+    "SensorIdList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "SensorIdRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SensorIdList"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Standby",
+  "messageId": "0003",
+  "isCommand": true,
+  "description": "This message is used to transition the receiving component to the standby state.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0003"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

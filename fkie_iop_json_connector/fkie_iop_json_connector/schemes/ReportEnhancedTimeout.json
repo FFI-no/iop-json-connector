@@ -1,0 +1,42 @@
+{
+  "name": "ReportEnhancedTimeout",
+  "messageId": "ff37",
+  "isCommand": false,
+  "description": "Sent in response to a Query Enhanced Timeout message.\tThe enhanced timeout is the amount of time that must pass from when a client first requests a handoff and when a client must re-assert its desire for the handoff.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff37"
+        }
+      }
+    },
+    "ReportEnhancedTimeoutRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Timeout"
+      ],
+      "properties": {
+        "Timeout": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Clients must re-request handoff to prevent being denied handoff request when the timeout expires. A value of zero indicates this feature is disabled."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportEnhancedTimeoutRec"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "QueryIntelligentVehicleConfiguration",
+  "messageId": "ddd2",
+  "isCommand": false,
+  "description": "This message is used to query the current configuration of the underlying platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ddd2"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

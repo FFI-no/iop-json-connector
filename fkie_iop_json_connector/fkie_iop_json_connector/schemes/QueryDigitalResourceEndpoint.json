@@ -1,0 +1,27 @@
+{
+  "name": "QueryDigitalResourceEndpoint",
+  "messageId": "e702",
+  "isCommand": false,
+  "description": "Queries for a list of known digital resource endpoints.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "e702"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

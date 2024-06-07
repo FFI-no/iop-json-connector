@@ -1,0 +1,67 @@
+{
+  "name": "SetStabilizerEffort",
+  "messageId": "0503",
+  "isCommand": true,
+  "description": "Sets Stabilizer effort",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0503"
+        }
+      }
+    },
+    "StabilizerEffort": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "StabilizerEffortRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "StabilizerID",
+              "Effort"
+            ],
+            "properties": {
+              "StabilizerID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "Effort": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0030518043793392844,
+                  "bias": -100.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "StabilizerEffort"
+  ]
+}

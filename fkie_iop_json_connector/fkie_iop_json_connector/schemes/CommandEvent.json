@@ -1,0 +1,66 @@
+{
+  "name": "CommandEvent",
+  "messageId": "41f6",
+  "isCommand": false,
+  "description": "The CommandEvent message is sent when a command specified by a previous Create            Command Event message has completed or expired.  It includes the Event ID and             command result.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "41f6"
+        }
+      }
+    },
+    "EventRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "EventID",
+        "CommandResult"
+      ],
+      "properties": {
+        "EventID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique identifier of the enclosed event"
+        },
+        "CommandResult": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESSFUL"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "UNSUCCESSFUL"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESSFUL",
+            "UNSUCCESSFUL"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "EventRec"
+  ]
+}

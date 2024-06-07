@@ -1,0 +1,109 @@
+{
+  "name": "ReportAnalogVideoSensorConfiguration",
+  "messageId": "4811",
+  "isCommand": false,
+  "description": "This message is sent in response \n            to a Query Analog Video Sensor Configuration message. It is \n            populated with the current sensor configuration (per sensor ID) \n            as defined in the table below.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4811"
+        }
+      }
+    },
+    "AnalogVideoSensorConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "AnalogVideoSensorConfigurationRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "AnalogFormat"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "AnalogFormat": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "NTSC-M"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "NTSC-J"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "PAL-N"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "PAL-M"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "SECAM-L"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 5,
+                      "enumConst": "SECAM-B/G"
+                    }
+                  }
+                ],
+                "enum": [
+                  "NTSC-M",
+                  "NTSC-J",
+                  "PAL-N",
+                  "PAL-M",
+                  "SECAM-L",
+                  "SECAM-B/G"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "AnalogVideoSensorConfigurationList"
+  ]
+}

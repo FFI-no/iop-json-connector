@@ -1,0 +1,57 @@
+{
+  "name": "QueryStabilizerEffort",
+  "messageId": "2503",
+  "isCommand": false,
+  "description": "Requests commanded Stabilizer effort",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2503"
+        }
+      }
+    },
+    "StabilizerID": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "QueryStabilizerRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "StabilizerID"
+            ],
+            "properties": {
+              "StabilizerID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "StabilizerID"
+  ]
+}

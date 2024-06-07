@@ -1,0 +1,74 @@
+{
+  "name": "SetPlatformMode",
+  "messageId": "ff20",
+  "isCommand": true,
+  "description": "Sets the platform mode.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff20"
+        }
+      }
+    },
+    "PlatformModeRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PlatformMode"
+      ],
+      "properties": {
+        "PlatformMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 175.0,
+                "maximum": 255.0,
+                "interpretation": "Reserved for program specific modes"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Standard_Operating"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Training"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Maintenance"
+              }
+            }
+          ],
+          "enum": [
+            "Standard_Operating",
+            "Training",
+            "Maintenance"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PlatformModeRec"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "RemoveDigitalResourceEndpoint",
+  "messageId": "e704",
+  "isCommand": true,
+  "description": "Remove a previously registered digital resource transfer server from the service.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "e704"
+        }
+      }
+    },
+    "RemoveDigitalResourceEndpointRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ID",
+        "RequestID"
+      ],
+      "properties": {
+        "ID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique ID that was returned in the confirm message"
+        },
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Client provided ID to link the response to the request"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RemoveDigitalResourceEndpointRec"
+  ]
+}

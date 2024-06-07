@@ -1,0 +1,353 @@
+{
+  "name": "ReportPowerPlantConfiguration",
+  "messageId": "4506",
+  "isCommand": false,
+  "description": "Reports current powerplant configuration",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "4506"
+        }
+      }
+    },
+    "powerPlantConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "powerPlantConfigurationSeq"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "powerPlantID",
+              "powerPlantConfigurationVar"
+            ],
+            "properties": {
+              "powerPlantID": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "powerPlantID"
+                ],
+                "properties": {
+                  "powerPlantID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "This is a unique ID for each powerplant and is provided by 4507 Report PowerPlant Capabilities message.",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "powerPlantConfigurationVar": {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "gasEngineConfigurationRec",
+                  "dieselEngineConfigurationRec",
+                  "batteryConfigurationRec",
+                  "hydraulicConfigurationRec",
+                  "fuelCellConfigurationRecs"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector",
+                        "powerState"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": ""
+                        },
+                        "powerState": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "POWER_ON"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "POWER_OFF"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 3,
+                                "enumConst": "POWER_STANDBY"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "POWER_ON",
+                            "POWER_OFF",
+                            "POWER_STANDBY"
+                          ]
+                        },
+                        "rpm": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "Rotations per minute. Units here are one since JSIDL does not support RPM natively."
+                        },
+                        "throttle": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "As a percent of maximum",
+                          "scaleRange": {
+                            "scaleFactor": 0.0015259021896696422,
+                            "bias": 0.0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector",
+                        "powerState"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": ""
+                        },
+                        "powerState": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "POWER_ON"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "POWER_OFF"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 3,
+                                "enumConst": "POWER_STANDBY"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "POWER_ON",
+                            "POWER_OFF",
+                            "POWER_STANDBY"
+                          ]
+                        },
+                        "rpm": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "Rotations per minute. Units here are one since JSIDL does not support RPM natively."
+                        },
+                        "throttle": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "As a percent of maximum",
+                          "scaleRange": {
+                            "scaleFactor": 0.0015259021896696422,
+                            "bias": 0.0
+                          }
+                        },
+                        "plugState": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "GLOWPLUG_ON"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "GLOWPLUG_OFF"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "GLOWPLUG_ON",
+                            "GLOWPLUG_OFF"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "comment": "This contains settable state for various powerplant types",
+                      "required": [
+                        "powerState"
+                      ],
+                      "properties": {
+                        "powerState": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "POWER_ON"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "POWER_OFF"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 3,
+                                "enumConst": "POWER_STANDBY"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "POWER_ON",
+                            "POWER_OFF",
+                            "POWER_STANDBY"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "powerState"
+                      ],
+                      "properties": {
+                        "powerState": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "POWER_ON"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "POWER_OFF"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 3,
+                                "enumConst": "POWER_STANDBY"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "POWER_ON",
+                            "POWER_OFF",
+                            "POWER_STANDBY"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "powerState"
+                      ],
+                      "properties": {
+                        "powerState": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "POWER_ON"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "POWER_OFF"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 3,
+                                "enumConst": "POWER_STANDBY"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "POWER_ON",
+                            "POWER_OFF",
+                            "POWER_STANDBY"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 4,
+                "isVariant": true
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "powerPlantConfigurationList"
+  ]
+}

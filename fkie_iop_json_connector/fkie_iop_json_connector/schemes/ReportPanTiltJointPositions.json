@@ -1,0 +1,56 @@
+{
+  "name": "ReportPanTiltJointPositions",
+  "messageId": "4622",
+  "isCommand": false,
+  "description": "This message provides the receiver with the current values of the joint positions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4622"
+        }
+      }
+    },
+    "PanTiltJointPositionRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Joint1Position",
+        "Joint2Position"
+      ],
+      "properties": {
+        "Joint1Position": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.1703344636862174e-08,
+            "bias": -25.132741228718345
+          }
+        },
+        "Joint2Position": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.1703344636862174e-08,
+            "bias": -25.132741228718345
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PanTiltJointPositionRec"
+  ]
+}

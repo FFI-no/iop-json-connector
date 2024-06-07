@@ -1,0 +1,94 @@
+{
+  "name": "ReportStatus",
+  "messageId": "4002",
+  "isCommand": false,
+  "description": "This message is used to report the current status of the sender of the message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4002"
+        }
+      }
+    },
+    "ReportStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Status",
+        "Reserved"
+      ],
+      "properties": {
+        "Status": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "INITIALIZE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "READY"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "STANDBY"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "SHUTDOWN"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "FAILURE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "EMERGENCY"
+              }
+            }
+          ],
+          "enum": [
+            "INITIALIZE",
+            "READY",
+            "STANDBY",
+            "SHUTDOWN",
+            "FAILURE",
+            "EMERGENCY"
+          ]
+        },
+        "Reserved": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "This field is reserved for compatibility with previous versions of the Standard."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportStatusRec"
+  ]
+}

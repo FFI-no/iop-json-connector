@@ -1,0 +1,60 @@
+{
+  "name": "RejectControl",
+  "messageId": "0010",
+  "isCommand": false,
+  "description": "The Reject Control message is used to notify a component that control has been released (response code = 0), or a request to release control could not be processed (response code = 1).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0010"
+        }
+      }
+    },
+    "RejectControlRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ResponseCode"
+      ],
+      "properties": {
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "CONTROL_RELEASED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "NOT_AVAILABLE"
+              }
+            }
+          ],
+          "enum": [
+            "CONTROL_RELEASED",
+            "NOT_AVAILABLE"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RejectControlRec"
+  ]
+}

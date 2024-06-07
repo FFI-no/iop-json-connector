@@ -1,0 +1,69 @@
+{
+  "name": "ReportControl",
+  "messageId": "400d",
+  "isCommand": false,
+  "description": "This message is used to report the current state of control of this service.  If the serivce is in the Controlled state, this message reports the ID of the controlling component. The ID fields shall be set to zero (0) if this service is in the NotControlled state..",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "400d"
+        }
+      }
+    },
+    "ReportControlRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SubsystemID",
+        "NodeID",
+        "ComponentID",
+        "AuthorityCode"
+      ],
+      "properties": {
+        "SubsystemID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Subsystem ID"
+        },
+        "NodeID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Node ID"
+        },
+        "ComponentID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Component ID"
+        },
+        "AuthorityCode": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 255.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportControlRec"
+  ]
+}

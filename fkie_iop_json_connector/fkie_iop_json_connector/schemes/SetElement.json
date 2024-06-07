@@ -1,0 +1,109 @@
+{
+  "name": "SetElement",
+  "messageId": "041a",
+  "isCommand": true,
+  "description": "This message is used to add, insert or replace one or more elements in a list.  Each element is uniquely \n      identified by the UID, and the sequence within the list is specified by the previous (parent) and next (child) \n      elements.  This message can also be used to update an existing element.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "041a"
+        }
+      }
+    },
+    "SetElementSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestIDRec",
+        "ElementList"
+      ],
+      "properties": {
+        "RequestIDRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "RequestID"
+          ],
+          "properties": {
+            "RequestID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "ID of the request. This ID will be returned in the response message."
+            }
+          }
+        },
+        "ElementList": {
+          "type": "array",
+          "comment": "",
+          "required": [
+            "ElementRec"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ElementUID",
+                  "PreviousUID",
+                  "NextUID",
+                  "ElementData"
+                ],
+                "properties": {
+                  "ElementUID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Values zero (0) and 65535 are invalid (reserved)."
+                  },
+                  "PreviousUID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "UID of the previous (parent) element in the list. The value is zero (0) if this is the first (head) element."
+                  },
+                  "NextUID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "UID of the next (child) element in the list. The value is zero (0) if this is the last (tail) element."
+                  },
+                  "ElementData": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Element data to be added to the list",
+                    "formatField": [
+                      {
+                        "index": 0,
+                        "field": "JAUS MESSAGE"
+                      },
+                      {
+                        "index": 1,
+                        "field": "User defined"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": null,
+          "maxItems": null,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetElementSeq"
+  ]
+}

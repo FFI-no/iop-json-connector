@@ -1,0 +1,57 @@
+{
+  "name": "ExecuteList",
+  "messageId": "041e",
+  "isCommand": false,
+  "description": "This message is used to begin execution of a sequential list of motion commands.  Field #2 \n      sets the desired speed of the platform.  The starting element UID can also be specified, \n      where a value of zero (0) indicates the first (head) element in the list.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "041e"
+        }
+      }
+    },
+    "ExecuteListRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Speed"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Speed": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0049999237048905165,
+            "bias": 0.0
+          }
+        },
+        "ElementUID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Element UID of the starting element. A value of zero (0) indicates the first (head) element of the list."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ExecuteListRec"
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "name": "QueryServiceList",
+  "messageId": "2b04",
+  "isCommand": false,
+  "description": "This message allows a component to request the service information of services across all subsystems. The corresponding Report Services message will respond with service information only for new component implementations. It will not report service information for legacy component implementations.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2b04"
+        }
+      }
+    },
+    "SubsystemList": {
+      "type": "array",
+      "comment": "Number of subsystems reported. For a single subsystem report this field shall be 1",
+      "required": [
+        "SubsystemSeq"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SubsystemRec",
+              "NodeList"
+            ],
+            "properties": {
+              "SubsystemRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "SubsystemID"
+                ],
+                "properties": {
+                  "SubsystemID": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "Use 65535 if service information from all subsystems in the system is required",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Reserved"
+                        }
+                      },
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 65534.0,
+                          "interpretation": "Valid Node IDs"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 65535,
+                          "enumConst": "All subsystems in the system"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Reserved",
+                      "All subsystems in the system"
+                    ]
+                  }
+                }
+              },
+              "NodeList": {
+                "type": "array",
+                "comment": "# of Nodes reported. For a single Node Report this field shall be 1",
+                "required": [
+                  "NodeSeq"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "NodeRec",
+                        "ComponentList"
+                      ],
+                      "properties": {
+                        "NodeRec": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "NodeID"
+                          ],
+                          "properties": {
+                            "NodeID": {
+                              "type": "string",
+                              "jausType": "unsigned byte",
+                              "comment": "Use 255 if service information from all nodes in the subsystem is required",
+                              "valueSet": [
+                                {
+                                  "valueEnum": {
+                                    "enumIndex": 0,
+                                    "enumConst": "Reserved"
+                                  }
+                                },
+                                {
+                                  "valueRange": {
+                                    "minimum": 1.0,
+                                    "maximum": 254.0,
+                                    "interpretation": "Valid Node IDs"
+                                  }
+                                },
+                                {
+                                  "valueEnum": {
+                                    "enumIndex": 255,
+                                    "enumConst": "All nodes in the subsystem"
+                                  }
+                                }
+                              ],
+                              "enum": [
+                                "Reserved",
+                                "All nodes in the subsystem"
+                              ]
+                            }
+                          }
+                        },
+                        "ComponentList": {
+                          "type": "array",
+                          "comment": "",
+                          "required": [
+                            "ComponentRec"
+                          ],
+                          "items": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "presenceVector",
+                                  "ComponentID"
+                                ],
+                                "properties": {
+                                  "presenceVector": {
+                                    "type": "number",
+                                    "jausType": "unsigned byte",
+                                    "comment": ""
+                                  },
+                                  "ComponentID": {
+                                    "type": "string",
+                                    "jausType": "unsigned byte",
+                                    "comment": "Use 255 if service information from components in the node are required",
+                                    "valueSet": [
+                                      {
+                                        "valueEnum": {
+                                          "enumIndex": 0,
+                                          "enumConst": "Reserved"
+                                        }
+                                      },
+                                      {
+                                        "valueRange": {
+                                          "minimum": 1.0,
+                                          "maximum": 254.0,
+                                          "interpretation": "Valid                         Component IDs"
+                                        }
+                                      },
+                                      {
+                                        "valueEnum": {
+                                          "enumIndex": 255,
+                                          "enumConst": "All components in the subsystem"
+                                        }
+                                      }
+                                    ],
+                                    "enum": [
+                                      "Reserved",
+                                      "All components in the subsystem"
+                                    ]
+                                  },
+                                  "SearchFilter": {
+                                    "type": "string",
+                                    "jausType": "unsigned byte",
+                                    "comment": "An optional filter to apply to the search results. Only service identifiers that contain this string should be returned.",
+                                    "minLength": 0,
+                                    "maxLength": 255
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "jausType": "unsigned byte",
+                          "minItems": 1,
+                          "maxItems": 255,
+                          "isVariant": false
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 1,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 1,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SubsystemList"
+  ]
+}

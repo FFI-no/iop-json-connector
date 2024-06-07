@@ -1,0 +1,48 @@
+{
+  "name": "CancelEvent",
+  "messageId": "01f2",
+  "isCommand": true,
+  "description": "The Cancel Event message is used by the requester to cancel and/or request deletion of the specified event.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "01f2"
+        }
+      }
+    },
+    "CancelEventRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "EventID"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Local request id for use in confirm/reject message"
+        },
+        "EventID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "unique id of the event to be removed"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "CancelEventRec"
+  ]
+}

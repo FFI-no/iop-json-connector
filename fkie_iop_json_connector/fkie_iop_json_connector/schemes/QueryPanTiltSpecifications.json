@@ -1,0 +1,42 @@
+{
+  "name": "QueryPanTiltSpecifications",
+  "messageId": "2620",
+  "isCommand": false,
+  "description": "This message shall cause the receiving service to reply to the requestor with a ID 4620h: ReportPanTiltSpecifications message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2620"
+        }
+      }
+    },
+    "QueryPanTiltSpecificationsRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryPanTiltSpecificationsRec"
+  ]
+}

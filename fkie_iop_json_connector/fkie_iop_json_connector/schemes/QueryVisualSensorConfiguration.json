@@ -1,0 +1,63 @@
+{
+  "name": "QueryVisualSensorConfiguration",
+  "messageId": "2807",
+  "isCommand": false,
+  "description": "This message must be used to \n\t\t\tquery for the current configuration of the given visual sensor(s). \n\t\t\tIt shall cause the receiving service to reply to the requestor \n\t\t\twith a Report Visual Sensor Configuration message. A logical \n\t\t\tAND shall be performed on the requested presence vector and \n\t\t\tthat representing the available fields from the responder. \n\t\t\tThe resulting message shall contain the fields indicated by \n\t\t\tthe result of this logical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2807"
+        }
+      }
+    },
+    "QueryVisualSensorConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "QueryVisualSensorConfigurationRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "QueryPresenceVector"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "QueryPresenceVector": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryVisualSensorConfigurationList"
+  ]
+}

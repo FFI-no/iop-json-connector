@@ -1,0 +1,27 @@
+{
+  "name": "Shutdown",
+  "messageId": "0002",
+  "isCommand": true,
+  "description": "This message is used to cause the receiving component to free all of the resources allocated to its process by the system and then to shutdown.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0002"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}
