@@ -1,0 +1,27 @@
+{
+  "title": "QueryJointEffort",
+  "messageId": "2601",
+  "isCommand": false,
+  "description": "This message shall cause the receiving service to reply to the requestor with a ID 4601h: ReportJointEffort message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2601"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

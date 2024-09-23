@@ -23,6 +23,6 @@ def init_schemes(schemesPath='', loglevel='info'):
         with open(jsonFile, 'r') as jFile:
             schema = json.load(
                 jFile, object_hook=lambda d: SimpleNamespace(**d))
-            if schema.name:
+            if schema.title:
                 JSON_SCHEMES[schema.messageId] = schema
     logger.info(f"{len(JSON_SCHEMES)} message schemes found")

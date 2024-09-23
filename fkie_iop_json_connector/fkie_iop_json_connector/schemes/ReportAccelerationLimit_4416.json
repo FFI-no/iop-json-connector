@@ -1,0 +1,120 @@
+{
+  "title": "ReportAccelerationLimit",
+  "messageId": "4416",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the commanded linear and rotational acceleration limits of the platform.  \n      The message data and mapping of the presence vector of this message are identical to ID 0416h: SetAccelerationCommand.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4416"
+        }
+      }
+    },
+    "AccelerationLimitRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "CommandType"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "CommandType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Set maximum allowed values"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Set minimum allowed values"
+              }
+            }
+          ],
+          "enum": [
+            "Set maximum allowed values",
+            "Set minimum allowed values"
+          ]
+        },
+        "Acceleration_X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.103329361906119e-07,
+            "bias": -1310.68
+          }
+        },
+        "Acceleration_Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.103329361906119e-07,
+            "bias": -1310.68
+          }
+        },
+        "Acceleration_Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.103329361906119e-07,
+            "bias": -1310.68
+          }
+        },
+        "RollAcceleration": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.103329361906118e-06,
+            "bias": -13106.8
+          }
+        },
+        "PitchAcceleration": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.103329361906118e-06,
+            "bias": -13106.8
+          }
+        },
+        "YawAcceleration": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.103329361906118e-06,
+            "bias": -13106.8
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "AccelerationLimitRec"
+  ]
+}

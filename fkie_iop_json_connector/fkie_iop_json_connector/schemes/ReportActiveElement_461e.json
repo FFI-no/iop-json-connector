@@ -1,0 +1,42 @@
+{
+  "title": "ReportActiveElement",
+  "messageId": "461e",
+  "isCommand": false,
+  "description": "This message is used to report the identifier of the current list element being executed.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "461e"
+        }
+      }
+    },
+    "ActiveElementRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ElementUID"
+      ],
+      "properties": {
+        "ElementUID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "UID of the active list element. A value of 0 implies that no lists are executing."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ActiveElementRec"
+  ]
+}

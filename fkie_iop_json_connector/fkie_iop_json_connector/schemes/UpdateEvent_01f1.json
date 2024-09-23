@@ -1,0 +1,107 @@
+{
+  "title": "UpdateEvent",
+  "messageId": "01f1",
+  "isCommand": true,
+  "description": "The Update Event message allows the requester to request a rate or change.  The format is the same as the Create Event, only with the addition of Event ID field to specify the event that needs updating.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "01f1"
+        }
+      }
+    },
+    "UpdateEventRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "EventType",
+        "RequestedPeriodicRate",
+        "EventID",
+        "QueryMessage"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Local request ID for use in confirm event"
+        },
+        "EventType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Type of event",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Periodic (SC)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Every change"
+              }
+            }
+          ],
+          "enum": [
+            "Periodic (SC)",
+            "Every change"
+          ]
+        },
+        "RequestedPeriodicRate": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Must be specified for periodic event, and set to 0 for every change",
+          "scaleRange": {
+            "scaleFactor": 0.016662851911192492,
+            "bias": 0.0
+          }
+        },
+        "EventID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique identifier of existing event to update"
+        },
+        "QueryMessage": {
+          "type": "object",
+          "comment": "The JAUS Query message to be used by the receiving component to generate the report message(s)",
+          "required": [
+            "payloadMessageId",
+            "payload"
+          ],
+          "properties": {
+            "payloadMessageId": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "message id of the payload message"
+            },
+            "payload": {
+              "type": "object",
+              "comment": "The JAUS Query message to be used by the receiving component to generate the report message(s)",
+              "required": [],
+              "properties": {}
+            }
+          },
+          "minLength": 2,
+          "jausType": "unsigned integer",
+          "fieldFormat": "JAUS MESSAGE"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "UpdateEventRec"
+  ]
+}

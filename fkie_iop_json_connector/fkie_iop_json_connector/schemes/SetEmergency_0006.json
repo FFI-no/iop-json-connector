@@ -1,0 +1,53 @@
+{
+  "title": "SetEmergency",
+  "messageId": "0006",
+  "isCommand": true,
+  "description": "This message is used to alert the component to a safety critical situation. The component that sends the emergency command shall set the message priority to the safety critical priority range as defined by the Transport. Receive of the emergency command shall result in the component transitioning into the emergency state.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0006"
+        }
+      }
+    },
+    "SetEmergencyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "EmergencyCode"
+      ],
+      "properties": {
+        "EmergencyCode": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "STOP"
+              }
+            }
+          ],
+          "enum": [
+            "STOP"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetEmergencyRec"
+  ]
+}

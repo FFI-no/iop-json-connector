@@ -1,0 +1,27 @@
+{
+  "title": "QueryAuthority",
+  "messageId": "2001",
+  "isCommand": false,
+  "description": "This message is used by clients to query the current value of the authority code of this service.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2001"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

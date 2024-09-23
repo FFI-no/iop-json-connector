@@ -1,0 +1,88 @@
+{
+  "title": "ReportLocalVector",
+  "messageId": "4408",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the current values of the commanded local vector.  The message \n      data of this message is identical to ID 0408h: SetLocalVector.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4408"
+        }
+      }
+    },
+    "LocalVectorRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Speed"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Speed": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0049999237048905165,
+            "bias": 0.0
+          }
+        },
+        "Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "Heading": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Roll": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Pitch": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LocalVectorRec"
+  ]
+}

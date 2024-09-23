@@ -1,0 +1,42 @@
+{
+  "title": "QueryCBDetailedMeasurement",
+  "messageId": "f923",
+  "isCommand": false,
+  "description": "This message is used to query for CBDetailedMeasurement (Message #F933).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f923"
+        }
+      }
+    },
+    "QueryRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "StationNumber"
+      ],
+      "properties": {
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryRec"
+  ]
+}

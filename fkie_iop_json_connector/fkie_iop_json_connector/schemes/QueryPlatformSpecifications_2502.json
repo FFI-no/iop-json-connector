@@ -1,0 +1,27 @@
+{
+  "title": "QueryPlatformSpecifications",
+  "messageId": "2502",
+  "isCommand": false,
+  "description": "Request PlatformSpecifications data",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "2502"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

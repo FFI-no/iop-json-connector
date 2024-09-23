@@ -1,0 +1,67 @@
+{
+  "title": "SetStabilizerPosition",
+  "messageId": "0504",
+  "isCommand": true,
+  "description": "Sets Stabilizer position",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0504"
+        }
+      }
+    },
+    "StabilizerPosition": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "StabilizerPositionRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "StabilizerID",
+              "Position"
+            ],
+            "properties": {
+              "StabilizerID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "Position": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 9.587518120088503e-05,
+                  "bias": -3.14159
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "StabilizerPosition"
+  ]
+}

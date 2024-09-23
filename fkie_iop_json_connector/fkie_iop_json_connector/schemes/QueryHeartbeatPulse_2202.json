@@ -1,0 +1,27 @@
+{
+  "title": "QueryHeartbeatPulse",
+  "messageId": "2202",
+  "isCommand": false,
+  "description": "This message shall be used to query for a heartbeat pulse.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2202"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

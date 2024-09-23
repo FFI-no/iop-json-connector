@@ -1,0 +1,42 @@
+{
+  "title": "QueryLocalVector",
+  "messageId": "2408",
+  "isCommand": false,
+  "description": "This message shall cause the receiving component to reply to the requestor with a \n      ID 4408h: ReportLocalVector message.  A logical AND shall be performed on the \n      requested presence vector and that representing the available fields from the responder.  \n      The resulting message shall contain the fields indicated by the result of this logical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2408"
+        }
+      }
+    },
+    "QueryLocalVectorRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Report Local Vector Message"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryLocalVectorRec"
+  ]
+}

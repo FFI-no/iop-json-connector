@@ -1,0 +1,51 @@
+{
+  "title": "ReportAuthority",
+  "messageId": "4001",
+  "isCommand": false,
+  "description": "This message is used to report the current command authority.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4001"
+        }
+      }
+    },
+    "ReportAuthorityRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "AuthorityCode"
+      ],
+      "properties": {
+        "AuthorityCode": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 255.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportAuthorityRec"
+  ]
+}

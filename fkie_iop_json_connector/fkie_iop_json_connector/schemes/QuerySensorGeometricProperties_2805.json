@@ -1,0 +1,57 @@
+{
+  "title": "QuerySensorGeometricProperties",
+  "messageId": "2805",
+  "isCommand": false,
+  "description": "This message shall cause the \n\t\t\treceiving component to reply to the requestor with a Report \n\t\t\tSensor Geometric Properties message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2805"
+        }
+      }
+    },
+    "SensorIdList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "SensorIdRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SensorIdList"
+  ]
+}

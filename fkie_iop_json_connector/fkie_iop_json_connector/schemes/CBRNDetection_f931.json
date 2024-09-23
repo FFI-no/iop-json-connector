@@ -1,0 +1,421 @@
+{
+  "title": "CBRNDetection",
+  "messageId": "f931",
+  "isCommand": false,
+  "description": "The CBRN Detection (Message #F931) shall be used to report basic\n\t\tcontamination related measurements from a given CBRN payload station.\n\t\tCBRN4ReportReference, shall provide a reference to retrieve the actual\n\t\tpayload product. The payload product (i.e., the detection data) is compiled in\n\t\taccordance with ATP-45 (E), STANAG 2103 as a CBRN 4 Report. Detailed measurements\n\t\tsuch as spectra data can be requested from the payload using\n\t\tCBRNDetailedInfoRequest.\n\t\tIf an above threshold (or NIL) measurement is detected and no OCU is connected,\n\t\tthen the service shall send this message (unsolicited) to a multicast group.\n\t\tA CBRN payload that detects more than one agent shall send a separate CBRNDetection\n\t\tfor each agent detected.\n\t\tA CBRN payload with meteorological capability shall provide meteorological data as\n\t\tpart of the CBRN4.\n\t\tCBRN detectors must report the detection location related fields (Latitude,\n\t\tLongitude and Altitude) and/or the area related fields.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f931"
+        }
+      }
+    },
+    "CBRNRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "StationNumber",
+        "DetectionType"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Timestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        },
+        "DetectionType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Below Threshold"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Above Threshold"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Above Threshold Update"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "NIL (Detection Cleared)"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 4.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Below Threshold",
+            "Above Threshold",
+            "Above Threshold Update",
+            "NIL (Detection Cleared)"
+          ]
+        },
+        "SubstanceDetected": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the substance that was detected by the payload. Based on the CBRN 4 fields INDIA 2 (Substance Definition) or INDIAR 2 (Identification of the Material).",
+          "minLength": 0,
+          "maxLength": 9
+        },
+        "ContaminationLevel": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the level of contamination detected. Based on the CBRN 4 field ROMEO 1 (Contamination, Dose and Doserate/Dosage). Please Refer to STANAG 2103 for Applicable Range for Dose Rate and Contamination or Dose Level. Note that the ATP-45 use of Miosis is not applicable here for payloads. Payloads capable of Miosis mode are to declare it in fields with 'DetectionOperationalThresholdLevel' in CBRNConfigurationCommand and CBRNConfigurationState."
+        },
+        "ContaminationLevelUoM": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the units of measurement for the level of contamination detected. Based on the CBRN 4 field ROMEO 1 (Contamination, Dose and Doserate/Dosage).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Unspecified"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "ACPL (Agent Containing Particles Per Litre)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "BQM2 (Becquerel Per Square Meter)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "BQM3 (Becquerel Per Cubic Meter)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 9,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 10,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 11,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 12,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 13,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 14,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 15,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 16,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 17,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 18,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 19,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 20,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 21,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 22,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 23,
+                "enumConst": "XXX"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 24.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Unspecified",
+            "ACPL (Agent Containing Particles Per Litre)",
+            "BQM2 (Becquerel Per Square Meter)",
+            "BQM3 (Becquerel Per Cubic Meter)",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX",
+            "XXX"
+          ]
+        },
+        "DetectionTimestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "CBRN4ReportReference": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "The report reference is an identifier associated with the CBRN payload product (i.e., CBRN 4 Report). The CBRN Detection will be provided as a CBRN 4 Report in accordance with ATP-45 (E), STANAG 2103. 0 = No More Information Available."
+        },
+        "DistanceToCloud": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Indicates the estimated distance from payload to cloud. Based on the CBRN 4 field QUEBEC 6."
+        },
+        "LeftRadialLine": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the orientation of the left radial line. Based on the CBRN 4 field QUEBEC 7.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "RightRadialLine": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the orientation of the right radial line. Based on the CBRN 4 field QUEBEC 8.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "CloudTopAngle": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the cloud top angle. Based on the CBRN 4 field QUEBEC 9.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "CloudBottomAngle": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the cloud top angle. Based on the CBRN 4 field QUEBEC 10.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "DetectionLatitude": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the latitude of the detection.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -1.57079632679,
+                "maximum": 1.57079632679,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "DetectionLongitude": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the longitude of the detection.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "DetectionAltitude": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the altitude of the detection. Distance above (+) or below (-) the WGS-84 reference geoid.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -1000.0,
+                "maximum": 100000.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "CBRNRec"
+  ]
+}

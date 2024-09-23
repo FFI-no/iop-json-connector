@@ -1,0 +1,56 @@
+{
+  "title": "ReportSkidSteerEffort",
+  "messageId": "4501",
+  "isCommand": false,
+  "description": "Reports the commanded effort",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "4501"
+        }
+      }
+    },
+    "skidSteerData": {
+      "type": "object",
+      "comment": "Negative is reverse, positive is forward",
+      "required": [
+        "LeftSidePropulsiveEffort",
+        "RightSidePropulsiveEffort"
+      ],
+      "properties": {
+        "LeftSidePropulsiveEffort": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "As a percent of maximum. Positive implies forward thrust, while negative results in backward thrust.",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "RightSidePropulsiveEffort": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "As a percent of maximum. Positive implies forward thrust, while negative results in backward thrust.",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "skidSteerData"
+  ]
+}

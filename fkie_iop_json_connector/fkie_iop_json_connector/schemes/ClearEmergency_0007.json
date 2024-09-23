@@ -1,0 +1,53 @@
+{
+  "title": "ClearEmergency",
+  "messageId": "0007",
+  "isCommand": true,
+  "description": "This message shall notify the receiving component that the current emergency condition is to be reset and that the component shall transition back to the Ready or Standby state, provided that all emergency conditions have been cleared.\n      JAUS currently defines only one emergency condition, the \"Stop\" condition.  Future versions of this document could define other emergency conditions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0007"
+        }
+      }
+    },
+    "ClearEmergencyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "EmergencyCode"
+      ],
+      "properties": {
+        "EmergencyCode": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "STOP"
+              }
+            }
+          ],
+          "enum": [
+            "STOP"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ClearEmergencyRec"
+  ]
+}

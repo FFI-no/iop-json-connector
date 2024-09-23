@@ -1,0 +1,66 @@
+{
+  "title": "ReportToolOffset",
+  "messageId": "4604",
+  "isCommand": false,
+  "description": "This message provides the receiver with the current values for the tool point as measured in the end effector coordinate system.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4604"
+        }
+      }
+    },
+    "ToolPointRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ToolPointCoordinateX",
+        "ToolPointCoordinateY",
+        "ToolPointCoordinateZ"
+      ],
+      "properties": {
+        "ToolPointCoordinateX": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.984919311242392e-09,
+            "bias": -15.0
+          }
+        },
+        "ToolPointCoordinateY": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.984919311242392e-09,
+            "bias": -15.0
+          }
+        },
+        "ToolPointCoordinateZ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 6.984919311242392e-09,
+            "bias": -15.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ToolPointRec"
+  ]
+}

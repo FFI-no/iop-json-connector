@@ -1,0 +1,27 @@
+{
+  "title": "QueryPathReporterCapabilities",
+  "messageId": "def0",
+  "isCommand": false,
+  "description": "This message is used to query the capabilities of the implementation.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "def0"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "title": "CBRNScanWindowOperatingState",
+  "messageId": "f936",
+  "isCommand": false,
+  "description": "The CBRN Payload Scan Window Operating State (Message #F936) send every time the\n\t\t\tscan operating state changes. This message shall otherwise be sent as a\n\t\t\tresponse to the CBRNScanWindowConfigurationCommand.\n\n\t\t\tBased on STANAG 4586; Message #0312.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f936"
+        }
+      }
+    },
+    "ConfigurationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "StationNumber"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        },
+        "Timestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        },
+        "StartScanWindowAzimuth": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the payload's start scan azimuth. Relative to true north.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 6.28318530718,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "EndScanWindowAzimuth": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the payload's end scan azimuth. Relative to true north.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 6.28318530718,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "ScanWindowMinElevation": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the payload's minimum elevation. Relative to local horizontal.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "ScanWindowMaxElevation": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the payload's maximum elevation. Relative to local horizontal.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "AzimuthScanRate": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "The payload's elevation scan rate."
+        },
+        "ElevationScanRate": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "The payload's elevation scan rate."
+        },
+        "ScanMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "The payload's scan mode.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Horizontal"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Horizontal"
+          ]
+        },
+        "ActualAzimuth": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the payload's actual azimuth.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 6.28318530718,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "ActualElevation": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the payload's actual elevation.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "ScanRadius": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the payload's scan radius. A value of 0 indicates that the information is not available."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfigurationRec"
+  ]
+}

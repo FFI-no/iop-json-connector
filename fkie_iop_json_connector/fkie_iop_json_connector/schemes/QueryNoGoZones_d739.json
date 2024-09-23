@@ -1,0 +1,42 @@
+{
+  "title": "QueryNoGoZones",
+  "messageId": "d739",
+  "isCommand": false,
+  "description": "This message is used to query the vertex list for a specified no-go zone, or all zones.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d739"
+        }
+      }
+    },
+    "ZoneIDRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ZoneID"
+      ],
+      "properties": {
+        "ZoneID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the zone to be reported. If the specified value is zero (0), all zones will be reported."
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "ZoneIDRec"
+  ]
+}

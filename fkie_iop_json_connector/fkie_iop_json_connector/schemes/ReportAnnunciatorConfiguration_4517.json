@@ -1,0 +1,205 @@
+{
+  "title": "ReportAnnunciatorConfiguration",
+  "messageId": "4517",
+  "isCommand": false,
+  "description": "Reports supported annunciator types",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "4517"
+        }
+      }
+    },
+    "typesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "types"
+      ],
+      "properties": {
+        "types": {
+          "type": "object",
+          "comment": "For each annunciator supported by the service, the corresponding bit shall be set to the high (on, 1) value.",
+          "required": [
+            "Horn",
+            "Siren",
+            "Backup",
+            "Variable1",
+            "Variable2",
+            "Reserved"
+          ],
+          "properties": {
+            "Horn": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "For each annunciator supported by the service, the corresponding bit shall be set to the high (on, 1) value.",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "Siren": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "For each annunciator supported by the service, the corresponding bit shall be set to the high (on, 1) value.",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "Backup": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "For each annunciator supported by the service, the corresponding bit shall be set to the high (on, 1) value.",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "Variable1": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "For each annunciator supported by the service, the corresponding bit shall be set to the high (on, 1) value.",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "Variable2": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "For each annunciator supported by the service, the corresponding bit shall be set to the high (on, 1) value.",
+              "bitRange": {
+                "from": 4,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "Reserved": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "For each annunciator supported by the service, the corresponding bit shall be set to the high (on, 1) value.",
+              "bitRange": {
+                "from": 5,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 7.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "typesRec"
+  ]
+}

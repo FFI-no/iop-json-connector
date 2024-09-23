@@ -1,0 +1,220 @@
+{
+  "title": "CBRNDisplayConfigurationCommand",
+  "messageId": "f929",
+  "isCommand": true,
+  "description": "The CBRN Payload Display Configuration Command (Message #F929) shall be sent by\n\t\t\tthe OCU to instruct a given CBRN payload station to configure its display\n\t\t\tparameters such as setting the display contrast.\n\n\t\t\tThe service shall reply with the CBRNConfigurationState (Message #F933).\n\t\t\tBased on STANAG 4586; Message #0212.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f929"
+        }
+      }
+    },
+    "ConfigurationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "StationNumber"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": ""
+        },
+        "Timestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        },
+        "SetDisplayBrightnessLevel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Sets the brightness of the display.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Low"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Medium"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "High"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Night Vision"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Off",
+            "Low",
+            "Medium",
+            "High",
+            "Night Vision"
+          ]
+        },
+        "SetDisplayMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Sets the display mode.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Power Save"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Continuous"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Power Save",
+            "Continuous"
+          ]
+        },
+        "SetDisplayContrast": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Sets the percentage of the display contrast.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 100.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "SetOtherVisualIndicatorsBrightnessLevel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Sets the brightness of other visual indicators (e.g., LED lamps).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Low"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Medium"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "High"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Night Vision"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Off",
+            "Low",
+            "Medium",
+            "High",
+            "Night Vision"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfigurationRec"
+  ]
+}

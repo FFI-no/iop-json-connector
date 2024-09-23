@@ -1,0 +1,63 @@
+{
+  "title": "QueryVisualSensorCapabilities",
+  "messageId": "2806",
+  "isCommand": false,
+  "description": "This message must be used to \n\t\t\tquery for the capabilities of all available visual sensors \n\t\t\ton the receiving service. It shall cause the receiving service \n\t\t\tto reply to the requestor with a Report Visual Sensor \n\t\t\tCapabilities message. A logical AND shall be performed on \n\t\t\tthe requested presence vector and that representing the \n\t\t\tavailable fields from the responder.  The resulting message \n\t\t\tshall contain the fields indicated by the result of this \n\t\t\tlogical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2806"
+        }
+      }
+    },
+    "QueryVisualSensorCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "QueryVisualSensorCapabilitiesRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "QueryPresenceVector"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "QueryPresenceVector": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryVisualSensorCapabilitiesList"
+  ]
+}

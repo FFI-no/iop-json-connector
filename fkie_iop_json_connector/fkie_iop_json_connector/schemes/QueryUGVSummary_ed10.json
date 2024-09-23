@@ -1,0 +1,27 @@
+{
+  "title": "QueryUGVSummary",
+  "messageId": "ed10",
+  "isCommand": false,
+  "description": "This query requests a ReportUGVSummary message in response, allowing a client to request a summary report of health status.  The summary report is described in ReportHealthSummary.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ed10"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

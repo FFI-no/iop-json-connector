@@ -1,0 +1,42 @@
+{
+  "title": "QueryElement",
+  "messageId": "241a",
+  "isCommand": false,
+  "description": "This message is used to query an element from a list.  The element is uniquely identified by the UID.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "241a"
+        }
+      }
+    },
+    "QueryElementRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ElementUID"
+      ],
+      "properties": {
+        "ElementUID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "UID of the queried element. A value of zero (0) represents the first (head) element in the list."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryElementRec"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "QueryTimeout",
+  "messageId": "2003",
+  "isCommand": false,
+  "description": "This message is used by clients of this service to query the timeout period of this service.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2003"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

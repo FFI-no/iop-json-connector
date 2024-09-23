@@ -1,0 +1,79 @@
+{
+  "title": "AddNoGoZoneResponse",
+  "messageId": "d744",
+  "isCommand": false,
+  "description": "This message is used to report the success or failure for a corresponding AddNoGoZone message.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d744"
+        }
+      }
+    },
+    "AddNoGoZoneResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "ResponseCode",
+        "ZoneID"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "This value will be returned in the AddNoGoZoneResponse message to enable a client to match set and response pairs. The value is established by the client."
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Success"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "GlobalVerticesNotSupported"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "LocalVerticesNotSupported"
+              }
+            }
+          ],
+          "enum": [
+            "Success",
+            "GlobalVerticesNotSupported",
+            "LocalVerticesNotSupported"
+          ]
+        },
+        "ZoneID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "This field shall be zero (invalid) unless the ResponseCode is zero (Success). Otherwise, Global ID of the newly defined no go zone."
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "AddNoGoZoneResponseRec"
+  ]
+}

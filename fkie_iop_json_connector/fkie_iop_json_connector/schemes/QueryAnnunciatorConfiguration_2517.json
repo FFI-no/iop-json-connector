@@ -1,0 +1,27 @@
+{
+  "title": "QueryAnnunciatorConfiguration",
+  "messageId": "2517",
+  "isCommand": false,
+  "description": "Queries supported annunciator types",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "2517"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

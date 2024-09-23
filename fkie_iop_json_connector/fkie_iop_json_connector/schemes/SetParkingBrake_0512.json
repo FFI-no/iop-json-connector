@@ -1,0 +1,46 @@
+{
+  "title": "SetParkingBrake",
+  "messageId": "0512",
+  "isCommand": true,
+  "description": "Sets parking brake to the specified level of engagement.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "0512"
+        }
+      }
+    },
+    "parkingBrakeRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "parkingBrake"
+      ],
+      "properties": {
+        "parkingBrake": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Percentage of application. Zero means off, while 100% mean fully engaged.",
+          "scaleRange": {
+            "scaleFactor": 0.39215686274509803,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "parkingBrakeRec"
+  ]
+}

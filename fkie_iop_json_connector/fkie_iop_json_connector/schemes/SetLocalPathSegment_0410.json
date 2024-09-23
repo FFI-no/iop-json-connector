@@ -1,0 +1,119 @@
+{
+  "title": "SetLocalPathSegment",
+  "messageId": "0410",
+  "isCommand": true,
+  "description": "This message is used to set the path segment data based on the local coordinate system.  A local \n      path segment is defined in this message using three points, P0, P1 and P2 and a weighting factor.  \n      For the first path segment, i.e. the first element in a list of path segments, P0 is assumed to be the \n      current location of the platform as defined by Report Local Pose.  For each successive path segments, \n      i.e. where the path segment number is greater than zero, P0 is equal to the previous path segment's P2.  \n      Therefore, for each message, only P1, P2, and a weighting factor must be set in order to define a path \n      segment.  Each point is defined in the Local Coordinate System by setting its X, Y, and Z.  Both the X and Y \n      are required fields, but the Z field is optional.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0410"
+        }
+      }
+    },
+    "LocalPathSegmentRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "P1_X",
+        "P1_Y",
+        "P2_X",
+        "P2_Y",
+        "WeightingFactor"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "P1_X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P1_Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P1_Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "P2_X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P2_Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P2_Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "WeightingFactor": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "A value of zero (0) is a straight line",
+          "scaleRange": {
+            "scaleFactor": 0.007629510948348211,
+            "bias": 0.0
+          }
+        },
+        "PathTolerance": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "A value of zero (0) is used for infinite tolerance",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-05,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LocalPathSegmentRec"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "title": "QueryCBRN4",
+  "messageId": "f920",
+  "isCommand": false,
+  "description": "This message queries the last CBRN4 message with ATP-45 payload or the message with specified report id.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f920"
+        }
+      }
+    },
+    "QueryRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "CBRN4ReportID",
+        "StationNumber"
+      ],
+      "properties": {
+        "CBRN4ReportID": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "The report reference is an identifier associated with the CBRN Detection. 0=Last report"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryRec"
+  ]
+}

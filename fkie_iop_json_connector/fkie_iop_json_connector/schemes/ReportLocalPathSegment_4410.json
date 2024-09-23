@@ -1,0 +1,119 @@
+{
+  "title": "ReportLocalPathSegment",
+  "messageId": "4410",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the values of the current path segment.  The message data and \n      mapping of the presence vector of this message are identical to ID 0410h: SetLocalPathSegment.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4410"
+        }
+      }
+    },
+    "LocalPathSegmentRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "P1_X",
+        "P1_Y",
+        "P2_X",
+        "P2_Y",
+        "WeightingFactor"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "P1_X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P1_Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P1_Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "P2_X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P2_Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-05,
+            "bias": -100000.0
+          }
+        },
+        "P2_Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "WeightingFactor": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "A value of zero (0) is a straight line",
+          "scaleRange": {
+            "scaleFactor": 0.007629510948348211,
+            "bias": 0.0
+          }
+        },
+        "PathTolerance": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "A value of zero (0) is used for infinite tolerance",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-05,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LocalPathSegmentRec"
+  ]
+}

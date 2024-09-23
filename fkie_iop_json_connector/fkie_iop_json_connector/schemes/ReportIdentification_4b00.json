@@ -1,0 +1,197 @@
+{
+  "title": "ReportIdentification",
+  "messageId": "4b00",
+  "isCommand": false,
+  "description": "This message shall provide the requesting component an identification summary of the Subsystem, Node, or Component.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4b00"
+        }
+      }
+    },
+    "ReportIdentificationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "QueryType",
+        "Type",
+        "Identification"
+      ],
+      "properties": {
+        "QueryType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Reserved"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "System Identification"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Subsystem Identification"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Node Identification"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Component Identification"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 255.0,
+                "interpretation": "Reserved"
+              }
+            }
+          ],
+          "enum": [
+            "Reserved",
+            "System Identification",
+            "Subsystem Identification",
+            "Node Identification",
+            "Component Identification"
+          ]
+        },
+        "Type": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "This field identifies the particular unmanned vehicle (subsystem) type, node type or component type based on the following enumeration",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "RESERVED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 10001,
+                "enumConst": "VEHICLE"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 10002.0,
+                "maximum": 20000.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 20001,
+                "enumConst": "OCU"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 20002.0,
+                "maximum": 30000.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 30001,
+                "enumConst": "OTHER_SUBSYSTEM"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 30002.0,
+                "maximum": 40000.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 40001,
+                "enumConst": "NODE"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 40002.0,
+                "maximum": 50000.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 50001,
+                "enumConst": "PAYLOAD"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 50002.0,
+                "maximum": 60000.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 60001,
+                "enumConst": "COMPONENT"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 60002.0,
+                "maximum": 65535.0,
+                "interpretation": "Reserved"
+              }
+            }
+          ],
+          "enum": [
+            "RESERVED",
+            "VEHICLE",
+            "OCU",
+            "OTHER_SUBSYSTEM",
+            "NODE",
+            "PAYLOAD",
+            "COMPONENT"
+          ]
+        },
+        "Identification": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Human-recognizable name of the Subsystem, Node or Component.",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportIdentificationRec"
+  ]
+}

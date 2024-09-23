@@ -1,0 +1,459 @@
+{
+  "title": "ReportVisualSensorConfiguration",
+  "messageId": "4807",
+  "isCommand": false,
+  "description": "This message is sent in response to a \n            Query Visual Sensor Configuration message. It is populated with the \n            current sensor configuration (per sensor ID) as defined in the table \n            below.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4807"
+        }
+      }
+    },
+    "VisualSensorConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "VisualSensorConfigurationRec"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "SensorState": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Active"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Standby"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Off"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Active",
+                  "Standby",
+                  "Off"
+                ]
+              },
+              "ZoomMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Mixed"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Analog Only"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Digital Only"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "Off"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Mixed",
+                  "Analog Only",
+                  "Digital Only",
+                  "Off"
+                ]
+              },
+              "ZoomLevel": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0015259021896696422,
+                  "bias": 0.0
+                }
+              },
+              "FocalLength": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 4.656612874161595e-10,
+                  "bias": 0.0
+                }
+              },
+              "HorizontalFieldOfView": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 1.4629180796077717e-09,
+                  "bias": -3.141592653589793
+                }
+              },
+              "VerticalFieldOfView": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 1.4629180796077717e-09,
+                  "bias": -3.141592653589793
+                }
+              },
+              "FocusMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Auto Focus"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Manual Focus"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Auto Focus",
+                  "Manual Focus"
+                ]
+              },
+              "FocusValue": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0015259021896696422,
+                  "bias": 0.0
+                }
+              },
+              "WhiteBalance": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Auto"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Daylight"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Cloudy"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "Shade"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "Tungsten"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 5,
+                      "enumConst": "Flurescent"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 6,
+                      "enumConst": "Flash"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Auto",
+                  "Daylight",
+                  "Cloudy",
+                  "Shade",
+                  "Tungsten",
+                  "Flurescent",
+                  "Flash"
+                ]
+              },
+              "ImagingMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Color"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Greyscale"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Infrared"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "Low Light"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Color",
+                  "Greyscale",
+                  "Infrared",
+                  "Low Light"
+                ]
+              },
+              "ExposureMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Auto"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Manual"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Shutter Priority"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "Aperture Priority"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Auto",
+                  "Manual",
+                  "Shutter Priority",
+                  "Aperture Priority"
+                ]
+              },
+              "MeteringMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Auto"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "CenterWeighted"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Spot"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Auto",
+                  "CenterWeighted",
+                  "Spot"
+                ]
+              },
+              "ShutterSpeed": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0009155413138017853,
+                  "bias": 0.0
+                }
+              },
+              "Aperture": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0019516289005874724,
+                  "bias": 0.1
+                }
+              },
+              "LightSensitivity": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Auto"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "ISO 100"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "ISO 200"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "ISO 400"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "ISO 800"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 5,
+                      "enumConst": "ISO 1600"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 6,
+                      "enumConst": "ISO 3200"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Auto",
+                  "ISO 100",
+                  "ISO 200",
+                  "ISO 400",
+                  "ISO 800",
+                  "ISO 1600",
+                  "ISO 3200"
+                ]
+              },
+              "ImageStablization": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Off"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "On"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Off",
+                  "On"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "VisualSensorConfigurationList"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "title": "QueryTime",
+  "messageId": "2011",
+  "isCommand": false,
+  "description": "This message is used by clients of this service to query the current time of this service.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2011"
+        }
+      }
+    },
+    "QueryTimeRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See corresponding report time message for presence vector mapping"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryTimeRec"
+  ]
+}

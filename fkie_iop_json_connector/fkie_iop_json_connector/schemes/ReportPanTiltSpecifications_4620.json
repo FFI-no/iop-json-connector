@@ -1,0 +1,165 @@
+{
+  "title": "ReportPanTiltSpecifications",
+  "messageId": "4620",
+  "isCommand": false,
+  "description": "This message provides the joint angle and joint velocity limits for the pan tilt mechanism.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4620"
+        }
+      }
+    },
+    "ReportPanTiltSpecificationsRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Joint1MinValue",
+        "Joint1MaxValue",
+        "Joint1MaxSpeed",
+        "Joint2MinValue",
+        "Joint2MaxValue",
+        "Joint2MaxSpeed"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "PanTiltCoordinateSysX": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "x coordinate of origin of pan tilt coordinate system measured with respect to vehicle coordinate system",
+          "scaleRange": {
+            "scaleFactor": 1.3969838622484784e-08,
+            "bias": -30.0
+          }
+        },
+        "PanTiltCoordinateSysY": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "x coordinate of origin of pan tilt coordinate system measured with respect to vehicle coordinate system",
+          "scaleRange": {
+            "scaleFactor": 1.3969838622484784e-08,
+            "bias": -30.0
+          }
+        },
+        "PanTiltCoordinateSysZ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "x coordinate of origin of pan tilt coordinate system measured with respect to vehicle coordinate system",
+          "scaleRange": {
+            "scaleFactor": 1.3969838622484784e-08,
+            "bias": -30.0
+          }
+        },
+        "DComponentOfUnitQuaternionQ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "quaternion q = d + ai +bj + ck defines the orientation of the manipulator coordinate system measured with respect to the vehicle coordinate system",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-10,
+            "bias": -1.0
+          }
+        },
+        "AComponentOfUnitQuaternionQ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "quaternion q = d + ai +bj + ck defines the orientation of the manipulator coordinate system measured with respect to the vehicle coordinate system",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-10,
+            "bias": -1.0
+          }
+        },
+        "BComponentOfUnitQuaternionQ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "quaternion q = d + ai +bj + ck defines the orientation of the manipulator coordinate system measured with respect to the vehicle coordinate system",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-10,
+            "bias": -1.0
+          }
+        },
+        "CComponentOfUnitQuaternionQ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "quaternion q = d + ai +bj + ck defines the orientation of the manipulator coordinate system measured with respect to the vehicle coordinate system",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-10,
+            "bias": -1.0
+          }
+        },
+        "Joint1MinValue": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.1703344636862174e-08,
+            "bias": -25.132741228718345
+          }
+        },
+        "Joint1MaxValue": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.1703344636862174e-08,
+            "bias": -25.132741228718345
+          }
+        },
+        "Joint1MaxSpeed": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 7.314590398038859e-09,
+            "bias": 0.0
+          }
+        },
+        "Joint2MinValue": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.1703344636862174e-08,
+            "bias": -25.132741228718345
+          }
+        },
+        "Joint2MaxValue": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.1703344636862174e-08,
+            "bias": -25.132741228718345
+          }
+        },
+        "Joint2MaxSpeed": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 7.314590398038859e-09,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportPanTiltSpecificationsRec"
+  ]
+}

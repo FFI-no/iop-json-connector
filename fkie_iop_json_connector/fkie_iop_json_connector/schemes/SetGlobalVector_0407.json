@@ -1,0 +1,88 @@
+{
+  "title": "SetGlobalVector",
+  "messageId": "0407",
+  "isCommand": true,
+  "description": "This message is used to set the driving vector based on the global coordinate system.  Field #2 \n      sets the desired speed of the platform.  The desired heading angle is set in field #4 and is defined \n      in a right hand sense about the Z axis of the global coordinate system (the Z axis points downward) \n      where North is defined as zero degrees.  Field #3 sets the desired Altitude in accordance with the WGS 84\n      standard.  The desired roll angle is set in field #5 and is also defined in a right hand sense about the X \n      axis of the global coordinate system.  The desired pitch angle is set in field #6 in a right hand sense about the Y axis.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0407"
+        }
+      }
+    },
+    "GlobalVectorRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Speed"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Speed": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0049999237048905165,
+            "bias": 0.0
+          }
+        },
+        "Altitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "Heading": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Roll": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Pitch": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GlobalVectorRec"
+  ]
+}

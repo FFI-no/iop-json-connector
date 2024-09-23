@@ -1,0 +1,67 @@
+{
+  "title": "ConfirmControl",
+  "messageId": "000f",
+  "isCommand": false,
+  "description": "The Confirm Control message is used to notify a component that it accepts control from that component (or not).  When control has been granted, response code of 0, the component under control will only execute messages from the controlling component until control is released or interrupted.  When the requesting component has lower authority than the current controlling entity, the response will be 2.  For components not supporting interruptible control, or if the component is engaged in other operations that would prevent this service from performing its actions to grant control, the response code value of 1 can be used.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "000f"
+        }
+      }
+    },
+    "ConfirmControlRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ResponseCode"
+      ],
+      "properties": {
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "CONTROL_ACCEPTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "NOT_AVAILABLE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "INSUFFICIENT_AUTHORITY"
+              }
+            }
+          ],
+          "enum": [
+            "CONTROL_ACCEPTED",
+            "NOT_AVAILABLE",
+            "INSUFFICIENT_AUTHORITY"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfirmControlRec"
+  ]
+}

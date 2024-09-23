@@ -1,0 +1,27 @@
+{
+  "title": "QueryParkingBrake",
+  "messageId": "2512",
+  "isCommand": false,
+  "description": "Queries current parking brake level",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "2512"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

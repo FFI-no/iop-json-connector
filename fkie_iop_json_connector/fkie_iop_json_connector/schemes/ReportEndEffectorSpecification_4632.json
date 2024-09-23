@@ -1,0 +1,42 @@
+{
+  "title": "ReportEndEffectorSpecification",
+  "messageId": "4632",
+  "isCommand": false,
+  "description": "This message provides the specifications of a one degree of freedom end effector.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4632"
+        }
+      }
+    },
+    "ReportEndEffectorSpecificationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ParentId"
+      ],
+      "properties": {
+        "ParentId": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "4 byte JAUS identifier of the manipulator on which this end effector is mounted"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportEndEffectorSpecificationRec"
+  ]
+}

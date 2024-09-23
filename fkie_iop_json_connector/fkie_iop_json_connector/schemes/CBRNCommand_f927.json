@@ -1,0 +1,519 @@
+{
+  "title": "CBRNCommand",
+  "messageId": "f927",
+  "isCommand": true,
+  "description": "The CBRN Payload Command (Message #F927) shall be sent by the OCU to\n\t\t\tinstruct a payload station to perform a given operation or function such as\n\t\t\tto start sampling.\n\t\t\tNote that it will only be logical to make one command per request message\n\t\t\tsince the commands are mutually exclusive.\n\t\t\tBased on STANAG 4586; Message #0208.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f927"
+        }
+      }
+    },
+    "CommandRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "StationNumber"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": ""
+        },
+        "Timestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        },
+        "SetPowerMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Allows for powering on or off the CBRN sensor at the given station number.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "On"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Off",
+            "On"
+          ]
+        },
+        "SetOperatingMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Places the CBRN payload in a given operational mode. Note that 'Standby' typically means that agent detection is not possible.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Operate"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Standby"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Training"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 3.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Operate",
+            "Standby",
+            "Training"
+          ]
+        },
+        "Reboot": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Commands the CBRN sensor at the given station number to cycle into a powering down immediately followed by a powering up of the sensor.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Normal Operation"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Reboot"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Normal Operation",
+            "Reboot"
+          ]
+        },
+        "OperatingResetType": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the reset type that will be acted upon in OperatingResetState.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 255.0,
+                "interpretation": "Operating Reset Type"
+              }
+            }
+          ]
+        },
+        "OperatingResetState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Commands the CBRN sensor at the given station number to reset its operating state which is specifically identified in OperatingResetType Operating Reset Type (e.g., Reset Sieve Pack). This is not a reset of the configuration parameters.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Normal Operation"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Reset"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Normal Operation",
+            "Reset"
+          ]
+        },
+        "ResetConfigurationState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Commands the CBRN sensor at the given station number to reset its configuration state to the OEM defaults (ex. Display mode).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Normal Operation"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Reset"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Normal Operation",
+            "Reset"
+          ]
+        },
+        "SetSamplingMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "In the case of point detectors, commands the CBRN sensor at the given station number to start or stop sampling. In the case of standoff detectors, commands the CBRN sensor at the given station number to start or stop scanning as well as start or stop tracking.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Stop Sampling"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Start Sampling"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Stop Scanning"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Start Scanning"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Stop Tracking"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Start Tracking"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 6.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Stop Sampling",
+            "Start Sampling",
+            "Stop Scanning",
+            "Start Scanning",
+            "Stop Tracking",
+            "Start Tracking"
+          ]
+        },
+        "TestType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the test type that will be acted upon in SetTestMode",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Self Test (all Payload Components)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Audio Test"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Control Component Test"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Power Distribution and Interface Logic Component Test"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Sensing Component Test (Confidence Test)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Wireless Comms Component Test"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "Dismounted Power Component Test"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "User Interface Component Test (Display Test)"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 8.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Self Test (all Payload Components)",
+            "Audio Test",
+            "Control Component Test",
+            "Power Distribution and Interface Logic Component Test",
+            "Sensing Component Test (Confidence Test)",
+            "Wireless Comms Component Test",
+            "Dismounted Power Component Test",
+            "User Interface Component Test (Display Test)"
+          ]
+        },
+        "SetTestMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Commands the payload at the given station number to start or stop the test indicated in TestType.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Stop Test"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Start Test"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Stop Test",
+            "Start Test"
+          ]
+        },
+        "SetLocalAlarmEnunciation": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Commands the CBRN sensor at the given station number to silence or activate local alarm (local enunciation).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Silence Alarm"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Activate Alarm"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Silence Alarm",
+            "Activate Alarm"
+          ]
+        },
+        "SetKeyguard": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Sets the keyguard on the payload\u2019s input device.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Unlocked"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Locked"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Unlocked",
+            "Locked"
+          ]
+        },
+        "SetClock": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "CommandRec"
+  ]
+}

@@ -1,0 +1,941 @@
+{
+  "title": "CBRNConfigurationState",
+  "messageId": "f935",
+  "isCommand": false,
+  "description": "The CBRN Payload Configuration State (Message #F935) shall be sent \n\t\t\tto report on a given CBRN payload station configuration state.\n\t\t\tThis message shall also be sent every time the configuration changes.\n\t\t\tThis message shall otherwise be sent as a response to the CBRN Payload Configuration Command.\n\t\t\tIf the 'Detection Level' is set to 'Operational Level' then the payload shall alarm\n\t\t\twhen the 'Detection Operational Threshold Level' threshold is crossed.\n\t\t\tIf the 'Detection Level' is set to 'Low Level' then the payload shall\n\t\t\talarm when the 'Detection Low Threshold Level' threshold is crossed.\n\t\t\tThe 'Detection Above Threshold Update Frequency' indicates the frequency at which\n\t\t\tthe payload shall send CBRN4 while in an alarm state for a given threat. If the\n\t\t\tfrequency is set to zero then the payload shall send the CBRN4, for a given\n\t\t\tthreat, based on sensor determined logic.\n\t\t\tBased on STANAG 4586; Message #0310.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f935"
+        }
+      }
+    },
+    "ConfigurationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "StationNumber",
+        "ProductName",
+        "Identifier",
+        "SWFirmwareVersion",
+        "PayloadCBRNType",
+        "PowerMode"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": ""
+        },
+        "Timestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        },
+        "ExerOperName": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the Exercise or Operation name. Based on the CBRN 4 (STANAG 2103) field EXER 1 or OPER 1 plus the null character.",
+          "minLength": 0,
+          "maxLength": 57
+        },
+        "ExerOperFlag": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Identifies if the Name set in 'ExerOperName' is for an exercise or an operation.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Exercise"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Operation"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Exercise",
+            "Operation"
+          ]
+        },
+        "CallSign": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the call sign given for the payload at the given station number. Maps to CBRN 4 (STANAG 2103) field ORGIDFT 1 plus the null character.",
+          "minLength": 0,
+          "maxLength": 31
+        },
+        "PositioningMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Identifies if the Name set in 'ExerOperName' is for an exercise or an operation.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Manual"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "GPS"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Manual",
+            "GPS"
+          ]
+        },
+        "PayloadSensitivity": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload sensitivity.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Normal"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "High"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Normal",
+            "High"
+          ]
+        },
+        "BackgroundLevelSubtractMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates whether the defined background value is subtracted from any sensor reading values or not.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Do Not Subtract"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Subtract"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Do Not Subtract",
+            "Subtract"
+          ]
+        },
+        "BackgroundLevelMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the mode for determining the background level.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Automatic"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Manual"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Automatic",
+            "Manual"
+          ]
+        },
+        "DetectionMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the detection mode. Note that 'Standby' typically means that agent detection is not possible.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Automatic"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Manual"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Standby"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 3.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Automatic",
+            "Manual",
+            "Standby"
+          ]
+        },
+        "DetectionLevel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the detection level (applicable to CHEM).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Standard"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Miosis"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "ICT5"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "ICT50"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Operational"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Low"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 6.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Standard",
+            "Miosis",
+            "ICT5",
+            "ICT50",
+            "Operational",
+            "Low"
+          ]
+        },
+        "DetectionOperationalThresholdLevel": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the detection threshold level value when the 'Detection Level = Operational Level'. This is a custom threshold level that will be applied against either field Contamination Level or Contamination Severity Level (Message: CBRN Detection) as selected by OCU and declared in ContaminationThresholdField."
+        },
+        "DetectionLowThresholdLevel": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the detection threshold level value when the 'Detection Level = Low Level'. This is a custom threshold level that will be applied against either field Contamination Level or Contamination Severity Level (Message: CBRN Detection) as selected by OCU and declared in ContaminationThresholdField."
+        },
+        "DetectionThresholdDelay": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Indicates the threshold delay which defines how long the detection value must be equal to or greater than the threshold (as declared in ContaminationThresholdField) before the payload would alarm. This can be used to reduce false alarms."
+        },
+        "SamplingInterval": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Indicates the payload sampling interval. The interval is defined as 'start of sampling period to next start'. For example, if a 10 min sample is taken 'on the hour' then the interval is set to 60 minutes. 0 = Not Set"
+        },
+        "SamplingDuration": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Indicates the payload sampling duration. 0 = Not Set"
+        },
+        "SamplingVolume": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the payload sampling volume."
+        },
+        "AudioLevel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the audio level for the alarm enunciation.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "High"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Medium"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Low"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 4.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Off"
+          ]
+        },
+        "DisplayBrightnessLevel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the brightness of the display.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Low"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Medium"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "High"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Night Vision"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Off",
+            "Low",
+            "Medium",
+            "High",
+            "Night Vision"
+          ]
+        },
+        "ProductName": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload product name (ex. FSD, VPBio).",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "Identifier": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates an OEM specific identifier such as serial number. Maps to CBRN 4 (STANAG 2103) field MSGID 4 plus the null character.",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "SWFirmwareVersion": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload software or firmware version.",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "PayloadCBRNType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload CBRN type.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Chemical"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Biological"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Radiological"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Nuclear"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Chemical Standoff"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Biological Standoff"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "Radiological Standoff"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "Nuclear Standoff"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 8.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Chemical",
+            "Biological",
+            "Radiological",
+            "Nuclear",
+            "Chemical Standoff",
+            "Biological Standoff",
+            "Radiological Standoff",
+            "Nuclear Standoff"
+          ]
+        },
+        "PowerMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates whether the payload is powered on or off.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "On"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Off",
+            "On"
+          ]
+        },
+        "DetectionAboveThresholdUpdateFrequency": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the frequency at which the payload will send CBRN4 while in an alarm state for a given threat. If the frequency is set to zero then the payload will send the CBRN4, for a given threat, based on sensor determined logic.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 100.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "StorageUtilisation": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the percentage of utilised storage space.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 100.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "DisplayMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the display mode.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Power Save"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Continuous"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Power Save",
+            "Continuous"
+          ]
+        },
+        "DisplayContrast": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Indicates percentage of the display contrast.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 100.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "Language": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload interface language.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "English"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "French"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "English",
+            "French"
+          ]
+        },
+        "Keyguard": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the keyguard state on the payload\u2019s input device.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Unlocked"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Locked"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Unlocked",
+            "Locked"
+          ]
+        },
+        "LocationLabel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "A user friendly location label.",
+          "minLength": 0,
+          "maxLength": 16
+        },
+        "GroupLocationLabel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "A user friendly label for the location of a group of sensors.",
+          "minLength": 0,
+          "maxLength": 16
+        },
+        "ContaminationThresholdField": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates which contamination level field is to be used for warning and caution levels.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Contamination"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Severity"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Contamination",
+            "Severity"
+          ]
+        },
+        "OtherVisualIndicatorsBrightnessLevel": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the brightness of other visual indicators (e.g., LED lamps).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Low"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Medium"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "High"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Night Vision"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Off",
+            "Low",
+            "Medium",
+            "High",
+            "Night Vision"
+          ]
+        },
+        "CBRN4DeliveryMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Identifies whether a CBRN4 product will be sent with every CBRNDetection Message or only those related to threats (above threshold, above threshold update and NIL measurements).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Threat Related"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Continuous"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Threat Related",
+            "Continuous"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfigurationRec"
+  ]
+}

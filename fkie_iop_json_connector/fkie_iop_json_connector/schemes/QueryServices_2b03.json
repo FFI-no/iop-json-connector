@@ -1,0 +1,146 @@
+{
+  "title": "QueryServices",
+  "messageId": "2b03",
+  "isCommand": false,
+  "description": "This message allows a component to request the service information of an entire subsystem or node, or a single component. The corresponding Report Services message will respond with service information only for new component implementations. It will not report service information for legacy component implementations.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2b03"
+        }
+      }
+    },
+    "NodeList": {
+      "type": "array",
+      "comment": "# of Nodes reported. For a single Node Report this field shall be 1",
+      "required": [
+        "NodeSeq"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "NodeRec",
+              "ComponentList"
+            ],
+            "properties": {
+              "NodeRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "NodeID"
+                ],
+                "properties": {
+                  "NodeID": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Use 255 if service information from all nodes in the subsystem is required",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Reserved"
+                        }
+                      },
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 254.0,
+                          "interpretation": "Valid Node IDs"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 255,
+                          "enumConst": "All nodes in the subsystem"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Reserved",
+                      "All nodes in the subsystem"
+                    ]
+                  }
+                }
+              },
+              "ComponentList": {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "ComponentRec"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "ComponentID"
+                      ],
+                      "properties": {
+                        "ComponentID": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "Use 255 if service information from components in the node are required",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 0,
+                                "enumConst": "Reserved"
+                              }
+                            },
+                            {
+                              "valueRange": {
+                                "minimum": 1.0,
+                                "maximum": 254.0,
+                                "interpretation": "Valid Component IDs"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 255,
+                                "enumConst": "All components in the subsystem"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "Reserved",
+                            "All components in the subsystem"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 1,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 1,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "NodeList"
+  ]
+}

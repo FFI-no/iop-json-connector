@@ -1,0 +1,611 @@
+{
+  "title": "CBRNOperatingState",
+  "messageId": "f934",
+  "isCommand": false,
+  "description": "The CBRN Payload Operating State (Message #F934) shall be sent OCU to report\n\t\t\ton the operating state for a given CBRN payload station such as current\n\t\t\tbattery life or current GPS location.\n\t\t\tThis message shall be sent as a response to the QueryCBRNOperatingState or\n\t\t\tafter CBRNCommand.\n\t\t\tBased on STANAG 4586; Message #0311.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f934"
+        }
+      }
+    },
+    "StateRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "StationNumber"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": ""
+        },
+        "Timestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        },
+        "GPSFix": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates whether the payload is currently locked or not to a satellite.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Not Locked"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Locked"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Not Locked",
+            "Locked"
+          ]
+        },
+        "PowerSource": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload's current power source.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "AC/DC"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Battery"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "AC/DC",
+            "Battery"
+          ]
+        },
+        "BatteryRemaining": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the remaining battery life.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 100.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "BatteryVoltage": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "Indicates the voltage of the battery."
+        },
+        "Uptime": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Indicates the total time since the sensor has been powered on."
+        },
+        "PayloadState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload state.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Has Faults"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Has Warnings"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Above Threshold"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Operating"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Powered Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Starting Up"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "Calibrating"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "Testing"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 8.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Has Faults",
+            "Has Warnings",
+            "Above Threshold",
+            "Operating",
+            "Powered Off",
+            "Starting Up",
+            "Calibrating",
+            "Testing"
+          ]
+        },
+        "PayloadLatitude": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the latitude of the payload.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -1.57079632679,
+                "maximum": 1.57079632679,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "PayloadLongitude": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the longitude of the payload.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -3.141592653589793,
+                "maximum": 3.141592653589793,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "PayloadAltitude": {
+          "type": "UNKNOWN",
+          "jausType": "float",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": -1000.0,
+                "maximum": 100000.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "BackgroundLevel": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "Indicates the background level in mSv that was either automatically detected by the payload or was manually set using CBRN payload configuration state command.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 1000000000.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "CommunicationMethod": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the current communication method used by the payload.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Wireless"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Wired"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Wireless",
+            "Wired"
+          ]
+        },
+        "CommunicationSignalStrength": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Where applicable (e.g., Wireless) it indicates the signal strength of the communication method 'CommunicationMethod' used by the payload.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 100.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "TemperatureState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Commands the CBRN sensor at the given station number to reset its configuration state to the OEM defaults (ex. Display mode).",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Normal"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Warming Up"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Cooling Down"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 3.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Normal",
+            "Warming Up",
+            "Cooling Down"
+          ]
+        },
+        "LocalAlarmEnunciationState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicated the local alarm enunciation state.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Alarm Silenced"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Alarm Activated"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Alarm Silenced",
+            "Alarm Activated"
+          ]
+        },
+        "InternalTime": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "OperatingMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload operating mode. Note that 'Standby' typically means that agent detection is not possible.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Operating"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Standby"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Training"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 3.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Operating",
+            "Standby",
+            "Training"
+          ]
+        },
+        "SamplingState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the payload sampling state.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Idle"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Sampling"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Sensing Component Test (Confidence Test)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Scanning"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Tracking"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Idle",
+            "Sampling",
+            "Sensing Component Test (Confidence Test)",
+            "Scanning",
+            "Tracking"
+          ]
+        },
+        "TestingState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the testing state of the payload.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Not Testing"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Self Testing (All Payload Components)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Audio Testing"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Control Component Testing"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Power Distribution and Interface Logic Component Testing"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Sensing Component Test (Confidence Test)"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "Wireless Comms Component Testing"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "Dismounted Power Component Testing"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "User Interface Component Testing (Display Testing)"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 9.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Not Testing",
+            "Self Testing (All Payload Components)",
+            "Audio Testing",
+            "Control Component Testing",
+            "Power Distribution and Interface Logic Component Testing",
+            "Sensing Component Test (Confidence Test)",
+            "Wireless Comms Component Testing",
+            "Dismounted Power Component Testing",
+            "User Interface Component Testing (Display Testing)"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "StateRec"
+  ]
+}

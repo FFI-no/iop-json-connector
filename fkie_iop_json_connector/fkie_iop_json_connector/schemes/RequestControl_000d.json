@@ -1,0 +1,51 @@
+{
+  "title": "RequestControl",
+  "messageId": "000d",
+  "isCommand": true,
+  "description": "This message is used to request interruptible control of the receiving component.  Once control is established, the receiving component shall only execute commands from the sending component.  The authority code parameter is to be set equal to that of the sending component.  The receiving component must always accept the control of the highest authority component that is requesting uninterruptible control.  Commands from all other components are ignored unless from a component with higher authority.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "000d"
+        }
+      }
+    },
+    "RequestControlRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "AuthorityCode"
+      ],
+      "properties": {
+        "AuthorityCode": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 255.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RequestControlRec"
+  ]
+}

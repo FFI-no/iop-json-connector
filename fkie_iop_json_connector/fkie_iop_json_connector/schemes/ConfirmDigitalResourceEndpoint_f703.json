@@ -1,0 +1,48 @@
+{
+  "title": "ConfirmDigitalResourceEndpoint",
+  "messageId": "f703",
+  "isCommand": false,
+  "description": "Confirm a digital resource endpoint registration or removal. Provides a unique ID for referencing the server in the future.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f703"
+        }
+      }
+    },
+    "ConfirmDigitalResourceEndpointRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ID",
+        "RequestID"
+      ],
+      "properties": {
+        "ID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique ID identifying this resource endpoint"
+        },
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Client provided ID to link the response to the request"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfirmDigitalResourceEndpointRec"
+  ]
+}

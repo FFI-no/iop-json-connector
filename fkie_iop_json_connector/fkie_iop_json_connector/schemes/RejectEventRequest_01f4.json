@@ -1,0 +1,106 @@
+{
+  "title": "RejectEventRequest",
+  "messageId": "01f4",
+  "isCommand": false,
+  "description": "The Reject Event Request message is used to reject an Event creation, update or cancellation. Field 2 represents the Request ID from the Create, Update, or Cancel message that initiated this message. The Request ID's scope is local to the requesting client only. Field 4, Event ID, is a globally unique ID that is established for the event.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "01f4"
+        }
+      }
+    },
+    "RejectEventRequestRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "RequestID"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the event maintenance request (create, update, or cancel)"
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "periodic events not supported"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "change based events not supported"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "connection refused"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "invalid event setup"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "message not supported"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "error, invalid event ID for update event request"
+              }
+            }
+          ],
+          "enum": [
+            "periodic events not supported",
+            "change based events not supported",
+            "connection refused",
+            "invalid event setup",
+            "message not supported",
+            "error, invalid event ID for update event request"
+          ]
+        },
+        "ErrorMessage": {
+          "type": "string",
+          "jausType": "string",
+          "comment": "String for additional information",
+          "minLength": 80,
+          "maxLength": 80
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RejectEventRequestRec"
+  ]
+}

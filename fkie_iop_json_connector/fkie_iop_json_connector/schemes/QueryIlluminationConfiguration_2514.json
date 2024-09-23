@@ -1,0 +1,27 @@
+{
+  "title": "QueryIlluminationConfiguration",
+  "messageId": "2514",
+  "isCommand": false,
+  "description": "Queries available illuminators",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "2514"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

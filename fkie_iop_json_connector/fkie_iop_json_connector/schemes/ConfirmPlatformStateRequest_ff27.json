@@ -1,0 +1,112 @@
+{
+  "title": "ConfirmPlatformStateRequest",
+  "messageId": "ff27",
+  "isCommand": false,
+  "description": "Confirms that a platform state request has been received and has been/is being acted upon.  The result can be one of two things: Transitioning, meaning the service will attempt to transition into the commanded state; or Invalid, meaning there is no valid transition from the current state to the commanded state.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff27"
+        }
+      }
+    },
+    "ConfirmPlatformStateRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PlatformState",
+        "ResponseCode"
+      ],
+      "properties": {
+        "PlatformState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Initialize"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Operational"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Shutdown"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "System_Abort"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Emergency"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Render_Useless"
+              }
+            }
+          ],
+          "enum": [
+            "Initialize",
+            "Operational",
+            "Shutdown",
+            "System_Abort",
+            "Emergency",
+            "Render_Useless"
+          ]
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Transitioning"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "InvalidState"
+              }
+            }
+          ],
+          "enum": [
+            "Transitioning",
+            "InvalidState"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfirmPlatformStateRec"
+  ]
+}

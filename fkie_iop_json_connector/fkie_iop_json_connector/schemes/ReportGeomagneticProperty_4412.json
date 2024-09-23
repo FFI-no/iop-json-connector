@@ -1,0 +1,46 @@
+{
+  "title": "ReportGeomagneticProperty",
+  "messageId": "4412",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the current geomagnetic property value.  The message data and mapping of the \n      presence vector of this message are identical to ID 0412h: SetGeomagneticProperty.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4412"
+        }
+      }
+    },
+    "GeomagneticPropertyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MagneticVariation"
+      ],
+      "properties": {
+        "MagneticVariation": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GeomagneticPropertyRec"
+  ]
+}

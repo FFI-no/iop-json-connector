@@ -1,0 +1,380 @@
+{
+  "title": "ReportCostMap2D",
+  "messageId": "d742",
+  "isCommand": false,
+  "description": "This message is used to report the cost map data in accordance to the received QueryCostMap2D message.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d742"
+        }
+      }
+    },
+    "CostMap2DSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "CostMap2DRec",
+        "CostMap2DPoseVar",
+        "CostMap2DDataVar"
+      ],
+      "properties": {
+        "CostMap2DRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "NumberOfRows",
+            "NumberOfColumns",
+            "MapWidth",
+            "MapHeight"
+          ],
+          "properties": {
+            "NumberOfRows": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Number of rows in the map data."
+            },
+            "NumberOfColumns": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Number of columns in the map data."
+            },
+            "MapWidth": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Total width of the cost map.",
+              "scaleRange": {
+                "scaleFactor": 0.15259021896696423,
+                "bias": 0.0
+              }
+            },
+            "MapHeight": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Total height of the cost map.",
+              "scaleRange": {
+                "scaleFactor": 0.15259021896696423,
+                "bias": 0.0
+              }
+            }
+          }
+        },
+        "CostMap2DPoseVar": {
+          "type": "array",
+          "comment": "",
+          "required": [
+            "CostMap2DGlobalPoseRec",
+            "CostMap2DLocalPoseRec"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "MapCenterLatitude",
+                  "MapCenterLongitude",
+                  "MapRotation"
+                ],
+                "properties": {
+                  "MapCenterLatitude": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.190951586745435e-08,
+                      "bias": -90.0
+                    }
+                  },
+                  "MapCenterLongitude": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 8.38190317349087e-08,
+                      "bias": -180.0
+                    }
+                  },
+                  "MapRotation": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 9.587526218325454e-05,
+                      "bias": -3.141592653589793
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "MapCenterX",
+                  "MapCenterY",
+                  "MapRotation"
+                ],
+                "properties": {
+                  "MapCenterX": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-05,
+                      "bias": -100000.0
+                    }
+                  },
+                  "MapCenterY": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-05,
+                      "bias": -100000.0
+                    }
+                  },
+                  "MapRotation": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 9.587526218325454e-05,
+                      "bias": -3.141592653589793
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 1,
+          "isVariant": true
+        },
+        "CostMap2DDataVar": {
+          "type": "array",
+          "comment": "",
+          "required": [
+            "CostDataList",
+            "CostAndConfidenceDataList",
+            "RunLengthEncodedDataList"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "CostDataRec"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "Cost"
+                      ],
+                      "properties": {
+                        "Cost": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Value 0-254: A value of 0 indicates no cost (no restriction). A value of 254 means maximum cost (non-traversable or no-go zone). A value of 255 means the cost of the cell is known.",
+                          "valueSet": [
+                            {
+                              "valueRange": {
+                                "minimum": 0.0,
+                                "maximum": 254.0,
+                                "interpretation": "Cost value associated with the cell.  A value of 0 indicates no cost (no restriction).  A value of 254 means maximum cost (non-traversable or no-go zone)."
+                              }
+                            },
+                            {
+                              "valueRange": {
+                                "minimum": 255.0,
+                                "maximum": 255.0,
+                                "interpretation": "A value of 255 means the cost of the cell is unknown."
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned short integer",
+                "minItems": 0,
+                "maxItems": 65535,
+                "isVariant": false
+              },
+              {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "CostAndConfidenceDataRec"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "Cost",
+                        "Confidence"
+                      ],
+                      "properties": {
+                        "Cost": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Value 0-254: Cost value associated with the cell. A value of 0 indicates no cost (no restriction). A value of 254 means maximum cost (non-traversable or no-go zone). Value 255: A value of 255 is not allowed.",
+                          "valueSet": [
+                            {
+                              "valueRange": {
+                                "minimum": 0.0,
+                                "maximum": 254.0,
+                                "interpretation": "Cost value associated with the cell.  "
+                              }
+                            }
+                          ]
+                        },
+                        "Confidence": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Confidence value associated with the cost of the cell. A value of 0 means there is no confidence in the specified cost (unknown cost). A value of 100 means the cost of the cell is known perfectly.",
+                          "scaleRange": {
+                            "scaleFactor": 0.39215686274509803,
+                            "bias": 0.0
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned short integer",
+                "minItems": 0,
+                "maxItems": 65535,
+                "isVariant": false
+              },
+              {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "RunLengthEncodedDataRec"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "CostAndRunLength"
+                      ],
+                      "properties": {
+                        "CostAndRunLength": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "CostSubField",
+                            "CertaintySubField",
+                            "NumberCellsSubField"
+                          ],
+                          "properties": {
+                            "CostSubField": {
+                              "type": "number",
+                              "jausType": "unsigned short integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 0,
+                                "to": 2
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 7.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "CertaintySubField": {
+                              "type": "string",
+                              "jausType": "unsigned short integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 3,
+                                "to": 3
+                              },
+                              "valueSet": [
+                                {
+                                  "valueEnum": {
+                                    "enumIndex": 0,
+                                    "enumConst": "Unknown"
+                                  }
+                                },
+                                {
+                                  "valueEnum": {
+                                    "enumIndex": 1,
+                                    "enumConst": "Known"
+                                  }
+                                }
+                              ],
+                              "enum": [
+                                "Unknown",
+                                "Known"
+                              ]
+                            },
+                            "NumberCellsSubField": {
+                              "type": "number",
+                              "jausType": "unsigned short integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 4,
+                                "to": 15
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 4095.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "bitField": "unsigned short integer"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned short integer",
+                "minItems": 0,
+                "maxItems": 65535,
+                "isVariant": false
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 2,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "CostMap2DSeq"
+  ]
+}

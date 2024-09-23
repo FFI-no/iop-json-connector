@@ -1,0 +1,96 @@
+{
+  "title": "SetEndEffectorVelocityState",
+  "messageId": "0612",
+  "isCommand": true,
+  "description": "This message defines the desired end-effector velocity state measured with respect to the vehicle coordinate system.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0612"
+        }
+      }
+    },
+    "EndEffectorVelocityRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "AngularVelocityComponentX",
+        "AngularVelocityComponentY",
+        "AngularVelocityComponentZ",
+        "LinearVelocityComponentX",
+        "LinearVelocityComponentY",
+        "LinearVelocityComponentZ"
+      ],
+      "properties": {
+        "AngularVelocityComponentX": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 2.9258361592155435e-08,
+            "bias": -62.83185307179586
+          }
+        },
+        "AngularVelocityComponentY": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 2.9258361592155435e-08,
+            "bias": -62.83185307179586
+          }
+        },
+        "AngularVelocityComponentZ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 2.9258361592155435e-08,
+            "bias": -62.83185307179586
+          }
+        },
+        "LinearVelocityComponentX": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-09,
+            "bias": -10.0
+          }
+        },
+        "LinearVelocityComponentY": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-09,
+            "bias": -10.0
+          }
+        },
+        "LinearVelocityComponentZ": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.656612874161595e-09,
+            "bias": -10.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "EndEffectorVelocityRec"
+  ]
+}

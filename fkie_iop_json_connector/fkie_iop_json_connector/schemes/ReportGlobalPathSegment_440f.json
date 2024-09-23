@@ -1,0 +1,119 @@
+{
+  "title": "ReportGlobalPathSegment",
+  "messageId": "440f",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the values of the current path segment.  The message data and \n      mapping of the presence vector of this message are identical to ID 040Fh: SetGlobalPathSegment.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "440f"
+        }
+      }
+    },
+    "GlobalPathSegmentRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "P1_Latitude",
+        "P1_Longitude",
+        "P2_Latitude",
+        "P2_Longitude",
+        "WeightingFactor"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "P1_Latitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.190951586745435e-08,
+            "bias": -90.0
+          }
+        },
+        "P1_Longitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 8.38190317349087e-08,
+            "bias": -180.0
+          }
+        },
+        "P1_Altitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "P2_Latitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 4.190951586745435e-08,
+            "bias": -90.0
+          }
+        },
+        "P2_Longitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 8.38190317349087e-08,
+            "bias": -180.0
+          }
+        },
+        "P2_Altitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.0477378966863588e-05,
+            "bias": -10000.0
+          }
+        },
+        "WeightingFactor": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "A value of zero (0) is a straight line",
+          "scaleRange": {
+            "scaleFactor": 0.007629510948348211,
+            "bias": 0.0
+          }
+        },
+        "PathTolerance": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "A value of zero (0) is used for infinite tolerance",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-05,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GlobalPathSegmentRec"
+  ]
+}

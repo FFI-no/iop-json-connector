@@ -98,7 +98,7 @@ class MessageSerializer:
                 print(traceback.format_exc())
             else:
                 try:
-                    self.logger.debug(f"parse message {schema.name}({msgId})")
+                    self.logger.debug(f"parse message {schema.title}({msgId})")
                     data = {}
                     self._getProperties(data, message.payload, 0, schema)
                     result["data"] = data
@@ -317,7 +317,7 @@ class MessageSerializer:
                                 # unpack payload message
                                 schema = JSON_SCHEMES[jsonPayloadObj['payloadMessageId']]
                                 self.logger.debug(
-                                    f"parse payload message {schema.name}({jsonPayloadObj['payloadMessageId']})")
+                                    f"parse payload message {schema.title}({jsonPayloadObj['payloadMessageId']})")
                                 jsonPayloadObj['payload'] = {}
                                 self._getProperties(
                                     jsonPayloadObj['payload'], payload, index, schema)

@@ -1,0 +1,46 @@
+{
+  "title": "ReportTravelSpeed",
+  "messageId": "440a",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the current value of the commanded travel speed.  \n      The message data of this message is identical to ID 040Ah: SetTravelSpeed.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "440a"
+        }
+      }
+    },
+    "TravelSpeedRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Speed"
+      ],
+      "properties": {
+        "Speed": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0049999237048905165,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TravelSpeedRec"
+  ]
+}

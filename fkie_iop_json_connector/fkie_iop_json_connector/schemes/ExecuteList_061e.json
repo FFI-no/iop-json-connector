@@ -1,0 +1,47 @@
+{
+  "title": "ExecuteList",
+  "messageId": "061e",
+  "isCommand": false,
+  "description": "This message is used to begin execution of a sequential list of motion commands.  Optionally,\n      the starting element UID can also be specified, \n      where an unspecified value or a value of zero (0) indicates the first (head) element in the list.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "061e"
+        }
+      }
+    },
+    "ExecuteListRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "ElementUID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Element UID of the starting element. A value of zero (0) indicates the first (head) element of the list."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ExecuteListRec"
+  ]
+}

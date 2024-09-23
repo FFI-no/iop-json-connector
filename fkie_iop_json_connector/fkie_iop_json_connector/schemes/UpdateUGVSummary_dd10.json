@@ -1,0 +1,27 @@
+{
+  "title": "UpdateUGVSummary",
+  "messageId": "dd10",
+  "isCommand": true,
+  "description": "This command requests that the HealthMonitor update its health report summary.  The way in which the health report summary is updated is implementation specific.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dd10"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

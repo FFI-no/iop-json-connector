@@ -1,0 +1,380 @@
+{
+  "title": "ReportPlatformSpecifications",
+  "messageId": "4502",
+  "isCommand": false,
+  "description": "Sends PlatformSpecifications data",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "4502"
+        }
+      }
+    },
+    "platformData": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "platformSpecifics",
+        "platformInertial",
+        "platformSpec"
+      ],
+      "properties": {
+        "platformSpecifics": {
+          "type": "array",
+          "comment": "",
+          "required": [
+            "skidsteer",
+            "Ackermann"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "Skid-steer specific platform specs",
+                "required": [
+                  "presenceVector"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "TrackSeparation": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Distance between the two tracks",
+                    "scaleRange": {
+                      "scaleFactor": 0.00045777065690089265,
+                      "bias": 0.0
+                    }
+                  },
+                  "DriveWheelRadius": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Radius of the drive wheel (distance from center of the drive shaft to the outer edge of the drive wheel) in meters",
+                    "scaleRange": {
+                      "scaleFactor": 0.00015259021896696422,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "SteeringAngleRange": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "The maximum achievable steering angles, as measured by a virtual wheel at the center of the front axle. Negative values cause the vehicle to turn left; positive values cause the vehicle to turn right.",
+                    "scaleRange": {
+                      "scaleFactor": 4.793763109162727e-05,
+                      "bias": -1.5707963267948966
+                    }
+                  },
+                  "MinTurnRadius": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "The radius of the smallest turn the vehicle is able to make.",
+                    "scaleRange": {
+                      "scaleFactor": 0.00038147554741741054,
+                      "bias": 0.0
+                    }
+                  },
+                  "WheelSeparation": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Distance between the centers of the left and right wheels",
+                    "scaleRange": {
+                      "scaleFactor": 0.00045777065690089265,
+                      "bias": 0.0
+                    }
+                  },
+                  "DriveWheelRadius": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Radius of the drive wheel (distance from center of the drive shaft to the outer edge of the drive wheel) in meters",
+                    "scaleRange": {
+                      "scaleFactor": 0.00015259021896696422,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 1,
+          "isVariant": true
+        },
+        "platformInertial": {
+          "type": "object",
+          "comment": "General platform specs",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "MaximumForwardSpeed": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.001373311970702678,
+                "bias": 0.0
+              }
+            },
+            "MaximumReverseSpeed": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.001373311970702678,
+                "bias": 0.0
+              }
+            },
+            "MaximumRotationalSpeed": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.582665751125353e-05,
+                "bias": 0.0
+              }
+            },
+            "MaximumForwardAcceleration": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.1568627450980392,
+                "bias": 0.0
+              }
+            },
+            "MaximumReverseAcceleration": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.1568627450980392,
+                "bias": 0.0
+              }
+            },
+            "MaximumForwardDeceleration": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.1568627450980392,
+                "bias": 0.0
+              }
+            },
+            "MaximumReverseDeceleration": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.1568627450980392,
+                "bias": 0.0
+              }
+            }
+          }
+        },
+        "platformSpec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector",
+            "MobilityPlatformName"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "MobilityPlatformName": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "A human-readable string for the vehicle.",
+              "minLength": 0,
+              "maxLength": 255
+            },
+            "Front": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured along the positive X axis of the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.00045777065690089265,
+                "bias": 0.0
+              }
+            },
+            "Back": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured along the negative X axis of the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.00045777065690089265,
+                "bias": 0.0
+              }
+            },
+            "Right": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured along the positive Y axis of the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.00045777065690089265,
+                "bias": 0.0
+              }
+            },
+            "Left": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured along the negative Y axis of the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.00045777065690089265,
+                "bias": 0.0
+              }
+            },
+            "Bottom": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured along the positive Z axis of the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.00045777065690089265,
+                "bias": 0.0
+              }
+            },
+            "Top": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured along the negative Z axis of the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.00045777065690089265,
+                "bias": 0.0
+              }
+            },
+            "Xcg": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured from the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.0009155413138017853,
+                "bias": -30.0
+              }
+            },
+            "Ycg": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured from the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.0009155413138017853,
+                "bias": -30.0
+              }
+            },
+            "Zcg": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured from the vehicle coordinate frame",
+              "scaleRange": {
+                "scaleFactor": 0.0009155413138017853,
+                "bias": -30.0
+              }
+            },
+            "WheelBase": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Distance between the center of the frontmost wheel and the center of the rearmost wheel.",
+              "scaleRange": {
+                "scaleFactor": 0.0009155413138017853,
+                "bias": 0.0
+              }
+            },
+            "StaticPitchOver": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "StaticRollOver": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "VehicleWeight": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00023283064370807974,
+                "bias": 0.0
+              }
+            },
+            "ApproachAngle": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "The angle formed by an imaginary line from the front bumper to the bottom of the front tire",
+              "scaleRange": {
+                "scaleFactor": 2.3968815545813636e-05,
+                "bias": 0.0
+              }
+            },
+            "DepartureAngle": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "The angle formed by an imaginary line from the bottom of the rear tire to rear bumper.",
+              "scaleRange": {
+                "scaleFactor": 2.3968815545813636e-05,
+                "bias": 0.0
+              }
+            },
+            "BreakOverAngle": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "The angle formed by an imaginary line from the bottom of the tires to the center of the vehicle\u2019s underside.",
+              "scaleRange": {
+                "scaleFactor": 2.3968815545813636e-05,
+                "bias": 0.0
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "platformData"
+  ]
+}

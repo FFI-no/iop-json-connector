@@ -1,0 +1,150 @@
+{
+  "title": "SetWrenchEffort",
+  "messageId": "0405",
+  "isCommand": true,
+  "description": "This message is used to provide open-loop mobility control in the vehicle coordinate frame.  The command \n      consists of a six element propulsive wrench and a six element resistive wrench.  The six elements of \n      each wrench break down into three linear elements and three rotational elements, which are mapped to \n      the three axis orthogonal coordinate frame of the vehicle.  All elements of the Wrench message are not \n      necessarily applicable to a particular platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0405"
+        }
+      }
+    },
+    "WrenchEffortRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        },
+        "PropulsiveLinearEffortX": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "PropulsiveLinearEffortY": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "PropulsiveLinearEffortZ": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "PropulsiveRotationalEffortX": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "PropulsiveRotationalEffortY": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "PropulsiveRotationalEffortZ": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        },
+        "ResistiveLinearEffortX": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.39215686274509803,
+            "bias": 0.0
+          }
+        },
+        "ResistiveLinearEffortY": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.39215686274509803,
+            "bias": 0.0
+          }
+        },
+        "ResistiveLinearEffortZ": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.39215686274509803,
+            "bias": 0.0
+          }
+        },
+        "ResistiveRotationalEffortX": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.39215686274509803,
+            "bias": 0.0
+          }
+        },
+        "ResistiveRotationalEffortY": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.39215686274509803,
+            "bias": 0.0
+          }
+        },
+        "ResistiveRotationalEffortZ": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Measured as a percent of maximum",
+          "scaleRange": {
+            "scaleFactor": 0.39215686274509803,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "WrenchEffortRec"
+  ]
+}

@@ -1,0 +1,475 @@
+{
+  "title": "ReportPowerPlantStatus",
+  "messageId": "4508",
+  "isCommand": false,
+  "description": "Report Platform Status Data",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "4508"
+        }
+      }
+    },
+    "powerPlantStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [
+        "powerPlantStatus"
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "PowerPlantDescRec",
+              "powerPlantStatusVar"
+            ],
+            "properties": {
+              "PowerPlantDescRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "powerPlantID",
+                  "description"
+                ],
+                "properties": {
+                  "powerPlantID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "This is a unique ID for each powerplant and is provided by 4507 Report PowerPlant Capabilities message."
+                  },
+                  "description": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "A human-readable string that can be used to describe power plant status, including but not limited to error conditions.",
+                    "minLength": 0,
+                    "maxLength": 255
+                  }
+                }
+              },
+              "powerPlantStatusVar": {
+                "type": "array",
+                "comment": "",
+                "required": [
+                  "gasEngineStatus",
+                  "dieselEngineStatus",
+                  "batteryStatus",
+                  "hydraulicStatus",
+                  "fuelCellStatus"
+                ],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": ""
+                        },
+                        "percentRemainingFuel": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0015259021896696422,
+                            "bias": 0.0
+                          }
+                        },
+                        "percentOilPressure": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "Pressure greater than 100% represents an overpressure situation.",
+                          "scaleRange": {
+                            "scaleFactor": 0.0030518043793392844,
+                            "bias": 0.0
+                          }
+                        },
+                        "percentOilLevel": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0015259021896696422,
+                            "bias": 0.0
+                          }
+                        },
+                        "oilTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "engineTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "engineHours": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "The total runtime of the engine in its lifetime."
+                        },
+                        "tachometer": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "Rotations per minute. Units here are one since JSIDL does not support RPM natively"
+                        },
+                        "coolantLevel": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.003906309605554284,
+                            "bias": 0.0
+                          }
+                        },
+                        "coolantTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "airIntakePressure": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.007812619211108568,
+                            "bias": 0.0
+                          }
+                        },
+                        "airIntakeTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "exhaustTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": ""
+                        },
+                        "percentRemainingFuel": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.39215686274509803,
+                            "bias": 0.0
+                          }
+                        },
+                        "percentOilPressure": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Pressure greater than 100% represents an overpressure situation.",
+                          "scaleRange": {
+                            "scaleFactor": 0.7843137254901961,
+                            "bias": 0.0
+                          }
+                        },
+                        "percentOilLevel": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0015259021896696422,
+                            "bias": 0.0
+                          }
+                        },
+                        "oilTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "engineTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "engineHours": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "The total runtime of the engine in its lifetime"
+                        },
+                        "tachometer": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "Rotations per minute. Units here are one since JSIDL does not support RPM natively"
+                        },
+                        "coolantLevel": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.003906309605554284,
+                            "bias": 0.0
+                          }
+                        },
+                        "coolantTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "airIntakePressure": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.007812619211108568,
+                            "bias": 0.0
+                          }
+                        },
+                        "airIntakeTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "exhaustTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "glowPlugTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "array",
+                      "comment": "",
+                      "required": [
+                        "batteryStatusRec"
+                      ],
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "comment": "",
+                            "required": [
+                              "presenceVector"
+                            ],
+                            "properties": {
+                              "presenceVector": {
+                                "type": "number",
+                                "jausType": "unsigned byte",
+                                "comment": ""
+                              },
+                              "percentChargeRemaining": {
+                                "type": "number",
+                                "jausType": "unsigned short integer",
+                                "comment": "Percent of maximum.",
+                                "scaleRange": {
+                                  "scaleFactor": 0.0015259021896696422,
+                                  "bias": 0.0
+                                }
+                              },
+                              "voltage": {
+                                "type": "number",
+                                "jausType": "unsigned short integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 0.015259021896696421,
+                                  "bias": 0.0
+                                }
+                              },
+                              "currentDraw": {
+                                "type": "number",
+                                "jausType": "unsigned short integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 0.015259021896696421,
+                                  "bias": 0.0
+                                }
+                              },
+                              "batteryTemp": {
+                                "type": "number",
+                                "jausType": "unsigned short integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 0.0038910505836575876,
+                                  "bias": -75.0
+                                }
+                              },
+                              "batteryHours": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "The total runtime of the battery in its lifetime"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "jausType": "unsigned byte",
+                      "minItems": 0,
+                      "maxItems": 255,
+                      "isVariant": false
+                    },
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": ""
+                        },
+                        "fluidLevel": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.003906309605554284,
+                            "bias": 0.0
+                          }
+                        },
+                        "percentFluidPressure": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "Pressure greater than 100% represents an overpressure situation.",
+                          "scaleRange": {
+                            "scaleFactor": 0.0030518043793392844,
+                            "bias": 0.0
+                          }
+                        },
+                        "fluidTemp": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0038910505836575876,
+                            "bias": -75.0
+                          }
+                        },
+                        "totalHours": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "The total runtime of the hydraulic system in its lifetime"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": ""
+                        },
+                        "percentRemainingFuel": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "",
+                          "scaleRange": {
+                            "scaleFactor": 0.0015259021896696422,
+                            "bias": 0.0
+                          }
+                        },
+                        "totalHours": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "The total runtime of the fuel cell in its lifetime"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 4,
+                "isVariant": true
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "powerPlantStatusList"
+  ]
+}

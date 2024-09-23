@@ -1,0 +1,56 @@
+{
+  "title": "ReportPanTiltJointVelocity",
+  "messageId": "4623",
+  "isCommand": false,
+  "description": "This message provides the receiver with the current values of the joint velocities for a pan tilt mechanism.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4623"
+        }
+      }
+    },
+    "PanTiltJointVelocityRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Joint1Velocity",
+        "Joint2Velocity"
+      ],
+      "properties": {
+        "Joint1Velocity": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.4629180796077718e-08,
+            "bias": -31.41592653589793
+          }
+        },
+        "Joint2Velocity": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.4629180796077718e-08,
+            "bias": -31.41592653589793
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PanTiltJointVelocityRec"
+  ]
+}

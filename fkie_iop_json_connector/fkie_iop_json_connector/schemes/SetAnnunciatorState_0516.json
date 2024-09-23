@@ -1,0 +1,160 @@
+{
+  "title": "SetAnnunciatorState",
+  "messageId": "0516",
+  "isCommand": true,
+  "description": "Sets annunciator state",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Two byte field to hold message ID",
+          "const": "0516"
+        }
+      }
+    },
+    "annunciatorRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "annunciator"
+      ],
+      "properties": {
+        "annunciator": {
+          "type": "object",
+          "comment": "Each supported annunciator is specified by a bitfield. A value of zero is off. A value of 15 is maximum volume.",
+          "required": [
+            "Horn",
+            "Siren",
+            "Backup",
+            "Variable1",
+            "Variable2",
+            "Reserved"
+          ],
+          "properties": {
+            "Horn": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Each supported annunciator is specified by a bitfield. A value of zero is off. A value of 15 is maximum volume.",
+              "bitRange": {
+                "from": 0,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Siren": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Each supported annunciator is specified by a bitfield. A value of zero is off. A value of 15 is maximum volume.",
+              "bitRange": {
+                "from": 4,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Backup": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Each supported annunciator is specified by a bitfield. A value of zero is off. A value of 15 is maximum volume.",
+              "bitRange": {
+                "from": 8,
+                "to": 11
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Variable1": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Each supported annunciator is specified by a bitfield. A value of zero is off. A value of 15 is maximum volume.",
+              "bitRange": {
+                "from": 12,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Variable2": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Each supported annunciator is specified by a bitfield. A value of zero is off. A value of 15 is maximum volume.",
+              "bitRange": {
+                "from": 16,
+                "to": 19
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Reserved": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Each supported annunciator is specified by a bitfield. A value of zero is off. A value of 15 is maximum volume.",
+              "bitRange": {
+                "from": 20,
+                "to": 31
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 2047.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "annunciatorRec"
+  ]
+}

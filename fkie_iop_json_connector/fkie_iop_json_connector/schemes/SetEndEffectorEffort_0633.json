@@ -1,0 +1,46 @@
+{
+  "title": "SetEndEffectorEffort",
+  "messageId": "0633",
+  "isCommand": true,
+  "description": "This message is used to control a single degree of freedom end effector in an open loop fashion. The command states the percentage level of effort that the end effector should exercise.  The mapping of effort to end effector behavior (open/close gripper, turn a screw driver, activate a welder) is implementation specific.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0633"
+        }
+      }
+    },
+    "EndEffectorEffortRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "EndEffectorEffort"
+      ],
+      "properties": {
+        "EndEffectorEffort": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -100.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "EndEffectorEffortRec"
+  ]
+}
