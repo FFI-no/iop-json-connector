@@ -9,7 +9,7 @@ Connects to JAUS/IOP Node Manager and translates IOP Messages to/from JSON which
 lone this repository to your preferred destination.
 
 ```bash
-git clone https://github.com/fkie/iop-json-connector
+git clone https://github.com//FFI-no/iop-json-connector
 ```
 
 ### As ROS package inside ROS environment
