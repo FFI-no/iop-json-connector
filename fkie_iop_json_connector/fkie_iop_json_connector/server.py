@@ -56,8 +56,8 @@ class WsClientHandler(WebSocket):
                     # TODO wait for accept from node manager before put it into jausAddresses
                     WsClientHandler.udpSocket.connectJausAddress(jAddr)
                 iopMsg = Message(msg.messageId)
-                WsClientHandler.msgSerializer.pack(msg, iopMsg)
-                WsClientHandler.udpSocket.send_queued(iopMsg)
+                if WsClientHandler.msgSerializer.pack(msg, iopMsg):
+                    WsClientHandler.udpSocket.send_queued(iopMsg)
             except:
                 import traceback
                 print(traceback.format_exc())

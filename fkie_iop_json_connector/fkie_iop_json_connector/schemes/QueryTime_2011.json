@@ -2,7 +2,7 @@
   "title": "QueryTime",
   "messageId": "2011",
   "isCommand": false,
-  "description": "This message is used by clients of this service to query the current time of this service.",
+  "description": "This message is used by cleints of this service to query the current time of this service.",
   "type": "object",
   "properties": {
     "HeaderRec": {

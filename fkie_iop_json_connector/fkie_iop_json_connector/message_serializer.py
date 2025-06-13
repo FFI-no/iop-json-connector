@@ -59,27 +59,39 @@ class MessageSerializer:
         # load json message schemes
         init_schemes(schemesPath, loglevel)
 
-    def pack(self, jsonObj, message: Message):
+    def pack(self, jsonObj, message: Message) -> bool:
         # Creates iop binary message from JSON object with this struct
         # {
         #   "messageId": HEX-Value
+        #   "messageName": Name of the message
         #   "data": JSON-message following schema
         #   "jausIdDst": "127.255.255"
         #   "jausIdSrc": "127.100.1"
         # }
         try:
-            schema = JSON_SCHEMES[jsonObj.messageId]
-            message.src_id = JausAddress.from_string(jsonObj.jausIdSrc)
-            message.dst_id = JausAddress.from_string(jsonObj.jausIdDst)
-            self._addProperties(jsonObj.data, message, schema)
+            schemas = JSON_SCHEMES[jsonObj.messageId]
+            if len(schemas) == 1:
+                message.src_id = JausAddress.from_string(jsonObj.jausIdSrc)
+                message.dst_id = JausAddress.from_string(jsonObj.jausIdDst)
+                self._addProperties(jsonObj.data, message, schemas[0])
+                return True
+            else:
+                for schema in schemas:
+                    if schema.title == jsonObj.messageName:
+                        message.src_id = JausAddress.from_string(jsonObj.jausIdSrc)
+                        message.dst_id = JausAddress.from_string(jsonObj.jausIdDst)
+                        self._addProperties(jsonObj.data, message, schema)
+                        return True
         except:
             import traceback
             print(traceback.format_exc())
+        return False
 
     def unpack(self, message: Message):
         # Unpacks the IOP binary message and returns JSON object with this struct
         # {
         #   "messageId": HEX-Value
+        #   "messageName": Name of the message
         #   "data": JSON-message following schema
         #   "jausIdDst": "127.255.255"
         #   "jausIdSrc": "127.100.1"
@@ -90,21 +102,22 @@ class MessageSerializer:
                   "jausIdSrc": message.src_id.jaus_id}
         if message.msg_id != 0:
             try:
-                schema = JSON_SCHEMES[msgId]
+                schemas = JSON_SCHEMES[msgId]
             except KeyError:
                 self.logger.warning(
                     f"No JSON schema for message {msgId} found!")
                 import traceback
                 print(traceback.format_exc())
             else:
-                try:
-                    self.logger.debug(f"parse message {schema.title}({msgId})")
-                    data = {}
-                    self._getProperties(data, message.payload, 0, schema)
-                    result["data"] = data
-                except:
-                    import traceback
-                    print(traceback.format_exc())
+                for schema in schemas:
+                    try:
+                        self.logger.debug(f"parse message {schema.title}({msgId})")
+                        data = {}
+                        self._getProperties(data, message.payload, 0, schema)
+                        result["data"] = data
+                    except:
+                        import traceback
+                        print(traceback.format_exc())
 
             # parse json schema
         return result
@@ -138,18 +151,21 @@ class MessageSerializer:
                                 jsonAttr = getattr(jsonObj, propertyName)
                             if jsonAttr is None:
                                 raise Exception('no payload message specified')
-                            schema = JSON_SCHEMES[jsonAttr.payloadMessageId]
-                            payloadMessage = Message()
-                            self._addProperties(
-                                jsonAttr.payload, payloadMessage, schema)
-                            # set size of the payload message in the current message
-                            payloadData = payloadMessage.payload
-                            sizeData = struct.pack(self._getPackFormat(
-                                property.jausType), len(payloadData))
-                            # print(
-                            #     f"PAYLOAD_size: {len(payloadData)} -> {sizeData}")
-                            message.appendPayload(sizeData)
-                            message.appendPayload(payloadData)
+                            schemas = JSON_SCHEMES[jsonAttr.payloadMessageId]
+                            for schema in schemas:
+                                try:
+                                    # on error we try to use a different schema
+                                    payloadMessage = Message()
+                                    self._addProperties(jsonAttr.payload, payloadMessage, schema)
+                                    # set size of the payload message in the current message
+                                    payloadData = payloadMessage.payload
+                                    sizeData = struct.pack(self._getPackFormat(property.jausType), len(payloadData))
+                                    # print(f"PAYLOAD_size: {len(payloadData)} -> {sizeData}")
+                                    message.appendPayload(sizeData)
+                                    message.appendPayload(payloadData)
+                                except Exception as err:
+                                    import traceback
+                                    print(traceback.format_exc())
                         except Exception as err:
                             import traceback
                             print(traceback.format_exc())
@@ -315,13 +331,17 @@ class MessageSerializer:
                                 jsonPayloadObj = jsonObj[propertyName] = {}
                                 jsonPayloadObj['payloadMessageId'] = f'{msgId:x}'
                                 # unpack payload message
-                                schema = JSON_SCHEMES[jsonPayloadObj['payloadMessageId']]
-                                self.logger.debug(
-                                    f"parse payload message {schema.title}({jsonPayloadObj['payloadMessageId']})")
-                                jsonPayloadObj['payload'] = {}
-                                self._getProperties(
-                                    jsonPayloadObj['payload'], payload, index, schema)
-                                return
+                                schemas = JSON_SCHEMES[jsonPayloadObj['payloadMessageId']]
+                                for schema in schemas:
+                                    try:
+                                        self.logger.debug(
+                                            f"parse payload message {schema.title}({jsonPayloadObj['payloadMessageId']})")
+                                        jsonPayloadObj['payload'] = {}
+                                        self._getProperties(
+                                            jsonPayloadObj['payload'], payload, index, schema)
+                                        return
+                                    except:
+                                        pass
                         except:
                             import traceback
                             print(traceback.format_exc())

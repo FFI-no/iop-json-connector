@@ -1,0 +1,112 @@
+{
+  "title": "CBDetailedMeasurement",
+  "messageId": "f932",
+  "isCommand": false,
+  "description": "This message shall be sent to a OCU containing the Chemical/Biological payload detailed sensor measurement.\n\t\tBased on STANAG 4586; Message #1744.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f932"
+        }
+      }
+    },
+    "MeasurementRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "StationNumber",
+        "Measurement"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Timestamp": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "StationNumber": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Bitwise station number: 0x00000001 = Stn #1 ... 0x80000000 = Stn #32; 0=All stations"
+        },
+        "DetectionType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Below Threshold"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Above Threshold"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Above Threshold Update"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "NIL (Detection Cleared)"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 4.0,
+                "maximum": 85.0,
+                "interpretation": "Reserved"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 86.0,
+                "maximum": 255.0,
+                "interpretation": "Payload Specific"
+              }
+            }
+          ],
+          "enum": [
+            "Below Threshold",
+            "Above Threshold",
+            "Above Threshold Update",
+            "NIL (Detection Cleared)"
+          ]
+        },
+        "Measurement": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "The payload product.",
+          "minLength": 0,
+          "maxLength": 65536
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "MeasurementRec"
+  ]
+}

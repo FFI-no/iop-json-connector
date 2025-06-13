@@ -24,5 +24,16 @@ def init_schemes(schemesPath='', loglevel='info'):
             schema = json.load(
                 jFile, object_hook=lambda d: SimpleNamespace(**d))
             if schema.title:
-                JSON_SCHEMES[schema.messageId] = schema
-    logger.info(f"{len(JSON_SCHEMES)} message schemes found")
+                if schema.messageId in JSON_SCHEMES:
+                    JSON_SCHEMES[schema.messageId].append(schema)
+                else:
+                    JSON_SCHEMES[schema.messageId] = [schema]
+    schemas_count = 0
+    schemas_double_count = 0
+    for key, schemas in JSON_SCHEMES.items():
+        schemas_count += len(schemas)
+        if len(schemas) > 1:
+            schemas_double_count += 1
+    logger.info(f"{schemas_count} message schemes found.")
+    if schemas_double_count > 0:
+        logger.warning(f" > {schemas_double_count} ids have multiple schemas!")

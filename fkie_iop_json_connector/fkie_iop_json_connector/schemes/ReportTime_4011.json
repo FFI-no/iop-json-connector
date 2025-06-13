@@ -184,7 +184,7 @@
                   "valueRange": {
                     "minimum": 0.0,
                     "maximum": 127.0,
-                    "interpretation": "Where 0           is 2000, 1 is 2001, etc."
+                    "interpretation": "Where 0 is 2000, 1 is 2001, etc."
                   }
                 }
               ]

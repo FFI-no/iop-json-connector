@@ -2,7 +2,7 @@
   "title": "ReportControl",
   "messageId": "400d",
   "isCommand": false,
-  "description": "This message is used to report the current state of control of this service.  If the service is in the Controlled state, this message reports the ID of the controlling component. The ID fields shall be set to zero (0) if this service is in the NotControlled state..",
+  "description": "This message is used to report the current state of control of this service.  If the serivce is in the Controlled state, this message reports the ID of the controlling component. The ID fields shall be set to zero (0) if this service is in the NotControlled state..",
   "type": "object",
   "properties": {
     "HeaderRec": {
