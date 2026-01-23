@@ -8,6 +8,7 @@ JSON_SCHEMES = {}
 
 def init_schemes(schemesPath='', loglevel='info'):
     global JSON_SCHEMES
+    JSON_SCHEMES.clear()
     logger = MyLogger('schemes', loglevel)
     # load json message schemes
     jsonFiles = set()
