@@ -9,6 +9,7 @@
 import argparse
 import sys
 import logging
+from rclpy.executors import ExternalShutdownException
 
 from .logger import MyLogger
 from .server import Server
@@ -124,7 +125,7 @@ def run_ros2(args=None):
         node = DummyNode()
         start(node.get_name(), block=False)
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         print('stop iop_json_connector')
     finally:
         try:
