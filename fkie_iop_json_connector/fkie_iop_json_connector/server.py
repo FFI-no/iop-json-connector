@@ -115,11 +115,6 @@ class Server():
     def shutdown(self):
         print('shutdown server')
         self._stop = True
-        if self._server is not None:
-            try:
-                self._server.close()
-            except Exception as err:
-                print("Exception while close web socket interfaces: ", err)
         if self._udp is not None:
             try:
                 WsClientHandler.udpSocket = None
