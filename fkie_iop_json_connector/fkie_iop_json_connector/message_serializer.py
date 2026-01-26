@@ -154,7 +154,7 @@ class MessageSerializer:
         requiredProps = set(schema.required)
         for name, prop in schema.properties.__dict__.items():
             # print(f"property {name}: {prop.type}")
-            if hasattr(jsonObj, name):
+            if hasattr(jsonObj, name) and name in requiredProps:
                 requiredProps.remove(name)
             if prop.type == 'object':
                 # check if it is a payload object
@@ -196,8 +196,9 @@ class MessageSerializer:
                         bitFieldData = self._safe_pack(prop.bitField, bitFieldResult)
                         message.appendPayload(bitFieldData)
                     else:
-                        self._addProperties(
-                            getattr(jsonObj, name), message, prop)
+                        if hasattr(jsonObj, name) or name in requiredProps:
+                            self._addProperties(
+                                getattr(jsonObj, name), message, prop)
 
             elif prop.type == 'number':
                 if name == 'presenceVector':
