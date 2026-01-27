@@ -167,6 +167,7 @@ class MessageSerializer:
                             if jsonAttr is None:
                                 raise Exception('no payload message specified')
                             schemas = JSON_SCHEMES[jsonAttr.payloadMessageId]
+                            failed = []
                             for schema in schemas:
                                 try:
                                     # on error we try to use a different schema
@@ -180,7 +181,10 @@ class MessageSerializer:
                                     message.appendPayload(payloadData)
                                 except Exception as err:
                                     import traceback
-                                    print(traceback.format_exc())
+                                    failed.append((schema.title, schema.messageId, traceback.format_exc()))
+                            if len(schemas) == len(failed):
+                                for (msgName, msgId, message) in failed:
+                                    self.logger.warning(f"failed create IOP message {msgName} ({msgId}): {message}")
                         except Exception as err:
                             import traceback
                             print(traceback.format_exc())
