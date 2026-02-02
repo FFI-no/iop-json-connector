@@ -36,7 +36,7 @@ class UDPucSocket(socket.socket):
         :param tuple(str,int) default_dst: used for loopback to send messages to predefined destination.
         '''
         self._closed = False
-        self.logger = MyLogger(f"{logger_name}[{interface}:{port}]", loglevel)
+        self.logger = MyLogger(f"{logger_name}[{interface}:{port}]", loglevel=loglevel)
         self.interface = interface
         self.port = port
         self._router = router
@@ -120,7 +120,7 @@ class UDPucSocket(socket.socket):
         connMsg.src_id = jausAddress
         connMsg.tinfo_src = AddressBook.Endpoint(
             AddressBook.Endpoint.UDP, 'localhost', self.port)
-        print("send connect")
+        self.logger.info(f"send IOP connect message")
         self._queue_send.put(connMsg)
 
     def disconnectJausAddress(self, jausAddress: JausAddress):

@@ -35,7 +35,7 @@ class MessageParser:
         name = sender
         if name is not None:
             name = sender.address.replace('.', '_')
-        self.logger = MyLogger('msg[%s]' % name, loglevel)
+        self.logger = MyLogger('msg[%s]' % name, loglevel=loglevel)
         self._data = b''
         self._version = None
 

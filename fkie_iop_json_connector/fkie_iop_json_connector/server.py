@@ -25,6 +25,7 @@ from fkie_iop_json_connector.message import Message
 from fkie_iop_json_connector.message_serializer import MessageSerializer
 from fkie_iop_json_connector.transport.udp_uc import UDPucSocket
 
+
 class SelfEncoder(json.JSONEncoder):
     def default(self, obj):
         result = {}
@@ -32,6 +33,10 @@ class SelfEncoder(json.JSONEncoder):
             if key[0] != '_':
                 result[key] = value
         return result
+
+
+loggerWS = None
+
 
 class WsClientHandler(WebSocket):
     msgSerializer = None
@@ -42,48 +47,57 @@ class WsClientHandler(WebSocket):
     jausAddresses = []
 
     def handle(self):
-        print(self.address, f"received from ws: '{self.data}'")
         # for client in WsClientHandler.clients:
         #     if client != self:
         #         client.send_message(self.address[0] + u' - ' + self.data)
-        if (WsClientHandler.udpSocket is not None):
+        if (self.udpSocket is not None):
             try:
                 msg = json.loads(
                     self.data, object_hook=lambda d: SimpleNamespace(**d))
+                printLog = self.logger.message(msg, "recv WS")
                 jAddr = JausAddress.from_string(msg.jausIdSrc)
                 if jAddr not in self.jausAddresses:
                     self.jausAddresses.append(jAddr)
                     # TODO wait for accept from node manager before put it into jausAddresses
-                    WsClientHandler.udpSocket.connectJausAddress(jAddr)
+                    self.udpSocket.connectJausAddress(jAddr)
                 iopMsg = Message(msg.messageId)
-                if WsClientHandler.msgSerializer.pack(msg, iopMsg):
-                    WsClientHandler.udpSocket.send_queued(iopMsg)
+                if self.msgSerializer.pack(msg, iopMsg):
+                    self.udpSocket.send_queued(iopMsg)
             except:
                 import traceback
                 print(traceback.format_exc())
 
     def connected(self):
-        print(self.address, 'connected')
+        try:
+            global loggerWS
+            self.logger = loggerWS
+            self.logger.info(f"{self.address} connected")
+        except:
+            import traceback
+            print(traceback.format_exc())
         # for client in WsClientHandler.clients:
         #     client.send_message(self.address[0] + u' - connected')
-        WsClientHandler.clients.append(self)
+        self.clients.append(self)
 
     def handle_close(self):
-        WsClientHandler.clients.remove(self)
+        self.clients.remove(self)
         # disconnect from iop node manager
         for jAddr in self.jausAddresses:
-            WsClientHandler.udpSocket.disconnectJausAddress(jAddr)
+            self.udpSocket.disconnectJausAddress(jAddr)
         self.jausAddresses.clear()
-        print(self.address, 'closed')
-        for client in WsClientHandler.clients:
+        self.logger.info(f'{self.address} closed')
+        for client in self.clients:
             client.send_message(self.address[0] + u' - disconnected')
 
 
 class Server():
 
-    def __init__(self, port: int, iopUri: str, logLevel: str = 'info', schemesPath='', version: str = ''):
+    def __init__(self, *, port: int, iopUri: str, logLevel: str = 'info', schemesPath='', logMessages=[], version: str = ''):
         self.logLevel = logLevel
-        self.logger = MyLogger('server', self.logLevel)
+        self.logMessages = logMessages
+        self.logger = MyLogger('server', loglevel=self.logLevel, logMessages=logMessages)
+        global loggerWS
+        loggerWS = MyLogger('ws', loglevel=self.logLevel, logMessages=logMessages)
         self.address_book = AddressBook()
         self.wsPort = port
         self.iopScheme, self.iopHost, self.iopPort = self.splitUri(iopUri)
@@ -169,5 +183,8 @@ class Server():
 
     def route_udp_msg(self, msg):
         jsonObj = WsClientHandler.msgSerializer.unpack(msg)
+        printLog = self.logger.message(jsonObj, "recv UDP")
         for client in WsClientHandler.clients:
+            if printLog:
+                self.logger.info(f"  -> forward to: {client.jausAddresses}")
             client.send_message(json.dumps(jsonObj, cls=SelfEncoder))

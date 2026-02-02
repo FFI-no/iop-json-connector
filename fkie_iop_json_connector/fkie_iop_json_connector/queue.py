@@ -23,7 +23,7 @@ class PQueue(object):
         :param dict(str:int) priority_map: Map to overried priority. The key is message id represented as HEX string. Value is priority (0-3).
         '''
         self._logger_name = logger_name
-        self.logger = MyLogger(logger_name, loglevel)
+        self.logger = MyLogger(logger_name, loglevel=loglevel)
         self._cv = threading.Condition()
         self._maxsize = maxsize
         self._pq = {3: [],

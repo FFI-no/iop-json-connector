@@ -59,7 +59,7 @@ class AddressBook:
         '''
         :param fkie_iop_node_manager.config.Config cfg: configuration
         '''
-        self.logger = MyLogger('addrbook', loglevel)
+        self.logger = MyLogger('addrbook', loglevel=loglevel)
         self._default_port = default_port
         self._map = {}
         self._static_tcp_port_map = {}

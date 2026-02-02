@@ -44,7 +44,7 @@ class MessageSerializer:
         '''
         :param str schemesPath: path to the directory with message schemes.
         '''
-        self.logger = MyLogger('serializer', loglevel)
+        self.logger = MyLogger('serializer', loglevel=loglevel)
         # load json message schemes
         init_schemes(schemesPath, loglevel)
 
@@ -94,6 +94,8 @@ class MessageSerializer:
                   "jausIdDst": message.dst_id.jaus_id,
                   "jausIdSrc": message.src_id.jaus_id}
         try:
+            if msgId == 0000:
+                schemas = []
             schemas = JSON_SCHEMES[msgId]
         except KeyError:
             self.logger.warning(f"No JSON schema for message {msgId}")
