@@ -46,19 +46,51 @@
           "comment": "UID of the next (child) element in the list. The value is zero (0) if this is the last (tail) element."
         },
         "ElementData": {
-          "type": "number",
-          "jausType": "unsigned short integer",
+          "type": "object",
           "comment": "Element data to be added to the list",
-          "formatField": [
-            {
-              "index": 0,
-              "field": "JAUS MESSAGE"
+          "required": [
+            "formatField",
+            "payloadMessageId",
+            "payload"
+          ],
+          "properties": {
+            "formatField": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "JAUS MESSAGE"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "User defined"
+                  }
+                }
+              ],
+              "enum": [
+                "JAUS MESSAGE",
+                "User defined"
+              ]
             },
-            {
-              "index": 1,
-              "field": "User defined"
+            "payloadMessageId": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "message id of the payload message"
+            },
+            "payload": {
+              "type": "object",
+              "comment": "Element data to be added to the list",
+              "required": [],
+              "properties": {}
             }
-          ]
+          },
+          "jausType": "unsigned short integer",
+          "encapsulatedMessage": "sub"
         }
       }
     }

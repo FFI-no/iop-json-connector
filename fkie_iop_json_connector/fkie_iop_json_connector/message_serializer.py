@@ -59,23 +59,27 @@ class MessageSerializer:
           "jausIdSrc": "127.100.1"
         }
         """
-        try:
-            schemas = JSON_SCHEMES[jsonObj.messageId]
-            message.src_id = JausAddress.from_string(jsonObj.jausIdSrc)
-            message.dst_id = JausAddress.from_string(jsonObj.jausIdDst)
-            if len(schemas) == 1:
+        schemas = JSON_SCHEMES[jsonObj.messageId]
+        message.src_id = JausAddress.from_string(jsonObj.jausIdSrc)
+        message.dst_id = JausAddress.from_string(jsonObj.jausIdDst)
+        if len(schemas) == 1:
+            try:
                 self._addProperties(jsonObj.data, message, schemas[0])
                 return True
-            else:
-                for schema in schemas:
+            except:
+                import traceback
+                self.logger.error(f"{schemas[0].title}.{schemas[0].messageId}: {traceback.format_exc()}")
+        else:
+            for schema in schemas:
+                try:
                     if schema.title == jsonObj.messageName:
                         self._addProperties(jsonObj.data, message, schema)
                         return True
-        except:
-            import traceback
-            self.logger.error(traceback.format_exc())
-            return False
-        self.logger.warning(f"No schema found for message {jsonObj.messageId}")
+                except:
+                    import traceback
+                    self.logger.error(f"{schema.title}.{schema.messageId}: {traceback.format_exc()}")
+        if len(schemas) == 0:
+            self.logger.warning(f"No schema found for message {jsonObj.messageId}")
         return False
 
     def unpack(self, message: Message):
@@ -94,11 +98,14 @@ class MessageSerializer:
                   "jausIdDst": message.dst_id.jaus_id,
                   "jausIdSrc": message.src_id.jaus_id}
         try:
+            if len(message.payload) == 0:
+                self.logger.warning(f"Empty payload for message {msgId}")
             if msgId == 0000:
                 schemas = []
-            schemas = JSON_SCHEMES[msgId]
+            else:
+                schemas = JSON_SCHEMES[msgId]
         except KeyError:
-            self.logger.warning(f"No JSON schema for message {msgId}")
+            self.logger.warning(f"No JSON schema for message {msgId}; payload length: {len(message.payload)}")
             return result
 
         for schema in schemas:
@@ -109,7 +116,7 @@ class MessageSerializer:
                 result["data"] = data
             except:
                 import traceback
-                self.logger.error(traceback.format_exc())
+                self.logger.error(f"{schema.title}.{schema.messageId}: {traceback.format_exc()}")
         return result
 
     # -----------------------------
@@ -117,7 +124,7 @@ class MessageSerializer:
     # -----------------------------
     def _safe_pack(self, jausType, value):
         """Clip numeric values to prevent struct.pack overflow."""
-        
+
         fmt = self._packFmt(jausType)
         limits = {
             'b': (-128, 127), 'B': (0, 255),
@@ -128,13 +135,15 @@ class MessageSerializer:
         }
         if fmt in limits:
             minv, maxv = limits[fmt]
-            if value < minv: value = minv
-            if value > maxv: value = maxv
+            if value < minv:
+                value = minv
+            if value > maxv:
+                value = maxv
         return struct.pack(fmt, value)
 
     def _typeSize(self, jausType):
         return self.JAUS_TYPES[jausType]
-    
+
     def _packFmt(self, jausType):
         return self.PACK_FORMAT[jausType]
 
@@ -151,23 +160,32 @@ class MessageSerializer:
                 bit <<= 1
         return presenceVector
 
-    def _addProperties(self, jsonObj, message, schema):
+    def _addProperties(self, jsonObj, message, schema, filter=[]):
         bitFieldValue = 0
-        requiredProps = set(schema.required)
+        requiredProps = set(schema.required) if len(filter) == 0 else set(filter)
         for name, prop in schema.properties.__dict__.items():
+            if len(filter) > 0 and name not in filter:
+                continue
             # print(f"property {name}: {prop.type}")
             if hasattr(jsonObj, name) and name in requiredProps:
                 requiredProps.remove(name)
             if prop.type == 'object':
                 # check if it is a payload object
-                if hasattr(prop, 'fieldFormat'):
-                    if prop.fieldFormat == 'JAUS MESSAGE':
+                if hasattr(prop, 'encapsulatedMessage'):
+                    jsonAttr = None
+                    if hasattr(jsonObj, name):
+                        jsonAttr = getattr(jsonObj, name)
+                    if jsonAttr is None:
+                        raise Exception('no payload message specified')
+                    # there are two different ways to specify encapsulated message
+                    fieldFormat = "unknown"
+                    if prop.encapsulatedMessage == 'simple':
+                        fieldFormat = prop.fieldFormat
+                    else:
+                        fieldFormat = jsonAttr.formatField
+                        self._addProperties(getattr(jsonObj, name), message, prop, filter=["formatField"])
+                    if fieldFormat in ['JAUS MESSAGE', 'JAUS_MESSAGE']:
                         try:
-                            jsonAttr = None
-                            if hasattr(jsonObj, name):
-                                jsonAttr = getattr(jsonObj, name)
-                            if jsonAttr is None:
-                                raise Exception('no payload message specified')
                             schemas = JSON_SCHEMES[jsonAttr.payloadMessageId]
                             failed = []
                             for schema in schemas:
@@ -192,8 +210,9 @@ class MessageSerializer:
                             print(traceback.format_exc())
                             raise err
                     else:
+                        # TODO: pack payload data to user format
                         raise Exception(
-                            f"payload format {prop.fieldFormat} not implemented!")
+                            f"Error in attribute '{name}': payload format {fieldFormat} not implemented! prop: {jsonObj}")
                 else:
                     if hasattr(prop, 'bitField'):
                         # handle bit field, see AS5684
@@ -306,12 +325,14 @@ class MessageSerializer:
             raise AttributeError(f"missed fields {requiredProps}")
         return bitFieldValue
 
-    def _getProperties(self, jsonObj, payload, payloadIndex, schema):
+    def _getProperties(self, jsonObj, payload, payloadIndex, schema, filter=[]):
         # print(schema.properties.__dict__)
         presenceVector = None
         presenceIndex = 0
         index = payloadIndex
         for name, prop in schema.properties.__dict__.items():
+            if len(filter) > 0 and name not in filter:
+                continue
             if presenceVector is not None:
                 if name not in schema.required:
                     if not (presenceVector & presenceIndex):
@@ -324,37 +345,58 @@ class MessageSerializer:
                         presenceIndex = presenceIndex << 1
             if prop.type == 'object':
                 # check if it is a payload object
-                if hasattr(prop, 'fieldFormat'):
-                    if prop.fieldFormat == 'JAUS MESSAGE':
-                        try:
-                            typeSize = self._typeSize(prop.jausType)
-                            (payloadSize, ) = struct.unpack(self._packFmt(
-                                prop.jausType), payload[index:index+typeSize])
-                            index += typeSize
-                            if payloadSize >= 2:
-                                # get message id of the payload
-                                (msgId, ) = struct.unpack(self._packFmt(
-                                    'unsigned short integer'), payload[index:index+2])
-                                jsonPayloadObj = jsonObj[name] = {}
-                                jsonPayloadObj['payloadMessageId'] = f'{msgId:x}'
-                                # unpack payload message
-                                schemas = JSON_SCHEMES[jsonPayloadObj['payloadMessageId']]
-                                for schema in schemas:
-                                    try:
-                                        self.logger.debug(
-                                            f"parse payload message {schema.title}({jsonPayloadObj['payloadMessageId']})")
-                                        jsonPayloadObj['payload'] = {}
-                                        self._getProperties(
-                                            jsonPayloadObj['payload'], payload, index, schema)
-                                        return
-                                    except:
-                                        pass
-                        except:
-                            import traceback
-                            print(traceback.format_exc())
+                if hasattr(prop, 'encapsulatedMessage'):
+                    jsonPayloadObj = jsonObj[name] = {}
+                    fieldFormat = "unknown"
+                    if prop.encapsulatedMessage == 'simple':
+                        fieldFormat = prop.fieldFormat
                     else:
-                        raise Exception(
-                            f"payload format {prop.fieldFormat} not implemented!")
+
+                        formatFieldProp = getattr(prop.properties, "formatField")
+                        typeSize = self._typeSize(formatFieldProp.jausType)
+                        (strLength, ) = struct.unpack(self._packFmt(
+                            formatFieldProp.jausType), payload[index:index+typeSize])
+                        index += typeSize
+                        if hasattr(formatFieldProp, 'enum') and hasattr(formatFieldProp, 'valueSet'):
+                            # handle bit range
+                            if hasattr(formatFieldProp, 'bitRange'):
+                                index -= typeSize
+                                bitRangeValue = 0
+                                for bit in range(getattr(formatFieldProp.bitRange, 'from'), getattr(formatFieldProp.bitRange, 'to')+1, 1):
+                                    bitRangeValue += int(strLength & 1 << bit)
+                                bitRangeValue = bitRangeValue >> getattr(formatFieldProp.bitRange, 'from')
+                                strLength = bitRangeValue
+                            # handle value set
+                            for enum in formatFieldProp.valueSet:
+                                if hasattr(enum, "valueEnum") and enum.valueEnum.enumIndex == int(strLength):
+                                    jsonPayloadObj["formatField"] = enum.valueEnum.enumConst
+                                    fieldFormat = enum.valueEnum.enumConst
+                    typeSize = self._typeSize(prop.jausType)
+                    (payloadSize, ) = struct.unpack(self._packFmt(
+                        prop.jausType), payload[index:index+typeSize])
+                    index += typeSize
+                    if fieldFormat in ['JAUS MESSAGE', 'JAUS_MESSAGE']:
+                        if payloadSize >= 2:
+                            # get message id of the payload
+                            (msgId, ) = struct.unpack(self._packFmt(
+                                'unsigned short integer'), payload[index:index+2])
+
+                            jsonPayloadObj['payloadMessageId'] = f'{msgId:x}'.zfill(4)
+                            # unpack payload message
+                            schemas = JSON_SCHEMES[jsonPayloadObj['payloadMessageId']]
+                            for schema in schemas:
+                                try:
+                                    self.logger.debug(
+                                        f"parse payload message {schema.title}({jsonPayloadObj['payloadMessageId']})")
+                                    jsonPayloadObj['payload'] = {}
+                                    self._getProperties(
+                                        jsonPayloadObj['payload'], payload, index, schema)
+                                    return
+                                except:
+                                    pass
+                    else:
+                        jsonPayloadObj['payload'] = payload[index:index+payloadSize]
+                        return
                 if not hasattr(jsonObj, name):
                     jsonObj[name] = {}
                 index = self._getProperties(jsonObj[name], payload, index, prop)
@@ -400,7 +442,7 @@ class MessageSerializer:
                 index += typeSize
                 if name == 'MessageID' and hasattr(prop, 'const'):
                     # handle hex value of the message id
-                    jsonObj[name] = f'{strLength:x}'
+                    jsonObj[name] = f'{strLength:x}'.zfill(4)
                 elif hasattr(prop, 'enum') and hasattr(prop, 'valueSet'):
                     # handle bit range
                     if hasattr(prop, 'bitRange'):

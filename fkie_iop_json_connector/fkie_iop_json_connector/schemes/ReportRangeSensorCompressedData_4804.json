@@ -457,7 +457,8 @@
                       "minLength": 0,
                       "maxLength": 4294967295,
                       "jausType": "unsigned integer",
-                      "fieldFormat": "RangeSensorDataPointList"
+                      "fieldFormat": "RangeSensorDataPointList",
+                      "encapsulatedMessage": "simple"
                     }
                   }
                 }

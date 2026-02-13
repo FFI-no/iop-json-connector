@@ -95,7 +95,8 @@
           },
           "minLength": 2,
           "jausType": "unsigned integer",
-          "fieldFormat": "JAUS MESSAGE"
+          "fieldFormat": "JAUS MESSAGE",
+          "encapsulatedMessage": "simple"
         }
       }
     }
