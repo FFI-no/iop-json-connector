@@ -36,7 +36,6 @@ class UDPucSocket(socket.socket):
         :param tuple(str,int) default_dst: used for loopback to send messages to predefined destination.
         '''
         self._closed = False
-        self.logger = MyLogger(f"{logger_name}[{interface}:{port}]", loglevel=loglevel)
         self.interface = interface
         self.port = port
         self._router = router
@@ -44,6 +43,12 @@ class UDPucSocket(socket.socket):
         self._default_dst = default_dst
         self._locals = [ip for _ifname, ip in localifs()]
         self._locals.append('localhost')
+        self._hostname = socket.gethostname()
+        if not self._hostname:
+            self._hostname = "localhost"
+        else:
+            self._locals.append(self._hostname)
+        self.logger = MyLogger(f"{logger_name}[{interface}:{self.port}]", loglevel=loglevel)
         self._recv_buffer = 65535
         self._seqNr = 0
         if recv_buffer > 0 and recv_buffer <= 65535:
@@ -59,7 +64,7 @@ class UDPucSocket(socket.socket):
         #             self.interface = iface[1]
         #             break
         self.logger.info(
-            f"+ Bind to unicast socket @({self.interface}:{port})")
+            f"+ Bind to unicast socket @({self.interface}:{self.port})")
         socket_type = socket.AF_INET
         bind_ip = self.interface
         if self.interface:
@@ -71,8 +76,8 @@ class UDPucSocket(socket.socket):
             self, socket_type, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         # Bind to the port
         try:
-            self.logger.debug(f"Ucast bind to: ({bind_ip}:{port})")
-            self.bind((bind_ip, port))
+            self.logger.debug(f"Ucast bind to: ({bind_ip}:{self.port})")
+            self.bind((bind_ip, self.port))
         except socket.error as errObj:
             msg = str(errObj)
             self.logger.critical(
@@ -119,7 +124,7 @@ class UDPucSocket(socket.socket):
         connMsg.cmd_code = Message.CODE_CONNECT
         connMsg.src_id = jausAddress
         connMsg.tinfo_src = AddressBook.Endpoint(
-            AddressBook.Endpoint.UDP, 'localhost', self.port)
+            AddressBook.Endpoint.UDP, self._hostname, self.port)
         self.logger.info(f"send IOP connect message")
         self._queue_send.put(connMsg)
 
@@ -130,7 +135,7 @@ class UDPucSocket(socket.socket):
         connMsg.cmd_code = Message.CODE_CANCEL
         connMsg.src_id = jausAddress
         connMsg.tinfo_src = AddressBook.Endpoint(
-            AddressBook.Endpoint.UDP, 'localhost', self.port)
+            AddressBook.Endpoint.UDP, self._hostname, self.port)
         self._queue_send.put(connMsg)
 
     def send_queued(self, msg: Message):
@@ -144,7 +149,7 @@ class UDPucSocket(socket.socket):
             # iopMsg.src_id = JausAddress.from_string(msg.jausIdSrc)
             # iopMsg.dst_id = JausAddress.from_string(msg.jausIdDst)
             msg.tinfo_src = AddressBook.Endpoint(
-                AddressBook.Endpoint.UDP, 'localhost', self.port)
+                AddressBook.Endpoint.UDP, self._hostname, self.port)
             self._queue_send.put(msg)
         except queue.Full as full:
             print(traceback.format_exc())

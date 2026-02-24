@@ -109,7 +109,7 @@ class Server():
         self._threadServeForever = None
 
     def start(self, block=True):
-        self._udp = UDPucSocket(self.wsPort+1, router=self, address_book=self.address_book, default_dst=(self.iopHost, self.iopPort), interface=self.iopHost,
+        self._udp = UDPucSocket(self.wsPort+1, router=self, address_book=self.address_book, default_dst=(self.iopHost, self.iopPort), interface="",
                                 send_buffer=0, recv_buffer=0, queue_length=0, loglevel=self.logger.level())
         WsClientHandler.msgSerializer = MessageSerializer(
             self.schemesPath, self.logLevel)
