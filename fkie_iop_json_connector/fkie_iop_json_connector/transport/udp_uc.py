@@ -18,6 +18,7 @@ import fkie_iop_json_connector.queue as queue
 from fkie_iop_json_connector.address_book import AddressBook
 from fkie_iop_json_connector.jaus_address import JausAddress
 from fkie_iop_json_connector.message_parser import MessageParser
+from fkie_iop_json_connector.message_reassembler import MessageReassembler
 from fkie_iop_json_connector.message import Message
 from fkie_iop_json_connector.transport.net import getaddrinfo, localifs
 from fkie_iop_json_connector.logger import MyLogger
@@ -96,6 +97,7 @@ class UDPucSocket(socket.socket):
 #                 self.logger.debug(
 #                     f"Changed buffer size from {old_bufsize} to {bufsize}")
         self._parser_ucast = MessageParser(None, loglevel=loglevel)
+        self._reassambler = MessageReassembler(loglevel=loglevel)
         self._queue_send = queue.PQueue(
             queue_length, f"queue_{logger_name}_send", loglevel=loglevel)
         # create a thread to handle the received unicast messages
@@ -217,6 +219,7 @@ class UDPucSocket(socket.socket):
                 # print(f"received: {address}, ({data})")
                 if data and not self._closed:
                     msgs = self._parser_ucast.unpack(data)
+                    msgs =  self._reassambler.process(msgs)
                     # print(f"  count parsed {len(msgs)}")
                     for msg in msgs:
                         if msg.dst_id.zero or msg.cmd_code > 0:

@@ -330,6 +330,41 @@ class MessageSerializer:
         presenceVector = None
         presenceIndex = 0
         index = payloadIndex
+        # Type check for arrays
+        if schema.type == 'array':
+            # Get array length (variant or normal)
+            if hasattr(schema, "jausType"):
+                typeSize = self._typeSize(schema.jausType)
+                (arrLength, ) = struct.unpack(self._packFmt(schema.jausType), payload[index:index+typeSize])
+                index += typeSize
+            elif hasattr(schema, "minItems") and hasattr(schema, "maxItems"):
+                arrLength = schema.maxItems
+            else:
+                arrLength = 0
+
+            # Variant array: select items.anyOf[index]
+            # Non-variant: always use items.anyOf[0]
+            if hasattr(schema, "isVariant") and schema.isVariant:
+                if arrLength >= len(schema.items.anyOf):
+                    self.logger.error(f"Array variant index {arrLength} out of range for schema {schema}")
+                    return index
+                variantSchema = schema.items.anyOf[arrLength]
+                # Store the variant under the first required field name
+                jsonObj[schema.required[0]] = []
+                # For variant, usually only one element (according to schema), adapt if more
+                element = {}
+                index = self._getProperties(element, payload, index, variantSchema)
+                jsonObj[schema.required[0]].append(element)
+            else:
+                # Normal array: use items.anyOf[0] for each element
+                jsonObj[schema.required[0]] = []
+                for i in range(arrLength):
+                    elementSchema = schema.items.anyOf[0]
+                    element = {}
+                    index = self._getProperties(element, payload, index, elementSchema)
+                    jsonObj[schema.required[0]].append(element)
+            return index
+
         for name, prop in schema.properties.__dict__.items():
             if len(filter) > 0 and name not in filter:
                 continue
@@ -471,8 +506,7 @@ class MessageSerializer:
                     index += typeSize
                     if hasattr(prop, 'isVariant') and prop.isVariant:
                         # handle variant
-                        index = self._getProperties(
-                            jsonObj, payload, index, prop.items.anyOf[arrLength])
+                        index = self._getProperties(jsonObj, payload, index, prop.items.anyOf[arrLength])
                     else:
                         # handle list
                         jsonObj[name] = []
