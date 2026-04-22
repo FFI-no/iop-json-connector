@@ -92,6 +92,8 @@ class MessageReassembler:
 
     def _assemble(self, stream):
         msg = stream["meta"]
+        # reset payload!
+        msg.payload = b''
 
         for seq in sorted(stream["fragments"].keys()):
             msg.appendPayload(stream["fragments"][seq])
