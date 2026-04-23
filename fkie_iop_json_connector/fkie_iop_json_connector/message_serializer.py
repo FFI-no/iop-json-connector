@@ -489,9 +489,13 @@ class MessageSerializer:
                             prop.bitRange, 'from')
                         strLength = bitRangeValue
                     # handle value set
+                    found_index = False
                     for enum in prop.valueSet:
                         if hasattr(enum, "valueEnum") and enum.valueEnum.enumIndex == int(strLength):
                             jsonObj[name] = enum.valueEnum.enumConst
+                            found_index = True
+                    if not found_index:
+                        jsonObj[name] = strLength
                 else:
                     # handle string value
                     value = payload[index:index+strLength]
