@@ -23,9 +23,7 @@
     "StabilizerID": {
       "type": "array",
       "comment": "",
-      "required": [
-        "QueryStabilizerRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -51,7 +49,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "StabilizerID"
+    "HeaderRec"
   ]
 }

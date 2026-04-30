@@ -24,8 +24,7 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIDRec",
-        "DeleteElementList"
+        "RequestIDRec"
       ],
       "properties": {
         "RequestIDRec": {
@@ -45,9 +44,7 @@
         "DeleteElementList": {
           "type": "array",
           "comment": "",
-          "required": [
-            "DeleteElementRec"
-          ],
+          "required": [],
           "items": {
             "anyOf": [
               {

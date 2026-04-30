@@ -23,9 +23,7 @@
     "EventList": {
       "type": "array",
       "comment": "List of reported events",
-      "required": [
-        "ReportEventRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -101,7 +99,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "EventList"
+    "HeaderRec"
   ]
 }

@@ -23,9 +23,7 @@
     "SupportedPlatformModesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "PlatformModeRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -83,7 +81,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "SupportedPlatformModesList"
+    "HeaderRec"
   ]
 }

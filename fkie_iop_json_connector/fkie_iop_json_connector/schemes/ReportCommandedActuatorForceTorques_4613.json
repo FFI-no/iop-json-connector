@@ -23,17 +23,13 @@
     "ActuatorForceTorqueList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "ActuatorForceTorqueRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
             "type": "object",
             "comment": "",
-            "required": [
-              "JointForceTorque"
-            ],
+            "required": [],
             "properties": {
               "JointForceTorque": {
                 "type": "array",
@@ -80,7 +76,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "ActuatorForceTorqueList"
+    "HeaderRec"
   ]
 }

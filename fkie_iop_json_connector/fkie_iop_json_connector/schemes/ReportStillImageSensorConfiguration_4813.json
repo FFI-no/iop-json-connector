@@ -23,9 +23,7 @@
     "StillImageSensorConfigurationList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "StillImageSensorConfigurationRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -355,7 +353,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "StillImageSensorConfigurationList"
+    "HeaderRec"
   ]
 }

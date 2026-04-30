@@ -21,100 +21,93 @@
       }
     },
     "QueryEventsVar": {
-      "type": "array",
+      "type": "object",
       "comment": "",
-      "required": [
-        "MessageIDRec",
-        "EventTypeRec",
-        "EventIDRec",
-        "AllEventsRec"
-      ],
-      "items": {
-        "anyOf": [
-          {
-            "type": "object",
-            "comment": "",
-            "required": [
-              "MessageCode"
-            ],
-            "properties": {
-              "MessageCode": {
-                "type": "number",
-                "jausType": "unsigned short integer",
-                "comment": "Query Message ID of the Event message that the receiving component is inquiring about."
-              }
-            }
-          },
-          {
-            "type": "object",
-            "comment": "",
-            "required": [
-              "EventType"
-            ],
-            "properties": {
-              "EventType": {
-                "type": "string",
-                "jausType": "unsigned byte",
-                "comment": "Type of event",
-                "valueSet": [
-                  {
-                    "valueEnum": {
-                      "enumIndex": 0,
-                      "enumConst": "Periodic (SC)"
-                    }
-                  },
-                  {
-                    "valueEnum": {
-                      "enumIndex": 1,
-                      "enumConst": "Every change"
-                    }
-                  }
-                ],
-                "enum": [
-                  "Periodic (SC)",
-                  "Every change"
-                ]
-              }
-            }
-          },
-          {
-            "type": "object",
-            "comment": "",
-            "required": [
-              "EventID"
-            ],
-            "properties": {
-              "EventID": {
-                "type": "number",
-                "jausType": "unsigned byte",
-                "comment": "Event ID returned by Confirm Event for details on specific event."
-              }
-            }
-          },
-          {
-            "type": "object",
-            "comment": "",
-            "required": [
-              "AllEvents"
-            ],
-            "properties": {
-              "AllEvents": {
-                "type": "number",
-                "jausType": "unsigned byte",
-                "comment": "All events should be reported.",
-                "valueSet": [
-                  {
-                    "valueRange": {
-                      "minimum": 0.0,
-                      "maximum": 0.0,
-                      "interpretation": ""
-                    }
-                  }
-                ]
-              }
+      "required": [],
+      "properties": {
+        "MessageIDRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "MessageCode"
+          ],
+          "properties": {
+            "MessageCode": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Query Message ID of the Event message that the receiving component is inquiring about."
             }
           }
-        ]
+        },
+        "EventTypeRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "EventType"
+          ],
+          "properties": {
+            "EventType": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Type of event",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "Periodic (SC)"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Every change"
+                  }
+                }
+              ],
+              "enum": [
+                "Periodic (SC)",
+                "Every change"
+              ]
+            }
+          }
+        },
+        "EventIDRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "EventID"
+          ],
+          "properties": {
+            "EventID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Event ID returned by Confirm Event for details on specific event."
+            }
+          }
+        },
+        "AllEventsRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "AllEvents"
+          ],
+          "properties": {
+            "AllEvents": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "All events should be reported.",
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 0.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          }
+        }
       },
       "jausType": "unsigned byte",
       "minItems": 0,

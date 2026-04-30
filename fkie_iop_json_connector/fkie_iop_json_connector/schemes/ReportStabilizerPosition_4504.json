@@ -23,9 +23,7 @@
     "StabilizerPosition": {
       "type": "array",
       "comment": "",
-      "required": [
-        "StabilizerPositionRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -61,7 +59,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "StabilizerPosition"
+    "HeaderRec"
   ]
 }

@@ -23,9 +23,7 @@
     "powerPlantCapabilitiesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "powerPlantCapabilitiesSeq"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -59,310 +57,300 @@
                 }
               },
               "powerPlantCapabilitiesVar": {
-                "type": "array",
+                "type": "object",
                 "comment": "",
-                "required": [
-                  "gasEngineCapabilitiesRec",
-                  "dieselEngineCapabilitiesRec",
-                  "batteryCapabilitiesList",
-                  "hydraulicCapabilitiesRec",
-                  "fuelCellCapabilitiesRec"
-                ],
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "presenceVector"
-                      ],
-                      "properties": {
-                        "presenceVector": {
-                          "type": "number",
-                          "jausType": "unsigned byte",
-                          "comment": ""
-                        },
-                        "fuelCapacity": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "oilCapacity": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxOilPressure": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.007812619211108568,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxOilTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.0038910505836575876,
-                            "bias": -75.0
-                          }
-                        },
-                        "maxEngineTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxCoolantLevel": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxCoolantTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.0038910505836575876,
-                            "bias": -75.0
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "presenceVector"
-                      ],
-                      "properties": {
-                        "presenceVector": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        },
-                        "fuelCapacity": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "oilCapacity": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxOilPressure": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.007812619211108568,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxOilTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.0038910505836575876,
-                            "bias": -75.0
-                          }
-                        },
-                        "maxEngineTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxCoolantLevel": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxCoolantTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.0038910505836575876,
-                            "bias": -75.0
-                          }
-                        },
-                        "maxGlowPlugTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "glowPlugTime": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "type": "array",
-                      "comment": "",
-                      "required": [
-                        "batteryCapabilitiesRec"
-                      ],
-                      "items": {
-                        "anyOf": [
-                          {
-                            "type": "object",
-                            "comment": "",
-                            "required": [
-                              "presenceVector"
-                            ],
-                            "properties": {
-                              "presenceVector": {
-                                "type": "number",
-                                "jausType": "unsigned byte",
-                                "comment": ""
-                              },
-                              "nominalVoltage": {
-                                "type": "number",
-                                "jausType": "unsigned short integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 0.015259021896696421,
-                                  "bias": 0.0
-                                }
-                              },
-                              "maxCharge": {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 0.0008381903173490871,
-                                  "bias": 0.0
-                                }
-                              },
-                              "maxCrankingAmps": {
-                                "type": "number",
-                                "jausType": "unsigned short integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 0.07629510948348212,
-                                  "bias": 0.0
-                                }
-                              }
-                            }
-                          }
-                        ]
+                "required": [],
+                "properties": {
+                  "gasEngineCapabilitiesRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "presenceVector"
+                    ],
+                    "properties": {
+                      "presenceVector": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
                       },
-                      "jausType": "unsigned byte",
-                      "minItems": 0,
-                      "maxItems": 255,
-                      "isVariant": false
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "presenceVector"
-                      ],
-                      "properties": {
-                        "presenceVector": {
-                          "type": "number",
-                          "jausType": "unsigned byte",
-                          "comment": ""
-                        },
-                        "fluidCapacity": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxPressure": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.007812619211108568,
-                            "bias": 0.0
-                          }
-                        },
-                        "maxTemp": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.0038910505836575876,
-                            "bias": -75.0
-                          }
+                      "fuelCapacity": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
                         }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "presenceVector"
-                      ],
-                      "properties": {
-                        "presenceVector": {
-                          "type": "number",
-                          "jausType": "unsigned byte",
-                          "comment": ""
-                        },
-                        "fuelCapacity": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": "",
-                          "scaleRange": {
-                            "scaleFactor": 0.003906309605554284,
-                            "bias": 0.0
-                          }
+                      },
+                      "oilCapacity": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxOilPressure": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.007812619211108568,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxOilTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.0038910505836575876,
+                          "bias": -75.0
+                        }
+                      },
+                      "maxEngineTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxCoolantLevel": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxCoolantTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.0038910505836575876,
+                          "bias": -75.0
                         }
                       }
                     }
-                  ]
+                  },
+                  "dieselEngineCapabilitiesRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "presenceVector"
+                    ],
+                    "properties": {
+                      "presenceVector": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "fuelCapacity": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "oilCapacity": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxOilPressure": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.007812619211108568,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxOilTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.0038910505836575876,
+                          "bias": -75.0
+                        }
+                      },
+                      "maxEngineTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxCoolantLevel": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxCoolantTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.0038910505836575876,
+                          "bias": -75.0
+                        }
+                      },
+                      "maxGlowPlugTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "glowPlugTime": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      }
+                    }
+                  },
+                  "batteryCapabilitiesList": {
+                    "type": "array",
+                    "comment": "",
+                    "required": [],
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "presenceVector"
+                          ],
+                          "properties": {
+                            "presenceVector": {
+                              "type": "number",
+                              "jausType": "unsigned byte",
+                              "comment": ""
+                            },
+                            "nominalVoltage": {
+                              "type": "number",
+                              "jausType": "unsigned short integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 0.015259021896696421,
+                                "bias": 0.0
+                              }
+                            },
+                            "maxCharge": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 0.0008381903173490871,
+                                "bias": 0.0
+                              }
+                            },
+                            "maxCrankingAmps": {
+                              "type": "number",
+                              "jausType": "unsigned short integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 0.07629510948348212,
+                                "bias": 0.0
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "jausType": "unsigned byte",
+                    "minItems": 0,
+                    "maxItems": 255,
+                    "isVariant": false
+                  },
+                  "hydraulicCapabilitiesRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "presenceVector"
+                    ],
+                    "properties": {
+                      "presenceVector": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
+                      },
+                      "fluidCapacity": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxPressure": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.007812619211108568,
+                          "bias": 0.0
+                        }
+                      },
+                      "maxTemp": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.0038910505836575876,
+                          "bias": -75.0
+                        }
+                      }
+                    }
+                  },
+                  "fuelCellCapabilitiesRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "presenceVector"
+                    ],
+                    "properties": {
+                      "presenceVector": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
+                      },
+                      "fuelCapacity": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.003906309605554284,
+                          "bias": 0.0
+                        }
+                      }
+                    }
+                  }
                 },
                 "jausType": "unsigned byte",
                 "minItems": 0,
@@ -380,7 +368,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "powerPlantCapabilitiesList"
+    "HeaderRec"
   ]
 }

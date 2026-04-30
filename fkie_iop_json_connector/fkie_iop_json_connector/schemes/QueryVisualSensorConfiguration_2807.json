@@ -23,9 +23,7 @@
     "QueryVisualSensorConfigurationList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "QueryVisualSensorConfigurationRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -57,7 +55,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "QueryVisualSensorConfigurationList"
+    "HeaderRec"
   ]
 }

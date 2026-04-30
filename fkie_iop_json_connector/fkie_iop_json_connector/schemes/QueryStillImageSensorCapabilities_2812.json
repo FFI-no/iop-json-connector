@@ -23,9 +23,7 @@
     "QueryStillImageSensorCapabilitiesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "QueryStillImageSensorCapabilitiesRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -57,7 +55,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "QueryStillImageSensorCapabilitiesList"
+    "HeaderRec"
   ]
 }

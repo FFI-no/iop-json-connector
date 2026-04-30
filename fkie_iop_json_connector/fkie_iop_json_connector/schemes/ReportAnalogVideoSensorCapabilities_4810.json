@@ -23,9 +23,7 @@
     "AnalogVideoSensorCapabilitiesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "AnalogVideoSensorCapabilitiesRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -229,7 +227,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "AnalogVideoSensorCapabilitiesList"
+    "HeaderRec"
   ]
 }

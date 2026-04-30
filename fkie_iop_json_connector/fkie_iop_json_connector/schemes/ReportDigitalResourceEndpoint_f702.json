@@ -23,9 +23,7 @@
     "DigitalResourceEndpointList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "DigitalResourceEndpointRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -192,7 +190,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "DigitalResourceEndpointList"
+    "HeaderRec"
   ]
 }

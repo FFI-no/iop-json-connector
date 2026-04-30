@@ -23,17 +23,14 @@
     "StabilizerCapabilities": {
       "type": "array",
       "comment": "",
-      "required": [
-        "StabilizerCapabilitiesSeq"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
             "type": "object",
             "comment": "",
             "required": [
-              "StabilizerCapabilitiesRec",
-              "StabilizerDimensionsList"
+              "StabilizerCapabilitiesRec"
             ],
             "properties": {
               "StabilizerCapabilitiesRec": {
@@ -73,9 +70,7 @@
               "StabilizerDimensionsList": {
                 "type": "array",
                 "comment": "",
-                "required": [
-                  "Points"
-                ],
+                "required": [],
                 "items": {
                   "anyOf": [
                     {
@@ -134,7 +129,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "StabilizerCapabilities"
+    "HeaderRec"
   ]
 }

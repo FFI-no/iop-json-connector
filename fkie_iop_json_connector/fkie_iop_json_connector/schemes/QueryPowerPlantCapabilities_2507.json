@@ -23,9 +23,7 @@
     "idList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "powerPlantID"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -60,7 +58,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "idList"
+    "HeaderRec"
   ]
 }

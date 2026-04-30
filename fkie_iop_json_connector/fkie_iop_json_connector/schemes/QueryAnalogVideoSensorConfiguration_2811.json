@@ -23,9 +23,7 @@
     "SensorIdList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "SensorIdRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -51,7 +49,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "SensorIdList"
+    "HeaderRec"
   ]
 }

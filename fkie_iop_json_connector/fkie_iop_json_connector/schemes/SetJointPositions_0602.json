@@ -23,17 +23,13 @@
     "JointPositionList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "JointPositionRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
             "type": "object",
             "comment": "",
-            "required": [
-              "JointPosition"
-            ],
+            "required": [],
             "properties": {
               "JointPosition": {
                 "type": "array",
@@ -80,7 +76,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "JointPositionList"
+    "HeaderRec"
   ]
 }

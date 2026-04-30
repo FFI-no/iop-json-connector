@@ -23,9 +23,7 @@
     "QueryRangeSensorCompressedDataList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "QueryRangeSensorCompressedDataRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -119,7 +117,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "QueryRangeSensorCompressedDataList"
+    "HeaderRec"
   ]
 }

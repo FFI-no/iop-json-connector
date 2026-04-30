@@ -23,17 +23,14 @@
     "NodeList": {
       "type": "array",
       "comment": "# of Nodes reported. For a single Node Report this field shall be 1",
-      "required": [
-        "NodeSeq"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
             "type": "object",
             "comment": "",
             "required": [
-              "NodeRec",
-              "ComponentList"
+              "NodeRec"
             ],
             "properties": {
               "NodeRec": {
@@ -53,17 +50,14 @@
               "ComponentList": {
                 "type": "array",
                 "comment": "",
-                "required": [
-                  "ComponentSeq"
-                ],
+                "required": [],
                 "items": {
                   "anyOf": [
                     {
                       "type": "object",
                       "comment": "",
                       "required": [
-                        "ComponentRec",
-                        "ServiceList"
+                        "ComponentRec"
                       ],
                       "properties": {
                         "ComponentRec": {
@@ -89,9 +83,7 @@
                         "ServiceList": {
                           "type": "array",
                           "comment": "",
-                          "required": [
-                            "ServiceRec"
-                          ],
+                          "required": [],
                           "items": {
                             "anyOf": [
                               {
@@ -149,7 +141,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "NodeList"
+    "HeaderRec"
   ]
 }

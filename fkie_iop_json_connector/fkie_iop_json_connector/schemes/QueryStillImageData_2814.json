@@ -23,9 +23,7 @@
     "QueryStillImageDataList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "QueryStillImageDataRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -81,7 +79,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "QueryStillImageDataList"
+    "HeaderRec"
   ]
 }

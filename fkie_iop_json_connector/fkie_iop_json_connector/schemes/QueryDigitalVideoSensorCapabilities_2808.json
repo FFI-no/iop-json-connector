@@ -23,9 +23,7 @@
     "QueryDigitalVideoSensorCapabilitiesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "QueryDigitalVideoSensorCapabilitiesRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -57,7 +55,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "QueryDigitalVideoSensorCapabilitiesList"
+    "HeaderRec"
   ]
 }

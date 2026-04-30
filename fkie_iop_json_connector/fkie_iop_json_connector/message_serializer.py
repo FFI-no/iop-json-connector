@@ -213,17 +213,83 @@ class MessageSerializer:
                         # TODO: pack payload data to user format
                         raise Exception(
                             f"Error in attribute '{name}': payload format {fieldFormat} not implemented! prop: {jsonObj}")
-                else:
-                    if hasattr(prop, 'bitField'):
-                        # handle bit field, see AS5684
-                        bitFieldResult = self._addProperties(
-                            getattr(jsonObj, name), message, prop)
-                        bitFieldData = self._safe_pack(prop.bitField, bitFieldResult)
-                        message.appendPayload(bitFieldData)
+                    continue
+
+                # -------- isVariant handling (packing) --------
+                if hasattr(prop, "isVariant") and prop.isVariant:
+                    # jsonObjVar is the value of the variant field (e.g., CostMap2DPoseVar)
+                    if not hasattr(jsonObj, name):
+                        raise AttributeError(f"no variant value set for '{name}'")
+                    jsonObjVar = getattr(jsonObj, name)
+
+                    # Determine which alternative is selected:
+                    # either dict with exactly one key or object with one non‑None attribute
+                    if isinstance(jsonObjVar, dict):
+                        if len(jsonObjVar) != 1:
+                            raise AttributeError(f"variant '{name}' must have exactly one selected alternative")
+                        variant_key, variant_value = next(iter(jsonObjVar.items()))
                     else:
-                        if hasattr(jsonObj, name) or name in requiredProps:
-                            self._addProperties(
-                                getattr(jsonObj, name), message, prop)
+                        variant_key = None
+                        variant_value = None
+                        for k in vars(prop.properties).keys():
+                            if hasattr(jsonObjVar, k):
+                                v = getattr(jsonObjVar, k)
+                                if v is not None:
+                                    variant_key = k
+                                    variant_value = v
+                                    break
+                        if variant_key is None:
+                            raise AttributeError(f"no alternative selected for variant '{name}'")
+
+                    # Determine variant index (ordering of properties defines index)
+                    prop_keys = list(vars(prop.properties).keys())
+                    try:
+                        variant_index = prop_keys.index(variant_key)
+                    except ValueError:
+                        raise AttributeError(f"unknown variant key '{variant_key}' for '{name}'")
+
+                    # Write variant index to payload
+                    if not hasattr(prop, "jausType"):
+                        raise AttributeError(f"variant '{name}' has no jausType for index field")
+                    idx_data = self._safe_pack(prop.jausType, variant_index)
+                    message.appendPayload(idx_data)
+
+                    # Get schema of selected alternative
+                    variantSchema = getattr(prop.properties, variant_key)
+
+                    # If the selected alternative is an array (e.g., CostMap2DDataVar.*List)
+                    if hasattr(variantSchema, "items") and getattr(variantSchema, "type", None) == 'array':
+                        array_value = variant_value
+                        if not isinstance(array_value, (list, tuple)):
+                            raise AttributeError(f"variant '{name}.{variant_key}' must be a list/array")
+
+                        # Write array length
+                        if not hasattr(variantSchema, "jausType"):
+                            raise AttributeError(f"array variant '{name}.{variant_key}' has no jausType for length field")
+                        len_data = self._safe_pack(variantSchema.jausType, len(array_value))
+                        message.appendPayload(len_data)
+
+                        # Pack each array element using the element schema
+                        for item in array_value:
+                            self._addProperties(item, message, variantSchema.items.anyOf[0])
+                    else:
+                        # Normal object as variant alternative
+                        self._addProperties(variant_value, message, variantSchema)
+
+                    # Skip normal object handling for this property
+                    continue
+                # -------- end isVariant handling --------
+
+                if hasattr(prop, 'bitField'):
+                    # handle bit field, see AS5684
+                    bitFieldResult = self._addProperties(
+                        getattr(jsonObj, name), message, prop)
+                    bitFieldData = self._safe_pack(prop.bitField, bitFieldResult)
+                    message.appendPayload(bitFieldData)
+                else:
+                    if hasattr(jsonObj, name) or name in requiredProps:
+                        self._addProperties(
+                            getattr(jsonObj, name), message, prop)
 
             elif prop.type == 'number':
                 if name == 'presenceVector':
@@ -330,40 +396,6 @@ class MessageSerializer:
         presenceVector = None
         presenceIndex = 0
         index = payloadIndex
-        # Type check for arrays
-        if schema.type == 'array':
-            # Get array length (variant or normal)
-            if hasattr(schema, "jausType"):
-                typeSize = self._typeSize(schema.jausType)
-                (arrLength, ) = struct.unpack(self._packFmt(schema.jausType), payload[index:index+typeSize])
-                index += typeSize
-            elif hasattr(schema, "minItems") and hasattr(schema, "maxItems"):
-                arrLength = schema.maxItems
-            else:
-                arrLength = 0
-
-            # Variant array: select items.anyOf[index]
-            # Non-variant: always use items.anyOf[0]
-            if hasattr(schema, "isVariant") and schema.isVariant:
-                if arrLength >= len(schema.items.anyOf):
-                    self.logger.error(f"Array variant index {arrLength} out of range for schema {schema}")
-                    return index
-                variantSchema = schema.items.anyOf[arrLength]
-                # Store the variant under the first required field name
-                jsonObj[schema.required[0]] = []
-                # For variant, usually only one element (according to schema), adapt if more
-                element = {}
-                index = self._getProperties(element, payload, index, variantSchema)
-                jsonObj[schema.required[0]].append(element)
-            else:
-                # Normal array: use items.anyOf[0] for each element
-                jsonObj[schema.required[0]] = []
-                for i in range(arrLength):
-                    elementSchema = schema.items.anyOf[0]
-                    element = {}
-                    index = self._getProperties(element, payload, index, elementSchema)
-                    jsonObj[schema.required[0]].append(element)
-            return index
 
         for name, prop in schema.properties.__dict__.items():
             if len(filter) > 0 and name not in filter:
@@ -432,6 +464,41 @@ class MessageSerializer:
                     else:
                         jsonPayloadObj['payload'] = payload[index:index+payloadSize]
                         return
+                if hasattr(prop, "isVariant") and prop.isVariant:
+                    # Get array length (variant or normal)
+                    arrLength = 0
+                    if hasattr(prop, "jausType"):
+                        typeSize = self._typeSize(prop.jausType)
+                        (variantIndex, ) = struct.unpack(self._packFmt(prop.jausType), payload[index:index+typeSize])
+                        index += typeSize
+                    elif hasattr(prop, "minItems") and hasattr(prop, "maxItems"):
+                        arrLength = prop.maxItems
+                    if prop.type == 'array' and arrLength >= len(prop.items.anyOf):
+                        self.logger.error(f"Array variant index {arrLength} out of range for schema {prop}")
+                        return index
+                    key_index = list(vars(prop.properties).keys())[variantIndex]
+                    variantSchema = getattr(prop.properties, key_index)
+
+                    if hasattr(variantSchema, "items") and variantSchema.type == 'array':
+                        if hasattr(variantSchema, "jausType"):
+                            typeSize = self._typeSize(variantSchema.jausType)
+                            (arrLength, ) = struct.unpack(self._packFmt(
+                                variantSchema.jausType), payload[index:index+typeSize])
+                            index += typeSize
+                            # handle list
+                            jsonObj[name] = {key_index: []}
+                            for i in range(0, arrLength):
+                                listItem = {}
+                                index = self._getProperties(
+                                    listItem, payload, index, variantSchema.items.anyOf[0])
+                                jsonObj[name][key_index].append(listItem)
+                            continue
+                    # Store the variant under the first required field name
+                    # For variant, usually only one element (according to schema), adapt if more
+                    element = {}
+                    index = self._getProperties(element, payload, index, variantSchema)
+                    jsonObj[name] = {key_index: element}
+                    continue
                 if not hasattr(jsonObj, name):
                     jsonObj[name] = {}
                 index = self._getProperties(jsonObj[name], payload, index, prop)
@@ -502,32 +569,28 @@ class MessageSerializer:
                     index += strLength
                     jsonObj[name] = value.decode()
             elif prop.type == 'array':
+                # print(f"add array: {name}")
                 if hasattr(prop, "jausType"):
-                    # list or variant
                     typeSize = self._typeSize(prop.jausType)
                     (arrLength, ) = struct.unpack(self._packFmt(
                         prop.jausType), payload[index:index+typeSize])
                     index += typeSize
-                    if hasattr(prop, 'isVariant') and prop.isVariant:
-                        # handle variant
-                        index = self._getProperties(jsonObj, payload, index, prop.items.anyOf[arrLength])
-                    else:
-                        # handle list
-                        jsonObj[name] = []
-                        for i in range(0, arrLength):
-                            listItem = {}
-                            index = self._getProperties(
-                                listItem, payload, index, prop.items.anyOf[0])
-                            jsonObj[name].append(listItem)
-                elif prop.minItems == prop.maxItems:
-                    # it is an array
-                    arrLength = prop.maxItems
+                    # handle list
                     jsonObj[name] = []
                     for i in range(0, arrLength):
                         listItem = {}
                         index = self._getProperties(
                             listItem, payload, index, prop.items.anyOf[0])
                         jsonObj[name].append(listItem)
+            elif prop.minItems == prop.maxItems:
+                # it is an array
+                arrLength = prop.maxItems
+                jsonObj[name] = []
+                for i in range(0, arrLength):
+                    listItem = {}
+                    index = self._getProperties(
+                        listItem, payload, index, prop.items.anyOf[0])
+                    jsonObj[name].append(listItem)
             else:
                 self.logger.error(
                     f"property {name}: {prop.type} not implemented")

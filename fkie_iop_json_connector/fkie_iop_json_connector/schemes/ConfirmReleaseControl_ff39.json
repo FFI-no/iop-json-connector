@@ -23,9 +23,7 @@
     "ReleaseControlList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "ReleaseControlRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -82,7 +80,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "ReleaseControlList"
+    "HeaderRec"
   ]
 }

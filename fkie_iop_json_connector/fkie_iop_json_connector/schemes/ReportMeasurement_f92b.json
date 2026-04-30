@@ -25,8 +25,7 @@
       "comment": "",
       "required": [
         "presenceVector",
-        "DeviceRec",
-        "ReadingsList"
+        "DeviceRec"
       ],
       "properties": {
         "presenceVector": {
@@ -73,17 +72,14 @@
         "ReadingsList": {
           "type": "array",
           "comment": "",
-          "required": [
-            "ReadingSeq"
-          ],
+          "required": [],
           "items": {
             "anyOf": [
               {
                 "type": "object",
                 "comment": "",
                 "required": [
-                  "ReadingRec",
-                  "ValueList"
+                  "ReadingRec"
                 ],
                 "properties": {
                   "ReadingRec": {
@@ -207,9 +203,7 @@
                   "ValueList": {
                     "type": "array",
                     "comment": "",
-                    "required": [
-                      "ValueRec"
-                    ],
+                    "required": [],
                     "items": {
                       "anyOf": [
                         {

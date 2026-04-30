@@ -24,8 +24,7 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIdRec",
-        "AnalogVideoSensorList"
+        "RequestIdRec"
       ],
       "properties": {
         "RequestIdRec": {
@@ -45,9 +44,7 @@
         "AnalogVideoSensorList": {
           "type": "array",
           "comment": "",
-          "required": [
-            "AnalogVideoSensorConfigurationRec"
-          ],
+          "required": [],
           "items": {
             "anyOf": [
               {

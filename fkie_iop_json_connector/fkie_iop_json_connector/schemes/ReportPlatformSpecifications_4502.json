@@ -30,97 +30,92 @@
       ],
       "properties": {
         "platformSpecifics": {
-          "type": "array",
+          "type": "object",
           "comment": "",
-          "required": [
-            "skidsteer",
-            "Ackermann"
-          ],
-          "items": {
-            "anyOf": [
-              {
-                "type": "object",
-                "comment": "Skid-steer specific platform specs",
-                "required": [
-                  "presenceVector"
-                ],
-                "properties": {
-                  "presenceVector": {
-                    "type": "number",
-                    "jausType": "unsigned byte",
-                    "comment": ""
-                  },
-                  "TrackSeparation": {
-                    "type": "number",
-                    "jausType": "unsigned short integer",
-                    "comment": "Distance between the two tracks",
-                    "scaleRange": {
-                      "scaleFactor": 0.00045777065690089265,
-                      "bias": 0.0
-                    }
-                  },
-                  "DriveWheelRadius": {
-                    "type": "number",
-                    "jausType": "unsigned short integer",
-                    "comment": "Radius of the drive wheel (distance from center of the drive shaft to the outer edge of the drive wheel) in meters",
-                    "scaleRange": {
-                      "scaleFactor": 0.00015259021896696422,
-                      "bias": 0.0
-                    }
+          "required": [],
+          "properties": {
+            "skidsteer": {
+              "type": "object",
+              "comment": "Skid-steer specific platform specs",
+              "required": [
+                "presenceVector"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "TrackSeparation": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Distance between the two tracks",
+                  "scaleRange": {
+                    "scaleFactor": 0.00045777065690089265,
+                    "bias": 0.0
                   }
-                }
-              },
-              {
-                "type": "object",
-                "comment": "",
-                "required": [
-                  "presenceVector"
-                ],
-                "properties": {
-                  "presenceVector": {
-                    "type": "number",
-                    "jausType": "unsigned byte",
-                    "comment": ""
-                  },
-                  "SteeringAngleRange": {
-                    "type": "number",
-                    "jausType": "unsigned short integer",
-                    "comment": "The maximum achievable steering angles, as measured by a virtual wheel at the center of the front axle. Negative values cause the vehicle to turn left; positive values cause the vehicle to turn right.",
-                    "scaleRange": {
-                      "scaleFactor": 4.793763109162727e-05,
-                      "bias": -1.5707963267948966
-                    }
-                  },
-                  "MinTurnRadius": {
-                    "type": "number",
-                    "jausType": "unsigned short integer",
-                    "comment": "The radius of the smallest turn the vehicle is able to make.",
-                    "scaleRange": {
-                      "scaleFactor": 0.00038147554741741054,
-                      "bias": 0.0
-                    }
-                  },
-                  "WheelSeparation": {
-                    "type": "number",
-                    "jausType": "unsigned short integer",
-                    "comment": "Distance between the centers of the left and right wheels",
-                    "scaleRange": {
-                      "scaleFactor": 0.00045777065690089265,
-                      "bias": 0.0
-                    }
-                  },
-                  "DriveWheelRadius": {
-                    "type": "number",
-                    "jausType": "unsigned short integer",
-                    "comment": "Radius of the drive wheel (distance from center of the drive shaft to the outer edge of the drive wheel) in meters",
-                    "scaleRange": {
-                      "scaleFactor": 0.00015259021896696422,
-                      "bias": 0.0
-                    }
+                },
+                "DriveWheelRadius": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Radius of the drive wheel (distance from center of the drive shaft to the outer edge of the drive wheel) in meters",
+                  "scaleRange": {
+                    "scaleFactor": 0.00015259021896696422,
+                    "bias": 0.0
                   }
                 }
               }
-            ]
+            },
+            "Ackermann": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "presenceVector"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "SteeringAngleRange": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "The maximum achievable steering angles, as measured by a virtual wheel at the center of the front axle. Negative values cause the vehicle to turn left; positive values cause the vehicle to turn right.",
+                  "scaleRange": {
+                    "scaleFactor": 4.793763109162727e-05,
+                    "bias": -1.5707963267948966
+                  }
+                },
+                "MinTurnRadius": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "The radius of the smallest turn the vehicle is able to make.",
+                  "scaleRange": {
+                    "scaleFactor": 0.00038147554741741054,
+                    "bias": 0.0
+                  }
+                },
+                "WheelSeparation": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Distance between the centers of the left and right wheels",
+                  "scaleRange": {
+                    "scaleFactor": 0.00045777065690089265,
+                    "bias": 0.0
+                  }
+                },
+                "DriveWheelRadius": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Radius of the drive wheel (distance from center of the drive shaft to the outer edge of the drive wheel) in meters",
+                  "scaleRange": {
+                    "scaleFactor": 0.00015259021896696422,
+                    "bias": 0.0
+                  }
+                }
+              }
+            }
           },
           "jausType": "unsigned byte",
           "minItems": 0,

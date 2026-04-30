@@ -24,8 +24,7 @@
       "type": "object",
       "comment": "",
       "required": [
-        "UGVSeverityRec",
-        "SeverityList"
+        "UGVSeverityRec"
       ],
       "properties": {
         "UGVSeverityRec": {
@@ -84,9 +83,7 @@
         "SeverityList": {
           "type": "array",
           "comment": "List of Node Severity Levels",
-          "required": [
-            "SeveritySequence"
-          ],
+          "required": [],
           "items": {
             "anyOf": [
               {

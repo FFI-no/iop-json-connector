@@ -23,9 +23,7 @@
     "ServiceList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "ServiceRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -65,7 +63,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "ServiceList"
+    "HeaderRec"
   ]
 }

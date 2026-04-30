@@ -24,8 +24,7 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIdRec",
-        "VisualSensorConfigurationList"
+        "RequestIdRec"
       ],
       "properties": {
         "RequestIdRec": {
@@ -45,9 +44,7 @@
         "VisualSensorConfigurationList": {
           "type": "array",
           "comment": "",
-          "required": [
-            "VisualSensorConfigurationRec"
-          ],
+          "required": [],
           "items": {
             "anyOf": [
               {

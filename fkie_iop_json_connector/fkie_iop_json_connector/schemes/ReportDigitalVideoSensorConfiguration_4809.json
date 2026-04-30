@@ -23,9 +23,7 @@
     "DigitalVideoSensorConfigurationList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "DigitalVideoSensorConfigurationRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -342,7 +340,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "DigitalVideoSensorConfigurationList"
+    "HeaderRec"
   ]
 }

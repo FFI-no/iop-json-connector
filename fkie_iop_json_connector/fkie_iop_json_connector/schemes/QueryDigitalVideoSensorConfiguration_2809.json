@@ -23,9 +23,7 @@
     "QueryDigitalVideoConfigurationList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "QueryDigitalVideoConfigurationRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -57,7 +55,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "QueryDigitalVideoConfigurationList"
+    "HeaderRec"
   ]
 }

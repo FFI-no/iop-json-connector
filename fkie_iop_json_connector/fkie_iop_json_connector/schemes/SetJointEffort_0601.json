@@ -23,9 +23,7 @@
     "JointEffortList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "JointEffortRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -55,7 +53,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "JointEffortList"
+    "HeaderRec"
   ]
 }

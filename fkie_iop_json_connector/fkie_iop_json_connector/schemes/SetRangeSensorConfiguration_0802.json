@@ -24,8 +24,7 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIdRec",
-        "RangeSensorConfigurationList"
+        "RequestIdRec"
       ],
       "properties": {
         "RequestIdRec": {
@@ -45,9 +44,7 @@
         "RangeSensorConfigurationList": {
           "type": "array",
           "comment": "",
-          "required": [
-            "RangeSensorConfigurationRec"
-          ],
+          "required": [],
           "items": {
             "anyOf": [
               {

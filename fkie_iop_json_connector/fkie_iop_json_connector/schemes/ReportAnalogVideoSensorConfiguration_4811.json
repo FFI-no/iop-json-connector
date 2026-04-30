@@ -23,9 +23,7 @@
     "AnalogVideoSensorConfigurationList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "AnalogVideoSensorConfigurationRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -103,7 +101,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "AnalogVideoSensorConfigurationList"
+    "HeaderRec"
   ]
 }

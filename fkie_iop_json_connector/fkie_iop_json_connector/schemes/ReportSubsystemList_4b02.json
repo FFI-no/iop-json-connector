@@ -23,9 +23,7 @@
     "SubsystemList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "SubsystemRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -63,7 +61,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "SubsystemList"
+    "HeaderRec"
   ]
 }

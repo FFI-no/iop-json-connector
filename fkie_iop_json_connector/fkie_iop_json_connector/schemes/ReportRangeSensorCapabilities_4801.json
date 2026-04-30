@@ -23,9 +23,7 @@
     "RangeSensorCapabilitiesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "RangeSensorCapabilitiesRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -365,7 +363,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "RangeSensorCapabilitiesList"
+    "HeaderRec"
   ]
 }

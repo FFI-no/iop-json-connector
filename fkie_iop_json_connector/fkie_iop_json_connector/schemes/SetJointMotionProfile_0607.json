@@ -23,97 +23,90 @@
     "JointMotionProfileList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "JointType"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
-            "type": "array",
+            "type": "object",
             "comment": "",
-            "required": [
-              "RevoluteJointMotionProfileRec",
-              "PrismaticJointMotionProfileRec"
-            ],
-            "items": {
-              "anyOf": [
-                {
-                  "type": "object",
-                  "comment": "",
-                  "required": [
-                    "JointMaxSpeed",
-                    "JointMaxAccelerationRate",
-                    "JointMaxDecelerationRate"
-                  ],
-                  "properties": {
-                    "JointMaxSpeed": {
-                      "type": "number",
-                      "jausType": "unsigned integer",
-                      "comment": "",
-                      "scaleRange": {
-                        "scaleFactor": 7.314590398038859e-09,
-                        "bias": 0.0
-                      }
-                    },
-                    "JointMaxAccelerationRate": {
-                      "type": "number",
-                      "jausType": "unsigned integer",
-                      "comment": "",
-                      "scaleRange": {
-                        "scaleFactor": 7.314590398038859e-09,
-                        "bias": 0.0
-                      }
-                    },
-                    "JointMaxDecelerationRate": {
-                      "type": "number",
-                      "jausType": "unsigned integer",
-                      "comment": "",
-                      "scaleRange": {
-                        "scaleFactor": 7.314590398038859e-09,
-                        "bias": 0.0
-                      }
+            "required": [],
+            "properties": {
+              "RevoluteJointMotionProfileRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "JointMaxSpeed",
+                  "JointMaxAccelerationRate",
+                  "JointMaxDecelerationRate"
+                ],
+                "properties": {
+                  "JointMaxSpeed": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 7.314590398038859e-09,
+                      "bias": 0.0
                     }
-                  }
-                },
-                {
-                  "type": "object",
-                  "comment": "",
-                  "required": [
-                    "JointMaxSpeed",
-                    "JointMaxAccelerationRate",
-                    "JointMaxDecelerationRate"
-                  ],
-                  "properties": {
-                    "JointMaxSpeed": {
-                      "type": "number",
-                      "jausType": "unsigned integer",
-                      "comment": "",
-                      "scaleRange": {
-                        "scaleFactor": 1.1641532185403987e-09,
-                        "bias": 0.0
-                      }
-                    },
-                    "JointMaxAccelerationRate": {
-                      "type": "number",
-                      "jausType": "unsigned integer",
-                      "comment": "",
-                      "scaleRange": {
-                        "scaleFactor": 4.656612874161595e-09,
-                        "bias": 0.0
-                      }
-                    },
-                    "JointMaxDecelerationRate": {
-                      "type": "number",
-                      "jausType": "unsigned integer",
-                      "comment": "",
-                      "scaleRange": {
-                        "scaleFactor": 4.656612874161595e-09,
-                        "bias": 0.0
-                      }
+                  },
+                  "JointMaxAccelerationRate": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 7.314590398038859e-09,
+                      "bias": 0.0
+                    }
+                  },
+                  "JointMaxDecelerationRate": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 7.314590398038859e-09,
+                      "bias": 0.0
                     }
                   }
                 }
-              ]
+              },
+              "PrismaticJointMotionProfileRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "JointMaxSpeed",
+                  "JointMaxAccelerationRate",
+                  "JointMaxDecelerationRate"
+                ],
+                "properties": {
+                  "JointMaxSpeed": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 1.1641532185403987e-09,
+                      "bias": 0.0
+                    }
+                  },
+                  "JointMaxAccelerationRate": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-09,
+                      "bias": 0.0
+                    }
+                  },
+                  "JointMaxDecelerationRate": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-09,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              }
             },
             "jausType": "unsigned byte",
             "minItems": null,
@@ -129,7 +122,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "JointMotionProfileList"
+    "HeaderRec"
   ]
 }

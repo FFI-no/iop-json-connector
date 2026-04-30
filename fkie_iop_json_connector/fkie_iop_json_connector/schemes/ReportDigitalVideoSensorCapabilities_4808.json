@@ -23,9 +23,7 @@
     "DigitalVideoSensorList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "DigitalVideoSensorCapabilitiesRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -1065,7 +1063,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "DigitalVideoSensorList"
+    "HeaderRec"
   ]
 }

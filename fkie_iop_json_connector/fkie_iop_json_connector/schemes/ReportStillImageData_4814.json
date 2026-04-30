@@ -23,9 +23,7 @@
     "StillImageDataList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "StillImageDataRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -284,7 +282,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "StillImageDataList"
+    "HeaderRec"
   ]
 }

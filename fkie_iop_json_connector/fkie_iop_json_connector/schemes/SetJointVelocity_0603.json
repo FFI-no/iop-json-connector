@@ -23,17 +23,13 @@
     "JointVelocityList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "JointVelocityRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
             "type": "object",
             "comment": "",
-            "required": [
-              "JointVelocity"
-            ],
+            "required": [],
             "properties": {
               "JointVelocity": {
                 "type": "array",
@@ -80,7 +76,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "JointVelocityList"
+    "HeaderRec"
   ]
 }

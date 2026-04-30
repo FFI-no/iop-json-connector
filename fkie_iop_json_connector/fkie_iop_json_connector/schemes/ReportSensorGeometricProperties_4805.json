@@ -23,9 +23,7 @@
     "GeometricPropertiesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "GeometricPropertiesSequence"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -51,160 +49,147 @@
                 }
               },
               "GeometricPropertiesVariant": {
-                "type": "array",
+                "type": "object",
                 "comment": "",
-                "required": [
-                  "NoGeometricPropertiesVariant",
-                  "StaticGeometricPropertiesRec",
-                  "ManipulatorGeometricPropertiesRec"
-                ],
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "array",
-                      "comment": "",
-                      "required": [],
-                      "items": {
-                        "anyOf": []
+                "required": [],
+                "properties": {
+                  "NoGeometricPropertiesVariant": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {},
+                    "jausType": "unsigned byte",
+                    "minItems": 0,
+                    "maxItems": 0,
+                    "isVariant": true
+                  },
+                  "StaticGeometricPropertiesRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {
+                      "SensorPosition": {
+                        "type": "array",
+                        "comment": "",
+                        "required": [
+                          "PositionVectorElement"
+                        ],
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 1.3969838622484784e-08,
+                                "bias": -30.0
+                              }
+                            }
+                          ]
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
                       },
-                      "jausType": "unsigned byte",
-                      "minItems": 0,
-                      "maxItems": 0,
-                      "isVariant": true
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SensorPosition",
-                        "UnitQuaternion"
-                      ],
-                      "properties": {
-                        "SensorPosition": {
-                          "type": "array",
-                          "comment": "",
-                          "required": [
-                            "PositionVectorElement"
-                          ],
-                          "items": {
-                            "anyOf": [
-                              {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 1.3969838622484784e-08,
-                                  "bias": -30.0
-                                }
+                      "UnitQuaternion": {
+                        "type": "array",
+                        "comment": "",
+                        "required": [
+                          "UnitQuaternionElement"
+                        ],
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 4.656612874161595e-10,
+                                "bias": -1.0
                               }
-                            ]
-                          },
-                          "minItems": 3,
-                          "maxItems": 3
+                            }
+                          ]
                         },
-                        "UnitQuaternion": {
-                          "type": "array",
-                          "comment": "",
-                          "required": [
-                            "UnitQuaternionElement"
-                          ],
-                          "items": {
-                            "anyOf": [
-                              {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 4.656612874161595e-10,
-                                  "bias": -1.0
-                                }
-                              }
-                            ]
-                          },
-                          "minItems": 4,
-                          "maxItems": 4
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SubsystemID",
-                        "NodeID",
-                        "ComponentID",
-                        "JointNumber",
-                        "SensorPosition",
-                        "UnitQuaternion"
-                      ],
-                      "properties": {
-                        "SubsystemID": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        },
-                        "NodeID": {
-                          "type": "number",
-                          "jausType": "unsigned byte",
-                          "comment": ""
-                        },
-                        "ComponentID": {
-                          "type": "number",
-                          "jausType": "unsigned byte",
-                          "comment": ""
-                        },
-                        "JointNumber": {
-                          "type": "number",
-                          "jausType": "unsigned byte",
-                          "comment": ""
-                        },
-                        "SensorPosition": {
-                          "type": "array",
-                          "comment": "",
-                          "required": [
-                            "PositionVectorElement"
-                          ],
-                          "items": {
-                            "anyOf": [
-                              {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 1.3969838622484784e-08,
-                                  "bias": -30.0
-                                }
-                              }
-                            ]
-                          },
-                          "minItems": 3,
-                          "maxItems": 3
-                        },
-                        "UnitQuaternion": {
-                          "type": "array",
-                          "comment": "",
-                          "required": [
-                            "UnitQuaternionElement"
-                          ],
-                          "items": {
-                            "anyOf": [
-                              {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 4.656612874161595e-10,
-                                  "bias": -1.0
-                                }
-                              }
-                            ]
-                          },
-                          "minItems": 4,
-                          "maxItems": 4
-                        }
+                        "minItems": 4,
+                        "maxItems": 4
                       }
                     }
-                  ]
+                  },
+                  "ManipulatorGeometricPropertiesRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SubsystemID",
+                      "NodeID",
+                      "ComponentID",
+                      "JointNumber"
+                    ],
+                    "properties": {
+                      "SubsystemID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "NodeID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
+                      },
+                      "ComponentID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
+                      },
+                      "JointNumber": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
+                      },
+                      "SensorPosition": {
+                        "type": "array",
+                        "comment": "",
+                        "required": [
+                          "PositionVectorElement"
+                        ],
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 1.3969838622484784e-08,
+                                "bias": -30.0
+                              }
+                            }
+                          ]
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "UnitQuaternion": {
+                        "type": "array",
+                        "comment": "",
+                        "required": [
+                          "UnitQuaternionElement"
+                        ],
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 4.656612874161595e-10,
+                                "bias": -1.0
+                              }
+                            }
+                          ]
+                        },
+                        "minItems": 4,
+                        "maxItems": 4
+                      }
+                    }
+                  }
                 },
                 "jausType": "unsigned byte",
                 "minItems": 0,
@@ -222,7 +207,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "GeometricPropertiesList"
+    "HeaderRec"
   ]
 }

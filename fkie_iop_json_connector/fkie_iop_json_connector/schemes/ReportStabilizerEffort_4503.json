@@ -23,9 +23,7 @@
     "StabilizerEffort": {
       "type": "array",
       "comment": "",
-      "required": [
-        "StabilizerEffortRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -61,7 +59,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "StabilizerEffort"
+    "HeaderRec"
   ]
 }

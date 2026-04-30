@@ -23,9 +23,7 @@
     "NoGoZonesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "NoGoZoneSeq"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -51,101 +49,92 @@
                 }
               },
               "VertexVar": {
-                "type": "array",
+                "type": "object",
                 "comment": "",
-                "required": [
-                  "GlobalVertexList",
-                  "LocalVertexList"
-                ],
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "array",
-                      "comment": "",
-                      "required": [
-                        "GlobalVertexRec"
-                      ],
-                      "items": {
-                        "anyOf": [
-                          {
-                            "type": "object",
-                            "comment": "",
-                            "required": [
-                              "Latitude",
-                              "Longitude"
-                            ],
-                            "properties": {
-                              "Latitude": {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 4.190951586745435e-08,
-                                  "bias": -90.0
-                                }
-                              },
-                              "Longitude": {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 8.38190317349087e-08,
-                                  "bias": -180.0
-                                }
+                "required": [],
+                "properties": {
+                  "GlobalVertexList": {
+                    "type": "array",
+                    "comment": "",
+                    "required": [],
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "Latitude",
+                            "Longitude"
+                          ],
+                          "properties": {
+                            "Latitude": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 4.190951586745435e-08,
+                                "bias": -90.0
+                              }
+                            },
+                            "Longitude": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 8.38190317349087e-08,
+                                "bias": -180.0
                               }
                             }
                           }
-                        ]
-                      },
-                      "jausType": "unsigned byte",
-                      "minItems": 0,
-                      "maxItems": 255,
-                      "isVariant": false
+                        }
+                      ]
                     },
-                    {
-                      "type": "array",
-                      "comment": "",
-                      "required": [
-                        "LocalVertexRec"
-                      ],
-                      "items": {
-                        "anyOf": [
-                          {
-                            "type": "object",
-                            "comment": "",
-                            "required": [
-                              "X",
-                              "Y"
-                            ],
-                            "properties": {
-                              "X": {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 4.656612874161595e-05,
-                                  "bias": -100000.0
-                                }
-                              },
-                              "Y": {
-                                "type": "number",
-                                "jausType": "unsigned integer",
-                                "comment": "",
-                                "scaleRange": {
-                                  "scaleFactor": 4.656612874161595e-05,
-                                  "bias": -100000.0
-                                }
+                    "jausType": "unsigned byte",
+                    "minItems": 0,
+                    "maxItems": 255,
+                    "isVariant": false
+                  },
+                  "LocalVertexList": {
+                    "type": "array",
+                    "comment": "",
+                    "required": [],
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "X",
+                            "Y"
+                          ],
+                          "properties": {
+                            "X": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 4.656612874161595e-05,
+                                "bias": -100000.0
+                              }
+                            },
+                            "Y": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "scaleRange": {
+                                "scaleFactor": 4.656612874161595e-05,
+                                "bias": -100000.0
                               }
                             }
                           }
-                        ]
-                      },
-                      "jausType": "unsigned byte",
-                      "minItems": 0,
-                      "maxItems": 255,
-                      "isVariant": false
-                    }
-                  ]
+                        }
+                      ]
+                    },
+                    "jausType": "unsigned byte",
+                    "minItems": 0,
+                    "maxItems": 255,
+                    "isVariant": false
+                  }
                 },
                 "jausType": "unsigned byte",
                 "minItems": 0,
@@ -163,7 +152,6 @@
     }
   },
   "required": [
-    "DefaultHeaderRec",
-    "NoGoZonesList"
+    "DefaultHeaderRec"
   ]
 }

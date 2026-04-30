@@ -23,9 +23,7 @@
     "VisualSensorCapabilitiesList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "VisualSensorCapabilitiesRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -1124,7 +1122,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "VisualSensorCapabilitiesList"
+    "HeaderRec"
   ]
 }

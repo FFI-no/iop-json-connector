@@ -24,8 +24,7 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIdRec",
-        "ConfirmSensorList"
+        "RequestIdRec"
       ],
       "properties": {
         "RequestIdRec": {
@@ -45,500 +44,489 @@
         "ConfirmSensorList": {
           "type": "array",
           "comment": "",
-          "required": [
-            "ConfirmSensorConfigurationVariant"
-          ],
+          "required": [],
           "items": {
             "anyOf": [
               {
-                "type": "array",
+                "type": "object",
                 "comment": "",
-                "required": [
-                  "SensorIdRec",
-                  "RangeSensorErrorRec",
-                  "VisualSensorErrorRec",
-                  "DigitalVideoSensorErrorRec",
-                  "AnalogVideoSensorErrorRec",
-                  "StillImageSensorErrorRec"
-                ],
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SensorID"
-                      ],
-                      "properties": {
-                        "SensorID": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SensorID",
-                        "RangeSensorErrorCode",
-                        "ErrorMessage"
-                      ],
-                      "properties": {
-                        "SensorID": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        },
-                        "RangeSensorErrorCode": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "valueSet": [
-                            {
-                              "valueEnum": {
-                                "enumIndex": 0,
-                                "enumConst": "Unknown Sensor ID"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 1,
-                                "enumConst": "Invalid Horizontal Field of View"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 2,
-                                "enumConst": "Invalid Vertical Field of View"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 3,
-                                "enumConst": "Invalid Update Rate"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 4,
-                                "enumConst": "Invalid Sensor Range"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 5,
-                                "enumConst": "Invalid Sensor State"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 6,
-                                "enumConst": "Multiple Invalid Parameters"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 255,
-                                "enumConst": "Unknown Error / Fault"
-                              }
-                            }
-                          ],
-                          "enum": [
-                            "Unknown Sensor ID",
-                            "Invalid Horizontal Field of View",
-                            "Invalid Vertical Field of View",
-                            "Invalid Update Rate",
-                            "Invalid Sensor Range",
-                            "Invalid Sensor State",
-                            "Multiple Invalid Parameters",
-                            "Unknown Error / Fault"
-                          ]
-                        },
-                        "ErrorMessage": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "minLength": 0,
-                          "maxLength": 255
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SensorID",
-                        "VisualSensorErrorCode",
-                        "ErrorMessage"
-                      ],
-                      "properties": {
-                        "SensorID": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        },
-                        "VisualSensorErrorCode": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "valueSet": [
-                            {
-                              "valueEnum": {
-                                "enumIndex": 0,
-                                "enumConst": "Unknown Sensor ID"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 1,
-                                "enumConst": "Invalid Sensor State"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 2,
-                                "enumConst": "Invalid Zoom Mode"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 3,
-                                "enumConst": "Invalid Zoom Value"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 4,
-                                "enumConst": "Invalid Focus Mode"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 5,
-                                "enumConst": "Invalid Focus Value"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 6,
-                                "enumConst": "Invalid White Balance"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 7,
-                                "enumConst": "Invalid Imaging Mode"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 8,
-                                "enumConst": "Invalid Exposure Mode"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 9,
-                                "enumConst": "Invalid Metering Mode"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 10,
-                                "enumConst": "Invalid Shutter Speed"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 11,
-                                "enumConst": "Invalid Aperture Value"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 12,
-                                "enumConst": "Invalid Light Sensitivity"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 13,
-                                "enumConst": "Invalid Image Stabilization"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 14,
-                                "enumConst": "Invalid Horizontal FOV"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 15,
-                                "enumConst": "Invalid Vertical FOV"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 16,
-                                "enumConst": "Multiple Invalid Parameters"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 255,
-                                "enumConst": "Unknown Error / Fault"
-                              }
-                            }
-                          ],
-                          "enum": [
-                            "Unknown Sensor ID",
-                            "Invalid Sensor State",
-                            "Invalid Zoom Mode",
-                            "Invalid Zoom Value",
-                            "Invalid Focus Mode",
-                            "Invalid Focus Value",
-                            "Invalid White Balance",
-                            "Invalid Imaging Mode",
-                            "Invalid Exposure Mode",
-                            "Invalid Metering Mode",
-                            "Invalid Shutter Speed",
-                            "Invalid Aperture Value",
-                            "Invalid Light Sensitivity",
-                            "Invalid Image Stabilization",
-                            "Invalid Horizontal FOV",
-                            "Invalid Vertical FOV",
-                            "Multiple Invalid Parameters",
-                            "Unknown Error / Fault"
-                          ]
-                        },
-                        "ErrorMessage": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "minLength": 0,
-                          "maxLength": 255
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SensorID",
-                        "DigitalVideoErrorCode",
-                        "ErrorMessage"
-                      ],
-                      "properties": {
-                        "SensorID": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        },
-                        "DigitalVideoErrorCode": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "valueSet": [
-                            {
-                              "valueEnum": {
-                                "enumIndex": 0,
-                                "enumConst": "Unknown Sensor ID"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 1,
-                                "enumConst": "Invalid Minimum Bit Rate"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 2,
-                                "enumConst": "Invalid Maximum Bit Rate"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 3,
-                                "enumConst": "Invalid Minimum Frame Rate"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 4,
-                                "enumConst": "Invalid Maximum Frame Rate"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 5,
-                                "enumConst": "Invalid Frame Size"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 6,
-                                "enumConst": "Invalid Format"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 7,
-                                "enumConst": "Multiple Invalid Parameters"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 255,
-                                "enumConst": "Unknown Error / Fault"
-                              }
-                            }
-                          ],
-                          "enum": [
-                            "Unknown Sensor ID",
-                            "Invalid Minimum Bit Rate",
-                            "Invalid Maximum Bit Rate",
-                            "Invalid Minimum Frame Rate",
-                            "Invalid Maximum Frame Rate",
-                            "Invalid Frame Size",
-                            "Invalid Format",
-                            "Multiple Invalid Parameters",
-                            "Unknown Error / Fault"
-                          ]
-                        },
-                        "ErrorMessage": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "minLength": 0,
-                          "maxLength": 255
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SensorID",
-                        "AnalogVideoErrorCode",
-                        "ErrorMessage"
-                      ],
-                      "properties": {
-                        "SensorID": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        },
-                        "AnalogVideoErrorCode": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "valueSet": [
-                            {
-                              "valueEnum": {
-                                "enumIndex": 0,
-                                "enumConst": "Unknown Sensor ID"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 1,
-                                "enumConst": "Invalid Format"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 255,
-                                "enumConst": "Unknown Error / Fault"
-                              }
-                            }
-                          ],
-                          "enum": [
-                            "Unknown Sensor ID",
-                            "Invalid Format",
-                            "Unknown Error / Fault"
-                          ]
-                        },
-                        "ErrorMessage": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "minLength": 0,
-                          "maxLength": 255
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "comment": "",
-                      "required": [
-                        "SensorID",
-                        "StillImageErrorCode",
-                        "ErrorMessage"
-                      ],
-                      "properties": {
-                        "SensorID": {
-                          "type": "number",
-                          "jausType": "unsigned short integer",
-                          "comment": ""
-                        },
-                        "StillImageErrorCode": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "valueSet": [
-                            {
-                              "valueEnum": {
-                                "enumIndex": 0,
-                                "enumConst": "Unknown Sensor ID"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 1,
-                                "enumConst": "Invalid Frame Size"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 2,
-                                "enumConst": "Invalid Format"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 3,
-                                "enumConst": "Multiple Invalid Parameters"
-                              }
-                            },
-                            {
-                              "valueEnum": {
-                                "enumIndex": 255,
-                                "enumConst": "Unknown Error / Fault"
-                              }
-                            }
-                          ],
-                          "enum": [
-                            "Unknown Sensor ID",
-                            "Invalid Frame Size",
-                            "Invalid Format",
-                            "Multiple Invalid Parameters",
-                            "Unknown Error / Fault"
-                          ]
-                        },
-                        "ErrorMessage": {
-                          "type": "string",
-                          "jausType": "unsigned byte",
-                          "comment": "",
-                          "minLength": 0,
-                          "maxLength": 255
-                        }
+                "required": [],
+                "properties": {
+                  "SensorIdRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
                       }
                     }
-                  ]
+                  },
+                  "RangeSensorErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "RangeSensorErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "RangeSensorErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Invalid Horizontal Field of View"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Invalid Vertical Field of View"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Invalid Update Rate"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 4,
+                              "enumConst": "Invalid Sensor Range"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 5,
+                              "enumConst": "Invalid Sensor State"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 6,
+                              "enumConst": "Multiple Invalid Parameters"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Invalid Horizontal Field of View",
+                          "Invalid Vertical Field of View",
+                          "Invalid Update Rate",
+                          "Invalid Sensor Range",
+                          "Invalid Sensor State",
+                          "Multiple Invalid Parameters",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "VisualSensorErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "VisualSensorErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "VisualSensorErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Invalid Sensor State"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Invalid Zoom Mode"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Invalid Zoom Value"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 4,
+                              "enumConst": "Invalid Focus Mode"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 5,
+                              "enumConst": "Invalid Focus Value"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 6,
+                              "enumConst": "Invalid White Balance"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 7,
+                              "enumConst": "Invalid Imaging Mode"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 8,
+                              "enumConst": "Invalid Exposure Mode"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 9,
+                              "enumConst": "Invalid Metering Mode"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 10,
+                              "enumConst": "Invalid Shutter Speed"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 11,
+                              "enumConst": "Invalid Aperture Value"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 12,
+                              "enumConst": "Invalid Light Sensitivity"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 13,
+                              "enumConst": "Invalid Image Stabilization"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 14,
+                              "enumConst": "Invalid Horizontal FOV"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 15,
+                              "enumConst": "Invalid Vertical FOV"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 16,
+                              "enumConst": "Multiple Invalid Parameters"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Invalid Sensor State",
+                          "Invalid Zoom Mode",
+                          "Invalid Zoom Value",
+                          "Invalid Focus Mode",
+                          "Invalid Focus Value",
+                          "Invalid White Balance",
+                          "Invalid Imaging Mode",
+                          "Invalid Exposure Mode",
+                          "Invalid Metering Mode",
+                          "Invalid Shutter Speed",
+                          "Invalid Aperture Value",
+                          "Invalid Light Sensitivity",
+                          "Invalid Image Stabilization",
+                          "Invalid Horizontal FOV",
+                          "Invalid Vertical FOV",
+                          "Multiple Invalid Parameters",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "DigitalVideoSensorErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "DigitalVideoErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "DigitalVideoErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Invalid Minimum Bit Rate"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Invalid Maximum Bit Rate"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Invalid Minimum Frame Rate"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 4,
+                              "enumConst": "Invalid Maximum Frame Rate"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 5,
+                              "enumConst": "Invalid Frame Size"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 6,
+                              "enumConst": "Invalid Format"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 7,
+                              "enumConst": "Multiple Invalid Parameters"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Invalid Minimum Bit Rate",
+                          "Invalid Maximum Bit Rate",
+                          "Invalid Minimum Frame Rate",
+                          "Invalid Maximum Frame Rate",
+                          "Invalid Frame Size",
+                          "Invalid Format",
+                          "Multiple Invalid Parameters",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "AnalogVideoSensorErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "AnalogVideoErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "AnalogVideoErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Invalid Format"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Invalid Format",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "StillImageSensorErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "StillImageErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "StillImageErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Invalid Frame Size"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Invalid Format"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Multiple Invalid Parameters"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Invalid Frame Size",
+                          "Invalid Format",
+                          "Multiple Invalid Parameters",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  }
                 },
                 "jausType": "unsigned byte",
                 "minItems": 0,

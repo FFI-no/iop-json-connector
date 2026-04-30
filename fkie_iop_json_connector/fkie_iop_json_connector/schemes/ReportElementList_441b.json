@@ -23,9 +23,7 @@
     "ElementList": {
       "type": "array",
       "comment": "",
-      "required": [
-        "ElementListRec"
-      ],
+      "required": [],
       "items": {
         "anyOf": [
           {
@@ -51,7 +49,6 @@
     }
   },
   "required": [
-    "HeaderRec",
-    "ElementList"
+    "HeaderRec"
   ]
 }
