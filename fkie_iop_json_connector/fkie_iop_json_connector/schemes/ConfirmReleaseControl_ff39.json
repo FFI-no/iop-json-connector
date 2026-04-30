@@ -80,6 +80,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "ReleaseControlList"
   ]
 }

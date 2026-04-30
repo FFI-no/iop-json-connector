@@ -59,14 +59,17 @@
                     "required": [],
                     "properties": {},
                     "jausType": "unsigned byte",
-                    "minItems": 0,
-                    "maxItems": 0,
+                    "vtagMin": 0,
+                    "vtagMax": 0,
                     "isVariant": true
                   },
                   "StaticGeometricPropertiesRec": {
                     "type": "object",
                     "comment": "",
-                    "required": [],
+                    "required": [
+                      "SensorPosition",
+                      "UnitQuaternion"
+                    ],
                     "properties": {
                       "SensorPosition": {
                         "type": "array",
@@ -121,7 +124,9 @@
                       "SubsystemID",
                       "NodeID",
                       "ComponentID",
-                      "JointNumber"
+                      "JointNumber",
+                      "SensorPosition",
+                      "UnitQuaternion"
                     ],
                     "properties": {
                       "SubsystemID": {
@@ -192,8 +197,8 @@
                   }
                 },
                 "jausType": "unsigned byte",
-                "minItems": 0,
-                "maxItems": 2,
+                "vtagMin": 0,
+                "vtagMax": 2,
                 "isVariant": true
               }
             }
@@ -207,6 +212,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "GeometricPropertiesList"
   ]
 }

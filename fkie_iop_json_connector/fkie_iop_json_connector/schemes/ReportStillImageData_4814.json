@@ -282,6 +282,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "StillImageDataList"
   ]
 }

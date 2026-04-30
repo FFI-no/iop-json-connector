@@ -1122,6 +1122,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "VisualSensorCapabilitiesList"
   ]
 }

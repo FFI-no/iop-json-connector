@@ -108,6 +108,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "RequestReleaseControlList"
   ]
 }

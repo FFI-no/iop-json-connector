@@ -24,7 +24,8 @@
       "type": "object",
       "comment": "",
       "required": [
-        "UGVSeverityRec"
+        "UGVSeverityRec",
+        "SeverityList"
       ],
       "properties": {
         "UGVSeverityRec": {

@@ -24,7 +24,8 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIdRec"
+        "RequestIdRec",
+        "ConfirmSensorList"
       ],
       "properties": {
         "RequestIdRec": {
@@ -529,8 +530,8 @@
                   }
                 },
                 "jausType": "unsigned byte",
-                "minItems": 0,
-                "maxItems": 5,
+                "vtagMin": 0,
+                "vtagMax": 5,
                 "isVariant": true
               }
             ]

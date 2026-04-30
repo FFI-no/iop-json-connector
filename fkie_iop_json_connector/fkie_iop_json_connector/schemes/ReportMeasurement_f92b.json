@@ -25,7 +25,8 @@
       "comment": "",
       "required": [
         "presenceVector",
-        "DeviceRec"
+        "DeviceRec",
+        "ReadingsList"
       ],
       "properties": {
         "presenceVector": {
@@ -79,7 +80,8 @@
                 "type": "object",
                 "comment": "",
                 "required": [
-                  "ReadingRec"
+                  "ReadingRec",
+                  "ValueList"
                 ],
                 "properties": {
                   "ReadingRec": {

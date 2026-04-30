@@ -63,6 +63,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "ServiceList"
   ]
 }

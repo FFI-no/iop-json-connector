@@ -137,8 +137,8 @@
                   }
                 },
                 "jausType": "unsigned byte",
-                "minItems": 0,
-                "maxItems": 1,
+                "vtagMin": 0,
+                "vtagMax": 1,
                 "isVariant": true
               }
             }
@@ -152,6 +152,7 @@
     }
   },
   "required": [
-    "DefaultHeaderRec"
+    "DefaultHeaderRec",
+    "NoGoZonesList"
   ]
 }

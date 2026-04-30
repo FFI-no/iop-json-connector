@@ -58,6 +58,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "idList"
   ]
 }

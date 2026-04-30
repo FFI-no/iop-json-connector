@@ -1063,6 +1063,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "DigitalVideoSensorList"
   ]
 }

@@ -275,7 +275,9 @@
                       "payloadStruct": {
                         "type": "object",
                         "comment": "",
-                        "required": [],
+                        "required": [
+                          "RangeSensorDataPointList"
+                        ],
                         "properties": {
                           "RangeSensorDataPointList": {
                             "type": "array",
@@ -444,8 +446,8 @@
                         "properties": {}
                       }
                     },
-                    "minLength": 0,
-                    "maxLength": 4294967295,
+                    "minCount": 0,
+                    "maxCount": 4294967295,
                     "jausType": "unsigned integer",
                     "fieldFormat": "RangeSensorDataPointList",
                     "encapsulatedMessage": "simple"
@@ -454,8 +456,8 @@
               }
             },
             "jausType": "unsigned byte",
-            "minItems": 0,
-            "maxItems": 1,
+            "vtagMin": 0,
+            "vtagMax": 1,
             "isVariant": true
           }
         ]
@@ -467,6 +469,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "RangeSensorCompressedDataList"
   ]
 }

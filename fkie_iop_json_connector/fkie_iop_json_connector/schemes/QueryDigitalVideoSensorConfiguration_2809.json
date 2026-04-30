@@ -55,6 +55,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "QueryDigitalVideoConfigurationList"
   ]
 }

@@ -120,6 +120,7 @@
     }
   },
   "required": [
-    "DefaultHeaderRec"
+    "DefaultHeaderRec",
+    "PathReporterCapabilitiesList"
   ]
 }

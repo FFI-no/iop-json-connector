@@ -177,49 +177,71 @@ class MessageSerializer:
                         jsonAttr = getattr(jsonObj, name)
                     if jsonAttr is None:
                         raise Exception('no payload message specified')
-                    # there are two different ways to specify encapsulated message
+
+                    # There are two different ways to specify the encapsulated message
                     fieldFormat = "unknown"
                     if prop.encapsulatedMessage == 'simple':
+                        # e.g. variable_length_field
                         fieldFormat = prop.fieldFormat
                     else:
+                        # e.g. variable_format_field with formatField
                         fieldFormat = jsonAttr.formatField
                         self._addProperties(getattr(jsonObj, name), message, prop, filter=["formatField"])
+
                     if fieldFormat in ['JAUS MESSAGE', 'JAUS_MESSAGE']:
                         try:
                             schemas = JSON_SCHEMES[jsonAttr.payloadMessageId]
                             failed = []
                             for schema in schemas:
                                 try:
-                                    # on error we try to use a different schema
+                                    # On error we try to use a different schema
                                     payloadMessage = Message(int(schema.messageId, 16))
                                     self._addProperties(jsonAttr.payload, payloadMessage, schema)
-                                    # set size of the payload message in the current message
                                     payloadData = payloadMessage.payload
-                                    sizeData = self._safe_pack(prop.jausType, len(payloadData))
-                                    # print(f"PAYLOAD_size: {len(payloadData)} -> {sizeData}")
+
+                                    # Enforce length constraints from schema (variable_length_field: minCount/maxCount)
+                                    payload_len = len(payloadData)
+                                    min_count = getattr(prop, 'minCount', None)
+                                    max_count = getattr(prop, 'maxCount', None)
+                                    if min_count is not None and payload_len < min_count:
+                                        self.logger.warning(
+                                            f"payload length {payload_len} < minCount {min_count} for '{name}'"
+                                        )
+                                    if max_count is not None and payload_len > max_count:
+                                        self.logger.warning(
+                                            f"payload length {payload_len} > maxCount {max_count} for '{name}', truncating"
+                                        )
+                                        payload_len = max_count
+                                        payloadData = payloadData[:max_count]
+
+                                    # Write payload length to parent message
+                                    sizeData = self._safe_pack(prop.jausType, payload_len)
                                     message.appendPayload(sizeData)
+                                    # Write payload data
                                     message.appendPayload(payloadData)
-                                except Exception as err:
+                                except Exception:
                                     import traceback
                                     failed.append((schema.title, schema.messageId, traceback.format_exc()))
                             if len(schemas) == len(failed):
-                                for (msgName, msgId, message) in failed:
-                                    self.logger.warning(f"failed create IOP message {msgName} ({msgId}): {message}")
-                        except Exception as err:
+                                for (msgName, msgId, msg) in failed:
+                                    self.logger.warning(f"failed create IOP message {msgName} ({msgId}): {msg}")
+                        except Exception:
                             import traceback
                             print(traceback.format_exc())
-                            raise err
+                            raise
                     else:
-                        # TODO: pack payload data to user format
+                        # TODO: pack payload data to user-defined format
                         raise Exception(
-                            f"Error in attribute '{name}': payload format {fieldFormat} not implemented! prop: {jsonObj}")
+                            f"Error in attribute '{name}': payload format {fieldFormat} not implemented! prop: {jsonObj}"
+                        )
                     continue
 
                 # -------- isVariant handling (packing) --------
                 if hasattr(prop, "isVariant") and prop.isVariant:
                     # jsonObjVar is the value of the variant field (e.g., CostMap2DPoseVar)
                     if not hasattr(jsonObj, name):
-                        raise AttributeError(f"no variant value set for '{name}'")
+                        continue
+                        # raise AttributeError(f"no variant value set for '{name}'")
                     jsonObjVar = getattr(jsonObj, name)
 
                     # Determine which alternative is selected:
@@ -239,7 +261,8 @@ class MessageSerializer:
                                     variant_value = v
                                     break
                         if variant_key is None:
-                            raise AttributeError(f"no alternative selected for variant '{name}'")
+                            continue
+                            # raise AttributeError(f"no alternative selected for variant '{name}'")
 
                     # Determine variant index (ordering of properties defines index)
                     prop_keys = list(vars(prop.properties).keys())
@@ -413,69 +436,98 @@ class MessageSerializer:
             if prop.type == 'object':
                 # check if it is a payload object
                 if hasattr(prop, 'encapsulatedMessage'):
-                    jsonPayloadObj = jsonObj[name] = {}
+                    jsonPayloadObj = jsonObj.setdefault(name, {})
                     fieldFormat = "unknown"
+
                     if prop.encapsulatedMessage == 'simple':
+                        # e.g. variable_length_field
                         fieldFormat = prop.fieldFormat
                     else:
-
+                        # e.g. variable_format_field: read formatField first
                         formatFieldProp = getattr(prop.properties, "formatField")
                         typeSize = self._typeSize(formatFieldProp.jausType)
-                        (strLength, ) = struct.unpack(self._packFmt(
-                            formatFieldProp.jausType), payload[index:index+typeSize])
+                        (rawFormat, ) = struct.unpack(
+                            self._packFmt(formatFieldProp.jausType),
+                            payload[index:index+typeSize]
+                        )
                         index += typeSize
+
                         if hasattr(formatFieldProp, 'enum') and hasattr(formatFieldProp, 'valueSet'):
-                            # handle bit range
+                            # Optional: handle bitRange on formatField
                             if hasattr(formatFieldProp, 'bitRange'):
                                 index -= typeSize
                                 bitRangeValue = 0
-                                for bit in range(getattr(formatFieldProp.bitRange, 'from'), getattr(formatFieldProp.bitRange, 'to')+1, 1):
-                                    bitRangeValue += int(strLength & 1 << bit)
-                                bitRangeValue = bitRangeValue >> getattr(formatFieldProp.bitRange, 'from')
-                                strLength = bitRangeValue
-                            # handle value set
+                                for bit in range(getattr(formatFieldProp.bitRange, 'from'),
+                                                getattr(formatFieldProp.bitRange, 'to') + 1):
+                                    bitRangeValue += int(rawFormat & (1 << bit))
+                                rawFormat = bitRangeValue >> getattr(formatFieldProp.bitRange, 'from')
+
+                            # Map numeric value to enum constant
                             for enum in formatFieldProp.valueSet:
-                                if hasattr(enum, "valueEnum") and enum.valueEnum.enumIndex == int(strLength):
+                                if hasattr(enum, "valueEnum") and enum.valueEnum.enumIndex == int(rawFormat):
                                     jsonPayloadObj["formatField"] = enum.valueEnum.enumConst
                                     fieldFormat = enum.valueEnum.enumConst
+
+                    # Read size of encapsulated payload
                     typeSize = self._typeSize(prop.jausType)
-                    (payloadSize, ) = struct.unpack(self._packFmt(
-                        prop.jausType), payload[index:index+typeSize])
+                    (payloadSize, ) = struct.unpack(
+                        self._packFmt(prop.jausType),
+                        payload[index:index+typeSize]
+                    )
                     index += typeSize
+
+                    # Enforce length constraints (variable_length_field: minCount/maxCount)
+                    min_count = getattr(prop, 'minCount', None)
+                    max_count = getattr(prop, 'maxCount', None)
+                    if min_count is not None and payloadSize < min_count:
+                        self.logger.warning(
+                            f"payload size {payloadSize} < minCount {min_count} for '{name}'"
+                        )
+                    if max_count is not None and payloadSize > max_count:
+                        self.logger.warning(
+                            f"payload size {payloadSize} > maxCount {max_count} for '{name}', truncating"
+                        )
+                        payloadSize = max_count
+
                     if fieldFormat in ['JAUS MESSAGE', 'JAUS_MESSAGE']:
                         if payloadSize >= 2:
-                            # get message id of the payload
-                            (msgId, ) = struct.unpack(self._packFmt(
-                                'unsigned short integer'), payload[index:index+2])
-
+                            # Read message id of payload
+                            (msgId, ) = struct.unpack(
+                                self._packFmt('unsigned short integer'),
+                                payload[index:index+2]
+                            )
                             jsonPayloadObj['payloadMessageId'] = f'{msgId:x}'.zfill(4)
-                            # unpack payload message
+
+                            # Unpack payload message
                             schemas = JSON_SCHEMES[jsonPayloadObj['payloadMessageId']]
                             for schema in schemas:
                                 try:
                                     self.logger.debug(
-                                        f"parse payload message {schema.title}({jsonPayloadObj['payloadMessageId']})")
+                                        f"parse payload message {schema.title}({jsonPayloadObj['payloadMessageId']})"
+                                    )
                                     jsonPayloadObj['payload'] = {}
-                                    self._getProperties(
-                                        jsonPayloadObj['payload'], payload, index, schema)
-                                    return
-                                except:
+                                    index = self._getProperties(
+                                        jsonPayloadObj['payload'], payload, index, schema
+                                    )
+                                    return index
+                                except Exception:
                                     pass
                     else:
+                        # Generic user-defined format: store raw payload bytes
                         jsonPayloadObj['payload'] = payload[index:index+payloadSize]
-                        return
+                        index += payloadSize
+                        return index
+
                 if hasattr(prop, "isVariant") and prop.isVariant:
                     # Get array length (variant or normal)
-                    arrLength = 0
-                    if hasattr(prop, "jausType"):
-                        typeSize = self._typeSize(prop.jausType)
-                        (variantIndex, ) = struct.unpack(self._packFmt(prop.jausType), payload[index:index+typeSize])
-                        index += typeSize
-                    elif hasattr(prop, "minItems") and hasattr(prop, "maxItems"):
-                        arrLength = prop.maxItems
-                    if prop.type == 'array' and arrLength >= len(prop.items.anyOf):
-                        self.logger.error(f"Array variant index {arrLength} out of range for schema {prop}")
-                        return index
+                    if not hasattr(prop, "jausType"):
+                        raise AttributeError(f"variant '{name}' has no jausType for index field")
+                    typeSize = self._typeSize(prop.jausType)
+                    (variantIndex, ) = struct.unpack(
+                        self._packFmt(prop.jausType),
+                        payload[index:index+typeSize]
+                    )
+                    index += typeSize
                     key_index = list(vars(prop.properties).keys())[variantIndex]
                     variantSchema = getattr(prop.properties, key_index)
 
@@ -595,5 +647,3 @@ class MessageSerializer:
                 self.logger.error(
                     f"property {name}: {prop.type} not implemented")
         return index
-
-        # TODO

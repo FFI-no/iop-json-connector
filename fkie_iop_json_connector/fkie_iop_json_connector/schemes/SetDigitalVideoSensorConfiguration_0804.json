@@ -24,7 +24,8 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIdRec"
+        "RequestIdRec",
+        "DigitalVideoSensorList"
       ],
       "properties": {
         "RequestIdRec": {

@@ -59,6 +59,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "StabilizerEffort"
   ]
 }

@@ -353,8 +353,8 @@
                   }
                 },
                 "jausType": "unsigned byte",
-                "minItems": 0,
-                "maxItems": 4,
+                "vtagMin": 0,
+                "vtagMax": 4,
                 "isVariant": true
               }
             }
@@ -368,6 +368,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "powerPlantCapabilitiesList"
   ]
 }

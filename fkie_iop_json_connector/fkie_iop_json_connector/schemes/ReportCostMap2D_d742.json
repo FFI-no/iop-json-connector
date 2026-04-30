@@ -152,8 +152,8 @@
             }
           },
           "jausType": "unsigned byte",
-          "minItems": 0,
-          "maxItems": 1,
+          "vtagMin": 0,
+          "vtagMax": 1,
           "isVariant": true
         },
         "CostMap2DDataVar": {
@@ -349,8 +349,8 @@
             }
           },
           "jausType": "unsigned byte",
-          "minItems": 0,
-          "maxItems": 2,
+          "vtagMin": 0,
+          "vtagMax": 2,
           "isVariant": true
         }
       }

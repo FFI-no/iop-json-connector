@@ -30,7 +30,8 @@
             "type": "object",
             "comment": "",
             "required": [
-              "StabilizerCapabilitiesRec"
+              "StabilizerCapabilitiesRec",
+              "StabilizerDimensionsList"
             ],
             "properties": {
               "StabilizerCapabilitiesRec": {
@@ -129,6 +130,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "StabilizerCapabilities"
   ]
 }

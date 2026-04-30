@@ -451,6 +451,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "VisualSensorConfigurationList"
   ]
 }

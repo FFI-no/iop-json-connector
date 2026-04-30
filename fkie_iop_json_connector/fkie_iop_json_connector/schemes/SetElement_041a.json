@@ -24,7 +24,8 @@
       "type": "object",
       "comment": "",
       "required": [
-        "RequestIDRec"
+        "RequestIDRec",
+        "ElementList"
       ],
       "properties": {
         "RequestIDRec": {

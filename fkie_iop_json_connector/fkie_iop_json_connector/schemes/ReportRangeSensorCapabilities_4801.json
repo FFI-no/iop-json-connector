@@ -363,6 +363,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "RangeSensorCapabilitiesList"
   ]
 }

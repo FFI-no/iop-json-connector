@@ -49,6 +49,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "ElementList"
   ]
 }

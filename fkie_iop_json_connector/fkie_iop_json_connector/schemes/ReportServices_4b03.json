@@ -30,7 +30,8 @@
             "type": "object",
             "comment": "",
             "required": [
-              "NodeRec"
+              "NodeRec",
+              "ComponentList"
             ],
             "properties": {
               "NodeRec": {
@@ -57,7 +58,8 @@
                       "type": "object",
                       "comment": "",
                       "required": [
-                        "ComponentRec"
+                        "ComponentRec",
+                        "ServiceList"
                       ],
                       "properties": {
                         "ComponentRec": {
@@ -141,6 +143,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "NodeList"
   ]
 }

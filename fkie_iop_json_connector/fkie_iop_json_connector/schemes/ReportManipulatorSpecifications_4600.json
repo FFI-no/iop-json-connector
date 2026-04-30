@@ -25,7 +25,8 @@
       "comment": "",
       "required": [
         "presenceVector",
-        "FirstJointParameters"
+        "FirstJointParameters",
+        "JointSpecificationList"
       ],
       "properties": {
         "presenceVector": {
@@ -258,8 +259,8 @@
             }
           },
           "jausType": "unsigned byte",
-          "minItems": 0,
-          "maxItems": 1,
+          "vtagMin": 0,
+          "vtagMax": 1,
           "isVariant": true
         },
         "JointSpecificationList": {
@@ -473,8 +474,8 @@
                   }
                 },
                 "jausType": "unsigned byte",
-                "minItems": 0,
-                "maxItems": 1,
+                "vtagMin": 0,
+                "vtagMax": 1,
                 "isVariant": true
               }
             ]

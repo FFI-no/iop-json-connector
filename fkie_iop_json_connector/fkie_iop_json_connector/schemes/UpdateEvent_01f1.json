@@ -93,7 +93,7 @@
               "properties": {}
             }
           },
-          "minLength": 2,
+          "minCount": 2,
           "jausType": "unsigned integer",
           "fieldFormat": "JAUS MESSAGE",
           "encapsulatedMessage": "simple"

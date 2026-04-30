@@ -101,6 +101,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "AnalogVideoSensorConfigurationList"
   ]
 }

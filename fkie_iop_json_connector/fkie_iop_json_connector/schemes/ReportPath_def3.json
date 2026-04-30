@@ -815,8 +815,8 @@
         }
       },
       "jausType": "unsigned byte",
-      "minItems": 0,
-      "maxItems": 3,
+      "vtagMin": 0,
+      "vtagMax": 3,
       "isVariant": true
     }
   },

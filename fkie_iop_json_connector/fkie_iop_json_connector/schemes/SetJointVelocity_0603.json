@@ -29,7 +29,9 @@
           {
             "type": "object",
             "comment": "",
-            "required": [],
+            "required": [
+              "JointVelocity"
+            ],
             "properties": {
               "JointVelocity": {
                 "type": "array",
@@ -76,6 +78,7 @@
     }
   },
   "required": [
-    "HeaderRec"
+    "HeaderRec",
+    "JointVelocityList"
   ]
 }
