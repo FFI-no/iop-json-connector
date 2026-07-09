@@ -1,8 +1,8 @@
 {
   "title": "ExecuteList",
   "messageId": "041e",
-  "isCommand": false,
-  "description": "This message is used to begin execution of a sequential list of motion commands.  Field #2 \n      sets the desired speed of the platform.  The starting element UID can also be specified, \n      where a value of zero (0) indicates the first (head) element in the list.",
+  "isCommand": true,
+  "description": "This message is used to begin execution of a sequential list of motion commands.  Field #2 sets the desired speed of the platform.  The starting element UID can also be specified, where a value of zero (0) indicates the first (head) element in the list.",
   "type": "object",
   "properties": {
     "HeaderRec": {

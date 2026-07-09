@@ -1,0 +1,202 @@
+{
+  "title": "SetPlatformModeResponse",
+  "messageId": "ff2a",
+  "isCommand": false,
+  "description": "Response to a SetPlatformMode request. If a transition request is denied,\n                    the implementation should specify if the transition is not supported or is \n                    just currently unavailable due to the system state.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff2a"
+        }
+      }
+    },
+    "PlatformModeResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestedPlatformMode",
+        "StartingPlatformMode",
+        "EndingPlatformMode",
+        "SetPlatformModeResult"
+      ],
+      "properties": {
+        "RequestedPlatformMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Requested platform mode to transition to",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Standard_Operating"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Training"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Maintenance"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "LowPower"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 175.0,
+                "maximum": 255.0,
+                "interpretation": "Reserved for program specific modes"
+              }
+            }
+          ],
+          "enum": [
+            "Standard_Operating",
+            "Training",
+            "Maintenance",
+            "LowPower"
+          ]
+        },
+        "StartingPlatformMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Actual mode at the time the request was received",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Standard_Operating"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Training"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Maintenance"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "LowPower"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 175.0,
+                "maximum": 255.0,
+                "interpretation": "Reserved for program specific modes"
+              }
+            }
+          ],
+          "enum": [
+            "Standard_Operating",
+            "Training",
+            "Maintenance",
+            "LowPower"
+          ]
+        },
+        "EndingPlatformMode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Current mode. This is expected to be RequestedPlatformMode if the request was successful, and StartingPlatformMode if not.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Standard_Operating"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Training"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Maintenance"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "LowPower"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 175.0,
+                "maximum": 255.0,
+                "interpretation": "Reserved for program specific modes"
+              }
+            }
+          ],
+          "enum": [
+            "Standard_Operating",
+            "Training",
+            "Maintenance",
+            "LowPower"
+          ]
+        },
+        "SetPlatformModeResult": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Success"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "RequestedTransitionNotSupported"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "RequestedTransitionCurrentlyInvalid"
+              }
+            }
+          ],
+          "enum": [
+            "Success",
+            "RequestedTransitionNotSupported",
+            "RequestedTransitionCurrentlyInvalid"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PlatformModeResponseRec"
+  ]
+}

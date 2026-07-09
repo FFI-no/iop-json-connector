@@ -1,0 +1,27 @@
+{
+  "title": "QueryPrimitiveGripper",
+  "messageId": "d99b",
+  "isCommand": false,
+  "description": "This message is used to query the gripper status.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d99b"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

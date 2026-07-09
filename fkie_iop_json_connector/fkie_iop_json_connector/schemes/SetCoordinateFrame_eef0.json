@@ -1,0 +1,226 @@
+{
+  "title": "SetCoordinateFrame",
+  "messageId": "eef0",
+  "isCommand": true,
+  "description": "This message attemps to set the active frame of reference for end effector based motions.\n          The JAUS ID refers to the host of the frame.  Consequently, specifying a JAUS ID that is the same as the target of the message\n          with a link ID of 0 restores the frame of reference to the manipulator base coordinate frame, the default value for end effector services.\n\n          Each selected frame can have an additional offset, as specified by the optional record.\n\n          If the Follow mode is set to active, the manipulator will attempt to maintain a fixed relationship relative to the \n          selected coordinate frame if that frame moves independently.  This is particularly useful for two or more manipulators\n          attempting to move or carry the same object, where motion of the independent manipulator must induce motion of the dependent\n          manipulators to maintain a constant geometry. Follow mode can only be on/active when the manipulator is in the Management::READY\n          state.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "eef0"
+        }
+      }
+    },
+    "CoordinateFrameSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "CoordinateFrameRec"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "CoordinateFrameRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "JAUS_ID",
+            "Link",
+            "FollowMode"
+          ],
+          "properties": {
+            "JAUS_ID": {
+              "type": "object",
+              "comment": "JAUS ID associated with this coordinate frame. For a frame associated with the local manipulator, the JAUS ID is simply the host of the service.",
+              "required": [
+                "ComponentID",
+                "NodeID",
+                "SubsystemID"
+              ],
+              "properties": {
+                "ComponentID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "JAUS ID associated with this coordinate frame. For a frame associated with the local manipulator, the JAUS ID is simply the host of the service.",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 7
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 1.0,
+                        "maximum": 254.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "NodeID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "JAUS ID associated with this coordinate frame. For a frame associated with the local manipulator, the JAUS ID is simply the host of the service.",
+                  "bitRange": {
+                    "from": 8,
+                    "to": 15
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 1.0,
+                        "maximum": 254.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "SubsystemID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "JAUS ID associated with this coordinate frame. For a frame associated with the local manipulator, the JAUS ID is simply the host of the service.",
+                  "bitRange": {
+                    "from": 16,
+                    "to": 31
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 1.0,
+                        "maximum": 65534.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                }
+              },
+              "bitField": "unsigned integer"
+            },
+            "Link": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Link associated with this coordinate frame. A value of zero refers to the base of the specified JAUS ID."
+            },
+            "FollowMode": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "When follow mode is ON and the frame of reference is associated with different articulated JAUS ID, the local manipulator should attempt to follow any motion of the frame, maintaining a constant offset.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "FollowOFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "FollowON"
+                  }
+                }
+              ],
+              "enum": [
+                "FollowOFF",
+                "FollowON"
+              ]
+            }
+          }
+        },
+        "AdditionalOffsetRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "PositionOffsetX",
+            "PositionOffsetY",
+            "PositionOffsetZ",
+            "DComponentOfUnitQuaternionQ",
+            "AComponentOfUnitQuaternionQ",
+            "BComponentOfUnitQuaternionQ",
+            "CComponentOfUnitQuaternionQ"
+          ],
+          "properties": {
+            "PositionOffsetX": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 1.3969838622484784e-08,
+                "bias": -30.0
+              }
+            },
+            "PositionOffsetY": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 1.3969838622484784e-08,
+                "bias": -30.0
+              }
+            },
+            "PositionOffsetZ": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 1.3969838622484784e-08,
+                "bias": -30.0
+              }
+            },
+            "DComponentOfUnitQuaternionQ": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 4.656612874161595e-10,
+                "bias": -1.0
+              }
+            },
+            "AComponentOfUnitQuaternionQ": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 4.656612874161595e-10,
+                "bias": -1.0
+              }
+            },
+            "BComponentOfUnitQuaternionQ": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 4.656612874161595e-10,
+                "bias": -1.0
+              }
+            },
+            "CComponentOfUnitQuaternionQ": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 4.656612874161595e-10,
+                "bias": -1.0
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "CoordinateFrameSeq"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "QueryMarkingSystemCapabilities",
+  "messageId": "f400",
+  "isCommand": false,
+  "description": "Query for the marking system's capabilities.  \n    The expected response is a ReportMarkingSystemCapabilities message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f400"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

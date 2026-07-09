@@ -1,0 +1,143 @@
+{
+  "title": "PassthroughMessage",
+  "messageId": "d701",
+  "isCommand": true,
+  "description": "The PassthroughMessage allows a client to pass an encapsulated JAUS message through the Passthrough Service.  The Passthrough Service may then examine and potentially modify that message before forwarding it to the final destination specified by the targetJausID.  For example, in the case of Self Collision Avoidance, the client might send a SetJointVelocity message intended for a manipulator.  The Passthrough Service could then forward that message as-is once it determined no collisions would occur, or could replace the original command values with zero velocity to stop the manipulator in the case of an impending collision.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d701"
+        }
+      }
+    },
+    "PassthroughMessageList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "targetJausID",
+              "passthroughMsg"
+            ],
+            "properties": {
+              "targetJausID": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ComponentID",
+                  "NodeID",
+                  "SubsystemID"
+                ],
+                "properties": {
+                  "ComponentID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "NodeID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 8,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "SubsystemID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 31
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 65535.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              },
+              "passthroughMsg": {
+                "type": "object",
+                "comment": "After removing the pass through encapsulation, the expanded data will have the format of a JAUS message payload.",
+                "required": [
+                  "payloadMessageId",
+                  "payload"
+                ],
+                "properties": {
+                  "payloadMessageId": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "message id of the payload message"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "comment": "After removing the pass through encapsulation, the expanded data will have the format of a JAUS message payload.",
+                    "required": [],
+                    "properties": {}
+                  }
+                },
+                "minCount": 2,
+                "maxCount": 2147483647,
+                "jausType": "unsigned integer",
+                "fieldFormat": "JAUS MESSAGE",
+                "encapsulatedMessage": "simple"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PassthroughMessageList"
+  ]
+}

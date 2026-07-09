@@ -1,0 +1,27 @@
+{
+  "title": "QueryUninterruptiblePowerSupply",
+  "messageId": "ea01",
+  "isCommand": false,
+  "description": "Query the status of the uninterruptible power supply",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ea01"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

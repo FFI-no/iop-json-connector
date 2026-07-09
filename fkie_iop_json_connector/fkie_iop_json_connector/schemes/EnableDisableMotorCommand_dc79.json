@@ -1,0 +1,111 @@
+{
+  "title": "EnableDisableMotorCommand",
+  "messageId": "dc79",
+  "isCommand": true,
+  "description": "Used to issue a command to enable/disable power to motors on the\n\t\t\tsurrogate, for example to stop spinning propellers for safety reasons.  This \n\t\t\tcommand must be issued twice (once to request, once to confirm) to kill or re-enable \n\t\t\tthe motors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc79"
+        }
+      }
+    },
+    "EnableDisableMotorCommandSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "EnableDisableMotorCommandRec",
+        "Stage"
+      ],
+      "properties": {
+        "EnableDisableMotorCommandRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "Operation",
+            "RequestID"
+          ],
+          "properties": {
+            "Operation": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "DISABLE_MOTORS"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ENABLE_MOTORS"
+                  }
+                }
+              ],
+              "enum": [
+                "DISABLE_MOTORS",
+                "ENABLE_MOTORS"
+              ]
+            },
+            "RequestID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "RequestID used to match this command to response from the server. RequestID should be unique for each EnableDisableMotorCommand message sent."
+            }
+          }
+        },
+        "Stage": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "Request": {
+              "type": "object",
+              "comment": "Requesting disabling or enabling motors - no further information needed.",
+              "required": [],
+              "properties": {},
+              "jausType": "unsigned byte",
+              "vtagMin": null,
+              "vtagMax": null,
+              "isVariant": true
+            },
+            "Confirm": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "ConfirmationIdentifier"
+              ],
+              "properties": {
+                "ConfirmationIdentifier": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": "Identifier used to verify the confirmation matches the identifier provided by the request response in EnableDisableMotorResponse."
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 1,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "EnableDisableMotorCommandSeq"
+  ]
+}

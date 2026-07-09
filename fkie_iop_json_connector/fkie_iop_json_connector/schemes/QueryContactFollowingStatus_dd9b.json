@@ -1,0 +1,27 @@
+{
+  "title": "QueryContactFollowingStatus",
+  "messageId": "dd9b",
+  "isCommand": false,
+  "description": "Queries for information about the contact currently being followed.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "dd9b"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

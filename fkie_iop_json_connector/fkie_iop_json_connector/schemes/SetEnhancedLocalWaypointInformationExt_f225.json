@@ -1,0 +1,135 @@
+{
+  "title": "SetEnhancedLocalWaypointInformationExt",
+  "messageId": "f225",
+  "isCommand": true,
+  "description": "This message is used to set additional waypoint information, including one or more policies that will be\n                    active during execution. Note that if multiple policies of the same type are specified, e.g. two different\n                    Comms Lost Policies for example, or two or more policies conflict with one another, system behavior is undefined.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f225"
+        }
+      }
+    },
+    "WaypointInformationListExt": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "WaypointInformationRecExt",
+              "WaypointPolicyList"
+            ],
+            "properties": {
+              "WaypointInformationRecExt": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "ElementUID"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "ElementUID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Corresponds to the list ID of the local"
+                  },
+                  "DirectionOfTravel": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Enumeration for direction of travel to waypoint",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Forward"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Reverse"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Forward",
+                      "Reverse"
+                    ]
+                  },
+                  "WaitTime": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "The number of seconds to pause after achieving this waypoint before resuming a waypoint plan. A zero (0) value corresponds to an indefinite wait, pausing until another execute command arrives. If this field is absent, there is no wait.",
+                    "scaleRange": {
+                      "scaleFactor": 0.05493247882810712,
+                      "bias": 0.0
+                    }
+                  },
+                  "PlannerID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "A numeric ID associated with the requested planner or planner algorithm for this waypoint"
+                  }
+                }
+              },
+              "WaypointPolicyList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "PolicyID"
+                      ],
+                      "properties": {
+                        "PolicyID": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "ID of the policy to be applied for this waypoint, as specified by the PolicyRegistryService"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": null,
+                "maxItems": null,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "WaypointInformationListExt"
+  ]
+}

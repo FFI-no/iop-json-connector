@@ -1,0 +1,119 @@
+{
+  "title": "ReportDigitalVideoSensorStatus",
+  "messageId": "481e",
+  "isCommand": false,
+  "description": "This message is sent in response to a Query Digital Video Sensor Status message. It is populated with the current sensor status (per sensor ID) as defined in the table below.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "481e"
+        }
+      }
+    },
+    "DigitalVideoSensorStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "StreamingState",
+              "RecordingState"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              },
+              "StreamingState": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Play"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Pause"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Stop"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Play",
+                  "Pause",
+                  "Stop"
+                ]
+              },
+              "RecordingState": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "NotRecording"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Recording"
+                    }
+                  }
+                ],
+                "enum": [
+                  "NotRecording",
+                  "Recording"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DigitalVideoSensorStatusList"
+  ]
+}

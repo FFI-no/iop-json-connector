@@ -15,7 +15,7 @@
         "MessageID": {
           "type": "string",
           "jausType": "unsigned short integer",
-          "comment": "A two byte field to hold the message ID of a message",
+          "comment": "Two byte field to hold message ID",
           "const": "4505"
         }
       }
@@ -86,28 +86,28 @@
                         "PointX": {
                           "type": "number",
                           "jausType": "unsigned short integer",
-                          "comment": "",
+                          "comment": "Measured from the vehicle coordinate frame",
                           "scaleRange": {
-                            "scaleFactor": 0.00045777065690089265,
-                            "bias": 0.0
+                            "scaleFactor": 0.001,
+                            "bias": -32.768
                           }
                         },
                         "PointY": {
                           "type": "number",
                           "jausType": "unsigned short integer",
-                          "comment": "",
+                          "comment": "Measured from the vehicle coordinate frame",
                           "scaleRange": {
-                            "scaleFactor": 0.00045777065690089265,
-                            "bias": 0.0
+                            "scaleFactor": 0.001,
+                            "bias": -32.768
                           }
                         },
                         "PointZ": {
                           "type": "number",
                           "jausType": "unsigned short integer",
-                          "comment": "",
+                          "comment": "Measured from the vehicle coordinate frame",
                           "scaleRange": {
-                            "scaleFactor": 0.00045777065690089265,
-                            "bias": 0.0
+                            "scaleFactor": 0.001,
+                            "bias": -32.768
                           }
                         }
                       }

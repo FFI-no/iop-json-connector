@@ -84,6 +84,7 @@
                   }
                 },
                 "minCount": 2,
+                "maxCount": 2147483647,
                 "jausType": "unsigned integer",
                 "fieldFormat": "JAUS MESSAGE",
                 "encapsulatedMessage": "simple"

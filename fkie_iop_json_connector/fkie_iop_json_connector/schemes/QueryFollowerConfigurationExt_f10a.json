@@ -1,0 +1,42 @@
+{
+  "title": "QueryFollowerConfigurationExt",
+  "messageId": "f10a",
+  "isCommand": false,
+  "description": "This message queries the configuration for a specified vehicle group or all configured groups",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f10a"
+        }
+      }
+    },
+    "QueryFollowerConfigRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "GroupID"
+      ],
+      "properties": {
+        "GroupID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the group to be reported. A value of zero (0) returns all known groups"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryFollowerConfigRec"
+  ]
+}

@@ -2,7 +2,7 @@
   "title": "QueryLocalWaypoint",
   "messageId": "240d",
   "isCommand": false,
-  "description": "This message shall cause the receiving component to reply to the requestor with a \n      ID 440Dh: ReportLocalWaypoint message.  Field #1 specifies the fields to be returned in the \n      Report Local Waypoint message.",
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 440Dh: ReportLocalWaypoint (Deprecated) message.  A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder.  The resulting message shall contain the fields indicated by the result of this logical AND operation.",
   "type": "object",
   "properties": {
     "HeaderRec": {

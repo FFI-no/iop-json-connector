@@ -1,0 +1,128 @@
+{
+  "title": "ReportFollowerCapabilities",
+  "messageId": "f123",
+  "isCommand": false,
+  "description": "Reports the capabilities in response to a Query Follower Capabilities message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f123"
+        }
+      }
+    },
+    "CapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": ""
+        },
+        "TargetSpeed": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Target speed for which these capabilities apply",
+          "scaleRange": {
+            "scaleFactor": 0.0049999237048905165,
+            "bias": 0.0
+          }
+        },
+        "RecommendedOptimalGapDistance": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Current distance that the follower is maintaining behind the leader",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-05,
+            "bias": 0.0
+          }
+        },
+        "RecommendedMinimumGapDistance": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Current distance that the follower is maintaining behind the leader",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-05,
+            "bias": 0.0
+          }
+        },
+        "RecommendedMaximumGapDistance": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Current distance that the follower is maintaining behind the leader",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-05,
+            "bias": 0.0
+          }
+        },
+        "RecommendedOptimalGapTime": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Current time that the follower is maintaining behind the leader",
+          "scaleRange": {
+            "scaleFactor": 8.381903173490871e-07,
+            "bias": 0.0
+          }
+        },
+        "RecommendedMinimumGapTime": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Current time that the follower is maintaining behind the leader",
+          "scaleRange": {
+            "scaleFactor": 8.381903173490871e-07,
+            "bias": 0.0
+          }
+        },
+        "RecommendedMaximumGapTime": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Current time that the follower is maintaining behind the leader",
+          "scaleRange": {
+            "scaleFactor": 8.381903173490871e-07,
+            "bias": 0.0
+          }
+        },
+        "RecommendedGapType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "DISTANCE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "TIME"
+              }
+            }
+          ],
+          "enum": [
+            "DISTANCE",
+            "TIME"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "CapabilitiesRec"
+  ]
+}

@@ -2,7 +2,7 @@
   "title": "ReportPath",
   "messageId": "def3",
   "isCommand": false,
-  "description": "This message is used to report a path.  Implementations \n\t\t\tshould attempt to satisfy all constraints specified in the QueryPath message.",
+  "description": "This message is used to report a path.  Implementations \n\t\t\t\t\tshould attempt to satisfy all constraints specified in the QueryPath message.",
   "type": "object",
   "properties": {
     "DefaultHeaderRec": {

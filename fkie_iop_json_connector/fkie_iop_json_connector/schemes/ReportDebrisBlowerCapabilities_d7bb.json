@@ -1,0 +1,198 @@
+{
+  "title": "ReportDebrisBlowerCapabilities",
+  "messageId": "d7bb",
+  "isCommand": false,
+  "description": "This message is used to report the capabilities for a debris blower.  It is expected that systems will support either a single (fixed) speed, or multiple settings that can be categorized as low, medium, or high.  For systems in which the angle of discharge is not modifiable, or must be modified mechanically, implementations should report the same value for minimum and maximum azimuth/elevation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7bb"
+        }
+      }
+    },
+    "DebrisBlowerCapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SpeedCapabilities",
+        "MinimumAzimuth",
+        "MaximumAzimuth",
+        "MinimumElevation",
+        "MaximumElevation"
+      ],
+      "properties": {
+        "SpeedCapabilities": {
+          "type": "object",
+          "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the speed is supported.",
+          "required": [
+            "ON_SingleSpeed",
+            "ON_Low",
+            "ON_Medium",
+            "ON_High"
+          ],
+          "properties": {
+            "ON_SingleSpeed": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the speed is supported.",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "ON_Low": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the speed is supported.",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "ON_Medium": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the speed is supported.",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "ON_High": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the speed is supported.",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        },
+        "MinimumAzimuth": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Minimum allowed azimuth angle of discharge, where a value of zero (0) represents the forward-direction of travel for the vehicle.",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "MaximumAzimuth": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Maximum allowed azimuth angle of discharge, where a value of zero (0) represents the forward-direction of travel for the vehicle.",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "MinimumElevation": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Minimum allowed elevation angle of discharge, where a value of zero (0) represents the direction parallel to the ground.",
+          "scaleRange": {
+            "scaleFactor": 4.793763109162727e-05,
+            "bias": -1.5707963267948966
+          }
+        },
+        "MaximumElevation": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Maximum allowed elevation angle of discharge, where a value of zero (0) represents the direction parallel to the ground.",
+          "scaleRange": {
+            "scaleFactor": 4.793763109162727e-05,
+            "bias": -1.5707963267948966
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DebrisBlowerCapabilitiesRec"
+  ]
+}

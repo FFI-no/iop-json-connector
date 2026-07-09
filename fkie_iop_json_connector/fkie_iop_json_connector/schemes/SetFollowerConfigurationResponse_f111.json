@@ -1,0 +1,101 @@
+{
+  "title": "SetFollowerConfigurationResponse",
+  "messageId": "f111",
+  "isCommand": false,
+  "description": "Message sent as a response to a Set Configuration message indicating the\n                   success or failure of the previous Set Configuration request.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f111"
+        }
+      }
+    },
+    "ResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "GroupID",
+        "Response"
+      ],
+      "properties": {
+        "GroupID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the group"
+        },
+        "Response": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "FAILED_BAD_FORMATION"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "FAILED_BAD_STRUCTURE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "FAILED_UNSUPPORTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "FAILED_GAP_TOO_LARGE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "FAILED_GAP_TOO_SMALL"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "GROUP_ID_NOT_FOUND"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESS",
+            "FAILED_BAD_FORMATION",
+            "FAILED_BAD_STRUCTURE",
+            "FAILED_UNSUPPORTED",
+            "FAILED_GAP_TOO_LARGE",
+            "FAILED_GAP_TOO_SMALL",
+            "GROUP_ID_NOT_FOUND"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ResponseRec"
+  ]
+}

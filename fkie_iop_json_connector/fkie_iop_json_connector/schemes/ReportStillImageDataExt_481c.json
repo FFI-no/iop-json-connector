@@ -1,0 +1,303 @@
+{
+  "title": "ReportStillImageDataExt",
+  "messageId": "481c",
+  "isCommand": false,
+  "description": "This message is used to report the most recent still image that was taken by the sensor. The timestamp defines the time at which the collected data was valid. The image data is defined with respect to either the sensor coordinate system or a specified coordinate system.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "481c"
+        }
+      }
+    },
+    "StillImageDataList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID",
+              "ReportCoordinateSystem"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              },
+              "ReportCoordinateSystem": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Native Coordinate System"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Vehicle Coordinate System"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Native Coordinate System",
+                  "Vehicle Coordinate System"
+                ]
+              },
+              "TimeStamp": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "Milliseconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 9
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 999.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Seconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 10,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 59.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Minutes": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 21
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 59.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Hour": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 22,
+                      "to": 26
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 23.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Day": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 27,
+                      "to": 31
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 31.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              },
+              "ImageFrame": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "formatField",
+                  "payload"
+                ],
+                "properties": {
+                  "formatField": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "JPEG"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "GIF"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "PNG"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "BMP"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "TIFF"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "PPM"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 6,
+                          "enumConst": "PGM"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 7,
+                          "enumConst": "PNM"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 8,
+                          "enumConst": "NEF"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 9,
+                          "enumConst": "CR2"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 10,
+                          "enumConst": "DNG"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "JPEG",
+                      "GIF",
+                      "PNG",
+                      "BMP",
+                      "TIFF",
+                      "PPM",
+                      "PGM",
+                      "PNM",
+                      "NEF",
+                      "CR2",
+                      "DNG"
+                    ]
+                  },
+                  "payload": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {}
+                  }
+                },
+                "jausType": "unsigned integer",
+                "encapsulatedMessage": "sub"
+              },
+              "StillImageURI": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Filename or other URI indicating the location of the still image data captured by the associated request. If the saving process fails for any reason (insufficient storage space, I/O error), the URI shall be an empty (zero length) string.",
+                "minLength": 0,
+                "maxLength": 255
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "StillImageDataList"
+  ]
+}

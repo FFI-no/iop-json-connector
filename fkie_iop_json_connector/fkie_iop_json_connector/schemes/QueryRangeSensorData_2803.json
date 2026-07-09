@@ -36,9 +36,27 @@
             ],
             "properties": {
               "SensorID": {
-                "type": "number",
+                "type": "string",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor being queried. Zero (0) is used to query all sensors associated with this service.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "AllSensors"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": "Specific ID to be queried"
+                    }
+                  }
+                ],
+                "enum": [
+                  "AllSensors"
+                ]
               },
               "ReportCoordinateSystem": {
                 "type": "string",

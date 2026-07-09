@@ -1,0 +1,42 @@
+{
+  "title": "QueryMountSite",
+  "messageId": "e701",
+  "isCommand": false,
+  "description": "This message enables an client to request mount site location and \n          orientation data for the mount site associated with the node ID in the request.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "e701"
+        }
+      }
+    },
+    "ChildNodeIDRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "NodeID"
+      ],
+      "properties": {
+        "NodeID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The JAUS Node ID byte representing the child node for which associated mount site and attachment data is requested. A value of zero is used to request the mount site and attachment data for all registered mount sites."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ChildNodeIDRec"
+  ]
+}

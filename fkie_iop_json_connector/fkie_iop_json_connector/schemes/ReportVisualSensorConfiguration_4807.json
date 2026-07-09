@@ -2,7 +2,7 @@
   "title": "ReportVisualSensorConfiguration",
   "messageId": "4807",
   "isCommand": false,
-  "description": "This message is sent in response to a \n            Query Visual Sensor Configuration message. It is populated with the \n            current sensor configuration (per sensor ID) as defined in the table \n            below.",
+  "description": "This message is sent in response to a Query Visual Sensor Configuration message. It is populated with the current sensor configuration (per sensor ID) as defined in the table below.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -42,7 +42,16 @@
               "SensorID": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
               },
               "SensorState": {
                 "type": "string",
@@ -265,13 +274,48 @@
                       "enumIndex": 3,
                       "enumConst": "Low Light"
                     }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "Thermal_WhiteHot"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 5,
+                      "enumConst": "Thermal_BlackHot"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 6,
+                      "enumConst": "Thermal_Rainbow"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 7.0,
+                      "maximum": 20.0,
+                      "interpretation": "Reserved for future use"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 21.0,
+                      "maximum": 31.0,
+                      "interpretation": "Reserved for program, implementation, or sensor specific modes"
+                    }
                   }
                 ],
                 "enum": [
                   "Color",
                   "Greyscale",
                   "Infrared",
-                  "Low Light"
+                  "Low Light",
+                  "Thermal_WhiteHot",
+                  "Thermal_BlackHot",
+                  "Thermal_Rainbow"
                 ]
               },
               "ExposureMode": {
@@ -417,7 +461,7 @@
                   "ISO 3200"
                 ]
               },
-              "ImageStablization": {
+              "ImageStabilization": {
                 "type": "string",
                 "jausType": "unsigned byte",
                 "comment": "",

@@ -2,7 +2,7 @@
   "title": "ReportRangeSensorData",
   "messageId": "4803",
   "isCommand": false,
-  "description": "This message is sent by a receiving \n            component upon receipt of a Query Range Sensor Data message. This \n            message reports a list of detected data points for a given time. \n            The RangeSensorDataSeq is used to report the data from a given \n            sensor along with meta data such as sensor ID and timestamp. The \n            timestamp defines the time at which the collected data was valid. \n            Data points are defined by range, bearing and inclination with \n            respect to either the native coordinate system or the vehicle \n            coordinate system. Data is only reported for sensors which are \n            in the active state. If data is queried for a sensor which is \n            not active, the RangeSensorDataErrorRec is returned for that \n            sensor ID report.",
+  "description": "This message is sent by a receiving component upon receipt of a Query Range Sensor Data message. This message reports a list of detected data points for a given time. The RangeSensorDataSeq is used to report the data from a given sensor along with meta data such as sensor ID and timestamp. The timestamp defines the time at which the collected data was valid. Data points are defined by range, bearing and inclination with respect to either the native coordinate system or the vehicle coordinate system. Data is only reported for sensors which are in the active state. If data is queried for a sensor which is not active, the RangeSensorDataErrorRec is returned for that sensor ID report.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -43,7 +43,16 @@
                   "SensorID": {
                     "type": "number",
                     "jausType": "unsigned short integer",
-                    "comment": ""
+                    "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 65535.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
                   },
                   "DataErrorCode": {
                     "type": "string",
@@ -104,7 +113,16 @@
                       "SensorID": {
                         "type": "number",
                         "jausType": "unsigned short integer",
-                        "comment": ""
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
                       },
                       "ReportCoordinateSystem": {
                         "type": "string",
@@ -253,7 +271,7 @@
                           "properties": {
                             "presenceVector": {
                               "type": "number",
-                              "jausType": "unsigned short integer",
+                              "jausType": "unsigned byte",
                               "comment": ""
                             },
                             "PointID": {

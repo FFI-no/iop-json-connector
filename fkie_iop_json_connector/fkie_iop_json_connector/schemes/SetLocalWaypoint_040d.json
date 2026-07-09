@@ -2,7 +2,7 @@
   "title": "SetLocalWaypoint",
   "messageId": "040d",
   "isCommand": true,
-  "description": "This message is used to set waypoint data based on the local coordinate system.  A local waypoint \n      can have up to six fields to describe it completely.  The waypoint is defined in a local coordinate \n      system using the X, Y, and Z fields.  The desired orientation of the platform at the waypoint is \n      defined using the roll, pitch, and yaw fields.  Only fields 1-3 (presence vector, X, and Y) are required \n      for each waypoint.  The presence vector is used to specify if the remaining fields, i.e., Z, roll, pitch, \n      and yaw, are used to further describe each waypoint and the desired orientation at that point.",
+  "description": "This message is used to set waypoint data based on the local coordinate system.  A local waypoint can have up to six fields to describe it completely.  The waypoint is defined in a local coordinate system using the X, Y, and Z fields.  The desired orientation of the platform at the waypoint is defined using the roll, pitch, and yaw fields. The remaining fields provide the desired waypoint and path tolerances. Only fields 1-3 (presence vector, X, and Y) are required for each waypoint.  The presence vector is used to specify if the remaining fields, i.e., Z, roll, pitch, and yaw, are used to further describe each waypoint and the desired orientation at that point and whether tolerances are provided.",
   "type": "object",
   "properties": {
     "HeaderRec": {

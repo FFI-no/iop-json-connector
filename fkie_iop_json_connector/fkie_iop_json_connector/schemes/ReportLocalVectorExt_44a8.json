@@ -1,0 +1,202 @@
+{
+  "title": "ReportLocalVectorExt",
+  "messageId": "44a8",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the current values of the commanded local vector. The message data of this report is identical to ID 04A8 h: SetLocalVectorExt.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "44a8"
+        }
+      }
+    },
+    "LocalVectorExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Speed"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Speed": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 0,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 1,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 2,
+                "fieldUnits": "rotations per minute",
+                "scaleRange": {
+                  "scaleFactor": 0.030518043793392843,
+                  "bias": -1000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 3,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "ZPosition": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 0,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 1,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 2,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 3,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 4,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "Roll": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Pitch": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Heading": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Course": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LocalVectorExtRec"
+  ]
+}

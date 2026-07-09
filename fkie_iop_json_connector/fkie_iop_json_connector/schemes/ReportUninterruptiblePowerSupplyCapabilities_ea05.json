@@ -1,0 +1,76 @@
+{
+  "title": "ReportUninterruptiblePowerSupplyCapabilities",
+  "messageId": "ea05",
+  "isCommand": false,
+  "description": "Report the capabilities of the uninterruptible power supply.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ea05"
+        }
+      }
+    },
+    "ReportUninterruptiblePowerSupplyCapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Description": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "A human-readable string that can be used to describe the UPS. This might include make and model information, or information about what systems the UPS is supporting.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "nominalVoltage": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.015259021896696421,
+            "bias": 0.0
+          }
+        },
+        "maxCharge": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0008381903173490871,
+            "bias": 0.0
+          }
+        },
+        "maxCurrentDraw": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.07629510948348212,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportUninterruptiblePowerSupplyCapabilitiesRec"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "title": "QueryDigitalVideoSensorStatus",
+  "messageId": "281e",
+  "isCommand": false,
+  "description": "This message shall cause the \n\t\t\treceiving service to reply to the requestor with a Report \n\t\t\tDigital Video Sensor Status message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "281e"
+        }
+      }
+    },
+    "SensorIdList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "string",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor being queried. Zero (0) is used to query all sensors associated with this service.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "AllSensors"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": "Specific ID to be queried"
+                    }
+                  }
+                ],
+                "enum": [
+                  "AllSensors"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SensorIdList"
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "title": "ConfirmHandoffRequest",
+  "messageId": "ff45",
+  "isCommand": false,
+  "description": "Confirms that there is a response to a handoff request.  The response can be: GRANTED, meaning the request for handoff was granted and the requesting client has control; NOT_AVAILABLE, meaning control (and thus handoff) is not available; HANDOFF_REQUEST_TIMEOUT, meaning the handoff request timed out because it was not re-issued within a set amount of time to the handoff request; DENIED, meaning the current controlling client rejected the request for handoff; QUEUED, meaning the handoff request was queued and pending; DEFERRED, meaning the current controller is not prepared to make a decision on the request; INSUFFICIENT_AUTHORITY, meaning the request did not have a high enough authority code to control the service; HANDOFF_DECISION_TIMEOUT, meaning the current controller did not respond within a set amount of time to the handoff request;  SERVICE_NOT_CONTROLLED, meaning that the service is not currently being controlled; or REMOVED, meaning that the handoff request was removed from the queue.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff45"
+        }
+      }
+    },
+    "ConfirmHandoffRequestRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "ResponseCode"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID from the RequestHandoff message that established the handoff request."
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "GRANTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "NOT_AVAILABLE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "HANDOFF_REQUEST_TIMEOUT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "DENIED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "QUEUED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "DEFERRED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "INSUFFICIENT_AUTHORITY"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "HANDOFF_DECISION_TIMEOUT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "SERVICE_NOT_CONTROLLED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 9,
+                "enumConst": "REMOVED"
+              }
+            }
+          ],
+          "enum": [
+            "GRANTED",
+            "NOT_AVAILABLE",
+            "HANDOFF_REQUEST_TIMEOUT",
+            "DENIED",
+            "QUEUED",
+            "DEFERRED",
+            "INSUFFICIENT_AUTHORITY",
+            "HANDOFF_DECISION_TIMEOUT",
+            "SERVICE_NOT_CONTROLLED",
+            "REMOVED"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfirmHandoffRequestRec"
+  ]
+}

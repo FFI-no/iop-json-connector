@@ -1,0 +1,55 @@
+{
+  "title": "QueryDetectionStatus",
+  "messageId": "dabd",
+  "isCommand": false,
+  "description": "This message is used to query the status of the engagement detection system.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dabd"
+        }
+      }
+    },
+    "QueryDetectionStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor to be queried. A value of zero (0) implies all sensors."
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryDetectionStatusList"
+  ]
+}

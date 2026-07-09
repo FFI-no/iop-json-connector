@@ -2,7 +2,7 @@
   "title": "SetLocalVector",
   "messageId": "0408",
   "isCommand": true,
-  "description": "This message is used to set the driving vector based on the local coordinate system.  \n      Field #2 sets the desired speed of the platform.  The desired heading angle is set in \n      field #4 and is defined in a right hand sense about the Z axis of the local coordinate \n      system (the Z axis points downward) where zero degrees defines a heading that is parallel \n      to the X axis of the local coordinate system.",
+  "description": "This message is used to set the driving vector based on the local coordinate system. Field #2 sets the desired speed of the platform.  The orientation is defined as per Section 3.1.",
   "type": "object",
   "properties": {
     "HeaderRec": {

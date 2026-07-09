@@ -2,7 +2,7 @@
   "title": "ReportGlobalPathSegment",
   "messageId": "440f",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the values of the current path segment.  The message data and \n      mapping of the presence vector of this message are identical to ID 040Fh: SetGlobalPathSegment.",
+  "description": "This message is used to provide the receiver the values of the commanded path segment. The message data and mapping of the presence vector of this message are identical to ID 040Fh: SetGlobalPathSegment (Deprecated).",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -40,7 +40,7 @@
         "P1_Latitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 4.190951586745435e-08,
             "bias": -90.0
@@ -49,7 +49,7 @@
         "P1_Longitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 8.38190317349087e-08,
             "bias": -180.0
@@ -67,7 +67,7 @@
         "P2_Latitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 4.190951586745435e-08,
             "bias": -90.0
@@ -76,7 +76,7 @@
         "P2_Longitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 8.38190317349087e-08,
             "bias": -180.0

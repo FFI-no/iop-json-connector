@@ -1,0 +1,143 @@
+{
+  "title": "ReportMagneticSensorStatus",
+  "messageId": "daba",
+  "isCommand": false,
+  "description": "This message is used to report the current status of one or more magnetic sensors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "daba"
+        }
+      }
+    },
+    "MagneticSensorStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "MagneticSensorStatusRec",
+              "MagneticSensorDataList"
+            ],
+            "properties": {
+              "MagneticSensorStatusRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "SensorID"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "SensorID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "ID of the magnetic sensor to be queried. A value of zero (0) is not permitted."
+                  },
+                  "CoordinateFrameEnum": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "SensorRelative"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "VehicleRelative"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "GlobalRelative"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "SensorRelative",
+                      "VehicleRelative",
+                      "GlobalRelative"
+                    ]
+                  }
+                }
+              },
+              "MagneticSensorDataList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": ""
+                        },
+                        "MagneticX": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "Magnetic field strength measured in the X direction"
+                        },
+                        "MagneticY": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "Magnetic field strength measured in the Y direction"
+                        },
+                        "MagneticZ": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "Magnetic field strength measured in the Z direction"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": null,
+                "maxItems": null,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "MagneticSensorStatusList"
+  ]
+}

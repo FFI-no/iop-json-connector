@@ -1,0 +1,27 @@
+{
+  "title": "QueryPassthroughMessageProperties",
+  "messageId": "d702",
+  "isCommand": false,
+  "description": "This message is used to query for the properties and configuration of the PassthroughMessage service.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d702"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

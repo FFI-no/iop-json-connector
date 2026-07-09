@@ -1,0 +1,68 @@
+{
+  "title": "RegisterPolicy",
+  "messageId": "d735",
+  "isCommand": false,
+  "description": "This message is used to register a policy, as specified by the encapsulated JAUS message. While\n                    individual implementations may vary, example messages include SetCommsLost Policy and \n                    SetIntelligentVehicleConfiguration.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d735"
+        }
+      }
+    },
+    "RegisterPolicyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "SetPolicyMessage"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID specified by the client and returned by the service to associate requests and responses"
+        },
+        "SetPolicyMessage": {
+          "type": "object",
+          "comment": "An encoded JAUS message that sets a policy",
+          "required": [
+            "payloadMessageId",
+            "payload"
+          ],
+          "properties": {
+            "payloadMessageId": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "message id of the payload message"
+            },
+            "payload": {
+              "type": "object",
+              "comment": "An encoded JAUS message that sets a policy",
+              "required": [],
+              "properties": {}
+            }
+          },
+          "minCount": 2,
+          "jausType": "unsigned integer",
+          "fieldFormat": "JAUS MESSAGE",
+          "encapsulatedMessage": "simple"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "RegisterPolicyRec"
+  ]
+}

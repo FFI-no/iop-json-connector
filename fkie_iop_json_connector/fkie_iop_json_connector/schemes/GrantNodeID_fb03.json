@@ -1,0 +1,61 @@
+{
+  "title": "GrantNodeID",
+  "messageId": "fb03",
+  "isCommand": false,
+  "description": "Provides the Node ID requested via the RequestNodeID mesasge.  The Node ID Allocator will send this response to the requestor.  Since the requestor does not yet have a valid Node ID, this must be sent as a JAUS broadcast.  It carries the unique Requester ID provided by the requestor in the ReqeustNodeID message, to allow the requestor to verify that it is the intended receiver before installing the Node ID.  In the event of error, this message will return a zero value Node ID.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "fb03"
+        }
+      }
+    },
+    "GrantNodeIDRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "NodeID",
+        "RequesterID"
+      ],
+      "properties": {
+        "NodeID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The 8 bit JAUS Node ID assigned by the NodeIDAllocator."
+        },
+        "RequesterID": {
+          "type": "array",
+          "comment": "An array of 7 bytes used to represent a unique ID associated with the node requesting a Node ID. This field must be formed to be unique amongst all nodes that can request a Node ID within a Subsystem. The following methods are suggested for assigning a unique node ID: 1. The first 6 bytes of the array are a MAC Address or unique IPv6 Address of the location where the Requestor resides, and the final byte is a unique integer value used to differentiate multiple JAUS nodes at that location. 2. The first 4 bytes of the array are a unique IPv4 address of the location where the Requester resides, and the 5th byte is a unique integrer value used to differentiate multiple JAUS nodes at that location. The final two bytes are unused and set to 0.",
+          "required": [
+            "RequesterIDArrayField"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              }
+            ]
+          },
+          "minItems": 7,
+          "maxItems": 7
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GrantNodeIDRec"
+  ]
+}

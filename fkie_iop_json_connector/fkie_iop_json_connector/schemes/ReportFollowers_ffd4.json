@@ -1,0 +1,116 @@
+{
+  "title": "ReportFollowers",
+  "messageId": "ffd4",
+  "isCommand": false,
+  "description": "This message reports a list of all followers registered with a leader.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "ffd4"
+        }
+      }
+    },
+    "FollowerList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "Follower_ID"
+            ],
+            "properties": {
+              "Follower_ID": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ComponentID",
+                  "NodeID",
+                  "SubsystemID"
+                ],
+                "properties": {
+                  "ComponentID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "NodeID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 8,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "SubsystemID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 31
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 65535.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "FollowerList"
+  ]
+}

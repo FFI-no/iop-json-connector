@@ -1,0 +1,84 @@
+{
+  "title": "ReportDoorStatus",
+  "messageId": "d722",
+  "isCommand": false,
+  "description": "This message is used to report the current state of the doors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d722"
+        }
+      }
+    },
+    "DoorStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "LockStatus",
+        "DoorAjar"
+      ],
+      "properties": {
+        "LockStatus": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Unlocked"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Locked"
+              }
+            }
+          ],
+          "enum": [
+            "Unlocked",
+            "Locked"
+          ]
+        },
+        "DoorAjar": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "False"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "True"
+              }
+            }
+          ],
+          "enum": [
+            "False",
+            "True"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DoorStatusRec"
+  ]
+}

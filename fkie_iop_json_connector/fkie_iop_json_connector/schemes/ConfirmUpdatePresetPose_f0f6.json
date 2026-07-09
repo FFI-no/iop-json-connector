@@ -1,0 +1,185 @@
+{
+  "title": "ConfirmUpdatePresetPose",
+  "messageId": "f0f6",
+  "isCommand": false,
+  "description": "Confirms if the UpdatePresetPose action succeeded\n       or failed.  Also provides information to each individual pose ID updated, which may\n       be used to determine which pose(s) caused a failure if one occurred.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f0f6"
+        }
+      }
+    },
+    "ConfirmPresetPoseSequence": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "ResultRec"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "ResultRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "Result"
+          ],
+          "properties": {
+            "Result": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Indicates the result of the command to update one or more preset poses. Check the ConfirmPresetPoseList for details.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "SUCCESS"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "FAILURE"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "CUSTOM_POSES_NOT_SUPPORTED"
+                  }
+                }
+              ],
+              "enum": [
+                "SUCCESS",
+                "FAILURE",
+                "CUSTOM_POSES_NOT_SUPPORTED"
+              ]
+            }
+          }
+        },
+        "ConfirmPresetPoseList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "PoseID",
+                  "Response",
+                  "ResponseDescription"
+                ],
+                "properties": {
+                  "PoseID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "Unique integer identifier of the pose. No Pose ID within the ConfirmPoseList should be the same. A value of 255 is not permitted.",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Response": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "SUCCESS"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "CANNOT_UPDATE_NON_EXISTING_POSE"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "CANNOT_CREATE_EXISTING_POSE"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "CANNOT_REMOVE_NON_EXISTING_POSE"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "THIS_POSE_CANT_BE_DELETED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "THIS_POSE_CANT_BE_UPDATED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 6,
+                          "enumConst": "INVALID_POSE_INFORMATION"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "SUCCESS",
+                      "CANNOT_UPDATE_NON_EXISTING_POSE",
+                      "CANNOT_CREATE_EXISTING_POSE",
+                      "CANNOT_REMOVE_NON_EXISTING_POSE",
+                      "THIS_POSE_CANT_BE_DELETED",
+                      "THIS_POSE_CANT_BE_UPDATED",
+                      "INVALID_POSE_INFORMATION"
+                    ]
+                  },
+                  "ResponseDescription": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Optional information describing the response.",
+                    "minLength": 0,
+                    "maxLength": 255
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfirmPresetPoseSequence"
+  ]
+}

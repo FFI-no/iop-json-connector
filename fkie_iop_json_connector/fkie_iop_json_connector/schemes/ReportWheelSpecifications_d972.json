@@ -1,0 +1,140 @@
+{
+  "title": "ReportWheelSpecifications",
+  "messageId": "d972",
+  "isCommand": false,
+  "description": "This message is used to report the specifications for the wheels (or tracks) of the platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d972"
+        }
+      }
+    },
+    "SpecificationList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "ID",
+              "Description",
+              "Type"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "ID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the wheel or track"
+              },
+              "Description": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "human readable description",
+                "minLength": 0,
+                "maxLength": 255
+              },
+              "Type": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Enumeration indicating the type",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Wheel"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Track"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Wheel",
+                  "Track"
+                ]
+              },
+              "LocationX": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "X location of the center of the wheel or track measured in the vehicle coordinate frame.",
+                "scaleRange": {
+                  "scaleFactor": 0.00030518043793392844,
+                  "bias": -10.0
+                }
+              },
+              "LocationY": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Y location of the center of the wheel or track measured in the vehicle coordinate frame.",
+                "scaleRange": {
+                  "scaleFactor": 0.00030518043793392844,
+                  "bias": -10.0
+                }
+              },
+              "LocationZ": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Z location of the center of the wheel or track measured in the vehicle coordinate frame.",
+                "scaleRange": {
+                  "scaleFactor": 0.00030518043793392844,
+                  "bias": -10.0
+                }
+              },
+              "MinEncoderCounts": {
+                "type": "number",
+                "jausType": "integer",
+                "comment": "Lowest possible encoder count value. Below this, the encoder counts are expected to wrap to max value"
+              },
+              "MaxEncoderCounts": {
+                "type": "number",
+                "jausType": "integer",
+                "comment": "Maximum possible encoder count value. Above this, the encoder counts are expected to wrap to min value"
+              },
+              "EncoderCountsPerRevolution": {
+                "type": "number",
+                "jausType": "integer",
+                "comment": "Encoder count corresponding to one complete revolution of the wheel or track"
+              },
+              "Circumference": {
+                "type": "UNKNOWN",
+                "jausType": "float",
+                "comment": "Total circumference of the wheel or track. This is the total forward movement for one complete revolution assuming no slipping or skidding."
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SpecificationList"
+  ]
+}

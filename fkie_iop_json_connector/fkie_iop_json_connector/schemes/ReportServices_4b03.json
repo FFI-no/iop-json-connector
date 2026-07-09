@@ -2,7 +2,7 @@
   "title": "ReportServices",
   "messageId": "4b03",
   "isCommand": false,
-  "description": "This message allows a component to publish its capabilities, according to the Service Dictionary presented below.  If a component ID is specified in the RA, it may report only one service in beyond the core message support, and this service must be equal to the component ID.  If a component ID is not listed in the RA, it may report any number of services.  For example, a component with ID 33 must provide only service 33.   The exception to this rule is component ID 1 (the Node Manager) which may provide any number of services in addition to core message support.",
+  "description": "This message allows a component to publish its capabilities, according to the Service Dictionary presented below.  If a component ID is specified in the RA, it may report only one service in beyond the core message support, and this service must be equal to the component ID.  If a component ID is not listed in the RA, it may report any number of services.  For example, a component with ID 33 must provide only service 33. The exception to this rule is component ID 1 (the Node Manager) which may provide any number of services in addition to core message support.",
   "type": "object",
   "properties": {
     "HeaderRec": {

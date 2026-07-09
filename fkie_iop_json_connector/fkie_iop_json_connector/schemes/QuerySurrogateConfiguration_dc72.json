@@ -1,0 +1,42 @@
+{
+  "title": "QuerySurrogateConfiguration",
+  "messageId": "dc72",
+  "isCommand": false,
+  "description": "Queries the current surrogate configuration.  The expected\n\t\t\tresponse is a ReportSurrogateConfiguration message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc72"
+        }
+      }
+    },
+    "QuerySurrogateConfigurationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Presence vector used when requesting surrogate configuration."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QuerySurrogateConfigurationRec"
+  ]
+}

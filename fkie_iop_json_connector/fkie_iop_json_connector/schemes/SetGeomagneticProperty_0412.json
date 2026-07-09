@@ -2,7 +2,7 @@
   "title": "SetGeomagneticProperty",
   "messageId": "0412",
   "isCommand": true,
-  "description": "This message is used to set the location specific magnetic variation for adjusting the GPS heading.",
+  "description": "This message is used to set the location specific magnetic variation for converting between true and magnetic heading.  The formula for conversion is: magnetic heading + variation = true heading where e ast is positive and west is negative.  According to [ngdc]: \"Variation is the angle of difference between true North and magnetic North. For instance, if the declination at a certain point were 10\u00b0 W, then a compass at that location pointing north (magnetic) would actually align 10\u00b0 W of true North. True North would be 10\u00b0 E relative to the magnetic North direction given by the compass. Variation varies with location and slowly changes in time.\"",
   "type": "object",
   "properties": {
     "HeaderRec": {

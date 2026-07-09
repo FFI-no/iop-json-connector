@@ -1,0 +1,51 @@
+{
+  "title": "QueryReminder",
+  "messageId": "ed05",
+  "isCommand": false,
+  "description": "QueryReminder requests a detailed report of parameters and status of the reminder specified by the query's ReminderID field.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ed05"
+        }
+      }
+    },
+    "ReminderIDRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ReminderID"
+      ],
+      "properties": {
+        "ReminderID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique ID for each maintenance reminder. Range [0..15]",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 15.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReminderIDRec"
+  ]
+}

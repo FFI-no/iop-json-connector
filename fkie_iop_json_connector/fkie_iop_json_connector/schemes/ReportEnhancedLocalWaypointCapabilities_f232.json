@@ -1,0 +1,71 @@
+{
+  "title": "ReportEnhancedLocalWaypointCapabilities",
+  "messageId": "f232",
+  "isCommand": false,
+  "description": "This message is used to report additional waypoint capabilities supported by this service. Specifically,\n                    this message will report a list of all planners or planning algorithms a client may select from, if multiple\n                    planner types are supported.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f232"
+        }
+      }
+    },
+    "WaypointCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "PlannerID",
+              "PlannerName",
+              "PlannerDescription"
+            ],
+            "properties": {
+              "PlannerID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "A numeric ID associated with this particular planner or planner algorithm"
+              },
+              "PlannerName": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human readable name associated with the planner or planning algorithm.",
+                "minLength": 0,
+                "maxLength": 20
+              },
+              "PlannerDescription": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human readable description associated with the planner or planning algorithm.",
+                "minLength": 0,
+                "maxLength": 255
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "WaypointCapabilitiesList"
+  ]
+}

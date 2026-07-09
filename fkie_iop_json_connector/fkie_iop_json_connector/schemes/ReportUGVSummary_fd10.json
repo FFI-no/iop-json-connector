@@ -49,34 +49,34 @@
                 {
                   "valueEnum": {
                     "enumIndex": 1,
-                    "enumConst": "INFO"
+                    "enumConst": "NOTIFICATION"
                   }
                 },
                 {
                   "valueEnum": {
                     "enumIndex": 2,
-                    "enumConst": "WARN"
+                    "enumConst": "ADVISORY"
                   }
                 },
                 {
                   "valueEnum": {
                     "enumIndex": 3,
-                    "enumConst": "ERR"
+                    "enumConst": "CAUTION"
                   }
                 },
                 {
                   "valueEnum": {
                     "enumIndex": 4,
-                    "enumConst": "FAIL"
+                    "enumConst": "WARNING"
                   }
                 }
               ],
               "enum": [
                 "NONE",
-                "INFO",
-                "WARN",
-                "ERR",
-                "FAIL"
+                "NOTIFICATION",
+                "ADVISORY",
+                "CAUTION",
+                "WARNING"
               ]
             }
           }
@@ -130,34 +130,34 @@
                           {
                             "valueEnum": {
                               "enumIndex": 1,
-                              "enumConst": "INFO"
+                              "enumConst": "NOTIFICATION"
                             }
                           },
                           {
                             "valueEnum": {
                               "enumIndex": 2,
-                              "enumConst": "WARN"
+                              "enumConst": "ADVISORY"
                             }
                           },
                           {
                             "valueEnum": {
                               "enumIndex": 3,
-                              "enumConst": "ERR"
+                              "enumConst": "CAUTION"
                             }
                           },
                           {
                             "valueEnum": {
                               "enumIndex": 4,
-                              "enumConst": "FAIL"
+                              "enumConst": "WARNING"
                             }
                           }
                         ],
                         "enum": [
                           "NONE",
-                          "INFO",
-                          "WARN",
-                          "ERR",
-                          "FAIL"
+                          "NOTIFICATION",
+                          "ADVISORY",
+                          "CAUTION",
+                          "WARNING"
                         ]
                       }
                     }

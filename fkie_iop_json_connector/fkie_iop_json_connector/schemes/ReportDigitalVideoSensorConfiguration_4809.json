@@ -2,7 +2,7 @@
   "title": "ReportDigitalVideoSensorConfiguration",
   "messageId": "4809",
   "isCommand": false,
-  "description": "This message is sent in response to a \n            Query Digital Video Sensor Configuration message. It is populated \n            with the current sensor configuration (per sensor ID) as defined \n            in the table below.",
+  "description": "This message is sent in response to a Query Digital Video Sensor Configuration message. It is populated with the current sensor configuration (per sensor ID) as defined in the table below.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -42,17 +42,26 @@
               "SensorID": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
               },
               "MinimumBitRate": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "measured kilobits per second"
               },
               "MaximumBitRate": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "measured kilobits per second"
               },
               "FrameRate": {
                 "type": "number",

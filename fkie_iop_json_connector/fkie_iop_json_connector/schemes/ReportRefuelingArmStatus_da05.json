@@ -1,0 +1,228 @@
+{
+  "title": "ReportRefuelingArmStatus",
+  "messageId": "da05",
+  "isCommand": false,
+  "description": "This message is used to report the current operational state and transitioning status of the refueling arm.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da05"
+        }
+      }
+    },
+    "ReportRefuelingArmStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RefuelingArmStatus"
+      ],
+      "properties": {
+        "RefuelingArmStatus": {
+          "type": "object",
+          "comment": "Status of the refueling arm.",
+          "required": [
+            "CurrentRefuelingArmState",
+            "StepPausedStatus",
+            "FailureStatus",
+            "AbortStatus"
+          ],
+          "properties": {
+            "CurrentRefuelingArmState": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Status of the refueling arm.",
+              "bitRange": {
+                "from": 0,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "STOWING"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "STOWED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "GOING_TO_READY"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 3,
+                    "enumConst": "READY"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 4,
+                    "enumConst": "LOCATING_PORT"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 5,
+                    "enumConst": "PORT_LOCATED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 6,
+                    "enumConst": "ENGAGING_PORT"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 7,
+                    "enumConst": "PORT_ENGAGED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 8,
+                    "enumConst": "DISENGAGING_PORT"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 9,
+                    "enumConst": "PORT_DISENGAGED"
+                  }
+                }
+              ],
+              "enum": [
+                "STOWING",
+                "STOWED",
+                "GOING_TO_READY",
+                "READY",
+                "LOCATING_PORT",
+                "PORT_LOCATED",
+                "ENGAGING_PORT",
+                "PORT_ENGAGED",
+                "DISENGAGING_PORT",
+                "PORT_DISENGAGED"
+              ]
+            },
+            "StepPausedStatus": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Status of the refueling arm.",
+              "bitRange": {
+                "from": 4,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_PAUSED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "PAUSED"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_PAUSED",
+                "PAUSED"
+              ]
+            },
+            "FailureStatus": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Status of the refueling arm.",
+              "bitRange": {
+                "from": 5,
+                "to": 6
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_FAILED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "COLLISION_DETECTED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "FAILURE_TO_PLAN_ROUTE"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 3,
+                    "enumConst": "UNSPECIFIED_FAILURE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_FAILED",
+                "COLLISION_DETECTED",
+                "FAILURE_TO_PLAN_ROUTE",
+                "UNSPECIFIED_FAILURE"
+              ]
+            },
+            "AbortStatus": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Status of the refueling arm.",
+              "bitRange": {
+                "from": 7,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_ABORTED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ABORTED"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_ABORTED",
+                "ABORTED"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "ReportRefuelingArmStatusRec"
+  ]
+}

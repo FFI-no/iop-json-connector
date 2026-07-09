@@ -1,0 +1,27 @@
+{
+  "title": "QueryCurrentPose",
+  "messageId": "f002",
+  "isCommand": false,
+  "description": "Queries the pose that the Preset Pose service is currently in.  The pose will be either one of the valid unique integer IDs for a pose, or will be a transition from one pose to another.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f002"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

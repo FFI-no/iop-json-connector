@@ -1,0 +1,67 @@
+{
+  "title": "SetTamperDetectionState",
+  "messageId": "de66",
+  "isCommand": true,
+  "description": "This message is used to enable or disable tamper detection.  In addition, previously reported anti-tamper activities can be cleared, e.g. removed from future reports until a new activity has occurred.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "de66"
+        }
+      }
+    },
+    "TamperDetectionStateRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "State"
+      ],
+      "properties": {
+        "State": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Target state of tamper detection",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Disable"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Enable"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Clear"
+              }
+            }
+          ],
+          "enum": [
+            "Disable",
+            "Enable",
+            "Clear"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TamperDetectionStateRec"
+  ]
+}

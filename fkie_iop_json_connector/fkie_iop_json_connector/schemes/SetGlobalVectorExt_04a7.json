@@ -1,0 +1,191 @@
+{
+  "title": "SetGlobalVectorExt",
+  "messageId": "04a7",
+  "isCommand": true,
+  "description": "This message is used to set the driving vector based on the global coordinate system.  Field #2 sets the desired speed of the platform. It uses a variable field allowing platforms to select various methods for specifying speed.  Field #3 sets the desired Z position. It uses a variable field allowing platforms to select various methods for specifying altitude or depth.  The desired heading (yaw) angle is set in field #4; however, field #7 supports a different value for course (the true direction of travel) which may be different for holonomic systems The orientation is defined as per Section 3.1.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "04a7"
+        }
+      }
+    },
+    "GlobalVectorExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Speed"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Speed": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 0,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 1,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 2,
+                "fieldUnits": "rotations per minute",
+                "scaleRange": {
+                  "scaleFactor": 0.030518043793392843,
+                  "bias": -1000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 3,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "ZPosition": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 0,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 1,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 2,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 3,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "Roll": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Pitch": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Heading": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Course": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GlobalVectorExtRec"
+  ]
+}

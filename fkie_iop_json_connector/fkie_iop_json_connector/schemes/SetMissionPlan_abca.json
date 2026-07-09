@@ -1,0 +1,140 @@
+{
+  "title": "SetMissionPlan",
+  "messageId": "abca",
+  "isCommand": true,
+  "description": "This message is used to set a mission plan within the manager. Upon acceptance by the server, a globally unique ID will be returned for referencing this mission plan in subsequent interactions.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "abca"
+        }
+      }
+    },
+    "SetMissionPlanRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "MissionPlan"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Locally unique request ID for the request, which the client can use to associated a given response"
+        },
+        "MissionPlan": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "formatField",
+            "payload"
+          ],
+          "properties": {
+            "formatField": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "C_BML"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Reserved_for_future_IOP_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "Reserved_for_future_IOP_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 3,
+                    "enumConst": "Reserved_for_future_IOP_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 4,
+                    "enumConst": "Reserved_for_future_IOP_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 32,
+                    "enumConst": "Reserved_for_program_specific_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 33,
+                    "enumConst": "Reserved_for_program_specific_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 34,
+                    "enumConst": "Reserved_for_program_specific_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 35,
+                    "enumConst": "Reserved_for_program_specific_use"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 36,
+                    "enumConst": "Reserved_for_program_specific_use"
+                  }
+                }
+              ],
+              "enum": [
+                "C_BML",
+                "Reserved_for_future_IOP_use",
+                "Reserved_for_future_IOP_use",
+                "Reserved_for_future_IOP_use",
+                "Reserved_for_future_IOP_use",
+                "Reserved_for_program_specific_use",
+                "Reserved_for_program_specific_use",
+                "Reserved_for_program_specific_use",
+                "Reserved_for_program_specific_use",
+                "Reserved_for_program_specific_use"
+              ]
+            },
+            "payload": {
+              "type": "object",
+              "comment": "",
+              "required": [],
+              "properties": {}
+            }
+          },
+          "jausType": "unsigned integer",
+          "encapsulatedMessage": "sub"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "SetMissionPlanRec"
+  ]
+}

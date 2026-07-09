@@ -1,0 +1,42 @@
+{
+  "title": "PauseMissionPlan",
+  "messageId": "abcd",
+  "isCommand": true,
+  "description": "This message is used to pause the execution of any executing mission. If no mission is executing, this message has no effect.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "abcd"
+        }
+      }
+    },
+    "PauseMissionPlanRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Locally unique request ID for the request, which the client can use to associated a given response"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "PauseMissionPlanRec"
+  ]
+}

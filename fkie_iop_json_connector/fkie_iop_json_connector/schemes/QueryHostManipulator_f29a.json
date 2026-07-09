@@ -1,0 +1,27 @@
+{
+  "title": "QueryHostManipulator",
+  "messageId": "f29a",
+  "isCommand": false,
+  "description": "This message is query the host for a pan tilt unit, \n                    to support cases where a pan tilt is mounted on a host manipulator.  The host \n                    is specified by a JAUS ID, as well as the joint number where joint one (1) \n                    is the first (base) joint.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f29a"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

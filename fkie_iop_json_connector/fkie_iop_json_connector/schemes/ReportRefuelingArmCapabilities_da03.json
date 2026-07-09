@@ -1,0 +1,74 @@
+{
+  "title": "ReportRefuelingArmCapabilities",
+  "messageId": "da03",
+  "isCommand": false,
+  "description": "This message is used to report the capabilities of the refueling arm.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da03"
+        }
+      }
+    },
+    "RefuelingArmCapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RefuelingArmCapabilities"
+      ],
+      "properties": {
+        "RefuelingArmCapabilities": {
+          "type": "object",
+          "comment": "Capabilities of the refueling arm.",
+          "required": [
+            "RetryStepCapabilities"
+          ],
+          "properties": {
+            "RetryStepCapabilities": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Capabilities of the refueling arm.",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "RETRY_STEP_NOT_SUPPORTED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "RETRY_STEP_SUPPORTED"
+                  }
+                }
+              ],
+              "enum": [
+                "RETRY_STEP_NOT_SUPPORTED",
+                "RETRY_STEP_SUPPORTED"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "RefuelingArmCapabilitiesRec"
+  ]
+}

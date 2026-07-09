@@ -1,0 +1,81 @@
+{
+  "title": "SetSurrogateState",
+  "messageId": "dc78",
+  "isCommand": true,
+  "description": "Allows an external client to set the state of the \n\t\tsurrogate.  Setting the surrogate state may be used to manually override a state that is\n\t\tpreventing launch or recovery, or to correct an incorrect or unknown state.  This message\n\t\tmay also be used by an external client responsible for assessing the launch / recovery \n\t\tstate for the surrogate in cases where the surrogate itself cannot fully determine that \n\t\tstate.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc78"
+        }
+      }
+    },
+    "SetSurrogateStateRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SurrogateState"
+      ],
+      "properties": {
+        "SurrogateState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "CLEAR_TO_LAUNCH"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "NOT_CLEAR_TO_LAUNCH"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "FORCED_RECOVERY_NOT_CLEAR_TO_LAUNCH"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "LAUNCHED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "LAUNCHED_NOT_CLEAR_TO_RECOVER"
+              }
+            }
+          ],
+          "enum": [
+            "CLEAR_TO_LAUNCH",
+            "NOT_CLEAR_TO_LAUNCH",
+            "FORCED_RECOVERY_NOT_CLEAR_TO_LAUNCH",
+            "LAUNCHED",
+            "LAUNCHED_NOT_CLEAR_TO_RECOVER"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetSurrogateStateRec"
+  ]
+}

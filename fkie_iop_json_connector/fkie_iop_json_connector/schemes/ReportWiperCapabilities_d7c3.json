@@ -1,0 +1,329 @@
+{
+  "title": "ReportWiperCapabilities",
+  "messageId": "d7c3",
+  "isCommand": false,
+  "description": "This message is used to report the capabilities for the wipers/cleaners.  Periodic settings have no delay between activations, but the speed of activation can be controlled through the low/medium/high setting.  The interval settings have a delay between each activation, where low/medium/high corresponds to the length of that delay such that LowInterval activates less frequently than HighInterval.  OneShot mode means the wiper/clean activates one time only with no periodicity.  The service may optional report the time duration (period) of each setting, as measured from the beginning of one wipe to the beginning of the next.  For interval settings, the delay may also be reported, measured as the end of one wipe to the beginning of the next.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7c3"
+        }
+      }
+    },
+    "WiperCapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "WiperCapabilities"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        },
+        "WiperCapabilities": {
+          "type": "object",
+          "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+          "required": [
+            "OneShot",
+            "LowPeriodic",
+            "MediumPeriodic",
+            "HighPeriodic",
+            "LowInterval",
+            "MediumInterval",
+            "HighInterval"
+          ],
+          "properties": {
+            "OneShot": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "LowPeriodic": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "MediumPeriodic": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "HighPeriodic": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "LowInterval": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+              "bitRange": {
+                "from": 4,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "MediumInterval": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+              "bitRange": {
+                "from": 5,
+                "to": 5
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "HighInterval": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+              "bitRange": {
+                "from": 6,
+                "to": 6
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        },
+        "LowPeriod": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Time duration (period) of the LowPeriodic setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "MediumPeriod": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Time duration (period) of the MediumPeriodic setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "HighPeriod": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Time duration (period) of the HighPeriodic setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "LowIntervalPeriod": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Total time duration (period) of the LowInterval setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "MediumIntervalPeriod": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Total time duration (period) of the MediumInterval setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "HighIntervalPeriod": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Total time duration (period) of the HighInterval setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "LowIntervalDelay": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Time delay between wipes in the LowInterval setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "MediumIntervalDelay": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Time delay between wipes in the MediumInterval setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        },
+        "HighIntervalDelay": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Time delay between wipes in the HighInterval setting, in seconds.",
+          "scaleRange": {
+            "scaleFactor": 0.1,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "WiperCapabilitiesRec"
+  ]
+}

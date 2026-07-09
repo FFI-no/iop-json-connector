@@ -1,0 +1,102 @@
+{
+  "title": "ReportSelfCollisionAvoidanceCapabilities",
+  "messageId": "c526",
+  "isCommand": false,
+  "description": "This message is used to report which behaviors are supported for self-collision avoidance.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "c526"
+        }
+      }
+    },
+    "SelfCollisionAvoidanceCapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SupportedBehaviors"
+      ],
+      "properties": {
+        "SupportedBehaviors": {
+          "type": "object",
+          "comment": "A high value (1) indicates the component supports the defined behavior.",
+          "required": [
+            "StopOnObstacle",
+            "AvoidObstacle"
+          ],
+          "properties": {
+            "StopOnObstacle": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "A high value (1) indicates the component supports the defined behavior.",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "AvoidObstacle": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "A high value (1) indicates the component supports the defined behavior.",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SelfCollisionAvoidanceCapabilitiesRec"
+  ]
+}

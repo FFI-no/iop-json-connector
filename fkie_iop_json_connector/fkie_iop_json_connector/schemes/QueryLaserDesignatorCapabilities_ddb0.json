@@ -1,0 +1,27 @@
+{
+  "title": "QueryLaserDesignatorCapabilities",
+  "messageId": "ddb0",
+  "isCommand": false,
+  "description": "This message is used to query the capabilities of the laser designator.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ddb0"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

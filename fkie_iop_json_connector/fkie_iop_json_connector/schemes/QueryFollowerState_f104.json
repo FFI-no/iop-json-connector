@@ -1,0 +1,42 @@
+{
+  "title": "QueryFollowerState",
+  "messageId": "f104",
+  "isCommand": false,
+  "description": "Queries the current state of a follower.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f104"
+        }
+      }
+    },
+    "QueryFollowerStateRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "GroupID"
+      ],
+      "properties": {
+        "GroupID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the group to be reported. A value of zero (0) returns all known groups"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryFollowerStateRec"
+  ]
+}

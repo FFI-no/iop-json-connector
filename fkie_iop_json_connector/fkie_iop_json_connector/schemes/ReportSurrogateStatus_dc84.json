@@ -1,0 +1,598 @@
+{
+  "title": "ReportSurrogateStatus",
+  "messageId": "dc84",
+  "isCommand": false,
+  "description": "Reports the current status of the surrogate system.  At\n\t\ta minimum current state and relative position must be reported.  Optionally reported information \n\t\tincludes surrogate relative orientation and tether twist amount.  If no \n\t\tCommandedRelativePosition response is included, the assumption is there is no active\n\t\tcommand.  Relative pose (position) is defined as a position and orientation relative to the Host \n\t\tFrame of reference, as defined in Section 3 Common Conventions.\"",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc84"
+        }
+      }
+    },
+    "ReportSurrogateStatusSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "SurrogateStatusRec"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "SurrogateStatusRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "SurrogateState",
+            "MotorState"
+          ],
+          "properties": {
+            "SurrogateState": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "CLEAR_TO_LAUNCH"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "NOT_CLEAR_TO_LAUNCH"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "FORCED_RECOVERY_NOT_CLEAR_TO_LAUNCH"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 3,
+                    "enumConst": "LAUNCHED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 4,
+                    "enumConst": "LAUNCHED_NOT_CLEAR_TO_RECOVER"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 5,
+                    "enumConst": "LAUNCHING"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 6,
+                    "enumConst": "RECOVERING"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 7,
+                    "enumConst": "UNKNOWN"
+                  }
+                }
+              ],
+              "enum": [
+                "CLEAR_TO_LAUNCH",
+                "NOT_CLEAR_TO_LAUNCH",
+                "FORCED_RECOVERY_NOT_CLEAR_TO_LAUNCH",
+                "LAUNCHED",
+                "LAUNCHED_NOT_CLEAR_TO_RECOVER",
+                "LAUNCHING",
+                "RECOVERING",
+                "UNKNOWN"
+              ]
+            },
+            "MotorState": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "DISABLED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ENABLED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "UNKNOWN_OR_ERROR"
+                  }
+                }
+              ],
+              "enum": [
+                "DISABLED",
+                "ENABLED",
+                "UNKNOWN_OR_ERROR"
+              ]
+            }
+          }
+        },
+        "ActualRelativePosition": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "X": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Y": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Z": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "XYPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "ZPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "Roll": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Pitch": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Heading": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Attitude_RMS": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "An RMS value indicating the validity of the orientation data.",
+              "scaleRange": {
+                "scaleFactor": 4.793763109162727e-05,
+                "bias": 0.0
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. UTC POSIX-style time in seconds since 1 January 1970."
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. Nanoseconds component of POSIX-style time"
+            }
+          }
+        },
+        "CommandedRelativePosition": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "X": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Y": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Z": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "XYPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "ZPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "Roll": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Pitch": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Heading": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Attitude_RMS": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "An RMS value indicating the validity of the orientation data.",
+              "scaleRange": {
+                "scaleFactor": 4.793763109162727e-05,
+                "bias": 0.0
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. UTC POSIX-style time in seconds since 1 January 1970."
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. Nanoseconds component of POSIX-style time"
+            }
+          }
+        },
+        "TetherStatusRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector",
+            "TetherState"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "TetherState": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "TETHER_CONDITIONS_NOMINAL"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "TWIST_LIMITS_WARNING"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "TWIST_LIMITS_EXCEEDED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 3,
+                    "enumConst": "TETHER_LINK_SEVERED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 4,
+                    "enumConst": "TEHTER_DISENGAGED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 5,
+                    "enumConst": "UNKNOWN_TETHER_ERROR"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 6,
+                    "enumConst": "TETHER_UNTWISTING"
+                  }
+                }
+              ],
+              "enum": [
+                "TETHER_CONDITIONS_NOMINAL",
+                "TWIST_LIMITS_WARNING",
+                "TWIST_LIMITS_EXCEEDED",
+                "TETHER_LINK_SEVERED",
+                "TEHTER_DISENGAGED",
+                "UNKNOWN_TETHER_ERROR",
+                "TETHER_UNTWISTING"
+              ]
+            },
+            "NumberOfTwists": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "The current number of twists of the tether."
+            },
+            "TwistsPerMeter": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "The current number of twists of the tether per meter."
+            },
+            "MetersPerTwist": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "The current number meters of altitude per twist of the tether."
+            }
+          }
+        },
+        "GlobalPoseExtRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "Latitude": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Decimal degrees",
+              "scaleRange": {
+                "scaleFactor": 4.190951586745435e-08,
+                "bias": -90.0
+              }
+            },
+            "Longitude": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Decimal degrees",
+              "scaleRange": {
+                "scaleFactor": 8.38190317349087e-08,
+                "bias": -180.0
+              }
+            },
+            "ZPosition": {
+              "type": "array",
+              "comment": "",
+              "required": [],
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 0,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 1,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 2,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 3,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  }
+                ]
+              },
+              "jausType": "unsigned byte",
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "HorizontalRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "VerticalRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "Roll": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Pitch": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Heading": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Attitude_RMS": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "An RMS value indicating the validity of the orientation data.",
+              "scaleRange": {
+                "scaleFactor": 4.793763109162727e-05,
+                "bias": 0.0
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. UTC POSIX-style time in seconds since 1 January 1970."
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. Nanoseconds component of POSIX-style time"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportSurrogateStatusSeq"
+  ]
+}

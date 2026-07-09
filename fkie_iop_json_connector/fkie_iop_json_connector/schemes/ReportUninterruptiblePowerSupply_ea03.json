@@ -1,0 +1,114 @@
+{
+  "title": "ReportUninterruptiblePowerSupply",
+  "messageId": "ea03",
+  "isCommand": false,
+  "description": "Report the status of the uninterruptible power supply.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ea03"
+        }
+      }
+    },
+    "ReportUninterruptiblePowerSupplyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "State"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "State": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "OFF"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "ON_Activated"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "ON_Charging"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "ON_Ready"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Failure"
+              }
+            }
+          ],
+          "enum": [
+            "OFF",
+            "ON_Activated",
+            "ON_Charging",
+            "ON_Ready",
+            "Failure"
+          ]
+        },
+        "percentCharge": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Percent of maximum.",
+          "scaleRange": {
+            "scaleFactor": 0.0015259021896696422,
+            "bias": 0.0
+          }
+        },
+        "currentDraw": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "When UPS is active, this is the current being supplied by the unit",
+          "scaleRange": {
+            "scaleFactor": 0.015259021896696421,
+            "bias": 0.0
+          }
+        },
+        "timeRemaining": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "When UPS is active, this is an estimated time the unit will be able to continue to generate power",
+          "scaleRange": {
+            "scaleFactor": 0.15259021896696423,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportUninterruptiblePowerSupplyRec"
+  ]
+}

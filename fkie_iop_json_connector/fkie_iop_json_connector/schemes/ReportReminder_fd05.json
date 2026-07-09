@@ -1,0 +1,102 @@
+{
+  "title": "ReportReminder",
+  "messageId": "fd05",
+  "isCommand": false,
+  "description": "ReportReminder conveys a reprot of status and configuration for the maintenance reminder specified by ReminderID.  Configuration information includes the ReminderID, a human-readable string identifying the reminder and its purpose, and the reminders service interval.  Status includes a Boolean indicating whether the reminder has been asserted (service interval reached) and the current elapsed (power-on) time since the reminder was last reset (serviced).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fd05"
+        }
+      }
+    },
+    "ReminderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ReminderID",
+        "ReminderStatus",
+        "descriptor",
+        "ServiceInterval",
+        "ElapsedTime"
+      ],
+      "properties": {
+        "ReminderID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique ID for each maintenance reminder. Range [0..15]. If the requested ReminderID is not configured, set Bit 7 of the ReminderID field in this message.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 15.0,
+                "interpretation": ""
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 128.0,
+                "maximum": 143.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "ReminderStatus": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "NotExpired"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Expired"
+              }
+            }
+          ],
+          "enum": [
+            "NotExpired",
+            "Expired"
+          ]
+        },
+        "descriptor": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Human-readable string describing the maintenance reminder associated with ReminderID.",
+          "minLength": 0,
+          "maxLength": 64
+        },
+        "ServiceInterval": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Service reminder (duration) in minutes."
+        },
+        "ElapsedTime": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Current elapsed CM powered-on time since last service interval reset."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReminderRec"
+  ]
+}

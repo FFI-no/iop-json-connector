@@ -2,7 +2,7 @@
   "title": "ReportDigitalResourceEndpoint",
   "messageId": "f702",
   "isCommand": false,
-  "description": "Reports a list of known digital resource servers.\tEach endpoint is represented by a URL; however, the URL shall not require a Domain Name Service (DNS) to resolve.",
+  "description": "Reports a list of known digital resource servers.  Each endpoint is represented by a URL; however, the URL shall not require a Domain Name Service (DNS) to resolve.",
   "type": "object",
   "properties": {
     "HeaderRec": {

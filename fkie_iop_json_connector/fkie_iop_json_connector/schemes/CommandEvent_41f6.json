@@ -2,7 +2,7 @@
   "title": "CommandEvent",
   "messageId": "41f6",
   "isCommand": false,
-  "description": "The CommandEvent message is sent when a command specified by a previous Create            Command Event message has completed or expired.  It includes the Event ID and             command result.",
+  "description": "The CommandEvent message is sent when a command specified by a previous Create Command Event message has completed or expired.  It includes the Event ID and command result.",
   "type": "object",
   "properties": {
     "HeaderRec": {

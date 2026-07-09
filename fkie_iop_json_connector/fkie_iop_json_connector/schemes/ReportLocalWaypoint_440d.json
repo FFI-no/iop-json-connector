@@ -2,7 +2,7 @@
   "title": "ReportLocalWaypoint",
   "messageId": "440d",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the values of the current waypoint fields as specified by the \n      data in ID 240D: QueryLocalWaypoint.  The message data and mapping of the presence vector of this \n      message are identical to ID 040Dh: SetLocalWaypoint.",
+  "description": "This message is used to provide the receiver the values of the commanded waypoint fields as specified by the data in ID 040Dh: SetLocalWaypoint (Deprecated).",
   "type": "object",
   "properties": {
     "HeaderRec": {

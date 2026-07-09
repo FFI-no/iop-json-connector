@@ -1,0 +1,27 @@
+{
+  "title": "QuerySelfCollisionAvoidanceStatus",
+  "messageId": "c524",
+  "isCommand": false,
+  "description": "This message is used to query for the current self-collision avoidance behavior status.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "c524"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

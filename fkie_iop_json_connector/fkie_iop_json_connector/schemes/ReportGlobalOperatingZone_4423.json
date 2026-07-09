@@ -1,0 +1,418 @@
+{
+  "title": "ReportGlobalOperatingZone",
+  "messageId": "4423",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver with the current values of the operating zone. The message data for this message are identical to the ID 0423h: SetGlobalOperatingZone message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4423"
+        }
+      }
+    },
+    "GlobalOperatingZoneSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "GlobalOperatingZone",
+        "GlobalExclusionZones"
+      ],
+      "properties": {
+        "GlobalOperatingZone": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "Latitude",
+                  "Longitude"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "Latitude": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Decimal degrees",
+                    "scaleRange": {
+                      "scaleFactor": 4.190951586745435e-08,
+                      "bias": -90.0
+                    }
+                  },
+                  "Longitude": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Decimal degrees",
+                    "scaleRange": {
+                      "scaleFactor": 8.38190317349087e-08,
+                      "bias": -180.0
+                    }
+                  },
+                  "MinZPosition": {
+                    "type": "array",
+                    "comment": "",
+                    "required": [],
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 0,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        },
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 1,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        },
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 2,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        },
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 3,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        }
+                      ]
+                    },
+                    "jausType": "unsigned byte",
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "MaxZPosition": {
+                    "type": "array",
+                    "comment": "",
+                    "required": [],
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 0,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        },
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 1,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        },
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 2,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        },
+                        {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "",
+                          "fieldIndex": 3,
+                          "fieldUnits": "meter",
+                          "scaleRange": {
+                            "scaleFactor": 2.3283064370807974e-05,
+                            "bias": -50000.0
+                          }
+                        }
+                      ]
+                    },
+                    "jausType": "unsigned byte",
+                    "minItems": 1,
+                    "maxItems": 1
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 255,
+          "isVariant": false
+        },
+        "GlobalExclusionZones": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "GlobalExclusionZoneRec",
+                        "GlobalPolygonPointRec"
+                      ],
+                      "properties": {
+                        "GlobalExclusionZoneRec": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "ZoneID"
+                          ],
+                          "properties": {
+                            "ZoneID": {
+                              "type": "string",
+                              "jausType": "unsigned short integer",
+                              "comment": "",
+                              "valueSet": [
+                                {
+                                  "valueEnum": {
+                                    "enumIndex": 0,
+                                    "enumConst": "RESERVED"
+                                  }
+                                },
+                                {
+                                  "valueEnum": {
+                                    "enumIndex": 1,
+                                    "enumConst": "OPERATING_ZONE"
+                                  }
+                                },
+                                {
+                                  "valueRange": {
+                                    "minimum": 2.0,
+                                    "maximum": 65535.0,
+                                    "interpretation": "Allow ID range for exclusion zones"
+                                  }
+                                }
+                              ],
+                              "enum": [
+                                "RESERVED",
+                                "OPERATING_ZONE"
+                              ]
+                            }
+                          }
+                        },
+                        "GlobalPolygonPointRec": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "presenceVector",
+                            "Latitude",
+                            "Longitude"
+                          ],
+                          "properties": {
+                            "presenceVector": {
+                              "type": "number",
+                              "jausType": "unsigned byte",
+                              "comment": ""
+                            },
+                            "Latitude": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "Decimal degrees",
+                              "scaleRange": {
+                                "scaleFactor": 4.190951586745435e-08,
+                                "bias": -90.0
+                              }
+                            },
+                            "Longitude": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "Decimal degrees",
+                              "scaleRange": {
+                                "scaleFactor": 8.38190317349087e-08,
+                                "bias": -180.0
+                              }
+                            },
+                            "MinZPosition": {
+                              "type": "array",
+                              "comment": "",
+                              "required": [],
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 0,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  },
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 1,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  },
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 2,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  },
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 3,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  }
+                                ]
+                              },
+                              "jausType": "unsigned byte",
+                              "minItems": 1,
+                              "maxItems": 1
+                            },
+                            "MaxZPosition": {
+                              "type": "array",
+                              "comment": "",
+                              "required": [],
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 0,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  },
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 1,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  },
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 2,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  },
+                                  {
+                                    "type": "number",
+                                    "jausType": "unsigned integer",
+                                    "comment": "",
+                                    "fieldIndex": 3,
+                                    "fieldUnits": "meter",
+                                    "scaleRange": {
+                                      "scaleFactor": 2.3283064370807974e-05,
+                                      "bias": -50000.0
+                                    }
+                                  }
+                                ]
+                              },
+                              "jausType": "unsigned byte",
+                              "minItems": 1,
+                              "maxItems": 1
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GlobalOperatingZoneSeq"
+  ]
+}

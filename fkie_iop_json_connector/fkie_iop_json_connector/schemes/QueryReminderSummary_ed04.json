@@ -1,0 +1,27 @@
+{
+  "title": "QueryReminderSummary",
+  "messageId": "ed04",
+  "isCommand": false,
+  "description": "QueryReminderSummary is used to request a report providing the status of each configured maintenance reminder associated with the HealthReporter's location.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ed04"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

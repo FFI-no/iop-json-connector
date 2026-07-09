@@ -1,0 +1,51 @@
+{
+  "title": "ResetReminder",
+  "messageId": "dd05",
+  "isCommand": true,
+  "description": "ResetReminder causes the maintenance reminder specified by ReminderID to be reset (sets the ReminderValue to zero).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dd05"
+        }
+      }
+    },
+    "ReminderIDRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ReminderID"
+      ],
+      "properties": {
+        "ReminderID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique ID for each maintenance reminder. Range [0..15]",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 15.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReminderIDRec"
+  ]
+}

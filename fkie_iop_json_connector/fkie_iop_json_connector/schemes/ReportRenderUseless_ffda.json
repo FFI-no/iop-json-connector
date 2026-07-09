@@ -1,0 +1,75 @@
+{
+  "title": "ReportRenderUseless",
+  "messageId": "ffda",
+  "isCommand": false,
+  "description": "This message is used to report if a target has been rendered inoperable.  Note that depending on the implementation of the render-useless action, this message may not be sent successfully.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ffda"
+        }
+      }
+    },
+    "RenderUselessStateRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "State",
+        "ErrorString"
+      ],
+      "properties": {
+        "State": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Normal"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "RenderedUseless"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "RenderUselessFailed"
+              }
+            }
+          ],
+          "enum": [
+            "Normal",
+            "RenderedUseless",
+            "RenderUselessFailed"
+          ]
+        },
+        "ErrorString": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Human readable error string associated with a failed render useless request. String length shall be zero in Normal or RenderedUseless state.",
+          "minLength": 0,
+          "maxLength": 256
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RenderUselessStateRec"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "title": "ReportMissionPlanManagerCapabilities",
+  "messageId": "abc1",
+  "isCommand": false,
+  "description": "Report the underlying capabilities of the implementation, chiefly the types of mission plan descriptions it supports.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "abc1"
+        }
+      }
+    },
+    "MissionPlanManagerCapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SupportedMissionPlanFormats"
+      ],
+      "properties": {
+        "SupportedMissionPlanFormats": {
+          "type": "object",
+          "comment": "Bit field representing the supported mission plan format types",
+          "required": [
+            "C_BML",
+            "ReservedForFutureIOPUse",
+            "ReservedForProgramSpecificUse"
+          ],
+          "properties": {
+            "C_BML": {
+              "type": "string",
+              "jausType": "unsigned long integer",
+              "comment": "Bit field representing the supported mission plan format types",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "ReservedForFutureIOPUse": {
+              "type": "string",
+              "jausType": "unsigned long integer",
+              "comment": "Bit field representing the supported mission plan format types",
+              "bitRange": {
+                "from": 1,
+                "to": 31
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "ReservedForProgramSpecificUse": {
+              "type": "string",
+              "jausType": "unsigned long integer",
+              "comment": "Bit field representing the supported mission plan format types",
+              "bitRange": {
+                "from": 32,
+                "to": 63
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            }
+          },
+          "bitField": "unsigned long integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "MissionPlanManagerCapabilitiesRec"
+  ]
+}

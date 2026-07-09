@@ -1,0 +1,75 @@
+{
+  "title": "ControlDigitalVideoSensorRecording",
+  "messageId": "0810",
+  "isCommand": true,
+  "description": "This message is used to control the recording state of the video from a digital video service. The details of the recording (filename, location, maximum file size, etc) are left to the implementation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0810"
+        }
+      }
+    },
+    "ControlDigitalVideoSensorRecordingRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SensorID",
+        "RequestedRecordingState"
+      ],
+      "properties": {
+        "SensorID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65535.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "RequestedRecordingState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "NotRecording"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Recording"
+              }
+            }
+          ],
+          "enum": [
+            "NotRecording",
+            "Recording"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ControlDigitalVideoSensorRecordingRec"
+  ]
+}

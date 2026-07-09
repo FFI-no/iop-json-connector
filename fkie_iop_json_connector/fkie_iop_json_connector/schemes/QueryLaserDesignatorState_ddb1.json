@@ -1,0 +1,55 @@
+{
+  "title": "QueryLaserDesignatorState",
+  "messageId": "ddb1",
+  "isCommand": false,
+  "description": "This message is used to query current state of the laser designator.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ddb1"
+        }
+      }
+    },
+    "QueryLaserDesignatorStateList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "ID"
+            ],
+            "properties": {
+              "ID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the laser designator to query. A value of 0 indicates all IDs are being queried."
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryLaserDesignatorStateList"
+  ]
+}

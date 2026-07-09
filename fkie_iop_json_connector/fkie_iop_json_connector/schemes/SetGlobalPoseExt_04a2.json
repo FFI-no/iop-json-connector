@@ -1,0 +1,180 @@
+{
+  "title": "SetGlobalPoseExt",
+  "messageId": "04a2",
+  "isCommand": true,
+  "description": "This message is used to set the global pose values.  The position of the platform is given in latitude, longitude, and Z position.  An optional variable field is added for air and submersible platforms to select altitude or depth. All times are in Coordinated Universal Time (UTC).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "04a2"
+        }
+      }
+    },
+    "GlobalPoseExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        },
+        "Latitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Decimal degrees",
+          "scaleRange": {
+            "scaleFactor": 4.190951586745435e-08,
+            "bias": -90.0
+          }
+        },
+        "Longitude": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Decimal degrees",
+          "scaleRange": {
+            "scaleFactor": 8.38190317349087e-08,
+            "bias": -180.0
+          }
+        },
+        "ZPosition": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 0,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 1,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 2,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 3,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "HorizontalRMS": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "An RMS value indicating the validity of the position data.",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-08,
+            "bias": 0.0
+          }
+        },
+        "VerticalRMS": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "An RMS value indicating the validity of the position data.",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-08,
+            "bias": 0.0
+          }
+        },
+        "Roll": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Pitch": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Heading": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Attitude_RMS": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "An RMS value indicating the validity of the orientation data.",
+          "scaleRange": {
+            "scaleFactor": 4.793763109162727e-05,
+            "bias": 0.0
+          }
+        },
+        "TimeSeconds": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "TimeNanoSeconds": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Nanoseconds component of POSIX-style time"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GlobalPoseExtRec"
+  ]
+}

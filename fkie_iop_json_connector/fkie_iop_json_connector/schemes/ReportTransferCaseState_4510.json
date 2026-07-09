@@ -2,7 +2,7 @@
   "title": "ReportTransferCaseState",
   "messageId": "4510",
   "isCommand": false,
-  "description": "Returns current transfer case state\n                   for Front Wheel Drive or All Wheel Drive vehicles",
+  "description": "Returns current transfer case state for Front Wheel Drive or All Wheel Drive vehicles",
   "type": "object",
   "properties": {
     "HeaderRec": {

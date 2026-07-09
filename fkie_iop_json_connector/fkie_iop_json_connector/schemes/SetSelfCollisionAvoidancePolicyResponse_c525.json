@@ -1,0 +1,66 @@
+{
+  "title": "SetSelfCollisionAvoidancePolicyResponse",
+  "messageId": "c525",
+  "isCommand": false,
+  "description": "This message is sent as a response to a SetSelfCollisionAvoidancePolicy message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "c525"
+        }
+      }
+    },
+    "SelfCollisionAvoidanceResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Local_ID",
+        "ResponseCode"
+      ],
+      "properties": {
+        "Local_ID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "A request identifier that will be returned in the response message. This field allows the client to coordinate requests and responses."
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Success"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "UnsupportedBehavior"
+              }
+            }
+          ],
+          "enum": [
+            "Success",
+            "UnsupportedBehavior"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SelfCollisionAvoidanceResponseRec"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "QueryPresetPoseSpecifications",
+  "messageId": "f005",
+  "isCommand": false,
+  "description": "Generates a response of F0F5: ReportPresetPoseSpecifications.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f005"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

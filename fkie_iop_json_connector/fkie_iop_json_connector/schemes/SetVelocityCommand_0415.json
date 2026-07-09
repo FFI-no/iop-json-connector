@@ -2,7 +2,7 @@
   "title": "SetVelocityCommand",
   "messageId": "0415",
   "isCommand": true,
-  "description": "This message is used to command the linear velocity and rotational rate of the platform.",
+  "description": "This message is used to command the linear velocity and rotational rate of the platform.  The SetVelocityCommand provides the capability, by setting the appropriate command type in the message, to set the current velocity command, set the maximum allowed velocity values, set the minimum allowed velocity values and set the default velocity command.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -36,38 +36,38 @@
         "CommandType": {
           "type": "string",
           "jausType": "unsigned byte",
-          "comment": "",
+          "comment": "Where minimum and maximum are the bottom and top ends of the allowable range. Any commanded velocity outside this range will be ignored. For a system that expects to move in both directions along or around an axis, e.g. forward and backward for linear X, then the minimum is expected to be negative.",
           "valueSet": [
             {
               "valueEnum": {
                 "enumIndex": 0,
-                "enumConst": "Set current command"
+                "enumConst": "SetCurrentCommand"
               }
             },
             {
               "valueEnum": {
                 "enumIndex": 1,
-                "enumConst": "Set maximum allowed values"
+                "enumConst": "SetMaxAllowed"
               }
             },
             {
               "valueEnum": {
                 "enumIndex": 2,
-                "enumConst": "Set minimum allowed values"
+                "enumConst": "SetMinAllowed"
               }
             },
             {
               "valueEnum": {
                 "enumIndex": 3,
-                "enumConst": "Set default command"
+                "enumConst": "SetDefaultCommand"
               }
             }
           ],
           "enum": [
-            "Set current command",
-            "Set maximum allowed values",
-            "Set minimum allowed values",
-            "Set default command"
+            "SetCurrentCommand",
+            "SetMaxAllowed",
+            "SetMinAllowed",
+            "SetDefaultCommand"
           ]
         },
         "Velocity_X": {

@@ -1,0 +1,339 @@
+{
+  "title": "ReportHealthDetails",
+  "messageId": "fd01",
+  "isCommand": false,
+  "description": "ReportHealthDetails provides a report of the most recent health status for all Services provide by each Component the HealthReporter is responsible for.  The report is constituted as a nested list.  A list of Components contains, for each Component, a list of status records for each Service provided.  Errors not local to a specific service (e.g., general hardware faults of the node) are to be reported in the HealthReporter component's list, as Health Reporter errors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fd01"
+        }
+      }
+    },
+    "DetailedStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "ComponentRec",
+              "ComponentStatusList"
+            ],
+            "properties": {
+              "ComponentRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ComponentID"
+                ],
+                "properties": {
+                  "ComponentID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "JAUS Component ID"
+                  }
+                }
+              },
+              "ComponentStatusList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "service_urn",
+                        "severity",
+                        "code",
+                        "Logtime",
+                        "descriptor"
+                      ],
+                      "properties": {
+                        "service_urn": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "minLength": 0,
+                          "maxLength": 255
+                        },
+                        "severity": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 0,
+                                "enumConst": "NONE"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "NOTIFICATION"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "ADVISORY"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 3,
+                                "enumConst": "CAUTION"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 4,
+                                "enumConst": "WARNING"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "NONE",
+                            "NOTIFICATION",
+                            "ADVISORY",
+                            "CAUTION",
+                            "WARNING"
+                          ]
+                        },
+                        "code": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "valueSet": [
+                            {
+                              "valueEnum": {
+                                "enumIndex": 0,
+                                "enumConst": "NONE"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 1,
+                                "enumConst": "PROCESSOR"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 2,
+                                "enumConst": "RAM"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 3,
+                                "enumConst": "ROM"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 4,
+                                "enumConst": "FILESYS"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 5,
+                                "enumConst": "POWER"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 6,
+                                "enumConst": "SENSOR"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 7,
+                                "enumConst": "ACTUATOR"
+                              }
+                            },
+                            {
+                              "valueEnum": {
+                                "enumIndex": 8,
+                                "enumConst": "SOFTWARE"
+                              }
+                            },
+                            {
+                              "valueRange": {
+                                "minimum": 9.0,
+                                "maximum": 15.0,
+                                "interpretation": "Reserved for future IOP use"
+                              }
+                            },
+                            {
+                              "valueRange": {
+                                "minimum": 16.0,
+                                "maximum": 255.0,
+                                "interpretation": "Reserved for program specific codes"
+                              }
+                            }
+                          ],
+                          "enum": [
+                            "NONE",
+                            "PROCESSOR",
+                            "RAM",
+                            "ROM",
+                            "FILESYS",
+                            "POWER",
+                            "SENSOR",
+                            "ACTUATOR",
+                            "SOFTWARE"
+                          ]
+                        },
+                        "Logtime": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "milliseconds",
+                            "seconds",
+                            "minute",
+                            "hour",
+                            "day"
+                          ],
+                          "properties": {
+                            "milliseconds": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 0,
+                                "to": 9
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 999.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "seconds": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 10,
+                                "to": 15
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 59.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "minute": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 16,
+                                "to": 21
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 59.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "hour": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 22,
+                                "to": 26
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 23.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            },
+                            "day": {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "bitRange": {
+                                "from": 27,
+                                "to": 31
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 1.0,
+                                    "maximum": 31.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "bitField": "unsigned integer"
+                        },
+                        "descriptor": {
+                          "type": "string",
+                          "jausType": "unsigned byte",
+                          "comment": "",
+                          "minLength": 0,
+                          "maxLength": 64
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DetailedStatusList"
+  ]
+}

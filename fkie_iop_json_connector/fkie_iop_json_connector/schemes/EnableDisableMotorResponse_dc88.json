@@ -1,0 +1,99 @@
+{
+  "title": "EnableDisableMotorResponse",
+  "messageId": "dc88",
+  "isCommand": false,
+  "description": "Response that indicates whether an enable or disable\n\t\t\tcommand was accepted or not.  If the command request was accepted, an identifier is \n\t\t\tprovided for use in the command confirmation.  The identifier used in the confirmation\n\t\t\tmust match the identifier returned in response to the request, and may be the same\n\t\t\tas the identifier provided in the initial request, though this is not recommended.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc88"
+        }
+      }
+    },
+    "EnableDisableMotorResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "RequestID",
+        "Status",
+        "Identifier"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "This response should have a RequestID that matches the command to which it is responding."
+        },
+        "Status": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "INVALID_REQUEST"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "INVALID_CONFIRMATION"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "IDENTIFIER_EXPIRED"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESS",
+            "INVALID_REQUEST",
+            "INVALID_CONFIRMATION",
+            "IDENTIFIER_EXPIRED"
+          ]
+        },
+        "Identifier": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The ID to use when confirming an accepted request. If this is the response to a confirmation of a previous request, this is the ID associated with the confirmation."
+        },
+        "ResponseMessage": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Optional message providing more detail for given response.",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "EnableDisableMotorResponseRec"
+  ]
+}

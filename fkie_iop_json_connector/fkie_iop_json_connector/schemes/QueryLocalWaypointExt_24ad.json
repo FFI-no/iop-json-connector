@@ -1,0 +1,42 @@
+{
+  "title": "QueryLocalWaypointExt",
+  "messageId": "24ad",
+  "isCommand": false,
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 44ADh: ReportLocalWaypointExt message.  A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder. The resulting message shall contain the fields indicated by the result of this logical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "24ad"
+        }
+      }
+    },
+    "QueryLocalWaypointExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "See Report Local Waypoint Ext Message"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryLocalWaypointExtRec"
+  ]
+}

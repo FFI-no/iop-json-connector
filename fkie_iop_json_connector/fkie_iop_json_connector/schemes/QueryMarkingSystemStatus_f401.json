@@ -1,0 +1,64 @@
+{
+  "title": "QueryMarkingSystemStatus",
+  "messageId": "f401",
+  "isCommand": false,
+  "description": "Query the status of the marking system.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f401"
+        }
+      }
+    },
+    "QueryMarkingSystemStatusSequence": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "QueryMarkingSystemStatusList"
+      ],
+      "properties": {
+        "QueryMarkingSystemStatusList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ID"
+                ],
+                "properties": {
+                  "ID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "ID of the marking unit to query. A value of zero is used to request the status of all units"
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryMarkingSystemStatusSequence"
+  ]
+}

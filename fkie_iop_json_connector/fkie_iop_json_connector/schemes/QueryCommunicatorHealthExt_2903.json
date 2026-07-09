@@ -1,0 +1,140 @@
+{
+  "title": "QueryCommunicatorHealthExt",
+  "messageId": "2903",
+  "isCommand": false,
+  "description": "This message is used to query the current extended health and status associated with the communication device.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2903"
+        }
+      }
+    },
+    "QueryCommunicatorHealthSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "QueryCommunicatorHealthRec",
+        "QueryEndpointList"
+      ],
+      "properties": {
+        "QueryCommunicatorHealthRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "PresenceVector"
+          ],
+          "properties": {
+            "PresenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            }
+          }
+        },
+        "QueryEndpointList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "EndpointID"
+                ],
+                "properties": {
+                  "EndpointID": {
+                    "type": "object",
+                    "comment": "JAUS ID of the endpoint from which signal health should be measured. In a mesh network environment, this may include multiple hops over multiple radios. If this list is empty or an Endpoint ID of zero is used, general health of the communicator should be returned rather than health for a particular link.",
+                    "required": [
+                      "ComponentID",
+                      "NodeID",
+                      "SubsystemID"
+                    ],
+                    "properties": {
+                      "ComponentID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the endpoint from which signal health should be measured. In a mesh network environment, this may include multiple hops over multiple radios. If this list is empty or an Endpoint ID of zero is used, general health of the communicator should be returned rather than health for a particular link.",
+                        "bitRange": {
+                          "from": 0,
+                          "to": 7
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 255.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "NodeID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the endpoint from which signal health should be measured. In a mesh network environment, this may include multiple hops over multiple radios. If this list is empty or an Endpoint ID of zero is used, general health of the communicator should be returned rather than health for a particular link.",
+                        "bitRange": {
+                          "from": 8,
+                          "to": 15
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 255.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "SubsystemID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the endpoint from which signal health should be measured. In a mesh network environment, this may include multiple hops over multiple radios. If this list is empty or an Endpoint ID of zero is used, general health of the communicator should be returned rather than health for a particular link.",
+                        "bitRange": {
+                          "from": 16,
+                          "to": 31
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "bitField": "unsigned integer"
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryCommunicatorHealthSeq"
+  ]
+}

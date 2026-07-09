@@ -32,7 +32,8 @@
             "required": [
               "presenceVector",
               "SensorID",
-              "ReportCoordinateSystem",
+              "CoordinateSystemEnum",
+              "TimeStamp",
               "ImageFrame"
             ],
             "properties": {
@@ -46,7 +47,7 @@
                 "jausType": "unsigned short integer",
                 "comment": ""
               },
-              "ReportCoordinateSystem": {
+              "CoordinateSystemEnum": {
                 "type": "string",
                 "jausType": "unsigned byte",
                 "comment": "",
@@ -72,7 +73,13 @@
               "TimeStamp": {
                 "type": "object",
                 "comment": "",
-                "required": [],
+                "required": [
+                  "Milliseconds",
+                  "Seconds",
+                  "Minutes",
+                  "Hour",
+                  "Day"
+                ],
                 "properties": {
                   "Milliseconds": {
                     "type": "number",

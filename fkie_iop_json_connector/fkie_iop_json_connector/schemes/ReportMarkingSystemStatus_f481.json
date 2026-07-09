@@ -1,0 +1,181 @@
+{
+  "title": "ReportMarkingSystemStatus",
+  "messageId": "f481",
+  "isCommand": false,
+  "description": "Reports the status of the marking system, for each\n    marking unit requested in the QueryMarkingSystemStatus message (or all units if no\n    list is provided).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f481"
+        }
+      }
+    },
+    "MarkingSystemStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "ID",
+              "RemainingMarkers",
+              "MarkingStatus"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "ID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the marking unit."
+              },
+              "RemainingMarkers": {
+                "type": "array",
+                "comment": "Indicates the amount of remaining maker material, either as a number of markers or a percent of capacity.",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "fieldIndex": 1,
+                      "fieldUnits": "percent",
+                      "scaleRange": {
+                        "scaleFactor": 2.3283064370807974e-08,
+                        "bias": 0.0
+                      }
+                    },
+                    {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "fieldIndex": 2,
+                      "fieldUnits": "one"
+                    },
+                    {
+                      "type": "UNKNOWN",
+                      "jausType": "long float",
+                      "comment": "",
+                      "fieldIndex": 3,
+                      "fieldUnits": "liter"
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 1,
+                "maxItems": 1
+              },
+              "MarkingStatus": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Indicates the overall status of the marking system.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "ERROR"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "DISABLED"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "ENABLED"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "COMMAND_IN_PROGRESS"
+                    }
+                  }
+                ],
+                "enum": [
+                  "ERROR",
+                  "DISABLED",
+                  "ENABLED",
+                  "COMMAND_IN_PROGRESS"
+                ]
+              },
+              "CompressorStatus": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Indicates the current status of the compressor.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "ERROR"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "ACTIVE_COMPRESSING"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "NORMAL"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "DECOMPRESSING"
+                    }
+                  }
+                ],
+                "enum": [
+                  "ERROR",
+                  "ACTIVE_COMPRESSING",
+                  "NORMAL",
+                  "DECOMPRESSING"
+                ]
+              },
+              "CompressorStatusDescription": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Optional string that may be used to explain the compressor status.",
+                "minLength": 0,
+                "maxLength": 255
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "MarkingSystemStatusList"
+  ]
+}

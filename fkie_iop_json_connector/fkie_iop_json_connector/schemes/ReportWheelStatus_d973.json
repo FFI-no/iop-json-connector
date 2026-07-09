@@ -1,0 +1,121 @@
+{
+  "title": "ReportWheelStatus",
+  "messageId": "d973",
+  "isCommand": false,
+  "description": "This message is used to report the status for the wheels (or tracks) of the platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d973"
+        }
+      }
+    },
+    "StatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "ID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "ID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the wheel or track"
+              },
+              "EncoderCounts": {
+                "type": "number",
+                "jausType": "integer",
+                "comment": "Current encoder value"
+              },
+              "EncoderCountsPerSecond": {
+                "type": "UNKNOWN",
+                "jausType": "float",
+                "comment": "Current encoder rate"
+              },
+              "RotationalRate": {
+                "type": "UNKNOWN",
+                "jausType": "float",
+                "comment": ""
+              },
+              "BodyRelativeYaw": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current rotation about the vehicle coordinate frame Z axis",
+                "scaleRange": {
+                  "scaleFactor": 9.587526218325454e-05,
+                  "bias": -3.141592653589793
+                }
+              },
+              "BodyRelativePitch": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current rotation about the vehicle coordinate frame Y axis",
+                "scaleRange": {
+                  "scaleFactor": 9.587526218325454e-05,
+                  "bias": -3.141592653589793
+                }
+              },
+              "BodyRelativeRoll": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current rotation about the vehicle coordinate frame X axis",
+                "scaleRange": {
+                  "scaleFactor": 9.587526218325454e-05,
+                  "bias": -3.141592653589793
+                }
+              },
+              "SuspensionCompression": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Compression (positive value) or extension (negative value) of the suspension from nominal position.",
+                "scaleRange": {
+                  "scaleFactor": 0.0030518043793392844,
+                  "bias": -100.0
+                }
+              },
+              "PercentSlip": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Estimated slip. Zero implies perfect traction while 100 is spinning in place.",
+                "scaleRange": {
+                  "scaleFactor": 0.0015259021896696422,
+                  "bias": 0.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "StatusList"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "QuerySupportedSteeringCurves",
+  "messageId": "fe32",
+  "isCommand": false,
+  "description": "Message used to query the vehicle for its supported steering curves.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fe32"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

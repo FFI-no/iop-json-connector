@@ -1,0 +1,176 @@
+{
+  "title": "ReportContactFollowingStatus",
+  "messageId": "dd9d",
+  "isCommand": false,
+  "description": "Reports information about the contact currently being followed in response to a Query Following  Contact message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "dd9d"
+        }
+      }
+    },
+    "ContactFollowingStatusVar": {
+      "type": "object",
+      "comment": "",
+      "required": [],
+      "properties": {
+        "NotFollowingRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "NotFollowingField"
+          ],
+          "properties": {
+            "NotFollowingField": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Dummy field whose value should always be 0.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "Reserved"
+                  }
+                }
+              ],
+              "enum": [
+                "Reserved"
+              ]
+            }
+          }
+        },
+        "ContactFollowingStatusRec": {
+          "type": "object",
+          "comment": "Record identifying the contact to follow.",
+          "required": [
+            "ContactID",
+            "TrackingComponentJausID",
+            "FollowingStatus"
+          ],
+          "properties": {
+            "ContactID": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "ID of the contact to follow. A value of zero (0) is not supported."
+            },
+            "TrackingComponentJausID": {
+              "type": "object",
+              "comment": "Address of the JAUS component on which the Contact Tracking service that identified this contact resides",
+              "required": [
+                "ComponentID",
+                "NodeID",
+                "SubsystemID"
+              ],
+              "properties": {
+                "ComponentID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Address of the JAUS component on which the Contact Tracking service that identified this contact resides",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 7
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 1.0,
+                        "maximum": 255.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "NodeID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Address of the JAUS component on which the Contact Tracking service that identified this contact resides",
+                  "bitRange": {
+                    "from": 8,
+                    "to": 15
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 1.0,
+                        "maximum": 255.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "SubsystemID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Address of the JAUS component on which the Contact Tracking service that identified this contact resides",
+                  "bitRange": {
+                    "from": 16,
+                    "to": 31
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 1.0,
+                        "maximum": 65535.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                }
+              },
+              "bitField": "unsigned integer"
+            },
+            "FollowingStatus": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Status of the following behavior.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "FOLLOWING_ACTIVE"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "SEARCHING_FOR_CONTACT"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "FOLLOWING_FAILED"
+                  }
+                }
+              ],
+              "enum": [
+                "FOLLOWING_ACTIVE",
+                "SEARCHING_FOR_CONTACT",
+                "FOLLOWING_FAILED"
+              ]
+            }
+          }
+        }
+      },
+      "jausType": "unsigned byte",
+      "vtagMin": 0,
+      "vtagMax": 1,
+      "isVariant": true
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ContactFollowingStatusVar"
+  ]
+}

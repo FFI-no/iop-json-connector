@@ -43,8 +43,8 @@
         ]
       },
       "jausType": "unsigned short integer",
-      "minItems": null,
-      "maxItems": null,
+      "minItems": 0,
+      "maxItems": 65535,
       "isVariant": false
     }
   },

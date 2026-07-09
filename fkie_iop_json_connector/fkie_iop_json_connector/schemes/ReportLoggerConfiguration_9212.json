@@ -1,0 +1,422 @@
+{
+  "title": "ReportLoggerConfiguration",
+  "messageId": "9212",
+  "isCommand": false,
+  "description": "Report the configuration of a set of loggers",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "9212"
+        }
+      }
+    },
+    "LoggerConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "LoggerConfigurationRec",
+              "OverflowPolicyRec"
+            ],
+            "properties": {
+              "LoggerConfigurationRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "LoggerID",
+                  "LoggingLevel"
+                ],
+                "properties": {
+                  "LoggerID": {
+                    "type": "number",
+                    "jausType": "byte",
+                    "comment": "ID of the logger, 0 reserved to be all loggers"
+                  },
+                  "LoggingLevel": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "LogVerbose",
+                      "LogUnknown",
+                      "LogCritical",
+                      "LogError",
+                      "LogWarning",
+                      "LogInformation",
+                      "LogDebug"
+                    ],
+                    "properties": {
+                      "LogVerbose": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 0,
+                          "to": 0
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogUnknown": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 1,
+                          "to": 1
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogCritical": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 2,
+                          "to": 2
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogError": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 3,
+                          "to": 3
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogWarning": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 4,
+                          "to": 4
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogInformation": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 5,
+                          "to": 5
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogDebug": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 6,
+                          "to": 6
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "bitField": "unsigned byte"
+                  }
+                }
+              },
+              "OverflowPolicyRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "OverflowRemovalPolicy"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "OverflowRemovalPolicy": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "First_In_First_Out"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Last_In_First_Out"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "Least_Recently_Used"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "Most_Recently_Used"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "Least_Frequently_Used"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "Random_Replacement"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "First_In_First_Out",
+                      "Last_In_First_Out",
+                      "Least_Recently_Used",
+                      "Most_Recently_Used",
+                      "Least_Frequently_Used",
+                      "Random_Replacement"
+                    ]
+                  },
+                  "OverflowLoggingLevel": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {
+                      "LogVerbose": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 0,
+                          "to": 0
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogUnknown": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 1,
+                          "to": 1
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogCritical": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 2,
+                          "to": 2
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogError": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 3,
+                          "to": 3
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogWarning": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 4,
+                          "to": 4
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogInformation": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 5,
+                          "to": 5
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "LogDebug": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 6,
+                          "to": 6
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "bitField": "unsigned byte"
+                  },
+                  "OverflowSizeThreshold": {
+                    "type": "number",
+                    "jausType": "unsigned long integer",
+                    "comment": "Size in MB"
+                  },
+                  "OverflowPercentageThreshold": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.39215686274509803,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "LoggerConfigurationList"
+  ]
+}

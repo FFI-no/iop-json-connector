@@ -1,0 +1,134 @@
+{
+  "title": "ReportVersion",
+  "messageId": "f99a",
+  "isCommand": false,
+  "description": "This message is used to report the versions of software, hardware, firmware, scripts, shared libraries, etc.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f99a"
+        }
+      }
+    },
+    "VersionList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "Name",
+              "Type"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "Name": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human-readable string for the name of the software, hardware, or firmware.",
+                "minLength": 0,
+                "maxLength": 256
+              },
+              "Type": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Indicates whether this is software or firmware or hardware",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Hardware"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Software"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Firmware"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Hardware",
+                  "Software",
+                  "Firmware"
+                ]
+              },
+              "Description": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human-readable string for describing the software, firmware, or hardware.",
+                "minLength": 0,
+                "maxLength": 256
+              },
+              "Version": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Version Number",
+                "minLength": 0,
+                "maxLength": 256
+              },
+              "BuildID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Build ID"
+              },
+              "Copyright": {
+                "type": "string",
+                "jausType": "unsigned short integer",
+                "comment": "Human-readable string for the copyright.",
+                "minLength": 0,
+                "maxLength": 65536
+              },
+              "InstallLocation": {
+                "type": "string",
+                "jausType": "unsigned short integer",
+                "comment": "This field identifies the device that the software or firmware is installed on, or hardware location if relevant.",
+                "minLength": 0,
+                "maxLength": 65536
+              },
+              "ManufacturerCAGENumber": {
+                "type": "string",
+                "jausType": "unsigned short integer",
+                "comment": "The CAGE number for the vendor.",
+                "minLength": 0,
+                "maxLength": 65536
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "VersionList"
+  ]
+}

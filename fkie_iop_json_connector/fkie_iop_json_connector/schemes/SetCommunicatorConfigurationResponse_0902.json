@@ -1,0 +1,270 @@
+{
+  "title": "SetCommunicatorConfigurationResponse",
+  "messageId": "0902",
+  "isCommand": false,
+  "description": "The Set Communicator Configuration Response message is sent as a notification back to a client on the status of the SetCommunicatorConfiguration message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0902"
+        }
+      }
+    },
+    "SetCommunicatorConfigurationResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Result"
+      ],
+      "properties": {
+        "Result": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "TransmittedStatusInvalid",
+            "ModeInvalid",
+            "ChannelInvalid",
+            "PowerLevelInvalid",
+            "ModulationInvalid",
+            "BandwidthInvalid",
+            "EncryptionModeInvalid",
+            "OtherFailure"
+          ],
+          "properties": {
+            "TransmittedStatusInvalid": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            },
+            "ModeInvalid": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            },
+            "ChannelInvalid": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            },
+            "PowerLevelInvalid": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            },
+            "ModulationInvalid": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 4,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            },
+            "BandwidthInvalid": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 5,
+                "to": 5
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            },
+            "EncryptionModeInvalid": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 6,
+                "to": 6
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            },
+            "OtherFailure": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 7,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "LastCommandOK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "LastCommandInvalid"
+                  }
+                }
+              ],
+              "enum": [
+                "LastCommandOK",
+                "LastCommandInvalid"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetCommunicatorConfigurationResponseRec"
+  ]
+}

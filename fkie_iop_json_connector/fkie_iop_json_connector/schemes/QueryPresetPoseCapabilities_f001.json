@@ -1,0 +1,27 @@
+{
+  "title": "QueryPresetPoseCapabilities",
+  "messageId": "f001",
+  "isCommand": false,
+  "description": "Queries a list of poses that the Preset Pose service provides, plus the valid transitions between those poses.  Each pose must have a unique ID, and a unique name associated with it.  Each transition must be between two valid poses.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f001"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

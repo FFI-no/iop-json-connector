@@ -1,0 +1,27 @@
+{
+  "title": "QueryGlobalWaypointStatus",
+  "messageId": "f229",
+  "isCommand": false,
+  "description": "This message is used to query the current status of the global waypoint list execution.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f229"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

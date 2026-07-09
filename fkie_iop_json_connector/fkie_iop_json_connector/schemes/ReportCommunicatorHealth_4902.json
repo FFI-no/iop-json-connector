@@ -1,0 +1,224 @@
+{
+  "title": "ReportCommunicatorHealth",
+  "messageId": "4902",
+  "isCommand": false,
+  "description": "This message is used to report the current health and status associated with this communication device.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4902"
+        }
+      }
+    },
+    "ReportCommunicatorHealthSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ReportCommunicatorHealthRec",
+        "ErrorVariant",
+        "ChannelList"
+      ],
+      "properties": {
+        "ReportCommunicatorHealthRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "BIT_Results": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "Passed"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Failed"
+                  }
+                }
+              ],
+              "enum": [
+                "Passed",
+                "Failed"
+              ]
+            },
+            "Latency": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 1.5259021896696422e-05,
+                "bias": 0.0
+              }
+            },
+            "DataRate": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured in Mbps",
+              "scaleRange": {
+                "scaleFactor": 0.015259021896696421,
+                "bias": 0.0
+              }
+            },
+            "ReceivedSignalPower": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured in dBm",
+              "scaleRange": {
+                "scaleFactor": 0.0015259021896696422,
+                "bias": -120.0
+              }
+            },
+            "ErrorVectorMagnitude": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Measured in percent",
+              "scaleRange": {
+                "scaleFactor": 0.0015259021896696422,
+                "bias": 0.0
+              }
+            }
+          }
+        },
+        "ErrorVariant": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "PacketErrorCountRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "PacketErrorCount"
+              ],
+              "properties": {
+                "PacketErrorCount": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Number of packet errors in the last one second"
+                }
+              }
+            },
+            "PacketErrorRateRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "PacketErrorRate"
+              ],
+              "properties": {
+                "PacketErrorRate": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Packet errors as a percentage of total packets sent",
+                  "scaleRange": {
+                    "scaleFactor": 2.3283064370807974e-08,
+                    "bias": 0.0
+                  }
+                }
+              }
+            },
+            "BitErrorCountRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "BitErrorCount"
+              ],
+              "properties": {
+                "BitErrorCount": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Number of bit errors in the last one second"
+                }
+              }
+            },
+            "BitErrorRateRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "BitErrorRate"
+              ],
+              "properties": {
+                "BitErrorRate": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Bit errors as a percentage of total bits sent",
+                  "scaleRange": {
+                    "scaleFactor": 2.3283064370807974e-08,
+                    "bias": 0.0
+                  }
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 3,
+          "isVariant": true
+        },
+        "ChannelList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "Channel",
+                  "SNR"
+                ],
+                "properties": {
+                  "Channel": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "SNR": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Difference between signal power and noise level, measured in dB",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportCommunicatorHealthSeq"
+  ]
+}

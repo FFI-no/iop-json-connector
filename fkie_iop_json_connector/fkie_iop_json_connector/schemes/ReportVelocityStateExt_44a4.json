@@ -1,0 +1,277 @@
+{
+  "title": "ReportVelocityStateExt",
+  "messageId": "44a4",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the linear velocity and rotational rate of the platform.  All times are in Coordinated Universal Time (UTC).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "44a4"
+        }
+      }
+    },
+    "ReportVelocityStateExtSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "VelocityVar",
+        "ReportVelocityStateExtRec"
+      ],
+      "properties": {
+        "VelocityVar": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "VelocityVehicleXYZRec": {
+              "type": "object",
+              "comment": "Velocity measured in platform frame",
+              "required": [
+                "presenceVector"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "Velocity_X": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                },
+                "Velocity_Y": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                },
+                "Velocity_Z": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                }
+              }
+            },
+            "VelocityLocalXYZRec": {
+              "type": "object",
+              "comment": "Velocity measured in local coordinate frame",
+              "required": [
+                "presenceVector"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "Velocity_X": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                },
+                "Velocity_Y": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                },
+                "Velocity_Z": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                }
+              }
+            },
+            "VelocityNEDRec": {
+              "type": "object",
+              "comment": "Velocity measured in global (north, east, down) coordinate frame",
+              "required": [
+                "presenceVector"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "Velocity_N": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                },
+                "Velocity_E": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                },
+                "Velocity_D": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409007e-07,
+                    "bias": -327.68
+                  }
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 2,
+          "isVariant": true
+        },
+        "ReportVelocityStateExtRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "Velocity_RMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the velocity data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "RollRate": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 1.5258556235409003e-08,
+                "bias": -32.768
+              }
+            },
+            "PitchRate": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 1.5258556235409003e-08,
+                "bias": -32.768
+              }
+            },
+            "YawRate": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 1.5258556235409003e-08,
+                "bias": -32.768
+              }
+            },
+            "Rate_RMS": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "An RMS value indicating the validity of the rotational velocity data.",
+              "scaleRange": {
+                "scaleFactor": 0.0015259021896696422,
+                "bias": 0.0
+              }
+            },
+            "SpeedOverGround": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Scalar speed measured relative to fixed coordinate system",
+              "scaleRange": {
+                "scaleFactor": 0.01,
+                "bias": -327.68
+              }
+            },
+            "SpeedRelativeToMedium": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Scalar speed measured relative to medium, such as air or water currents",
+              "scaleRange": {
+                "scaleFactor": 0.01,
+                "bias": -327.68
+              }
+            },
+            "RotationsPerMinute": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.030518043793392843,
+                "bias": -1000.0
+              }
+            },
+            "IndicatedSpeed": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.01,
+                "bias": -327.68
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Nanoseconds component of POSIX-style time"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportVelocityStateExtSeq"
+  ]
+}

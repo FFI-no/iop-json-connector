@@ -1,0 +1,75 @@
+{
+  "title": "RequestSpeedOverride",
+  "messageId": "ffd1",
+  "isCommand": false,
+  "description": "This message allows a follower to request an override to the lead subsystem's speed.  The override may be given as a percentage, such that Acutal Speed = Override * Original Speed, or as an absolute value.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "ffd1"
+        }
+      }
+    },
+    "OverrideType": {
+      "type": "object",
+      "comment": "",
+      "required": [],
+      "properties": {
+        "PercentRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "SpeedOverride"
+          ],
+          "properties": {
+            "SpeedOverride": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Percent.",
+              "scaleRange": {
+                "scaleFactor": 0.39215686274509803,
+                "bias": 0.0
+              }
+            }
+          }
+        },
+        "AbsoluteRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "SpeedOverride"
+          ],
+          "properties": {
+            "SpeedOverride": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.0049999237048905165,
+                "bias": 0.0
+              }
+            }
+          }
+        }
+      },
+      "jausType": "unsigned byte",
+      "vtagMin": 0,
+      "vtagMax": 1,
+      "isVariant": true
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "OverrideType"
+  ]
+}

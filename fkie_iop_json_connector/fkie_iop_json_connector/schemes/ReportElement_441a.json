@@ -2,7 +2,7 @@
   "title": "ReportElement",
   "messageId": "441a",
   "isCommand": false,
-  "description": "This message is used to report a single element from a list.  The element is uniquely identified by the UID, \n      while it's position within the list is denoted by the previous (parent) and next (child) elements.  \n      The message data is identical to the Element Record in ID 041Ah: SetElement.",
+  "description": "This message is used to report a single element from a list.  The element is uniquely identified by the UID, while it's position within the list is denoted by the previous (parent) and next (child) elements. The message data is identical to the Element Record in ID 041Ah: SetElement.",
   "type": "object",
   "properties": {
     "HeaderRec": {

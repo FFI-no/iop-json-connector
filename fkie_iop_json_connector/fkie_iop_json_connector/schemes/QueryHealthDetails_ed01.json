@@ -1,0 +1,27 @@
+{
+  "title": "QueryHealthDetails",
+  "messageId": "ed01",
+  "isCommand": false,
+  "description": "QueryHealthDetails in used to request the most recent health status for each Service provide by each component that the Health Reporter is responsible for.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ed01"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

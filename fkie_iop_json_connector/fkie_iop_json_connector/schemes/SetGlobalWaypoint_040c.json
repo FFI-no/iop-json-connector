@@ -2,7 +2,7 @@
   "title": "SetGlobalWaypoint",
   "messageId": "040c",
   "isCommand": true,
-  "description": "This message is used to set waypoint data based on the global coordinate system.  A global \n      waypoint can have up to six fields to describe it completely.  The waypoint is defined in the \n      global coordinate system using the latitude, longitude, and altitude, fields.  The desired orientation \n      of the platform at the waypoint is defined using the roll, pitch, and yaw fields.  Only fields 1-3 (presence \n      vector, latitude, and longitude) are required for each waypoint.  Field #4 sets the desired Altitude in \n      accordance with the WGS 84 standard.  The presence vector is used to specify if the remaining fields, \n      i.e., altitude, roll, pitch, and yaw, are used to further describe the waypoint and the desired \n      orientation at that point.",
+  "description": "This message is used to set waypoint data based on the global coordinate system.  A global waypoint can have up to six fields to describe it completely.  The waypoint is defined in the global coordinate system using the latitude, longitude, and altitude fields.  The desired orientation of the platform at the waypoint is defined using the roll, pitch, and yaw fields. The remaining fields provide the desired waypoint and path tolerances. Only fields 1-3 (presence vector, latitude, and longitude) are required for each waypoint.  Field #4 sets the desired Altitude in accordance with the WGS 84 standard.  The presence vector is used to specify if the remaining fields, i.e., altitude, roll, pitch, and yaw, are used to further describe the waypoint and the desired orientation at that point and whether tolerances are provided.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -37,7 +37,7 @@
         "Latitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 4.190951586745435e-08,
             "bias": -90.0
@@ -46,7 +46,7 @@
         "Longitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 8.38190317349087e-08,
             "bias": -180.0
@@ -55,7 +55,7 @@
         "Altitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Altitude with respect to WGS-84 reference ellipsoid",
           "scaleRange": {
             "scaleFactor": 1.0477378966863588e-05,
             "bias": -10000.0

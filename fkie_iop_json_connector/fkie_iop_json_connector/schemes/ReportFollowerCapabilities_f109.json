@@ -1,0 +1,158 @@
+{
+  "title": "ReportFollowerCapabilities",
+  "messageId": "f109",
+  "isCommand": false,
+  "description": "Reports the capabilities in response to a Query Follower Capabilities message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f109"
+        }
+      }
+    },
+    "CapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SupportedFormationTypes"
+      ],
+      "properties": {
+        "SupportedFormationTypes": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "ManuallySpecified",
+            "Column",
+            "InvertedT",
+            "StaggeredColumn"
+          ],
+          "properties": {
+            "ManuallySpecified": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "Column": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "InvertedT": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            },
+            "StaggeredColumn": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NotSupported"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Supported"
+                  }
+                }
+              ],
+              "enum": [
+                "NotSupported",
+                "Supported"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "CapabilitiesRec"
+  ]
+}

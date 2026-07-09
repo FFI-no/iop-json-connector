@@ -1,0 +1,135 @@
+{
+  "title": "ReportFluidDeliveryReport",
+  "messageId": "da0e",
+  "isCommand": false,
+  "description": "",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da0e"
+        }
+      }
+    },
+    "FluidDeliveryReportRec": {
+      "type": "object",
+      "comment": "Record of the last finished fluid delivery.",
+      "required": [
+        "presenceVector",
+        "DeliveredSourceFluidID",
+        "RecipientPowerPlantID"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "DeliveredSourceFluidID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the fluid (from the capabilities message) that was delivered."
+        },
+        "FluidDelivered": {
+          "type": "UNKNOWN",
+          "jausType": "long float",
+          "comment": "The amount of fluid that was delivered in Liters"
+        },
+        "RecipientJausID": {
+          "type": "object",
+          "comment": "JAUS ID of the recipient vehicle.",
+          "required": [],
+          "properties": {
+            "ComponentID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "JAUS ID of the recipient vehicle.",
+              "bitRange": {
+                "from": 0,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 255.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "NodeID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "JAUS ID of the recipient vehicle.",
+              "bitRange": {
+                "from": 8,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 255.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "SubsystemID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "JAUS ID of the recipient vehicle.",
+              "bitRange": {
+                "from": 16,
+                "to": 31
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 65535.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned integer"
+        },
+        "RecipientPowerPlantID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the power plant with which this tank that was filled is associated."
+        },
+        "RecipientTankID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the tank into which the fluid will be delivered."
+        },
+        "EndingFluidFillPercentage": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "The percentage of fluid in the recipient tank when fluid delivery stopped",
+          "scaleRange": {
+            "scaleFactor": 0.0015259021896696422,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "FluidDeliveryReportRec"
+  ]
+}

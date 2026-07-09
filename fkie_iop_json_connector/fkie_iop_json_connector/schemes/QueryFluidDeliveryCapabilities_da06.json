@@ -1,0 +1,27 @@
+{
+  "title": "QueryFluidDeliveryCapabilities",
+  "messageId": "da06",
+  "isCommand": false,
+  "description": "",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da06"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

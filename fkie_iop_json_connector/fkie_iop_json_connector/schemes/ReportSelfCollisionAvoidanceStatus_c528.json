@@ -1,0 +1,74 @@
+{
+  "title": "ReportSelfCollisionAvoidanceStatus",
+  "messageId": "c528",
+  "isCommand": false,
+  "description": "This message reports the current status of the self-collision avoidance policy manager.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "c528"
+        }
+      }
+    },
+    "SelfCollisionAvoidanceStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Status"
+      ],
+      "properties": {
+        "Status": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Disabled"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Enabled"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Active_StopOnObstacle"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Active_AvoidObstacle"
+              }
+            }
+          ],
+          "enum": [
+            "Disabled",
+            "Enabled",
+            "Active_StopOnObstacle",
+            "Active_AvoidObstacle"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SelfCollisionAvoidanceStatusRec"
+  ]
+}

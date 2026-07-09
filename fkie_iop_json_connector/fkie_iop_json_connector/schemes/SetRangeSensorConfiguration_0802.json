@@ -2,7 +2,7 @@
   "title": "SetRangeSensorConfiguration",
   "messageId": "0802",
   "isCommand": true,
-  "description": "This message is used to set the \n            range sensors\u2019 current configuration. Configuration is based \n            off of each range sensor\u2019s capabilities as described in the \n            Report Range Sensor Capabilities message. This message shall \n            cause the receiving service to reply to the sender with a \n            Confirm Range Sensor Configuration message. If the configuration \n            specified is invalid for a given sensor ID, the confirm \n            message shall contain an Range Sensor Error Record for the \n            given Sensor ID however other, valid, configurations specified \n            shall be set (if they exist).",
+  "description": "This message is used to set the range sensors\u2019 current configuration. Configuration is based off of each range sensor\u2019s capabilities as described in the Report Range Sensor Capabilities message. This message shall cause the receiving service to reply to the sender with a Confirm Range Sensor Configuration message. If the configuration specified is invalid for a given sensor ID, the confirm message shall contain an Range Sensor Error Record for the given Sensor ID however other, valid, configurations specified shall be set (if they exist).",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -58,13 +58,22 @@
                 "properties": {
                   "presenceVector": {
                     "type": "number",
-                    "jausType": "unsigned short integer",
+                    "jausType": "unsigned byte",
                     "comment": ""
                   },
                   "SensorID": {
                     "type": "number",
                     "jausType": "unsigned short integer",
-                    "comment": ""
+                    "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 65535.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
                   },
                   "HorizontalFieldOfViewStartAngle": {
                     "type": "number",

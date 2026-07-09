@@ -1,0 +1,27 @@
+{
+  "title": "QueryMilitaryIlluminationMode",
+  "messageId": "b513",
+  "isCommand": false,
+  "description": "This message queries the current illumination Mode.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "b513"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

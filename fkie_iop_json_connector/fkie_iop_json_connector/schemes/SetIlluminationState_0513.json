@@ -31,8 +31,6 @@
           "type": "object",
           "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
           "required": [
-            "VariableLight3",
-            "VariableLight4",
             "Headlights",
             "LeftTurnSignal",
             "RightTurnSignal",
@@ -43,48 +41,14 @@
             "IRLightSource",
             "VariableLight1",
             "VariableLight2",
+            "VariableLight3",
+            "VariableLight4",
             "HighBeams",
             "ParkingLights",
             "FogLights",
             "HazardLights"
           ],
           "properties": {
-            "VariableLight3": {
-              "type": "number",
-              "jausType": "unsigned integer",
-              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
-              "bitRange": {
-                "from": 16,
-                "to": 19
-              },
-              "valueSet": [
-                {
-                  "valueRange": {
-                    "minimum": 0.0,
-                    "maximum": 15.0,
-                    "interpretation": ""
-                  }
-                }
-              ]
-            },
-            "VariableLight4": {
-              "type": "number",
-              "jausType": "unsigned integer",
-              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
-              "bitRange": {
-                "from": 20,
-                "to": 23
-              },
-              "valueSet": [
-                {
-                  "valueRange": {
-                    "minimum": 0.0,
-                    "maximum": 15.0,
-                    "interpretation": ""
-                  }
-                }
-              ]
-            },
             "Headlights": {
               "type": "string",
               "jausType": "unsigned integer",
@@ -326,6 +290,42 @@
               "bitRange": {
                 "from": 12,
                 "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "VariableLight3": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 16,
+                "to": 19
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 15.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "VariableLight4": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "When a bit is set to the high (on, 1) value the service shall turn the light ON. Variable-power illumination settings may support up to four power levels.",
+              "bitRange": {
+                "from": 20,
+                "to": 23
               },
               "valueSet": [
                 {

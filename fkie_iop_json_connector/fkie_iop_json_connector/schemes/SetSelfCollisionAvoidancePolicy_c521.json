@@ -1,0 +1,97 @@
+{
+  "title": "SetSelfCollisionAvoidancePolicy",
+  "messageId": "c521",
+  "isCommand": true,
+  "description": "This message is used to set the active behavior for self-collision avoidance; \n                    while the operator has primary control of the platform, self-collision avoidance prevents (or attempts to \n                    prevent) user actions which may result in damage to the platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "c521"
+        }
+      }
+    },
+    "SelfCollisionAvoidancePolicySeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SelfCollisionAvoidancePolicyRec",
+        "SelfCollisionAvoidanceRec"
+      ],
+      "properties": {
+        "SelfCollisionAvoidancePolicyRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "Local_ID"
+          ],
+          "properties": {
+            "Local_ID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "A request identifier that will be returned in the response message. This field allows the client to coordinate requests and responses."
+            }
+          }
+        },
+        "SelfCollisionAvoidanceRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "State",
+            "Priority"
+          ],
+          "properties": {
+            "State": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "DoNothing"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "StopOnPath"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "DeviateFromPathToAvoidCollisions"
+                  }
+                }
+              ],
+              "enum": [
+                "DoNothing",
+                "StopOnPath",
+                "DeviateFromPathToAvoidCollisions"
+              ]
+            },
+            "Priority": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "The relative priority used to establish precedence when multiple moving objects support self-collision avoidance. Lower values should yield to objects with higher values. Fixed objects, or moving objects that do not support self-collision avoidance, are considered to have maximum priority (255). If two objects have the same priority, the behavior is non-deterministic."
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SelfCollisionAvoidancePolicySeq"
+  ]
+}

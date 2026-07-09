@@ -1,0 +1,27 @@
+{
+  "title": "QueryRenderUselessCapabilities",
+  "messageId": "ffdb",
+  "isCommand": false,
+  "description": "This message is used to query the render useless capabilities.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ffdb"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

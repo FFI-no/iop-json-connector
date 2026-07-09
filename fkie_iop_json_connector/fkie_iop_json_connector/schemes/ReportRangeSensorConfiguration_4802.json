@@ -2,7 +2,7 @@
   "title": "ReportRangeSensorConfiguration",
   "messageId": "4802",
   "isCommand": false,
-  "description": "This message is sent in response \n            to a Query Range Sensor Configuration message. It is populated \n            with the current sensor configuration (per sensor ID) as defined \n            in the table below.",
+  "description": "This message is sent in response to a Query Range Sensor Configuration message. It is populated with the current sensor configuration (per sensor ID) as defined in the table below.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -36,13 +36,22 @@
             "properties": {
               "presenceVector": {
                 "type": "number",
-                "jausType": "unsigned short integer",
+                "jausType": "unsigned byte",
                 "comment": ""
               },
               "SensorID": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
               },
               "HorizontalFieldOfViewStartAngle": {
                 "type": "number",

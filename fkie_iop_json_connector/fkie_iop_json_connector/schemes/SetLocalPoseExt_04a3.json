@@ -1,0 +1,191 @@
+{
+  "title": "SetLocalPoseExt",
+  "messageId": "04a3",
+  "isCommand": true,
+  "description": "This message is used to set the local pose values.  This message specifies the platform's position and orientation with respect to the local coordinate frame as defined in Section 3.1.  This allows a client to redefine the origin of the local coordinate frame. It uses a variable field allowing platforms to select various methods for specifying altitude or depth. Note that in some applications, particularly air and undersea, position may be a mix of local coordinates for XY position and absolute coordinates for Z/altitude/depth.  This only applies if the Z axis for the vehicle coordinate frame is aligned with a vertical axis, e.g. a vector orthogonal to the ground plane.  In all other cases, implementations must use Zlocal reporting only. For example, a UUV launched from a USV may need to navigate using local X/Y coordinates based on its launch point (using dead reckoning from its IMU) but rely on direct readings that do not suffer from drift for its Depth and/or Altitude ASF. All times are in Coordinated Universal Time (UTC).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "04a3"
+        }
+      }
+    },
+    "LocalPoseExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        },
+        "X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "ZPosition": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 0,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 1,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 2,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 3,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "",
+                "fieldIndex": 4,
+                "fieldUnits": "meter",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": -50000.0
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "XYPositionRMS": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "An RMS value indicating the validity of the position data.",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-08,
+            "bias": 0.0
+          }
+        },
+        "ZPositionRMS": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "An RMS value indicating the validity of the position data.",
+          "scaleRange": {
+            "scaleFactor": 2.3283064370807974e-08,
+            "bias": 0.0
+          }
+        },
+        "Roll": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Pitch": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Heading": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Attitude_RMS": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "An RMS value indicating the validity of the orientation data.",
+          "scaleRange": {
+            "scaleFactor": 4.793763109162727e-05,
+            "bias": 0.0
+          }
+        },
+        "TimeSeconds": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+        },
+        "TimeNanoSeconds": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Nanoseconds component of POSIX-style time"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LocalPoseExtRec"
+  ]
+}

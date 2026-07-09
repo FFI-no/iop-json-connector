@@ -2,7 +2,7 @@
   "title": "ReportRangeSensorCapabilities",
   "messageId": "4801",
   "isCommand": false,
-  "description": "This message is used to report the \n            range sensors\u2019 capabilities upon reciept of a Query Range Sensor \n            Capabilities message. Capabilities include both static sensor \n            properties and valid values and ranges for properties which \n            can be modified by the Set Range Sensor Capabilities Message.",
+  "description": "This message is used to report the range sensors\u2019 capabilities upon receipt of a Query Range Sensor Capabilities message. Capabilities include both static sensor properties and valid values and ranges for properties which can be modified by the Set Range Sensor Capabilities Message.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -43,7 +43,16 @@
               "SensorID": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
               },
               "SensorName": {
                 "type": "string",

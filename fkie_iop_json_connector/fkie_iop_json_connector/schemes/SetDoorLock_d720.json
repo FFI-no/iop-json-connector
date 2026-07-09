@@ -1,0 +1,60 @@
+{
+  "title": "SetDoorLock",
+  "messageId": "d720",
+  "isCommand": true,
+  "description": "This message is used to lock or unlock the doors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d720"
+        }
+      }
+    },
+    "DoorLockRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Status"
+      ],
+      "properties": {
+        "Status": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Unlock"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Lock"
+              }
+            }
+          ],
+          "enum": [
+            "Unlock",
+            "Lock"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DoorLockRec"
+  ]
+}

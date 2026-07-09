@@ -1,0 +1,67 @@
+{
+  "title": "QueryGlobalOperatingZone",
+  "messageId": "2423",
+  "isCommand": false,
+  "description": "This message will cause the receiving component to reply to the requestor with a ID 4423h: ReportGlobalOperatingZone message.  If the Query specifies a ZoneID, only that Zone will be returned. If a ZoneID of zero (0) is specified, a list containing all zones will be returned.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2423"
+        }
+      }
+    },
+    "OperatingZoneRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "QueryZoneID"
+      ],
+      "properties": {
+        "QueryZoneID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the zone to be returned. A value of zero (0) shall return a list of all zones.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "ALL_ZONES"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "OPERATING_ZONE"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 2.0,
+                "maximum": 65535.0,
+                "interpretation": "Allow ID range for exclusion zones"
+              }
+            }
+          ],
+          "enum": [
+            "ALL_ZONES",
+            "OPERATING_ZONE"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "OperatingZoneRec"
+  ]
+}

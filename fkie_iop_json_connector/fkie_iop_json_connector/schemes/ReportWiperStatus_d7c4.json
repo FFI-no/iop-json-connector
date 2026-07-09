@@ -1,0 +1,102 @@
+{
+  "title": "ReportWiperStatus",
+  "messageId": "d7c4",
+  "isCommand": false,
+  "description": "This message is used to report the current status of the wipers.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7c4"
+        }
+      }
+    },
+    "WiperStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "WiperStatus"
+      ],
+      "properties": {
+        "WiperStatus": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Off"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "OneShotActive"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "LowPeriodic"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "MediumPeriodic"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "HighPeriodic"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "LowInterval"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "MediumInterval"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "HighInterval"
+              }
+            }
+          ],
+          "enum": [
+            "Off",
+            "OneShotActive",
+            "LowPeriodic",
+            "MediumPeriodic",
+            "HighPeriodic",
+            "LowInterval",
+            "MediumInterval",
+            "HighInterval"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "WiperStatusRec"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "title": "ReportRenderUselessCapabilities",
+  "messageId": "ffdc",
+  "isCommand": false,
+  "description": "This message is used to report the render useless capabilities.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ffdc"
+        }
+      }
+    },
+    "RenderUselessCapabilitiesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "authenticationServiceURI": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "URI of the authenticating service associated with the Render Useless capability",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "RenderUselessCapabilitiesRec"
+  ]
+}

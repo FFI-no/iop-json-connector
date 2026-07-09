@@ -53,16 +53,16 @@
                         }
                       },
                       {
+                        "valueEnum": {
+                          "enumIndex": 65535,
+                          "enumConst": "All subsystems in the system"
+                        }
+                      },
+                      {
                         "valueRange": {
                           "minimum": 1.0,
                           "maximum": 65534.0,
                           "interpretation": "Valid Node IDs"
-                        }
-                      },
-                      {
-                        "valueEnum": {
-                          "enumIndex": 65535,
-                          "enumConst": "All subsystems in the system"
                         }
                       }
                     ],
@@ -106,16 +106,16 @@
                                   }
                                 },
                                 {
+                                  "valueEnum": {
+                                    "enumIndex": 255,
+                                    "enumConst": "All nodes in the subsystem"
+                                  }
+                                },
+                                {
                                   "valueRange": {
                                     "minimum": 1.0,
                                     "maximum": 254.0,
                                     "interpretation": "Valid Node IDs"
-                                  }
-                                },
-                                {
-                                  "valueEnum": {
-                                    "enumIndex": 255,
-                                    "enumConst": "All nodes in the subsystem"
                                   }
                                 }
                               ],
@@ -157,16 +157,16 @@
                                         }
                                       },
                                       {
-                                        "valueRange": {
-                                          "minimum": 1.0,
-                                          "maximum": 254.0,
-                                          "interpretation": "Valid                         Component IDs"
-                                        }
-                                      },
-                                      {
                                         "valueEnum": {
                                           "enumIndex": 255,
                                           "enumConst": "All components in the subsystem"
+                                        }
+                                      },
+                                      {
+                                        "valueRange": {
+                                          "minimum": 1.0,
+                                          "maximum": 254.0,
+                                          "interpretation": "Valid Component IDs"
                                         }
                                       }
                                     ],

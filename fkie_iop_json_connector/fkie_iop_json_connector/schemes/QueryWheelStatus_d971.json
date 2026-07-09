@@ -1,0 +1,27 @@
+{
+  "title": "QueryWheelStatus",
+  "messageId": "d971",
+  "isCommand": false,
+  "description": "This message is used to query the status for the wheels (or tracks) of the platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d971"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

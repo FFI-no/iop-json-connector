@@ -1,0 +1,27 @@
+{
+  "title": "RenderUseless",
+  "messageId": "ffd7",
+  "isCommand": true,
+  "description": "This message is used to render the target device inoperable.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ffd7"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

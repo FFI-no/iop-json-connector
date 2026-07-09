@@ -2,7 +2,7 @@
   "title": "SetLocalPose",
   "messageId": "0403",
   "isCommand": true,
-  "description": "This message is used to set the local pose values.  This message specifies the platform's position \n      and orientation with respect to the local cordinate frame.  This allows a client to redefine the \n      origin of the local coordinate frame.",
+  "description": "This message is used to set the local pose values.  This message specifies the platform's position and orientation with respect to the local cordinate frame as defined in Section 3.1.  This allows a client to redefine the origin of the local coordinate frame.",
   "type": "object",
   "properties": {
     "HeaderRec": {

@@ -2,7 +2,7 @@
   "title": "ReportManipulatorSpecifications",
   "messageId": "4600",
   "isCommand": false,
-  "description": "This message provides the specifications of the manipulator including the number of joints, the link\n      length and twist angle of each link, the joint offset (for revolute joints) or joint angle (for prismatic\n      joints), the minimum and maximum value for each joint, and the minimum and maximum speed for each joint.",
+  "description": "This message provides the specifications of the manipulator including the number of joints, the link length and twist angle of each link, the joint offset (for revolute joints) or joint angle (for prismatic joints), the minimum and maximum value for each joint, and the minimum and maximum speed for each joint.",
   "type": "object",
   "properties": {
     "HeaderRec": {

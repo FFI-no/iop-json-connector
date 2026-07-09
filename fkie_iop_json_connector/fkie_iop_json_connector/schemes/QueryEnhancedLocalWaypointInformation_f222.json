@@ -1,0 +1,42 @@
+{
+  "title": "QueryEnhancedLocalWaypointInformation",
+  "messageId": "f222",
+  "isCommand": false,
+  "description": "This message is used to query the additional waypoint information allowed by this service.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f222"
+        }
+      }
+    },
+    "QueryEnhancedLocalWaypointInformationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Set Enhanced Local Waypoint Information Message"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "QueryEnhancedLocalWaypointInformationRec"
+  ]
+}

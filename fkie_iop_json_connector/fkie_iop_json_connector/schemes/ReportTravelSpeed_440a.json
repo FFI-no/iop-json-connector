@@ -2,7 +2,7 @@
   "title": "ReportTravelSpeed",
   "messageId": "440a",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the current value of the commanded travel speed.  \n      The message data of this message is identical to ID 040Ah: SetTravelSpeed.",
+  "description": "This message is used to provide the receiver the current value of the commanded travel speed. The message data of this message is identical to ID 040A h: SetTravelSpeed (Deprecated).",
   "type": "object",
   "properties": {
     "HeaderRec": {

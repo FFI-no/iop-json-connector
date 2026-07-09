@@ -1,0 +1,74 @@
+{
+  "title": "TetherManagementCommand",
+  "messageId": "dc77",
+  "isCommand": true,
+  "description": "This message is used to command the tether management\n\t\t\tsystem to perform some sort of action such as untwisting the tether.  The expected \n\t\t\tresponse is a TetherManagementResponse message indicating success or failure.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc77"
+        }
+      }
+    },
+    "TetherManagementCommandRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "TetherManagementCommand"
+      ],
+      "properties": {
+        "TetherManagementCommand": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "UNTWIST_TETHER"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "REQUEST_DISENGAGE_TETHER"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "CONFIRM_DISENGAGE_TETHER"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 3.0,
+                "maximum": 255.0,
+                "interpretation": "Reserved for future use."
+              }
+            }
+          ],
+          "enum": [
+            "UNTWIST_TETHER",
+            "REQUEST_DISENGAGE_TETHER",
+            "CONFIRM_DISENGAGE_TETHER"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TetherManagementCommandRec"
+  ]
+}

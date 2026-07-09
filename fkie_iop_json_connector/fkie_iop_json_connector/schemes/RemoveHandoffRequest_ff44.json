@@ -1,0 +1,42 @@
+{
+  "title": "RemoveHandoffRequest",
+  "messageId": "ff44",
+  "isCommand": true,
+  "description": "Remove a request for handoff control.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff44"
+        }
+      }
+    },
+    "RemoveHandoffRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Client-generated ID for tracking handoff requests. This should match an ID from a previous RequestHandoff message."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RemoveHandoffRec"
+  ]
+}

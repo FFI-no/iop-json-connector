@@ -1,0 +1,437 @@
+{
+  "title": "ReportMarkingSystemCapabilities",
+  "messageId": "f480",
+  "isCommand": false,
+  "description": "Reports the capabilities of this marking system.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f480"
+        }
+      }
+    },
+    "MarkingSystemCapabilities": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MarkingSystemCapabilitiesRecord",
+        "MarkingUnitsCapabilitiesList"
+      ],
+      "properties": {
+        "MarkingSystemCapabilitiesRecord": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "MarkerType",
+            "ControlType",
+            "MarkerDescription"
+          ],
+          "properties": {
+            "MarkerType": {
+              "type": "object",
+              "comment": "Indicates the type of marker(s) used by this marking system.",
+              "required": [
+                "Discrete",
+                "Continuous"
+              ],
+              "properties": {
+                "Discrete": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "Indicates the type of marker(s) used by this marking system.",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 0
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "Continuous": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "Indicates the type of marker(s) used by this marking system.",
+                  "bitRange": {
+                    "from": 1,
+                    "to": 1
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                }
+              },
+              "bitField": "unsigned byte"
+            },
+            "ControlType": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Describes how the marking system is controlled. Default value is COORDINATED_CONTROL_ONLY, which means all marking units that are part of the system are fired simultaneously. INDIVIDUAL_CONTROL allows for separate control of each marking unit. In the case where there is only a single marking unit, both enumerations are equivalent.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "COORDINATED_CONTROL_ONLY"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "INDIVIDUAL_CONTROL"
+                  }
+                }
+              ],
+              "enum": [
+                "COORDINATED_CONTROL_ONLY",
+                "INDIVIDUAL_CONTROL"
+              ]
+            },
+            "MarkerDescription": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Description of the type of marker used.",
+              "minLength": 0,
+              "maxLength": 255
+            }
+          }
+        },
+        "MarkingUnitsCapabilitiesList": {
+          "type": "array",
+          "comment": "List the capabilities specific to each marking unit. A marking system must have at least one marking unit.",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "MarkingUnitCapabilitiesRec",
+                  "GeometricPropertiesVariant"
+                ],
+                "properties": {
+                  "MarkingUnitCapabilitiesRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "presenceVector",
+                      "ID",
+                      "MarkingUnitName",
+                      "Capacity"
+                    ],
+                    "properties": {
+                      "presenceVector": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
+                      },
+                      "ID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "Unique ID of the marking unit, used to reference it for individual control, if allowed."
+                      },
+                      "MarkingUnitName": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "Human readable name used to identify the purpose / location of the marking unit. For example, 'left side'",
+                        "minLength": 0,
+                        "maxLength": 255
+                      },
+                      "Capacity": {
+                        "type": "array",
+                        "comment": "Indicates the capacity of the marking unit, either in liters for something like paint, or a count for discrete markers.",
+                        "required": [],
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "UNKNOWN",
+                              "jausType": "long float",
+                              "comment": "",
+                              "fieldIndex": 1,
+                              "fieldUnits": "liter"
+                            },
+                            {
+                              "type": "number",
+                              "jausType": "unsigned integer",
+                              "comment": "",
+                              "fieldIndex": 2,
+                              "fieldUnits": "one"
+                            }
+                          ]
+                        },
+                        "jausType": "unsigned byte",
+                        "minItems": 1,
+                        "maxItems": 1
+                      },
+                      "MarkerType": {
+                        "type": "object",
+                        "comment": "Indicates the type of marker of this single marking unit.",
+                        "required": [],
+                        "properties": {
+                          "Discrete": {
+                            "type": "string",
+                            "jausType": "unsigned byte",
+                            "comment": "Indicates the type of marker of this single marking unit.",
+                            "bitRange": {
+                              "from": 0,
+                              "to": 0
+                            },
+                            "valueSet": [
+                              {
+                                "valueEnum": {
+                                  "enumIndex": 0,
+                                  "enumConst": "NOT_SUPPORTED"
+                                }
+                              },
+                              {
+                                "valueEnum": {
+                                  "enumIndex": 1,
+                                  "enumConst": "SUPPORTED"
+                                }
+                              }
+                            ],
+                            "enum": [
+                              "NOT_SUPPORTED",
+                              "SUPPORTED"
+                            ]
+                          },
+                          "Continuous": {
+                            "type": "string",
+                            "jausType": "unsigned byte",
+                            "comment": "Indicates the type of marker of this single marking unit.",
+                            "bitRange": {
+                              "from": 1,
+                              "to": 1
+                            },
+                            "valueSet": [
+                              {
+                                "valueEnum": {
+                                  "enumIndex": 0,
+                                  "enumConst": "NOT_SUPPORTED"
+                                }
+                              },
+                              {
+                                "valueEnum": {
+                                  "enumIndex": 1,
+                                  "enumConst": "SUPPORTED"
+                                }
+                              }
+                            ],
+                            "enum": [
+                              "NOT_SUPPORTED",
+                              "SUPPORTED"
+                            ]
+                          }
+                        },
+                        "bitField": "unsigned byte"
+                      }
+                    }
+                  },
+                  "GeometricPropertiesVariant": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {
+                      "NoGeometricPropertiesVariant": {
+                        "type": "object",
+                        "comment": "",
+                        "required": [],
+                        "properties": {},
+                        "jausType": "unsigned byte",
+                        "vtagMin": 0,
+                        "vtagMax": 0,
+                        "isVariant": true
+                      },
+                      "StaticGeometricPropertiesRec": {
+                        "type": "object",
+                        "comment": "Specifies the position of the marking unit relative to the vehicle coordinate frame.",
+                        "required": [
+                          "PositionVector",
+                          "UnitQuaternion"
+                        ],
+                        "properties": {
+                          "PositionVector": {
+                            "type": "array",
+                            "comment": "",
+                            "required": [
+                              "PositionVectorElement"
+                            ],
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 1.3969838622484784e-08,
+                                    "bias": -30.0
+                                  }
+                                }
+                              ]
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          "UnitQuaternion": {
+                            "type": "array",
+                            "comment": "",
+                            "required": [
+                              "UnitQuaternionElement"
+                            ],
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 4.656612874161595e-10,
+                                    "bias": -1.0
+                                  }
+                                }
+                              ]
+                            },
+                            "minItems": 4,
+                            "maxItems": 4
+                          }
+                        }
+                      },
+                      "ManipulatorGeometricPropertiesRec": {
+                        "type": "object",
+                        "comment": "Specifies the position of the marking unit relative to the joint frame of a manipulator.",
+                        "required": [
+                          "SubsystemID",
+                          "NodeID",
+                          "ComponentID",
+                          "JointNumber",
+                          "PositionVector",
+                          "UnitQuaternion"
+                        ],
+                        "properties": {
+                          "SubsystemID": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": ""
+                          },
+                          "NodeID": {
+                            "type": "number",
+                            "jausType": "unsigned byte",
+                            "comment": ""
+                          },
+                          "ComponentID": {
+                            "type": "number",
+                            "jausType": "unsigned byte",
+                            "comment": ""
+                          },
+                          "JointNumber": {
+                            "type": "number",
+                            "jausType": "unsigned byte",
+                            "comment": ""
+                          },
+                          "PositionVector": {
+                            "type": "array",
+                            "comment": "",
+                            "required": [
+                              "PositionVectorElement"
+                            ],
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 1.3969838622484784e-08,
+                                    "bias": -30.0
+                                  }
+                                }
+                              ]
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          "UnitQuaternion": {
+                            "type": "array",
+                            "comment": "",
+                            "required": [
+                              "UnitQuaternionElement"
+                            ],
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 4.656612874161595e-10,
+                                    "bias": -1.0
+                                  }
+                                }
+                              ]
+                            },
+                            "minItems": 4,
+                            "maxItems": 4
+                          }
+                        }
+                      }
+                    },
+                    "jausType": "unsigned byte",
+                    "vtagMin": 0,
+                    "vtagMax": 2,
+                    "isVariant": true
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "MarkingSystemCapabilities"
+  ]
+}

@@ -2,7 +2,7 @@
   "title": "SetWrenchEffort",
   "messageId": "0405",
   "isCommand": true,
-  "description": "This message is used to provide open-loop mobility control in the vehicle coordinate frame.  The command \n      consists of a six element propulsive wrench and a six element resistive wrench.  The six elements of \n      each wrench break down into three linear elements and three rotational elements, which are mapped to \n      the three axis orthogonal coordinate frame of the vehicle.  All elements of the Wrench message are not \n      necessarily applicable to a particular platform.",
+  "description": "This message is used to provide open-loop mobility control in the coordinate frame defined in Section 3.1. The command consists of a six element propulsive wrench and a six element resistive wrench.  The six elements of each wrench break down into three linear elements and three rotational elements, which are mapped to the three axis orthogonal coordinate frame of the vehicle.  All elements of the Wrench message are not necessarily applicable to a particular platform.",
   "type": "object",
   "properties": {
     "HeaderRec": {

@@ -1,0 +1,27 @@
+{
+  "title": "QueryRenderUseless",
+  "messageId": "ffd9",
+  "isCommand": false,
+  "description": "This message is used to query if a target has been rendered inoperable.  Note that depending on the implementation of the render-useless action, the component may not respond.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ffd9"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

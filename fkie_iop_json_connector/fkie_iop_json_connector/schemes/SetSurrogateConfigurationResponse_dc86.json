@@ -1,0 +1,94 @@
+{
+  "title": "SetSurrogateConfigurationResponse",
+  "messageId": "dc86",
+  "isCommand": false,
+  "description": "Response to a SetSurrogateConfiguration messages indicating\n\t\t\tif the configuration was successfully set or not.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc86"
+        }
+      }
+    },
+    "SetSurrogateConfigurationResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Response"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Response": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "FAILURE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "CONFIGURED_BOUNDS_EXCEED_LIMITS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "INVALID_SAFE_ACTION"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "INVALID_SAFE_ACTION_TIMEOUT"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESS",
+            "FAILURE",
+            "CONFIGURED_BOUNDS_EXCEED_LIMITS",
+            "INVALID_SAFE_ACTION",
+            "INVALID_SAFE_ACTION_TIMEOUT"
+          ]
+        },
+        "ResponseMessage": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Optional message providing more detail for given response code.",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetSurrogateConfigurationResponseRec"
+  ]
+}

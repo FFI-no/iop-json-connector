@@ -1,0 +1,42 @@
+{
+  "title": "QuerySurrogateStatus",
+  "messageId": "dc76",
+  "isCommand": false,
+  "description": "Queries for the status of the surrogate system.  \n        The expected response is a ReportSurrogateStatus message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc76"
+        }
+      }
+    },
+    "QuerySurrogateStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Used to request reporting of specific optional records from the ReportSurrogateStatusSeq."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QuerySurrogateStatusRec"
+  ]
+}

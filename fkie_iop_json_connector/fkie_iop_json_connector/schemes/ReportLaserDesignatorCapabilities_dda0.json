@@ -1,0 +1,55 @@
+{
+  "title": "ReportLaserDesignatorCapabilities",
+  "messageId": "dda0",
+  "isCommand": false,
+  "description": "This message is used to report the capabilities of the laser designator.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dda0"
+        }
+      }
+    },
+    "ReportLaserDesignatorCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "Frequency"
+            ],
+            "properties": {
+              "Frequency": {
+                "type": "UNKNOWN",
+                "jausType": "float",
+                "comment": "Frequency of the laser designator."
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportLaserDesignatorCapabilitiesList"
+  ]
+}

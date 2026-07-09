@@ -1,0 +1,95 @@
+{
+  "title": "SetSteeringCurve",
+  "messageId": "fe30",
+  "isCommand": true,
+  "description": "Message used to command the desired steering curve setting to the platform.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fe30"
+        }
+      }
+    },
+    "SteeringCurveRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SteeringCurve"
+      ],
+      "properties": {
+        "SteeringCurve": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Raw"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Linear"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Quadratic"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Sigmoid"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "Gompertz"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 19.0,
+                "interpretation": "Reserved for future IOP use"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 20.0,
+                "maximum": 31.0,
+                "interpretation": "Reserved for program specific modes"
+              }
+            }
+          ],
+          "enum": [
+            "Raw",
+            "Linear",
+            "Quadratic",
+            "Sigmoid",
+            "Gompertz"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "SteeringCurveRec"
+  ]
+}

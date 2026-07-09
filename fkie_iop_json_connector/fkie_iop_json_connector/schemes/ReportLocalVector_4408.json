@@ -2,7 +2,7 @@
   "title": "ReportLocalVector",
   "messageId": "4408",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the current values of the commanded local vector.  The message \n      data of this message is identical to ID 0408h: SetLocalVector.",
+  "description": "This message is used to provide the receiver the current values of the commanded local vector. The message data of this message is identical to ID 0408 h: SetLocalVector (Deprecated).",
   "type": "object",
   "properties": {
     "HeaderRec": {

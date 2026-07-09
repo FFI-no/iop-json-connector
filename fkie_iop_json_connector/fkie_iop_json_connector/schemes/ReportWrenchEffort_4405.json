@@ -2,7 +2,7 @@
   "title": "ReportWrenchEffort",
   "messageId": "4405",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the current values of the commanded wrench effort.  \n      The message data and mapping of the presence vector for this message are identical to \n      ID 0405\th: SetWrenchEffort.",
+  "description": "This message is used to provide the receiver the current values of the commanded wrench effort. The message data and mapping of the presence vector for this message are identical to ID 0405 h: SetWrenchEffort.",
   "type": "object",
   "properties": {
     "HeaderRec": {

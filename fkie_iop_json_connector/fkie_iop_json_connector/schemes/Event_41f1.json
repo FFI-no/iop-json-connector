@@ -2,7 +2,7 @@
   "title": "Event",
   "messageId": "41f1",
   "isCommand": false,
-  "description": "The Event message is sent when event is triggered. It includes the Event ID and a\n      sequence number to allow the client to keep track of event processing.",
+  "description": "The Event message is sent when event is triggered. It includes the Event ID and a sequence number to allow the client to keep track of event processing.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -60,6 +60,7 @@
             }
           },
           "minCount": 2,
+          "maxCount": 2147483647,
           "jausType": "unsigned integer",
           "fieldFormat": "JAUS MESSAGE",
           "encapsulatedMessage": "simple"

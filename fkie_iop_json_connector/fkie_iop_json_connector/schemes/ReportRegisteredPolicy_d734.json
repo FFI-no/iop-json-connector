@@ -1,0 +1,97 @@
+{
+  "title": "ReportRegisteredPolicy",
+  "messageId": "d734",
+  "isCommand": false,
+  "description": "This message is used to report a registered policy based on the request ID, or indicate a failure\n                    if no such policy exists.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d734"
+        }
+      }
+    },
+    "ReportRegisteredPolicyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "RequestedPolicyID",
+        "Result"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "RequestedPolicyID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the policy requested in the corresponding QueryRegisteredPolicy"
+        },
+        "Result": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "UNKNOWN_POLICY_ID"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESS",
+            "UNKNOWN_POLICY_ID"
+          ]
+        },
+        "SetPolicyMessage": {
+          "type": "object",
+          "comment": "An encoded JAUS message that sets the policy",
+          "required": [
+            "payloadMessageId",
+            "payload"
+          ],
+          "properties": {
+            "payloadMessageId": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "message id of the payload message"
+            },
+            "payload": {
+              "type": "object",
+              "comment": "An encoded JAUS message that sets the policy",
+              "required": [],
+              "properties": {}
+            }
+          },
+          "minCount": 2,
+          "jausType": "unsigned integer",
+          "fieldFormat": "JAUS MESSAGE",
+          "encapsulatedMessage": "simple"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "ReportRegisteredPolicyRec"
+  ]
+}

@@ -31,7 +31,8 @@
             "comment": "",
             "required": [
               "presenceVector",
-              "SensorID"
+              "SensorID",
+              "SupportedFrameSizes"
             ],
             "properties": {
               "presenceVector": {
@@ -67,7 +68,37 @@
               "SupportedFrameSizes": {
                 "type": "object",
                 "comment": "",
-                "required": [],
+                "required": [
+                  "sqcif_128x96",
+                  "qcif_176x144",
+                  "cif_352x288",
+                  "cif4_704x576",
+                  "cif16_1408x1152",
+                  "qqvga_160x120",
+                  "qvga_320x240",
+                  "vga_640x480",
+                  "svga_800x600",
+                  "xga_1024x768",
+                  "uxga_1600x1200",
+                  "qxga_2048x1536",
+                  "sxga_1280x1024",
+                  "qsxga_2560x2048",
+                  "hsxga_5120x4096",
+                  "wvga_852x480",
+                  "wxga_1366x768",
+                  "wsxga_1600x1024",
+                  "wuxga_1920x1200",
+                  "woxga_2560x1600",
+                  "wqsxga_3200x2048",
+                  "wquxga_3840x2400",
+                  "whsxga_6400x4096",
+                  "whuxga_7680x4800",
+                  "cga_320x200",
+                  "ega_640x350",
+                  "hd480_852x480",
+                  "hd720_1280x720",
+                  "hd1080_1920x1080"
+                ],
                 "properties": {
                   "sqcif_128x96": {
                     "type": "string",

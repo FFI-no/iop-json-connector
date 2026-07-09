@@ -1,0 +1,48 @@
+{
+  "title": "QueryVelocityCommandExt",
+  "messageId": "24b5",
+  "isCommand": false,
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 44B5h: ReportVelocityCommandExt message.  Field #2 specifies the type of velocity fields to be returned in the ReportVelocityCommandExt message. A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder. The resulting message shall contain the fields indicated by the result of this logical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "24b5"
+        }
+      }
+    },
+    "QueryVelocityCommandExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector",
+        "CommandType"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Report Velocity State Ext Message"
+        },
+        "CommandType": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Report Velocity State Ext Message"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryVelocityCommandExtRec"
+  ]
+}

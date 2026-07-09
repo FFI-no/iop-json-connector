@@ -1,0 +1,191 @@
+{
+  "title": "ReportAcousticSensorStatus",
+  "messageId": "dabc",
+  "isCommand": false,
+  "description": "This message is used to report the current status of one or more acoustic sensors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dabc"
+        }
+      }
+    },
+    "AcousticSensorStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "AcousticSensorStatusRec",
+              "AcousticSensorDataList"
+            ],
+            "properties": {
+              "AcousticSensorStatusRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "SensorID"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "SensorID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "ID of the acoustic sensor to be queried. A value of zero (0) is not permitted."
+                  },
+                  "CoordinateFrameEnum": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "SensorRelative"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "VehicleRelative"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "GlobalRelative"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "SensorRelative",
+                      "VehicleRelative",
+                      "GlobalRelative"
+                    ]
+                  }
+                }
+              },
+              "AcousticSensorDataList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "presenceVector"
+                      ],
+                      "properties": {
+                        "presenceVector": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": ""
+                        },
+                        "Range": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "distance to the detected acoustic signal source",
+                          "scaleRange": {
+                            "scaleFactor": 0.00023283064370807974,
+                            "bias": 0.0
+                          }
+                        },
+                        "Bearing": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "bearing (rotation about the Z axis) to the detected acoustic signal source",
+                          "scaleRange": {
+                            "scaleFactor": 1.4629180796077717e-09,
+                            "bias": -3.141592653589793
+                          }
+                        },
+                        "Elevation": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "elevation (rotation about the Y axis) to the detected acoustic signal source",
+                          "scaleRange": {
+                            "scaleFactor": 1.4629180796077717e-09,
+                            "bias": -3.141592653589793
+                          }
+                        },
+                        "Intensity": {
+                          "type": "UNKNOWN",
+                          "jausType": "float",
+                          "comment": "Magnitude of the detected acoustic signal source"
+                        },
+                        "Characterization": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Enumerated value list of the characterization of the acoustic source, generally specified by the program for a particular application, e.g. vehicle engine, human voices, footsteps, etc",
+                          "valueSet": [
+                            {
+                              "valueRange": {
+                                "minimum": 0.0,
+                                "maximum": 99.0,
+                                "interpretation": "Reserved for future IOP use"
+                              }
+                            },
+                            {
+                              "valueRange": {
+                                "minimum": 100.0,
+                                "maximum": 255.0,
+                                "interpretation": "Reserved for project specific use"
+                              }
+                            }
+                          ]
+                        },
+                        "TimeSeconds": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+                        },
+                        "TimeNanoSeconds": {
+                          "type": "number",
+                          "jausType": "unsigned integer",
+                          "comment": "Nanoseconds component of POSIX-style time"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": null,
+                "maxItems": null,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "AcousticSensorStatusList"
+  ]
+}

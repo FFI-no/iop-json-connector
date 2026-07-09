@@ -1,0 +1,55 @@
+{
+  "title": "RequestNodeID",
+  "messageId": "db03",
+  "isCommand": false,
+  "description": "This message is used to request assignment of a unique Node ID by the requester.  Typically, a node like a payload sends this message to the known location of the Subsystem ID Allocator or broadcasts it at the node level.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "db03"
+        }
+      }
+    },
+    "ReviewNodeIDRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequesterID"
+      ],
+      "properties": {
+        "RequesterID": {
+          "type": "array",
+          "comment": "An array of 7 bytes used to represent a unique ID associated with the node requesting a Node ID. This field must be formed to be unique amongst all nodes that can request a Node ID within a Subsystem. The following methods are suggested for assigning a unique node ID: 1. The first 6 bytes of the array are a MAC Address or unique IPv6 Address of the location where the Requestor resides, and the final byte is a unique integer value used to differentiate multiple JAUS nodes at that location. 2. The first 4 bytes of the array are a unique IPv4 address of the location where the Requester resides, and the 5th byte is a unique integrer value used to differentiate multiple JAUS nodes at that location. The final two bytes are unused and set to 0.",
+          "required": [
+            "RequesterIDArrayField"
+          ],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              }
+            ]
+          },
+          "minItems": 7,
+          "maxItems": 7
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReviewNodeIDRec"
+  ]
+}

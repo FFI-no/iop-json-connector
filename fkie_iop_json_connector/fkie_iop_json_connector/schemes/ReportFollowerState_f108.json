@@ -1,0 +1,95 @@
+{
+  "title": "ReportFollowerState",
+  "messageId": "f108",
+  "isCommand": false,
+  "description": "Reports the follower state in response to a Query Follower State message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f108"
+        }
+      }
+    },
+    "FollowerStateList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "GroupID",
+              "State"
+            ],
+            "properties": {
+              "GroupID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the group. A value of zero (0) is not allowed.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 255.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              },
+              "State": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "STOP"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "START_Running"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "START_FormingUp"
+                    }
+                  }
+                ],
+                "enum": [
+                  "STOP",
+                  "START_Running",
+                  "START_FormingUp"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "FollowerStateList"
+  ]
+}

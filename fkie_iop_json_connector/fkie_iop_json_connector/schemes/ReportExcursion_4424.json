@@ -1,0 +1,111 @@
+{
+  "title": "ReportExcursion",
+  "messageId": "4424",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver with information on whether the vehicle is inside the safe operating zone and/or an exclusion zone. If the Query specifies a ZoneID, only that ExcursionRec will be returned. If a ZoneID of zero (0) is specified, a list containing all zones will be returned.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4424"
+        }
+      }
+    },
+    "Excursion": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "ZoneID",
+              "ZoneStatus"
+            ],
+            "properties": {
+              "ZoneID": {
+                "type": "string",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "RESERVED"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "OPERATING_ZONE"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 2.0,
+                      "maximum": 65535.0,
+                      "interpretation": "Allow ID range for exclusion zones"
+                    }
+                  }
+                ],
+                "enum": [
+                  "RESERVED",
+                  "OPERATING_ZONE"
+                ]
+              },
+              "ZoneStatus": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "InsideSafeOPZone"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "OutsizeSafeOPZone"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "InsideSafeOPZoneAndInsideExclusionZone"
+                    }
+                  }
+                ],
+                "enum": [
+                  "InsideSafeOPZone",
+                  "OutsizeSafeOPZone",
+                  "InsideSafeOPZoneAndInsideExclusionZone"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "Excursion"
+  ]
+}

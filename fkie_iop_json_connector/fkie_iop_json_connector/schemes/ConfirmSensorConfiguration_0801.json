@@ -2,7 +2,7 @@
   "title": "ConfirmSensorConfiguration",
   "messageId": "0801",
   "isCommand": false,
-  "description": "This message is used to notify a \n            client component that the sensor\u2019s configuration has been set \n            to the values specified in the corresponding set message with \n            Request ID matching the value of field 1 of this message. If \n            the specified sensor configuration is deemed valid, the SensorIdRec \n            is returned with the matching SensorID of the sensor for \n            which the configuration was set. If the specified configuration \n            is invalid, one of the ErrorRec  types shall be returned \n            (depending on the source message) with an error code and \n            description of the configuration setting which was deemed \n            invalid.",
+  "description": "This message is used to notify a client component that the configuration has been received with the values specified in the corresponding set message with Request ID matching the value of field 1 of this message. If the specified configuration request is deemed valid, the SensorIdRec is returned with the matching SensorID (or illuminatorID) of the \n\t\t\tsensor (or illuminator) for which the configuration was successfully \n\t\t\tset. If the requested configuration is invalid, one of the ErrorRec \n\t\t\ttypes shall be returned (depending on the source message) with \n\t\t\tan error code and description of the configuration setting which \n\t\t\twas deemed invalid.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -63,7 +63,16 @@
                       "SensorID": {
                         "type": "number",
                         "jausType": "unsigned short integer",
-                        "comment": ""
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
                       }
                     }
                   },
@@ -79,7 +88,16 @@
                       "SensorID": {
                         "type": "number",
                         "jausType": "unsigned short integer",
-                        "comment": ""
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
                       },
                       "RangeSensorErrorCode": {
                         "type": "string",
@@ -167,7 +185,16 @@
                       "SensorID": {
                         "type": "number",
                         "jausType": "unsigned short integer",
-                        "comment": ""
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
                       },
                       "VisualSensorErrorCode": {
                         "type": "string",
@@ -325,7 +352,16 @@
                       "SensorID": {
                         "type": "number",
                         "jausType": "unsigned short integer",
-                        "comment": ""
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
                       },
                       "DigitalVideoErrorCode": {
                         "type": "string",
@@ -353,13 +389,13 @@
                           {
                             "valueEnum": {
                               "enumIndex": 3,
-                              "enumConst": "Invalid Minimum Frame Rate"
+                              "enumConst": "Requested Frame Rate Too Low"
                             }
                           },
                           {
                             "valueEnum": {
                               "enumIndex": 4,
-                              "enumConst": "Invalid Maximum Frame Rate"
+                              "enumConst": "Requested Frame Rate Too High"
                             }
                           },
                           {
@@ -391,8 +427,8 @@
                           "Unknown Sensor ID",
                           "Invalid Minimum Bit Rate",
                           "Invalid Maximum Bit Rate",
-                          "Invalid Minimum Frame Rate",
-                          "Invalid Maximum Frame Rate",
+                          "Requested Frame Rate Too Low",
+                          "Requested Frame Rate Too High",
                           "Invalid Frame Size",
                           "Invalid Format",
                           "Multiple Invalid Parameters",
@@ -420,7 +456,16 @@
                       "SensorID": {
                         "type": "number",
                         "jausType": "unsigned short integer",
-                        "comment": ""
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
                       },
                       "AnalogVideoErrorCode": {
                         "type": "string",
@@ -473,7 +518,16 @@
                       "SensorID": {
                         "type": "number",
                         "jausType": "unsigned short integer",
-                        "comment": ""
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
                       },
                       "StillImageErrorCode": {
                         "type": "string",
@@ -527,11 +581,334 @@
                         "maxLength": 255
                       }
                     }
+                  },
+                  "H264VideoEncodingErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "H264VideoEncodingErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "H264VideoEncodingErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Invalid Profile"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Invalid Preset"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Invalid GroupOfPictures"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 4,
+                              "enumConst": "Invalid GDR"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 5,
+                              "enumConst": "Invalid RegionOfInterest"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 6,
+                              "enumConst": "Invalid IntraMacroRefresh"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Invalid Profile",
+                          "Invalid Preset",
+                          "Invalid GroupOfPictures",
+                          "Invalid GDR",
+                          "Invalid RegionOfInterest",
+                          "Invalid IntraMacroRefresh",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "DigitalAudioSensorErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "DigitalAudioSensorErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "DigitalAudioSensorErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Invalid BitRate"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Invalid Format"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Invalid SampleRate"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 4,
+                              "enumConst": "Invalid BitDepth"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 5,
+                              "enumConst": "Invalid EncodingQuality"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Invalid BitRate",
+                          "Invalid Format",
+                          "Invalid SampleRate",
+                          "Invalid BitDepth",
+                          "Invalid EncodingQuality",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "DigitalAudioOutputErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "SensorID",
+                      "DigitalAudioOutputErrorCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "SensorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "DigitalAudioOutputErrorCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Stream Not Found"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Stream Not Supported"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Stream Not Found",
+                          "Stream Not Supported",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "VideoIlluminatorErrorRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "IlluminatorID",
+                      "VideoIlluminatorErrorRecCode",
+                      "ErrorMessage"
+                    ],
+                    "properties": {
+                      "IlluminatorID": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "VideoIlluminatorErrorRecCode": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "Unknown Sensor ID"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Unsupported Mode"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Unsupported Beam Width"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Unsupported Beam Height"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 255,
+                              "enumConst": "Unknown Error / Fault"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "Unknown Sensor ID",
+                          "Unsupported Mode",
+                          "Unsupported Beam Width",
+                          "Unsupported Beam Height",
+                          "Unknown Error / Fault"
+                        ]
+                      },
+                      "ErrorMessage": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "minLength": 0,
+                        "maxLength": 255
+                      }
+                    }
                   }
                 },
                 "jausType": "unsigned byte",
                 "vtagMin": 0,
-                "vtagMax": 5,
+                "vtagMax": 9,
                 "isVariant": true
               }
             ]

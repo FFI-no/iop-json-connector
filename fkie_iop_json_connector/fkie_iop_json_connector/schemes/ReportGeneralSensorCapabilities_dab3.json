@@ -1,0 +1,251 @@
+{
+  "title": "ReportGeneralSensorCapabilities",
+  "messageId": "dab3",
+  "isCommand": false,
+  "description": "This message is used to report the capabilities for all sensors on the component.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dab3"
+        }
+      }
+    },
+    "GeneralSensorCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "Description",
+              "SupportedSensorStates",
+              "SupportedCoordinateFrames"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor to be queried. A value of zero (0) is not permitted."
+              },
+              "Description": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human-readable string for describing the sensor.",
+                "minLength": 0,
+                "maxLength": 256
+              },
+              "SupportedSensorStates": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "Active",
+                  "Standby",
+                  "Off"
+                ],
+                "properties": {
+                  "Active": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "Standby": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "Off": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned byte"
+              },
+              "SupportedCoordinateFrames": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "SensorRelative",
+                  "VehicleRelative",
+                  "GlobalRelative"
+                ],
+                "properties": {
+                  "SensorRelative": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "VehicleRelative": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "GlobalRelative": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned byte"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GeneralSensorCapabilitiesList"
+  ]
+}

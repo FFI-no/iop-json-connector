@@ -1,0 +1,27 @@
+{
+  "title": "QueryHostManipulator",
+  "messageId": "f292",
+  "isCommand": false,
+  "description": "This message is query the host for a manipulator, to support cases where a \n                    manipulator (or even a single actuator) is mounted on another.  The host is specified by a JAUS ID, as \n                    well as the joint number where joint one (1) is the first (base) joint.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f292"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

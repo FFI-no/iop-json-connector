@@ -1,0 +1,127 @@
+{
+  "title": "ReportHealthSummary",
+  "messageId": "fd02",
+  "isCommand": false,
+  "description": "ReportHealthSummary provides a list of (ComponentID, severityCode) for each Component.  A zero-valued severity code indicates normal operation of the Component; otherwise the severity code reported for a Component will be the highest severity code by any Service provided by that Component.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fd02"
+        }
+      }
+    },
+    "SummaryStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "ComponentRec",
+              "SeverityRec"
+            ],
+            "properties": {
+              "ComponentRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ComponentID"
+                ],
+                "properties": {
+                  "ComponentID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "JAUS Component ID",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 254.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "SeverityRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "severity"
+                ],
+                "properties": {
+                  "severity": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NONE"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "NOTIFICATION"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "ADVISORY"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "CAUTION"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "WARNING"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NONE",
+                      "NOTIFICATION",
+                      "ADVISORY",
+                      "CAUTION",
+                      "WARNING"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SummaryStatusList"
+  ]
+}

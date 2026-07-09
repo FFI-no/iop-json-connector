@@ -1,0 +1,27 @@
+{
+  "title": "QueryHandoffDecisionTimeout",
+  "messageId": "ff42",
+  "isCommand": false,
+  "description": "Causes the service to issue a ReportHandoffDecisionTimeout message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff42"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

@@ -65,8 +65,8 @@
             ]
           },
           "jausType": "unsigned byte",
-          "minItems": null,
-          "maxItems": null,
+          "minItems": 0,
+          "maxItems": 255,
           "isVariant": false
         }
       }

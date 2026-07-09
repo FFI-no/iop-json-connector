@@ -1,0 +1,27 @@
+{
+  "title": "QueryHealthSummary",
+  "messageId": "ed02",
+  "isCommand": false,
+  "description": "QueryHealthSummary is used to request a summary of the status of each Component that the Health Reporter is responsible for.  The health summary provides a list of (ComponentID, severityCode), in which a severity of zero represents operational status.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ed02"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

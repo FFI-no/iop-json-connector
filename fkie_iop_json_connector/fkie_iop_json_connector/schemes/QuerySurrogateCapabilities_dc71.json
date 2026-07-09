@@ -1,0 +1,27 @@
+{
+  "title": "QuerySurrogateCapabilities",
+  "messageId": "dc71",
+  "isCommand": false,
+  "description": "Queries for the capabilities of the surrogate system.  \n        The expected response is a ReportSurrogateCapabilities message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc71"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

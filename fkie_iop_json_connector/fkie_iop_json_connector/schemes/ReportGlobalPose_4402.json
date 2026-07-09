@@ -2,7 +2,7 @@
   "title": "ReportGlobalPose",
   "messageId": "4402",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the position and attitude of the platform.  The position of \n      the platform is given in latitude, longitude, and altitude, in accordance with the WGS 84 standard.  \n      All times are in Coordinated Universal Time (UTC).  The message data and mapping of the \n      presence vector for this message are identical to ID 0402h: SetGlobalPose.",
+  "description": "This message is used to provide the receiver the position and attitude of the platform.  The position of the platform is given in latitude, longitude, and altitude.  All times are in Coordinated Universal Time (UTC).  The message data and mapping of the presence vector for this message are identical to ID 0402h: SetGlobalPose (Deprecated).",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -35,7 +35,7 @@
         "Latitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 4.190951586745435e-08,
             "bias": -90.0
@@ -44,7 +44,7 @@
         "Longitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 8.38190317349087e-08,
             "bias": -180.0
@@ -53,7 +53,7 @@
         "Altitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Altitude with respect to WGS-84 reference ellipsoid",
           "scaleRange": {
             "scaleFactor": 1.0477378966863588e-05,
             "bias": -10000.0

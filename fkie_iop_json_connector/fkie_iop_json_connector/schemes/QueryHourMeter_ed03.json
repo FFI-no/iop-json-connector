@@ -1,0 +1,27 @@
+{
+  "title": "QueryHourMeter",
+  "messageId": "ed03",
+  "isCommand": false,
+  "description": "QueryHourMeter is used to request a report providing cumulative operational inutes for the location hosting the HealthReporter service.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ed03"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

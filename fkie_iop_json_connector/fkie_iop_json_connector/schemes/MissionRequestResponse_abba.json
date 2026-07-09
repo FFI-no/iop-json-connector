@@ -1,0 +1,119 @@
+{
+  "title": "MissionRequestResponse",
+  "messageId": "abba",
+  "isCommand": false,
+  "description": "Response to a mission plan request message with the Request ID and success/failure of the action.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "abba"
+        }
+      }
+    },
+    "MissionRequestResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "RequestID",
+        "Response"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Locally unique request ID for associating requests and responses"
+        },
+        "Response": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates whether the list was successfully created",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Success"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "MissionFormatNotSupported"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "MissionIDDoesNotExist"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "CannotDeleteWhileExecuting"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "MissionAlreadyExecuting"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "MissionPlanPreconditionsNotSatisfied"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "MissionPlanRequiresUnsupportedCapability"
+              }
+            }
+          ],
+          "enum": [
+            "Success",
+            "MissionFormatNotSupported",
+            "MissionIDDoesNotExist",
+            "CannotDeleteWhileExecuting",
+            "MissionAlreadyExecuting",
+            "MissionPlanPreconditionsNotSatisfied",
+            "MissionPlanRequiresUnsupportedCapability"
+          ]
+        },
+        "MissionID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique ID for the saved mission that is assigned if the mission is successfully created"
+        },
+        "AdditionalInfo": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "String that can be used to provide additional information about the nature and cause of any failures.",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "MissionRequestResponseRec"
+  ]
+}

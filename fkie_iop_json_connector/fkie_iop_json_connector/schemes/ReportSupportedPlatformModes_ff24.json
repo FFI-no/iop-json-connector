@@ -39,13 +39,6 @@
                 "comment": "",
                 "valueSet": [
                   {
-                    "valueRange": {
-                      "minimum": 175.0,
-                      "maximum": 255.0,
-                      "interpretation": ""
-                    }
-                  },
-                  {
                     "valueEnum": {
                       "enumIndex": 0,
                       "enumConst": "Standard_Operating"
@@ -62,12 +55,26 @@
                       "enumIndex": 2,
                       "enumConst": "Maintenance"
                     }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "LowPower"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 175.0,
+                      "maximum": 255.0,
+                      "interpretation": "Reserved for program specific modes"
+                    }
                   }
                 ],
                 "enum": [
                   "Standard_Operating",
                   "Training",
-                  "Maintenance"
+                  "Maintenance",
+                  "LowPower"
                 ]
               }
             }

@@ -1,0 +1,88 @@
+{
+  "title": "ReportReminderSummary",
+  "messageId": "fd04",
+  "isCommand": false,
+  "description": "ReportReminderSummary provides a simple status report for each maintenance reminder.  Each reminder configured is represented by a record containing its reminder ID and a binary status (expired/non-expired).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fd04"
+        }
+      }
+    },
+    "ReminderSummaryList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "ReminderID",
+              "ReminderStatus"
+            ],
+            "properties": {
+              "ReminderID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "Unique ID for each maintenance reminder. Range [0..15]",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 0.0,
+                      "maximum": 15.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              },
+              "ReminderStatus": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "NotExpired"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Expired"
+                    }
+                  }
+                ],
+                "enum": [
+                  "NotExpired",
+                  "Expired"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReminderSummaryList"
+  ]
+}

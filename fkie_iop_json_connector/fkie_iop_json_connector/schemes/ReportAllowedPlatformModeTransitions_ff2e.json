@@ -1,0 +1,94 @@
+{
+  "title": "ReportAllowedPlatformModeTransitions",
+  "messageId": "ff2e",
+  "isCommand": false,
+  "description": "Sent in response to a Query Allowed Platform Mode Transitions message.  Reports the allowed transitions\n                    based on the current platform mode and system state. For example, some systems may generally\n                    allow a transition from Standard_Operating to Maintenance, but only when the platform velocity is zero.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff2e"
+        }
+      }
+    },
+    "AllowedPlatformModeTransitionsList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "EndingPlatformMode"
+            ],
+            "properties": {
+              "EndingPlatformMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Standard_Operating"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Training"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Maintenance"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "LowPower"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 175.0,
+                      "maximum": 255.0,
+                      "interpretation": "Reserved for program specific modes"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Standard_Operating",
+                  "Training",
+                  "Maintenance",
+                  "LowPower"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "AllowedPlatformModeTransitionsList"
+  ]
+}

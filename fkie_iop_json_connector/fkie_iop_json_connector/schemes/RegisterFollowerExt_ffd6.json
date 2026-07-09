@@ -1,0 +1,142 @@
+{
+  "title": "RegisterFollowerExt",
+  "messageId": "ffd6",
+  "isCommand": false,
+  "description": "This message allows a follower to register with \n                    the lead subsystem, or disconnect (cancel) a previous registration, and to specify the\n                    error handling behavior the leader is expected to follow.  While such \n                    registration is not required for one subsystem to follow another, only subsystems \n                    that have registered with the leader can effect speed changes through the \n                    override mechanism.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "ffd6"
+        }
+      }
+    },
+    "RegisterFollowerRecExt": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "RequestType"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "RequestType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "CONNECT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "DISCONNECT"
+              }
+            }
+          ],
+          "enum": [
+            "CONNECT",
+            "DISCONNECT"
+          ]
+        },
+        "LeaderErrorBehavior": {
+          "type": "object",
+          "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+          "required": [],
+          "properties": {
+            "FollowerCompromised": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+              "bitRange": {
+                "from": 0,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "Continue"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "RemoveFollower"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "StopLeader"
+                  }
+                }
+              ],
+              "enum": [
+                "Continue",
+                "RemoveFollower",
+                "StopLeader"
+              ]
+            },
+            "LostCommsFromFollower": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+              "bitRange": {
+                "from": 2,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "Continue"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "RemoveFollower"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "StopLeader"
+                  }
+                }
+              ],
+              "enum": [
+                "Continue",
+                "RemoveFollower",
+                "StopLeader"
+              ]
+            }
+          },
+          "bitField": "unsigned byte"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RegisterFollowerRecExt"
+  ]
+}

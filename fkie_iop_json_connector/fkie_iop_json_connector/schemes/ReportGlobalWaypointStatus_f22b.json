@@ -1,0 +1,150 @@
+{
+  "title": "ReportGlobalWaypointStatus",
+  "messageId": "f22b",
+  "isCommand": false,
+  "description": "This message is used to report the status of the global waypoint execution.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f22b"
+        }
+      }
+    },
+    "ReportWaypointStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SuspendedTime",
+        "Status"
+      ],
+      "properties": {
+        "SuspendedTime": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Amount of time the vehicle has been suspended at the current waypoint"
+        },
+        "Status": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Status of the current waypoint plan execution.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "NoPlan"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "PlanLoaded"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Executing"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "Paused"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "TimedWait"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "Complete"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "Fault"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "NonSpecificFault"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "VehicleUnresponsive"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 9,
+                "enumConst": "OutsideCorridor"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 10,
+                "enumConst": "InvalidSensorData"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 11,
+                "enumConst": "NoPlanFault"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 12,
+                "enumConst": "InvalidPlan"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 13,
+                "enumConst": "NoPathAvailable"
+              }
+            }
+          ],
+          "enum": [
+            "NoPlan",
+            "PlanLoaded",
+            "Executing",
+            "Paused",
+            "TimedWait",
+            "Complete",
+            "Fault",
+            "NonSpecificFault",
+            "VehicleUnresponsive",
+            "OutsideCorridor",
+            "InvalidSensorData",
+            "NoPlanFault",
+            "InvalidPlan",
+            "NoPathAvailable"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "ReportWaypointStatusRec"
+  ]
+}

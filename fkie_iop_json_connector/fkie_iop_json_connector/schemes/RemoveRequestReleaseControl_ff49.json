@@ -1,0 +1,42 @@
+{
+  "title": "RemoveRequestReleaseControl",
+  "messageId": "ff49",
+  "isCommand": true,
+  "description": "Remove a request for handoff control.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff49"
+        }
+      }
+    },
+    "RemoveRequestReleaseControlRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ID"
+      ],
+      "properties": {
+        "ID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Matches the ID from a RequestReleaseControlRec in the RequestReleaseControl message."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RemoveRequestReleaseControlRec"
+  ]
+}

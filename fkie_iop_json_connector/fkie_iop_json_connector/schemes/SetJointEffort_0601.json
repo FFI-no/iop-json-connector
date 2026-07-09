@@ -2,7 +2,7 @@
   "title": "SetJointEffort",
   "messageId": "0601",
   "isCommand": true,
-  "description": "This message is used to control joint actuators in an open loop fashion. The command states the percentage\n      level of effort that each actuator should exercise in order to move its corresponding joint. The message must\n      contain effort commands for each joint in the manipulator.",
+  "description": "This message is used to control joint actuators in an open loop fashion. The command states the percentage level of effort that each actuator should exercise in order to move its corresponding joint. The message must contain effort commands for each joint in the manipulator.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -47,8 +47,8 @@
         ]
       },
       "jausType": "unsigned byte",
-      "minItems": null,
-      "maxItems": null,
+      "minItems": 0,
+      "maxItems": 255,
       "isVariant": false
     }
   },

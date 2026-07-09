@@ -20,21 +20,21 @@
         }
       }
     },
-    "platformData": {
+    "PlatformData": {
       "type": "object",
       "comment": "",
       "required": [
-        "platformSpecifics",
-        "platformInertial",
-        "platformSpec"
+        "PlatformSpecifics",
+        "PlatformInertial",
+        "PlatformSpec"
       ],
       "properties": {
-        "platformSpecifics": {
+        "PlatformSpecifics": {
           "type": "object",
           "comment": "",
           "required": [],
           "properties": {
-            "skidsteer": {
+            "Skidsteer": {
               "type": "object",
               "comment": "Skid-steer specific platform specs",
               "required": [
@@ -122,7 +122,7 @@
           "vtagMax": 1,
           "isVariant": true
         },
-        "platformInertial": {
+        "PlatformInertial": {
           "type": "object",
           "comment": "General platform specs",
           "required": [
@@ -199,7 +199,7 @@
             }
           }
         },
-        "platformSpec": {
+        "PlatformSpec": {
           "type": "object",
           "comment": "",
           "required": [
@@ -370,6 +370,6 @@
   },
   "required": [
     "HeaderRec",
-    "platformData"
+    "PlatformData"
   ]
 }

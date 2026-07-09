@@ -1,0 +1,27 @@
+{
+  "title": "QueryWiperCapabilities",
+  "messageId": "d7c0",
+  "isCommand": false,
+  "description": "This message is used to query the capabilities of the underlying hardware.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7c0"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

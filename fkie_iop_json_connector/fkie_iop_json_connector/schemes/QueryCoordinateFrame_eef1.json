@@ -1,0 +1,27 @@
+{
+  "title": "QueryCoordinateFrame",
+  "messageId": "eef1",
+  "isCommand": false,
+  "description": "This message requests the current active frame of reference for end effector based motions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "eef1"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

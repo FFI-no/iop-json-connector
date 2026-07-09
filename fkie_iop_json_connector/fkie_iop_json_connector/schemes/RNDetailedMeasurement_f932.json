@@ -15,7 +15,7 @@
         "MessageID": {
           "type": "string",
           "jausType": "unsigned short integer",
-          "comment": "A two byte field to hold the message ID of a message",
+          "comment": "Two byte field to hold message ID",
           "const": "f932"
         }
       }

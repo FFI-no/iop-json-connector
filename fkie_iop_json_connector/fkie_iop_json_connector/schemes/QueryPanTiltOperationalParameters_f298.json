@@ -1,0 +1,42 @@
+{
+  "title": "QueryPanTiltOperationalParameters",
+  "messageId": "f298",
+  "isCommand": false,
+  "description": "This message is query the per-joint operational parameters.  \n                    The presence vector is used to indicate which fields are desired in the corresponding \n                    report message; however, this request may not be honored if the underlying implementation \n                    does not support those fields.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f298"
+        }
+      }
+    },
+    "QueryJointOperationalParametersRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Report Pan Tilt Operational Parameters for bitwise interpretation of the PV."
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "QueryJointOperationalParametersRec"
+  ]
+}

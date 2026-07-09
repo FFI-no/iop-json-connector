@@ -1,0 +1,121 @@
+{
+  "title": "ReportGeneralSensorConfiguration",
+  "messageId": "dab4",
+  "isCommand": false,
+  "description": "This message is used to report the current configuration of one or more sensors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dab4"
+        }
+      }
+    },
+    "GeneralSensorConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor to be queried. A value of zero (0) implies all sensors."
+              },
+              "SensorStateEnum": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Active"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Standby"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Off"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Active",
+                  "Standby",
+                  "Off"
+                ]
+              },
+              "CoordinateFrameEnum": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "SensorRelative"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "VehicleRelative"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "GlobalRelative"
+                    }
+                  }
+                ],
+                "enum": [
+                  "SensorRelative",
+                  "VehicleRelative",
+                  "GlobalRelative"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GeneralSensorConfigurationList"
+  ]
+}

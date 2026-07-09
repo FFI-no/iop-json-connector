@@ -1,0 +1,48 @@
+{
+  "title": "ExecuteMissionPlan",
+  "messageId": "abcc",
+  "isCommand": true,
+  "description": "This message is used to begin execution of a mission with the given Mission ID. \n                    Executing a currently paused mission plan will cause execution of that mission plan to start from the beginning\n                    again. Executing a different mission while in the paused state will cause the old mission to revert to the LOADED \n                    state before execution of the new mission begins.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "abcc"
+        }
+      }
+    },
+    "ExecuteMissionPlanRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "MissionID"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Locally unique request ID for the request, which the client can use to associated a given response"
+        },
+        "MissionID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the saved mission to be executed"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "ExecuteMissionPlanRec"
+  ]
+}

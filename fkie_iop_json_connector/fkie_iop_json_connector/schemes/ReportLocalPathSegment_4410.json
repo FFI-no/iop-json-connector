@@ -2,7 +2,7 @@
   "title": "ReportLocalPathSegment",
   "messageId": "4410",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the values of the current path segment.  The message data and \n      mapping of the presence vector of this message are identical to ID 0410h: SetLocalPathSegment.",
+  "description": "This message is used to provide the receiver the values of the commanded path segment. The message data and mapping of the presence vector of this message are identical to ID 0410h: SetLocalPathSegment (Deprecated).",
   "type": "object",
   "properties": {
     "HeaderRec": {

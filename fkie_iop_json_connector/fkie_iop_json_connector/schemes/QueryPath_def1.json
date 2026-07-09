@@ -2,7 +2,7 @@
   "title": "QueryPath",
   "messageId": "def1",
   "isCommand": false,
-  "description": "This message is used to query a path.  If the specified PathType is not \n\t\t\tsupported, as given in the ReportPathReporterCapabilities message, no response will be generated.  \n\t\t\tIf multiple constraints are specified, the service will return the path data based on the most \n\t\t\tstringent constraints, i.e. the smallest number of data points.",
+  "description": "This message is used to query a path.  If the specified PathType is not \n\t\t\t\t\tsupported, as given in the ReportPathReporterCapabilities message, no response will be generated.  \n\t\t\t\t\tIf multiple constraints are specified, the service will return the path data based on the most \n\t\t\t\t\tstringent constraints, i.e. the smallest number of data points.",
   "type": "object",
   "properties": {
     "DefaultHeaderRec": {

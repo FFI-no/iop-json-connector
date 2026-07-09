@@ -1,0 +1,80 @@
+{
+  "title": "ConfirmReleaseControl",
+  "messageId": "ff4a",
+  "isCommand": false,
+  "description": "Used by the controlling client to acknowledge the removal of a handoff request or to grant, deny, or defer a decision on that handoff request. At most, only one request should be GRANTED at a time.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff4a"
+        }
+      }
+    },
+    "ReleaseControlRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ID",
+        "ResponseCode"
+      ],
+      "properties": {
+        "ID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Matches the ID from a RequestReleaseControlRec in the RequestReleaseControl message."
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "GRANTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "DENIED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "WAIT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "REMOVED"
+              }
+            }
+          ],
+          "enum": [
+            "GRANTED",
+            "DENIED",
+            "WAIT",
+            "REMOVED"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReleaseControlRec"
+  ]
+}

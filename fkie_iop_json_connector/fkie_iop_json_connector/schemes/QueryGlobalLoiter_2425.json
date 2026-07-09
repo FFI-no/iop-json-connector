@@ -1,0 +1,42 @@
+{
+  "title": "QueryGlobalLoiter",
+  "messageId": "2425",
+  "isCommand": false,
+  "description": "This message will cause the receiving component to reply to the requestor with a ID 4425h: ReportGlobalLoiter message. A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder. The resulting message shall contain the fields indicated by the result of this logical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2425"
+        }
+      }
+    },
+    "GlobalLoiterRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Report Global Loiter Message"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "GlobalLoiterRec"
+  ]
+}

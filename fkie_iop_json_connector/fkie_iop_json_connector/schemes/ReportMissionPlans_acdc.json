@@ -1,0 +1,367 @@
+{
+  "title": "ReportMissionPlans",
+  "messageId": "acdc",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver with a list of one or more missions stored, and their current status.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "acdc"
+        }
+      }
+    },
+    "ReportMissionPlansList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "ReportMissionPlansRec"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "ReportMissionPlansRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "MissionID",
+                  "Status",
+                  "SourceJAUS_ID",
+                  "TimeSeconds",
+                  "TimeNanoSeconds"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "MissionID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "Unique ID for the saved mission that is assigned if the mission is successfully created"
+                  },
+                  "Status": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Indicates current status of the mission plan",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Loaded"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Executing"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "Paused"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "Completed"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "Failed"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "Deleted"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Loaded",
+                      "Executing",
+                      "Paused",
+                      "Completed",
+                      "Failed",
+                      "Deleted"
+                    ]
+                  },
+                  "SourceJAUS_ID": {
+                    "type": "object",
+                    "comment": "JAUS ID of the source that originally set the mission plan.",
+                    "required": [
+                      "ComponentID",
+                      "NodeID",
+                      "SubsystemID"
+                    ],
+                    "properties": {
+                      "ComponentID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the source that originally set the mission plan.",
+                        "bitRange": {
+                          "from": 0,
+                          "to": 7
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 255.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "NodeID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the source that originally set the mission plan.",
+                        "bitRange": {
+                          "from": 8,
+                          "to": 15
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 255.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "SubsystemID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the source that originally set the mission plan.",
+                        "bitRange": {
+                          "from": 16,
+                          "to": 31
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 65535.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "bitField": "unsigned integer"
+                  },
+                  "TimeSeconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "UTC POSIX-style time in seconds since 1 January 1970, time mission plan was set"
+                  },
+                  "TimeNanoSeconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Nanoseconds component of POSIX-style time, time mission plan was set"
+                  },
+                  "MissionPlan": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "formatField",
+                      "payload"
+                    ],
+                    "properties": {
+                      "formatField": {
+                        "type": "string",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "C_BML"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "Reserved_for_future_IOP_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 2,
+                              "enumConst": "Reserved_for_future_IOP_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 3,
+                              "enumConst": "Reserved_for_future_IOP_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 4,
+                              "enumConst": "Reserved_for_future_IOP_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 32,
+                              "enumConst": "Reserved_for_program_specific_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 33,
+                              "enumConst": "Reserved_for_program_specific_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 34,
+                              "enumConst": "Reserved_for_program_specific_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 35,
+                              "enumConst": "Reserved_for_program_specific_use"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 36,
+                              "enumConst": "Reserved_for_program_specific_use"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "C_BML",
+                          "Reserved_for_future_IOP_use",
+                          "Reserved_for_future_IOP_use",
+                          "Reserved_for_future_IOP_use",
+                          "Reserved_for_future_IOP_use",
+                          "Reserved_for_program_specific_use",
+                          "Reserved_for_program_specific_use",
+                          "Reserved_for_program_specific_use",
+                          "Reserved_for_program_specific_use",
+                          "Reserved_for_program_specific_use"
+                        ]
+                      },
+                      "payload": {
+                        "type": "object",
+                        "comment": "",
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "jausType": "unsigned integer",
+                    "encapsulatedMessage": "sub"
+                  }
+                }
+              },
+              "MissionPlanProgress": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "PercentCompleteRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "PercentComplete"
+                    ],
+                    "properties": {
+                      "PercentComplete": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "",
+                        "scaleRange": {
+                          "scaleFactor": 0.39215686274509803,
+                          "bias": 0.0
+                        }
+                      }
+                    }
+                  },
+                  "EstimatedTimeRemainingRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "EstimatedTimeRemaining"
+                    ],
+                    "properties": {
+                      "EstimatedTimeRemaining": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": ""
+                      }
+                    }
+                  },
+                  "StepsCompletedRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "CurrentStep",
+                      "TotalSteps"
+                    ],
+                    "properties": {
+                      "CurrentStep": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      },
+                      "TotalSteps": {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": ""
+                      }
+                    }
+                  }
+                },
+                "jausType": "unsigned byte",
+                "vtagMin": null,
+                "vtagMax": null,
+                "isVariant": true
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "ReportMissionPlansList"
+  ]
+}

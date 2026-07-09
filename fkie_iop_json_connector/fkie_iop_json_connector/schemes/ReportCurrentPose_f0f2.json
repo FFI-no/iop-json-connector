@@ -1,0 +1,73 @@
+{
+  "title": "ReportCurrentPose",
+  "messageId": "f0f2",
+  "isCommand": false,
+  "description": "Reports the current pose.  The driver may either be in a pose, or in the process of transitioning between poses, or unknown/unavailable, indicating the pose is not known at the time of the query.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f0f2"
+        }
+      }
+    },
+    "ReportCurrentPoseVar": {
+      "type": "object",
+      "comment": "",
+      "required": [],
+      "properties": {
+        "CurrentPoseRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "CurrentStateID"
+          ],
+          "properties": {
+            "CurrentStateID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Unique identifier of the current pose. A value of 255 shall indicate an unknown, arbitrary, or unavailable pose."
+            }
+          }
+        },
+        "CurrentTransitionRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "StartStateID",
+            "EndStateID"
+          ],
+          "properties": {
+            "StartStateID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Unique identifier of the start pose for the transition. A value of 255 indicates an arbitrary or unknown starting pose."
+            },
+            "EndStateID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Unique Identifier of the end pose for the transition."
+            }
+          }
+        }
+      },
+      "jausType": "unsigned byte",
+      "vtagMin": 0,
+      "vtagMax": 1,
+      "isVariant": true
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportCurrentPoseVar"
+  ]
+}

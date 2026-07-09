@@ -1,0 +1,373 @@
+{
+  "title": "RecoverSurrogate",
+  "messageId": "dc75",
+  "isCommand": true,
+  "description": "This message controls the recovery of the surrogate system.\n\t\t\tIf no optional fields are specified within the RecoverSurrogateRec, this message\n\t\t\tfunctions to recover the surrogate to the 0, 0, 0 position in the Host Frame.  Optional fields\n\t\t\twithin the RecoverSurrogateSequence allow for specification of the recovery host, if\n\t\t\ta different recovery host is supported.  Expected response is a RecoverSurrogateResponse\n\t\t\tmessage indicating if the command to recover the surrogate was successful or not.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc75"
+        }
+      }
+    },
+    "RecoverSurrogateSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "EmergencyRecovery": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "RecoveryOperation"
+          ],
+          "properties": {
+            "RecoveryOperation": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Enumerated field that specifies the type of emergency recovery to perform. The only currently defined operation is IMMEDIATE, which indicates the surrogate should take action to recover to a recovery / landed position as quickly as possible. It is up to the implementation to determine how this occurs. NOTE: An emergency recovery does not necessarily happen on the launching vehicle. For example, a UAV may land on the ground immediately below it as part of its emergency recovery procedure.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "IMMEDIATE"
+                  }
+                },
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 64.0,
+                    "interpretation": "Reserved for future use."
+                  }
+                },
+                {
+                  "valueRange": {
+                    "minimum": 65.0,
+                    "maximum": 255.0,
+                    "interpretation": "Implementation specific."
+                  }
+                }
+              ],
+              "enum": [
+                "IMMEDIATE"
+              ]
+            }
+          }
+        },
+        "RecoverSurrogateRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "HostPlatformID": {
+              "type": "object",
+              "comment": "",
+              "required": [],
+              "properties": {
+                "ComponentID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 7
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 0.0,
+                        "maximum": 255.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "NodeID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 8,
+                    "to": 15
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 0.0,
+                        "maximum": 255.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "SubsystemID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 16,
+                    "to": 31
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 0.0,
+                        "maximum": 65535.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                }
+              },
+              "bitField": "unsigned integer"
+            }
+          }
+        },
+        "RecoveryLocationVariant": {
+          "type": "object",
+          "comment": "Location to where surrogate will be recovered.",
+          "required": [],
+          "properties": {
+            "RelativePoseExtRec": {
+              "type": "object",
+              "comment": "If recovery to a relative pose is specified, the surrogate is recoverd to a position relative to THE SURROGATE'S launch point on the vehicle. Relative pose is defined as a position and orientation relative to the Host Frame of reference, as defined in Section 3 Common Conventions.",
+              "required": [
+                "presenceVector"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "X": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 0.00931322574832319,
+                    "bias": -20000000.0
+                  }
+                },
+                "Y": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 0.00931322574832319,
+                    "bias": -20000000.0
+                  }
+                },
+                "Z": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 0.00931322574832319,
+                    "bias": -20000000.0
+                  }
+                },
+                "Roll": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 9.587526218325454e-05,
+                    "bias": -3.141592653589793
+                  }
+                },
+                "Pitch": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 9.587526218325454e-05,
+                    "bias": -3.141592653589793
+                  }
+                },
+                "Heading": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 9.587526218325454e-05,
+                    "bias": -3.141592653589793
+                  }
+                },
+                "TimeSeconds": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. UTC POSIX-style time in seconds since 1 January 1970."
+                },
+                "TimeNanoSeconds": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. Nanoseconds component of POSIX-style time"
+                }
+              }
+            },
+            "RecoverGlobalPoseExtRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "presenceVector",
+                "Latitude",
+                "Longitude"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "Latitude": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Decimal degrees",
+                  "scaleRange": {
+                    "scaleFactor": 4.190951586745435e-08,
+                    "bias": -90.0
+                  }
+                },
+                "Longitude": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Decimal degrees",
+                  "scaleRange": {
+                    "scaleFactor": 8.38190317349087e-08,
+                    "bias": -180.0
+                  }
+                },
+                "ZPosition": {
+                  "type": "array",
+                  "comment": "",
+                  "required": [],
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "fieldIndex": 0,
+                        "fieldUnits": "meter",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-05,
+                          "bias": -50000.0
+                        }
+                      },
+                      {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "fieldIndex": 1,
+                        "fieldUnits": "meter",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-05,
+                          "bias": -50000.0
+                        }
+                      },
+                      {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "fieldIndex": 2,
+                        "fieldUnits": "meter",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-05,
+                          "bias": -50000.0
+                        }
+                      },
+                      {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "fieldIndex": 3,
+                        "fieldUnits": "meter",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-05,
+                          "bias": -50000.0
+                        }
+                      }
+                    ]
+                  },
+                  "jausType": "unsigned byte",
+                  "minItems": 1,
+                  "maxItems": 1
+                },
+                "Roll": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 9.587526218325454e-05,
+                    "bias": -3.141592653589793
+                  }
+                },
+                "Pitch": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 9.587526218325454e-05,
+                    "bias": -3.141592653589793
+                  }
+                },
+                "Heading": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 9.587526218325454e-05,
+                    "bias": -3.141592653589793
+                  }
+                },
+                "TimeSeconds": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. UTC POSIX-style time in seconds since 1 January 1970."
+                },
+                "TimeNanoSeconds": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. Nanoseconds component of POSIX-style time"
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 1,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RecoverSurrogateSeq"
+  ]
+}

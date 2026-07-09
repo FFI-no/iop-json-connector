@@ -1,0 +1,179 @@
+{
+  "title": "ReportSupportedSteeringCurves",
+  "messageId": "fe34",
+  "isCommand": false,
+  "description": "Message used to report the platform's supported steering curves.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fe34"
+        }
+      }
+    },
+    "SupportedSteeringCurvesRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SupportedSteeringCurves"
+      ],
+      "properties": {
+        "SupportedSteeringCurves": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "Raw",
+            "Linear",
+            "Quadratic",
+            "Sigmoid",
+            "Gompertz",
+            "IOP_Reserved",
+            "ReservedForProgramSpecificUse"
+          ],
+          "properties": {
+            "Raw": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Linear": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Quadratic": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Sigmoid": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Gompertz": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 4,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "IOP_Reserved": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 5,
+                "to": 10
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 63.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "ReservedForProgramSpecificUse": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "bitRange": {
+                "from": 11,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 31.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned short integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "SupportedSteeringCurvesRec"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "QueryEnhancedLocalWaypointCapabilities",
+  "messageId": "f227",
+  "isCommand": false,
+  "description": "This message is used to query the additional waypoint capabilities supported by this service.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f227"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

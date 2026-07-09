@@ -2,7 +2,7 @@
   "title": "QueryVelocityCommand",
   "messageId": "2415",
   "isCommand": false,
-  "description": "This message shall cause the receiving component to reply to the requestor with a \n      ID 4415h: ReportVelocityCommand message.  Field #2 specifies the fields to be returned in \n      the Report Velocity Command message.",
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 4415h: ReportVelocityCommand (Deprecated)  message.  Field #2 specifies the type of velocity fields to be returned in the Report Velocity Command message. A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder.  The resulting message shall contain the fields indicated by the result of this logical AND operation.",
   "type": "object",
   "properties": {
     "HeaderRec": {

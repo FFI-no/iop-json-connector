@@ -1,0 +1,93 @@
+{
+  "title": "SetTravelSpeedExt",
+  "messageId": "04aa",
+  "isCommand": true,
+  "description": "This message is used to set the desired travel speed. It uses a variable field allowing platforms to select various methods for specifying speed.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "04aa"
+        }
+      }
+    },
+    "TravelSpeedExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Speed"
+      ],
+      "properties": {
+        "Speed": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 0,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 1,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 2,
+                "fieldUnits": "rotations per minute",
+                "scaleRange": {
+                  "scaleFactor": 0.030518043793392843,
+                  "bias": -1000.0
+                }
+              },
+              {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "fieldIndex": 3,
+                "fieldUnits": "meter per second",
+                "scaleRange": {
+                  "scaleFactor": 0.01,
+                  "bias": -327.68
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 1
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TravelSpeedExtRec"
+  ]
+}

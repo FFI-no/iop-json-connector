@@ -1,0 +1,135 @@
+{
+  "title": "ReportPresetPoseCapabilities",
+  "messageId": "f0f1",
+  "isCommand": false,
+  "description": "Returns a list containing the poses available and the valid transitions between those poses.  The transition list should specify how a pose can be achieved, where a StartPoseID of 255 means the pose is valid from any starting position.  As a result, this list should never be empty.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f0f1"
+        }
+      }
+    },
+    "PoseList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "PresetPoseRec",
+              "TransitionList"
+            ],
+            "properties": {
+              "PresetPoseRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "PoseID",
+                  "PoseName"
+                ],
+                "properties": {
+                  "PoseID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "Unique integer identifier of the pose. No Pose ID within the PoseList should be the same. A value of 255 is not permitted."
+                  },
+                  "PoseName": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Name of the state, associated with the unique ID.",
+                    "minLength": 0,
+                    "maxLength": 255
+                  }
+                }
+              },
+              "TransitionList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "StartPoseID",
+                        "EndPoseID",
+                        "TransitionProperties"
+                      ],
+                      "properties": {
+                        "StartPoseID": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Unique identifier of the start pose for the transition. A value of 255 indicates an arbitrary or unknown starting pose; consequently the transition is valid from any starting position."
+                        },
+                        "EndPoseID": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Unique identifier of the end pose for the transition. Note that this field is scheduled for removal in future messages. Implementations are encouraged to define transitions such that EndPoseID is the same as PoseID. Consequently, each pose is defined with a list of valid incoming transitions."
+                        },
+                        "TransitionProperties": {
+                          "type": "object",
+                          "comment": "This field specifies properties of the transition between two different poses.",
+                          "required": [
+                            "Reserved"
+                          ],
+                          "properties": {
+                            "Reserved": {
+                              "type": "number",
+                              "jausType": "unsigned byte",
+                              "comment": "This field specifies properties of the transition between two different poses.",
+                              "bitRange": {
+                                "from": 0,
+                                "to": 7
+                              },
+                              "valueSet": [
+                                {
+                                  "valueRange": {
+                                    "minimum": 0.0,
+                                    "maximum": 65535.0,
+                                    "interpretation": ""
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "bitField": "unsigned byte"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned short integer",
+                "minItems": 0,
+                "maxItems": 65535,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PoseList"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "title": "RequestReleaseControl",
+  "messageId": "ff48",
+  "isCommand": true,
+  "description": "This message is sent to the current controlling client to provide it with a request to handoff control.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff48"
+        }
+      }
+    },
+    "RequestReleaseControlRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ID",
+        "SrcSubsystemID",
+        "SrcNodeID",
+        "SrcComponentID",
+        "AuthorityCode",
+        "Explanation"
+      ],
+      "properties": {
+        "ID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID from the client used to match this Request to its response."
+        },
+        "SrcSubsystemID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Subsystem ID of the source requesting the handoff.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65534.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "SrcNodeID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Node ID of the source requesting the handoff.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 254.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "SrcComponentID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Component ID of the source requesting the handoff.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 0.0,
+                "maximum": 254.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "AuthorityCode": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Authority of the source requesting the handoff."
+        },
+        "Explanation": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Reason the handoff is requested.",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RequestReleaseControlRec"
+  ]
+}

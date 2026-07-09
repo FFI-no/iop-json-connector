@@ -1,0 +1,27 @@
+{
+  "title": "ConfirmRenderUselessRequest",
+  "messageId": "ffd8",
+  "isCommand": false,
+  "description": "This message may be sent as a confirmation to a render-useless request.  Note that depending on the implementation of the render-useless action, this message may not be sent successfully.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ffd8"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

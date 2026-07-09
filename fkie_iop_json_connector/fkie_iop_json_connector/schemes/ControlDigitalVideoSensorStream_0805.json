@@ -2,7 +2,7 @@
   "title": "ControlDigitalVideoSensorStream",
   "messageId": "0805",
   "isCommand": true,
-  "description": "This message is used to control \n            the playback state of the video stream from a digital video \n            service. The actual stream protocol for this is outside the \n            scope of the protocol. The streaming mechanism selected may \n            support other methods to control the stream within its own \n            protocol. In such a case, this message shall be a redunant \n            mechanism and a service client may choose to use either the \n            native protocol or this message for stream control.",
+  "description": "This message is used to control the playback state of the video stream from a digital video service. The actual stream protocol for this is outside the scope of the protocol. The streaming mechanism selected may support other methods to control the stream within its own protocol. In such a case, this message shall be a redunant mechanism and a service client may choose to use either the native protocol or this message for stream control.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -31,7 +31,16 @@
         "SensorID": {
           "type": "number",
           "jausType": "unsigned short integer",
-          "comment": ""
+          "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65535.0,
+                "interpretation": ""
+              }
+            }
+          ]
         },
         "StreamState": {
           "type": "string",

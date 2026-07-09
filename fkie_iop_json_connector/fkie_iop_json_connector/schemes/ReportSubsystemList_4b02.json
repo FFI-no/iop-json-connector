@@ -2,7 +2,7 @@
   "title": "ReportSubsystemList",
   "messageId": "4b02",
   "isCommand": false,
-  "description": "This message shall provide the receiving component a table of all subsystems located in the source\u2019s system.  It also provides the ID of the component to send a Query Configuration message within the subsystem.",
+  "description": "This message shall provide the receiving component a table of all subsystems located in the source's system.  It also provides the ID of the component to send a Query Configuration message within the subsystem.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -55,8 +55,8 @@
         ]
       },
       "jausType": "unsigned byte",
-      "minItems": null,
-      "maxItems": null,
+      "minItems": 0,
+      "maxItems": 255,
       "isVariant": false
     }
   },

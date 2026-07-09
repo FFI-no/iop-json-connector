@@ -1,0 +1,48 @@
+{
+  "title": "SetCurrentPose",
+  "messageId": "f003",
+  "isCommand": true,
+  "description": "Sends a request to set the current pose.  A locally unique ID should be assigned to each SetCurrentState message sent to match up to a corresponding ReportTransitionCompleted message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f003"
+        }
+      }
+    },
+    "SetCurrentPoseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "PoseID"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique identifier associated with the SetCurrentPose request."
+        },
+        "PoseID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The ID of the pose to transition to. A value of 255 will cancel any pose transitions in progress."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetCurrentPoseRec"
+  ]
+}

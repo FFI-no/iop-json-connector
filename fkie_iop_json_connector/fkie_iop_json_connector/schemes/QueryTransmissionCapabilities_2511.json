@@ -2,7 +2,7 @@
   "title": "QueryTransmissionCapabilities",
   "messageId": "2511",
   "isCommand": false,
-  "description": "Queries for a bitfield of valid gears and \n                    transfer case settings",
+  "description": "Queries for a bitfield of valid gears and transfer case settings",
   "type": "object",
   "properties": {
     "HeaderRec": {

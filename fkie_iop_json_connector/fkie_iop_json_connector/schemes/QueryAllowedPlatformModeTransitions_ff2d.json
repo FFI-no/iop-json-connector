@@ -1,0 +1,27 @@
+{
+  "title": "QueryAllowedPlatformModeTransitions",
+  "messageId": "ff2d",
+  "isCommand": false,
+  "description": "Causes the service to issue a ReportAllowedPlatformModeTransitions message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff2d"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

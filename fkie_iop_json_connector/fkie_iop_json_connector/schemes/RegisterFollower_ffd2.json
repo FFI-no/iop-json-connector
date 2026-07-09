@@ -1,0 +1,60 @@
+{
+  "title": "RegisterFollower",
+  "messageId": "ffd2",
+  "isCommand": false,
+  "description": "This message allows a follower to register with \n                    the lead subsystem, or disconnect (cancel) a previous registration.  \n                    While such registration is not required for one subsystem to follow another, \n                    only subsystems that have registered with the leader can effect speed changes \n                    through the override mechanism.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "ffd2"
+        }
+      }
+    },
+    "RegisterFollowerRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestType"
+      ],
+      "properties": {
+        "RequestType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "CONNECT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "DISCONNECT"
+              }
+            }
+          ],
+          "enum": [
+            "CONNECT",
+            "DISCONNECT"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RegisterFollowerRec"
+  ]
+}

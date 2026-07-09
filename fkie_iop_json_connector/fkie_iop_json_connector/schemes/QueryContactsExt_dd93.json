@@ -1,0 +1,48 @@
+{
+  "title": "QueryContactsExt",
+  "messageId": "dd93",
+  "isCommand": false,
+  "description": "Queries for information regarding one or more contacts.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "dd93"
+        }
+      }
+    },
+    "QueryContactsRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ContactID",
+        "PresenceVector"
+      ],
+      "properties": {
+        "ContactID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the contact to be reported. A value of zero (0) returns all known contacts"
+        },
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "The preferred values to be returned in the report message."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryContactsRec"
+  ]
+}

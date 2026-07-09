@@ -1,0 +1,51 @@
+{
+  "title": "RemoveFollowerConfiguration",
+  "messageId": "f112",
+  "isCommand": true,
+  "description": "This message allows a service to delete an existing configuration.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f112"
+        }
+      }
+    },
+    "FollowerRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "GroupID"
+      ],
+      "properties": {
+        "GroupID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the group to be removed. A value of zero (0) is not allowed.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 255.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "FollowerRec"
+  ]
+}

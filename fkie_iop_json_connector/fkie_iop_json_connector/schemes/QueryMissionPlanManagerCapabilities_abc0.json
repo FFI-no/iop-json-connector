@@ -1,0 +1,27 @@
+{
+  "title": "QueryMissionPlanManagerCapabilities",
+  "messageId": "abc0",
+  "isCommand": false,
+  "description": "Query the underlying capabilities of the implementation, chiefly the types of mission plan descriptions it supports.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "abc0"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

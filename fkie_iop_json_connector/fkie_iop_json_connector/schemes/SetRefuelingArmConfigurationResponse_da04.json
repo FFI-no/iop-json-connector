@@ -1,0 +1,94 @@
+{
+  "title": "SetRefuelingArmConfigurationResponse",
+  "messageId": "da04",
+  "isCommand": false,
+  "description": "This message returns the response to the DA02 SetRefuelingArmConfiguration message.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da04"
+        }
+      }
+    },
+    "SetRefuelingArmConfigurationResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "Response"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Request ID from the SetRefuelingArmConfiguration message issuing a command to the refueling arm"
+        },
+        "Response": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Response to the refueling arm command.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "EXECUTING"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "IN_COMMANDED_STATE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "INVALID_CONFIGURATION_FOR_STATE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "SYSTEM_FAILURE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "NOT_SUPPORTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "SYSTEM_PAUSED"
+              }
+            }
+          ],
+          "enum": [
+            "EXECUTING",
+            "IN_COMMANDED_STATE",
+            "INVALID_CONFIGURATION_FOR_STATE",
+            "SYSTEM_FAILURE",
+            "NOT_SUPPORTED",
+            "SYSTEM_PAUSED"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "SetRefuelingArmConfigurationResponseRec"
+  ]
+}

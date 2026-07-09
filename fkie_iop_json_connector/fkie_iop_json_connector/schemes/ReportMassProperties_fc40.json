@@ -1,0 +1,201 @@
+{
+  "title": "ReportMassProperties",
+  "messageId": "fc40",
+  "isCommand": false,
+  "description": "ReportMassProperties returns a list of mass properties. Each sequence \n          in the list includes an identifying index for the coordinate system and a mass records in that \n          coordinate system. Each mass record provides the mass and center of mass location for an element. \n          Most components will consist of only one such element; others, such as a Manipulator, will be represented \n          by a group of elements, so that the changing configuration of the Manipulator can be represented \n          (and its center of mass determined).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fc40"
+        }
+      }
+    },
+    "MassPropertyList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "CoordinateFrameVar",
+              "MassPropertiesRecord"
+            ],
+            "properties": {
+              "CoordinateFrameVar": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "ModuleFrameVar": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {},
+                    "jausType": "unsigned byte",
+                    "vtagMin": 0,
+                    "vtagMax": 0,
+                    "isVariant": true
+                  },
+                  "LinkFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "LinkIndex"
+                    ],
+                    "properties": {
+                      "LinkIndex": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "Index of the serial manipulator link for the selected coordinate frame."
+                      }
+                    }
+                  },
+                  "StabilizerFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "StabilizerID"
+                    ],
+                    "properties": {
+                      "StabilizerID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "ID of the stabilizer which the coordinate frame is representing"
+                      }
+                    }
+                  },
+                  "AttachmentFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "HostNodeID",
+                      "AttachmentID"
+                    ],
+                    "properties": {
+                      "HostNodeID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "Node ID of the module that hosts the attachment point"
+                      },
+                      "AttachmentID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "ID of the attachment which the coordinate frame is representing"
+                      }
+                    }
+                  }
+                },
+                "jausType": "unsigned byte",
+                "vtagMin": 0,
+                "vtagMax": 3,
+                "isVariant": true
+              },
+              "MassPropertiesRecord": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "Mass"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": ""
+                  },
+                  "Mass": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Mass of the component. A value of zero is recognized as invalid.",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-06,
+                      "bias": 0.0
+                    }
+                  },
+                  "CenterOfMassX": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Center of mass of the component, relative to the center of the selected coordinate frame",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  },
+                  "CenterOfMassY": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Center of mass of the component, relative to the center of the selected coordinate frame",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  },
+                  "CenterOfMassZ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Center of mass of the component, relative to the center of the selected coordinate frame",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  },
+                  "MomentOfInertialTensorXX": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Moment of inertia of the component (relative to center of mass) in kilogram meters squared"
+                  },
+                  "MomentOfInertialTensorXY": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Moment of inertia of the component (relative to center of mass) in kilogram meters squared"
+                  },
+                  "MomentOfInertialTensorXZ": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Moment of inertia of the component (relative to center of mass) in kilogram meters squared"
+                  },
+                  "MomentOfInertialTensorYY": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Moment of inertia of the component (relative to center of mass) in kilogram meters squared"
+                  },
+                  "MomentOfInertialTensorYZ": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Moment of inertia of the component (relative to center of mass) in kilogram meters squared"
+                  },
+                  "MomentOfInertialTensorZZ": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Moment of inertia of the component (relative to center of mass) in kilogram meters squared"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "MassPropertyList"
+  ]
+}

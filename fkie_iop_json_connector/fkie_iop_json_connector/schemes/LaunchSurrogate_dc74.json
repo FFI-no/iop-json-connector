@@ -1,0 +1,160 @@
+{
+  "title": "LaunchSurrogate",
+  "messageId": "dc74",
+  "isCommand": true,
+  "description": "This message controls the launch of the surrogate system.\n\t\t\t   RelativePoseExtRec is specified as a Relative Pose, which is defined as a position and orientation\n\t\t\t\trelative to the Host Frame of reference, as defined in Section 3 Common Conventions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc74"
+        }
+      }
+    },
+    "LaunchSurrogateSequence": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "RelativePoseExtRec"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "RelativePoseExtRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "X": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Y": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Z": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Roll": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Pitch": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Heading": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. UTC POSIX-style time in seconds since 1 January 1970."
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. Nanoseconds component of POSIX-style time"
+            }
+          }
+        },
+        "ForcedLaunch": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "LaunchOperation"
+          ],
+          "properties": {
+            "LaunchOperation": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Enumerated field that specifies the type of forced launch to perform.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "FORCED"
+                  }
+                },
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 64.0,
+                    "interpretation": "Reserved for future use."
+                  }
+                },
+                {
+                  "valueRange": {
+                    "minimum": 65.0,
+                    "maximum": 255.0,
+                    "interpretation": "Implementation specific."
+                  }
+                }
+              ],
+              "enum": [
+                "FORCED"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LaunchSurrogateSequence"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "title": "SetSurrogateRelativePose",
+  "messageId": "dc70",
+  "isCommand": true,
+  "description": "Sets the relative position and orientation of the \n\t\t\tsurrogate with respect to its starting point on the containing vehicle.  For example,\n\t\t\tspecifying a relative Z position of 100m indicates the surrogate should move to a point\n\t\t\tthat is 100m above its starting (home) position on the vehicle.  This command is not\n\t\t\tused to launch or recover a surrogate, but only to command a surrogate after it is \n\t\t\talready launched - attempting to use this command to launch or recover the surrogate\n\t\t\tshall yield an error response.  Relative pose is defined as a position and orientation\n\t\t\trelative to the Host Frame of reference, as defined in Section 3 Common Conventions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc70"
+        }
+      }
+    },
+    "RelativePoseExtRec": {
+      "type": "object",
+      "comment": "Relative pose is defined as a position and orientation relative to the Host Frame of reference, as defined in Section 3 Common Conventions.",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "Roll": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Pitch": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Heading": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "TimeSeconds": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. UTC POSIX-style time in seconds since 1 January 1970."
+        },
+        "TimeNanoSeconds": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Time at which this record is first created to be issued as part of a command or report. If included, can be used in determining when a command or report is no longer valid. Nanoseconds component of POSIX-style time"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RelativePoseExtRec"
+  ]
+}

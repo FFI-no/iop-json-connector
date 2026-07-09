@@ -1,0 +1,27 @@
+{
+  "title": "QueryVersion",
+  "messageId": "e99a",
+  "isCommand": false,
+  "description": "This message is used to query for a list of known version descriptions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "e99a"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

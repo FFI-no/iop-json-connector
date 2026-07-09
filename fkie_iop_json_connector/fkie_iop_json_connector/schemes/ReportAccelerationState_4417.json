@@ -24,13 +24,7 @@
       "type": "object",
       "comment": "",
       "required": [
-        "presenceVector",
-        "Acceleration_X",
-        "Acceleration_Y",
-        "Acceleration_Z",
-        "RollAcceleration",
-        "PitchAcceleration",
-        "YawAcceleration"
+        "presenceVector"
       ],
       "properties": {
         "presenceVector": {

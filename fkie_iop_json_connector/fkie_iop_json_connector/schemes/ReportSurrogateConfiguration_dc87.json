@@ -1,0 +1,223 @@
+{
+  "title": "ReportSurrogateConfiguration",
+  "messageId": "dc87",
+  "isCommand": false,
+  "description": "Reports the current surrogate configuration.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc87"
+        }
+      }
+    },
+    "SurrogateConfigurationRec": {
+      "type": "object",
+      "comment": "Minimum and maximum limits use Relative Pose. Relative pose is defined as a position and orientation relative to the Host Frame of reference, as defined in Section 3 Common Conventions.",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        },
+        "AutomaticUntwist": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "ENABLED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "DISABLED"
+              }
+            }
+          ],
+          "enum": [
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "AutomaticDisengage": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "ENABLED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "DISABLED"
+              }
+            }
+          ],
+          "enum": [
+            "ENABLED",
+            "DISABLED"
+          ]
+        },
+        "XMinimumLimit": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "XMaximumLimit": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "YMinimumLimit": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "YMaximumLimit": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "ZMinimumLimit": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "ZMaximumLimit": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.00931322574832319,
+            "bias": -20000000.0
+          }
+        },
+        "SafeAction": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Specifies the safe action the surrogate should perform when executing the safeSystemAction() action. Default is defined by the implementation. Recover options recover the surrogate either at the host (RECOVER) or in place (RECOVER_IMMEDIATE). HOLD_IN_PLACE indicates the surrogate should hold its current position, which might mean hovering in the air or holding on a position on the ground. GO_HOME_AND_HOVER is a value mostly applicable to flying surrogates, and means to go to the host vehicle and hold at some offset, often vertical in the positive Z up direction.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "DEFAULT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "RECOVER"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "RECOVER_IMMEDIATE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "HOVER_IN_PLACE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "GO_HOME_AND_HOVER"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 5.0,
+                "maximum": 15.0,
+                "interpretation": "Reserved for future use."
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 16.0,
+                "maximum": 255.0,
+                "interpretation": "Program specific actions."
+              }
+            }
+          ],
+          "enum": [
+            "DEFAULT",
+            "RECOVER",
+            "RECOVER_IMMEDIATE",
+            "HOVER_IN_PLACE",
+            "GO_HOME_AND_HOVER"
+          ]
+        },
+        "SafeActionTimeout": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "Sets the time after which if surrogate cannot communicate with its host, it executes its safety action.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "NO_TIMEOUT"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65535.0,
+                "interpretation": "Timeout in seconds."
+              }
+            }
+          ],
+          "enum": [
+            "NO_TIMEOUT"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SurrogateConfigurationRec"
+  ]
+}

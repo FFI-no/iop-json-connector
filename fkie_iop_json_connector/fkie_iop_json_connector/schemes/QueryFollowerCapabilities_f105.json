@@ -1,0 +1,27 @@
+{
+  "title": "QueryFollowerCapabilities",
+  "messageId": "f105",
+  "isCommand": false,
+  "description": "Queries the capabilities of an implementation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f105"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

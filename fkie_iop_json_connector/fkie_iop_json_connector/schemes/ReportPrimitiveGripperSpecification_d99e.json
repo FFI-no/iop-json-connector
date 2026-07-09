@@ -1,0 +1,103 @@
+{
+  "title": "ReportPrimitiveGripperSpecification",
+  "messageId": "d99e",
+  "isCommand": false,
+  "description": "This message is used to report the gripper specifications.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d99e"
+        }
+      }
+    },
+    "SpecificationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ParentId"
+      ],
+      "properties": {
+        "ParentId": {
+          "type": "object",
+          "comment": "4 byte JAUS identifier of the manipulator on which this end effector is mounted",
+          "required": [
+            "ComponentID",
+            "NodeID",
+            "SubsystemID"
+          ],
+          "properties": {
+            "ComponentID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "4 byte JAUS identifier of the manipulator on which this end effector is mounted",
+              "bitRange": {
+                "from": 0,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 254.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "NodeID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "4 byte JAUS identifier of the manipulator on which this end effector is mounted",
+              "bitRange": {
+                "from": 8,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 254.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "SubsystemID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "4 byte JAUS identifier of the manipulator on which this end effector is mounted",
+              "bitRange": {
+                "from": 16,
+                "to": 31
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 65534.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SpecificationRec"
+  ]
+}

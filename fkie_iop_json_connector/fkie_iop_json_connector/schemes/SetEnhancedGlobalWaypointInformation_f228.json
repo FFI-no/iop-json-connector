@@ -1,0 +1,93 @@
+{
+  "title": "SetEnhancedGlobalWaypointInformation",
+  "messageId": "f228",
+  "isCommand": true,
+  "description": "This message is used to set additional waypoint information.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f228"
+        }
+      }
+    },
+    "WaypointInformationList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "ElementUID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "ElementUID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Corresponds to the list ID of the global"
+              },
+              "DirectionOfTravel": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Enumeration for direction of travel to waypoint",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Forward"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Reverse"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Forward",
+                  "Reverse"
+                ]
+              },
+              "WaitTime": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "The number of seconds to pause after achieving this waypoint before resuming a waypoint plan. A zero (0) value corresponds to an indefinite wait, pausing until another execute command arrives. If this field is absent, there is no wait.",
+                "scaleRange": {
+                  "scaleFactor": 0.05493247882810712,
+                  "bias": 0.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "WaypointInformationList"
+  ]
+}

@@ -2,7 +2,7 @@
   "title": "ReportLocalPose",
   "messageId": "4403",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the position and attitude of the platform relative to a \n      local reference frame.  All times are in Coordinated Universal Time (UTC).  The message data \n      and mapping of the presence vector for this message are identical to ID 0403h: SetLocalPose.",
+  "description": "This message is used to provide the receiver the position and attitude of the platform relative to a local reference frame.  All times are in Coordinated Universal Time (UTC).  The message data and mapping of the presence vector for this message are identical to ID 0403h: SetLocalPose (Deprecated).",
   "type": "object",
   "properties": {
     "HeaderRec": {

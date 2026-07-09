@@ -1,0 +1,368 @@
+{
+  "title": "ReportPresetPoseSpecifications",
+  "messageId": "f0f5",
+  "isCommand": false,
+  "description": "This message provides the specifications of the preset poses including the manipulator joints, end effector, pan tilt, and stabilizer (flipper) positions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f0f5"
+        }
+      }
+    },
+    "PresetPoseSpecificationsList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "PresetPoseRec",
+              "PresetPositionsList"
+            ],
+            "properties": {
+              "PresetPoseRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "PoseID",
+                  "PoseName"
+                ],
+                "properties": {
+                  "PoseID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "The ID of the pose. A value of 255 is not permitted."
+                  },
+                  "PoseName": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "minLength": 0,
+                    "maxLength": 255
+                  }
+                }
+              },
+              "PresetPositionsList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "PresetPositionsRec",
+                        "PresetPositionsVar"
+                      ],
+                      "properties": {
+                        "PresetPositionsRec": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [
+                            "JAUS_ID"
+                          ],
+                          "properties": {
+                            "JAUS_ID": {
+                              "type": "object",
+                              "comment": "JAUS ID of the component that the listed preset positions are associated with",
+                              "required": [
+                                "ComponentID",
+                                "NodeID",
+                                "SubsystemID"
+                              ],
+                              "properties": {
+                                "ComponentID": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "JAUS ID of the component that the listed preset positions are associated with",
+                                  "bitRange": {
+                                    "from": 0,
+                                    "to": 7
+                                  },
+                                  "valueSet": [
+                                    {
+                                      "valueRange": {
+                                        "minimum": 0.0,
+                                        "maximum": 255.0,
+                                        "interpretation": ""
+                                      }
+                                    }
+                                  ]
+                                },
+                                "NodeID": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "JAUS ID of the component that the listed preset positions are associated with",
+                                  "bitRange": {
+                                    "from": 8,
+                                    "to": 15
+                                  },
+                                  "valueSet": [
+                                    {
+                                      "valueRange": {
+                                        "minimum": 0.0,
+                                        "maximum": 255.0,
+                                        "interpretation": ""
+                                      }
+                                    }
+                                  ]
+                                },
+                                "SubsystemID": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "JAUS ID of the component that the listed preset positions are associated with",
+                                  "bitRange": {
+                                    "from": 16,
+                                    "to": 31
+                                  },
+                                  "valueSet": [
+                                    {
+                                      "valueRange": {
+                                        "minimum": 0.0,
+                                        "maximum": 65535.0,
+                                        "interpretation": ""
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "bitField": "unsigned integer"
+                            }
+                          }
+                        },
+                        "PresetPositionsVar": {
+                          "type": "object",
+                          "comment": "",
+                          "required": [],
+                          "properties": {
+                            "JointPositionList": {
+                              "type": "array",
+                              "comment": "",
+                              "required": [],
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "object",
+                                    "comment": "",
+                                    "required": [
+                                      "JointPosition"
+                                    ],
+                                    "properties": {
+                                      "JointPosition": {
+                                        "type": "array",
+                                        "comment": "Scaled integer representing the command position for this joint. Each joint must have a corresponding entry in the list. Units and scale range are based on the joint type.",
+                                        "required": [],
+                                        "items": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "jausType": "unsigned integer",
+                                              "comment": "",
+                                              "fieldIndex": 1,
+                                              "fieldUnits": "radian",
+                                              "scaleRange": {
+                                                "scaleFactor": 1.1703344636862174e-08,
+                                                "bias": -25.132741228718345
+                                              }
+                                            },
+                                            {
+                                              "type": "number",
+                                              "jausType": "unsigned integer",
+                                              "comment": "",
+                                              "fieldIndex": 2,
+                                              "fieldUnits": "meter",
+                                              "scaleRange": {
+                                                "scaleFactor": 4.656612874161595e-09,
+                                                "bias": -10.0
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "jausType": "unsigned byte",
+                                        "minItems": 1,
+                                        "maxItems": 1
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "jausType": "unsigned byte",
+                              "minItems": 0,
+                              "maxItems": 255,
+                              "isVariant": false
+                            },
+                            "EndEffectorPoseRec": {
+                              "type": "object",
+                              "comment": "",
+                              "required": [
+                                "ToolPointCoordinateX",
+                                "ToolPointCoordinateY",
+                                "ToolPointCoordinateZ",
+                                "DComponentOfUnitQuaternionQ",
+                                "AComponentOfUnitQuaternionQ",
+                                "BComponentOfUnitQuaternionQ",
+                                "CComponentOfUnitQuaternionQ"
+                              ],
+                              "properties": {
+                                "ToolPointCoordinateX": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 1.3969838622484784e-08,
+                                    "bias": -30.0
+                                  }
+                                },
+                                "ToolPointCoordinateY": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 1.3969838622484784e-08,
+                                    "bias": -30.0
+                                  }
+                                },
+                                "ToolPointCoordinateZ": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 1.3969838622484784e-08,
+                                    "bias": -30.0
+                                  }
+                                },
+                                "DComponentOfUnitQuaternionQ": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 4.656612874161595e-10,
+                                    "bias": -1.0
+                                  }
+                                },
+                                "AComponentOfUnitQuaternionQ": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 4.656612874161595e-10,
+                                    "bias": -1.0
+                                  }
+                                },
+                                "BComponentOfUnitQuaternionQ": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 4.656612874161595e-10,
+                                    "bias": -1.0
+                                  }
+                                },
+                                "CComponentOfUnitQuaternionQ": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 4.656612874161595e-10,
+                                    "bias": -1.0
+                                  }
+                                }
+                              }
+                            },
+                            "PanTiltJointPositionRec": {
+                              "type": "object",
+                              "comment": "",
+                              "required": [
+                                "Joint1Position",
+                                "Joint2Position"
+                              ],
+                              "properties": {
+                                "Joint1Position": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 1.1703344636862174e-08,
+                                    "bias": -25.132741228718345
+                                  }
+                                },
+                                "Joint2Position": {
+                                  "type": "number",
+                                  "jausType": "unsigned integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 1.1703344636862174e-08,
+                                    "bias": -25.132741228718345
+                                  }
+                                }
+                              }
+                            },
+                            "StabilizerPositionRec": {
+                              "type": "object",
+                              "comment": "",
+                              "required": [
+                                "StabilizerID",
+                                "Position"
+                              ],
+                              "properties": {
+                                "StabilizerID": {
+                                  "type": "number",
+                                  "jausType": "unsigned byte",
+                                  "comment": ""
+                                },
+                                "Position": {
+                                  "type": "number",
+                                  "jausType": "unsigned short integer",
+                                  "comment": "",
+                                  "scaleRange": {
+                                    "scaleFactor": 9.587526218325454e-05,
+                                    "bias": -3.141592653589793
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "jausType": "unsigned byte",
+                          "vtagMin": 0,
+                          "vtagMax": 3,
+                          "isVariant": true
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "PresetPoseSpecificationsList"
+  ]
+}

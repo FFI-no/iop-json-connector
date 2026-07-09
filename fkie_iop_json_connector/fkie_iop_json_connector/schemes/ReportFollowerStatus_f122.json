@@ -1,0 +1,142 @@
+{
+  "title": "ReportFollowerStatus",
+  "messageId": "f122",
+  "isCommand": false,
+  "description": "Reports the state in response to a Query Follower State message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f122"
+        }
+      }
+    },
+    "FollowerStateList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "GroupID",
+              "Condition"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": ""
+              },
+              "GroupID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the group"
+              },
+              "Condition": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "NOT_READY"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "READY"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "FAILED"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "GAP_TOO_SHORT"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "NAV_NOT_READY"
+                    }
+                  }
+                ],
+                "enum": [
+                  "NOT_READY",
+                  "READY",
+                  "FAILED",
+                  "GAP_TOO_SHORT",
+                  "NAV_NOT_READY"
+                ]
+              },
+              "CurrentFollowTime": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Current time that the follower is maintaining behind the leader",
+                "scaleRange": {
+                  "scaleFactor": 8.381903173490871e-07,
+                  "bias": 0.0
+                }
+              },
+              "CurrentFollowDistance": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Current distance that the follower is maintaining behind the leader",
+                "scaleRange": {
+                  "scaleFactor": 2.3283064370807974e-05,
+                  "bias": 0.0
+                }
+              },
+              "CurrentSpeedOverridePercent": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "Current speed override percentage requested by the follower",
+                "scaleRange": {
+                  "scaleFactor": 0.39215686274509803,
+                  "bias": 0.0
+                }
+              },
+              "CurrentSpeedOverrideAbsolute": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current absolute speed override requested by the follower",
+                "scaleRange": {
+                  "scaleFactor": 0.0049999237048905165,
+                  "bias": 0.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "FollowerStateList"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "title": "DeleteZone",
+  "messageId": "0422",
+  "isCommand": true,
+  "description": "Removes an operating or exclusion zone.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0422"
+        }
+      }
+    },
+    "ZoneIDList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "ZoneID"
+            ],
+            "properties": {
+              "ZoneID": {
+                "type": "string",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "RESERVED"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "OPERATING_ZONE"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 2.0,
+                      "maximum": 65535.0,
+                      "interpretation": "Allow ID range for exclusion zones"
+                    }
+                  }
+                ],
+                "enum": [
+                  "RESERVED",
+                  "OPERATING_ZONE"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ZoneIDList"
+  ]
+}

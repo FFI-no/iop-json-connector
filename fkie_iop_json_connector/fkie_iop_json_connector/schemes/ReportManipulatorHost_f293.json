@@ -1,0 +1,109 @@
+{
+  "title": "ReportManipulatorHost",
+  "messageId": "f293",
+  "isCommand": false,
+  "description": "This message is used to report the host if this manipulator is mounted on another.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f293"
+        }
+      }
+    },
+    "HostManipulator": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ParentID",
+        "ParentJoint"
+      ],
+      "properties": {
+        "ParentID": {
+          "type": "object",
+          "comment": "JAUS identifier on which this manipulator is mounted. A value of zero (0) means this manipulator is independent of any others.",
+          "required": [
+            "ComponentID",
+            "NodeID",
+            "SubsystemID"
+          ],
+          "properties": {
+            "ComponentID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "JAUS identifier on which this manipulator is mounted. A value of zero (0) means this manipulator is independent of any others.",
+              "bitRange": {
+                "from": 0,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 255.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "NodeID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "JAUS identifier on which this manipulator is mounted. A value of zero (0) means this manipulator is independent of any others.",
+              "bitRange": {
+                "from": 8,
+                "to": 15
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 255.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "SubsystemID": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "JAUS identifier on which this manipulator is mounted. A value of zero (0) means this manipulator is independent of any others.",
+              "bitRange": {
+                "from": 16,
+                "to": 31
+              },
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 0.0,
+                    "maximum": 65535.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          },
+          "bitField": "unsigned integer"
+        },
+        "ParentJoint": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The joint number defining a coordinate frame on which this manipulator is mounted. A value of zero (0) means this manipulator is independent of any others."
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "HostManipulator"
+  ]
+}

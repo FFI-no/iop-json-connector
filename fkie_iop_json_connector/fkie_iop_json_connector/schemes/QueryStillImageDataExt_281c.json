@@ -1,0 +1,103 @@
+{
+  "title": "QueryStillImageDataExt",
+  "messageId": "281c",
+  "isCommand": false,
+  "description": "This message shall cause the \n\t\t\treceiving component to reply to the requestor with a Report \n\t\t\tStill Image Data Ext message. By setting the associated \n\t\t\tbits in the QueryPresenceVector, the client can request \n\t\t\tthat the response contain the image data directly in the \n\t\t\tImageFrame field, or the image data can be stored locally \n\t\t\tby the sensor component and a file name or other identifier \n\t\t\tfor the data can be returned in the StillImageURI field, \n\t\t\tor both. A logical AND shall be performed on the requested \n\t\t\tpresence vector and that representing the available fields \n\t\t\tfrom the responder. The resulting message shall contain \n\t\t\tthe fields indicated by the result of this logical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "281c"
+        }
+      }
+    },
+    "QueryStillImageDataList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "ReportCoordinateSystem",
+              "QueryPresenceVector"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "string",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor being queried. Zero (0) is used to query all sensors associated with this service.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "AllSensors"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": "Specific ID to be queried"
+                    }
+                  }
+                ],
+                "enum": [
+                  "AllSensors"
+                ]
+              },
+              "ReportCoordinateSystem": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Native Coordinate System"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Vehicle Coordinate System"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Native Coordinate System",
+                  "Vehicle Coordinate System"
+                ]
+              },
+              "QueryPresenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryStillImageDataList"
+  ]
+}

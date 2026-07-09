@@ -1,0 +1,162 @@
+{
+  "title": "SetVelocityCommandExt",
+  "messageId": "04b5",
+  "isCommand": true,
+  "description": "This message is used to command the linear velocity and rotational rate of the platform.  The SetVelocityCommand provides the capability, by setting the appropriate command type in the message, to set the current velocity command, set the maximum allowed velocity values, set the minimum allowed velocity values and set the default velocity command. Either absolute speed (SOG) or relative (SRM) may be set.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "04b5"
+        }
+      }
+    },
+    "VelocityCommandExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "CommandType"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "CommandType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Where minimum and maximum are the bottom and top ends of the allowable range. Any commanded velocity outside this range will be ignored. For a system that expects to move in both directions along or around an axis, e.g. forward and backward for linear X, then the minimum is expected to be negative.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SetCmdSOG"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "SetMaxSOG"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "SetMinSOG"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "SetDefaultSOG"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "SetCmdSRM"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "SetMaxSRM"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "SetMinSRM"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "SetDefaultSRM"
+              }
+            }
+          ],
+          "enum": [
+            "SetCmdSOG",
+            "SetMaxSOG",
+            "SetMinSOG",
+            "SetDefaultSOG",
+            "SetCmdSRM",
+            "SetMaxSRM",
+            "SetMinSRM",
+            "SetDefaultSRM"
+          ]
+        },
+        "Velocity_X": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.5258556235409007e-07,
+            "bias": -327.68
+          }
+        },
+        "Velocity_Y": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.5258556235409007e-07,
+            "bias": -327.68
+          }
+        },
+        "Velocity_Z": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.5258556235409007e-07,
+            "bias": -327.68
+          }
+        },
+        "RollRate": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.5258556235409003e-08,
+            "bias": -32.768
+          }
+        },
+        "PitchRate": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.5258556235409003e-08,
+            "bias": -32.768
+          }
+        },
+        "YawRate": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 1.5258556235409003e-08,
+            "bias": -32.768
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "VelocityCommandExtRec"
+  ]
+}

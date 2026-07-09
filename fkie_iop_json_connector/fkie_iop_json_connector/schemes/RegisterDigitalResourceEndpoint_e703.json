@@ -2,7 +2,7 @@
   "title": "RegisterDigitalResourceEndpoint",
   "messageId": "e703",
   "isCommand": false,
-  "description": "Registers a digital resource server with the service.\tEach endpoint is represented by a URL; however, the URL shall not require a Domain Name Service (DNS) to resolve.\tIn addition, each stream may also specify a JAUS ID that hosts additional SAE JAUS services for the configuration and control of the digital resource, as well as a ResourceID that identifies the stream source.",
+  "description": "Registers a digital resource server with the service.  Each endpoint is represented by a URL; however, the URL shall not require a Domain Name Service (DNS) to resolve.  In addition, each stream may also specify a JAUS ID that hosts additional SAE JAUS services for the configuration and control of the digital resource, as well as a ResourceID that identifies the stream source.",
   "type": "object",
   "properties": {
     "HeaderRec": {

@@ -1,0 +1,42 @@
+{
+  "title": "QueryCommunicatorConfiguration",
+  "messageId": "2901",
+  "isCommand": false,
+  "description": "This message is used to query the current configuration associated with the communication device.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2901"
+        }
+      }
+    },
+    "QueryCommunicatorConfigurationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryCommunicatorConfigurationRec"
+  ]
+}

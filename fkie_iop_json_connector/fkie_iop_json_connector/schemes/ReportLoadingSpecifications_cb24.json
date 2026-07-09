@@ -1,0 +1,311 @@
+{
+  "title": "ReportLoadingSpecifications",
+  "messageId": "cb24",
+  "isCommand": false,
+  "description": "The ReportLoadingSpecifications message is used to specify the bounding box and other characteristics of the load \n                    relative to the host vehicle. Each load is specified by an ID and may be fixed relative to the host vehicle, \n                    pulled, or pushed. In addition, each load may optionally define a hitch point relative to the host vehicle \n                    or another load, allowing for multiple trailers or rollers. The specifications for the load assume any hitch \n                    is in the zero position. Note that for loads that may move during transit, such as but not limited to fluid \n                    tankers and adjustable suspensions, these values may change at run-time.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "cb24"
+        }
+      }
+    },
+    "LoadingSpecificationsList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "LoadingSpecificationsRec"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "LoadingSpecificationsRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "loadID",
+                  "vehicleLoad",
+                  "loadHeight",
+                  "loadWidth",
+                  "loadLength",
+                  "loadGeometricCenterX",
+                  "loadGeometricCenterY",
+                  "loadGeometricCenterZ"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "loadID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "ID of the load. Zero is not a permitted value.",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "vehicleLoad": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Weight of the load"
+                  },
+                  "loadHeight": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Height of the load, measured along the host vehicle coordinate frame Z axis"
+                  },
+                  "loadWidth": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Width of the load, measured along the host vehicle coordinate frame Y axis"
+                  },
+                  "loadLength": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Length of the load, measured along the host vehicle coordinate frame X axis"
+                  },
+                  "loadGeometricCenterX": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the X axis from the host vehicle coordinate frame to the geometric center of the load"
+                  },
+                  "loadGeometricCenterY": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the Y axis from the host vehicle coordinate frame to the geometric center of the load"
+                  },
+                  "loadGeometricCenterZ": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the Z axis from the host vehicle coordinate frame to the geometric center of the load"
+                  },
+                  "loadCenterOfGravityX": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the X axis from the host vehicle coordinate frame to the center of the gravity of the load"
+                  },
+                  "loadCenterOfGravityY": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the Y axis from the host vehicle coordinate frame to the center of the gravity of the load"
+                  },
+                  "loadCenterOfGravityZ": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the Z axis from the host vehicle coordinate frame to the center of the gravity of the load"
+                  },
+                  "PoseSensorJausId": {
+                    "type": "object",
+                    "comment": "JAUS ID of a Global or Local Pose Sensor associated with this load. This can be used in place of the Report Loading Status message to get position and orientation information from the load.",
+                    "required": [],
+                    "properties": {
+                      "ComponentID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of a Global or Local Pose Sensor associated with this load. This can be used in place of the Report Loading Status message to get position and orientation information from the load.",
+                        "bitRange": {
+                          "from": 0,
+                          "to": 7
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 254.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "NodeID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of a Global or Local Pose Sensor associated with this load. This can be used in place of the Report Loading Status message to get position and orientation information from the load.",
+                        "bitRange": {
+                          "from": 8,
+                          "to": 15
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 254.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "SubsystemID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of a Global or Local Pose Sensor associated with this load. This can be used in place of the Report Loading Status message to get position and orientation information from the load.",
+                        "bitRange": {
+                          "from": 16,
+                          "to": 31
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65534.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "bitField": "unsigned integer"
+                  }
+                }
+              },
+              "HitchSpecificationsRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "connectedLoadID",
+                  "hitchX",
+                  "hitchY",
+                  "hitchZ"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "connectedLoadID": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "ID this hitch is connected to, where zero (0) indicates the host vehicle.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "HostVehicle"
+                        }
+                      },
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 255.0,
+                          "interpretation": "Load ID this hitch is connected to, allowing for multiple trailers and rollers."
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "HostVehicle"
+                    ]
+                  },
+                  "hitchX": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the X axis from the host vehicle coordinate frame to the hitch point"
+                  },
+                  "hitchY": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the Y axis from the host vehicle coordinate frame to the hitch point"
+                  },
+                  "hitchZ": {
+                    "type": "UNKNOWN",
+                    "jausType": "float",
+                    "comment": "Distance along the Z axis from the host vehicle coordinate frame to the hitch point"
+                  },
+                  "MinimumRelativeHitchAngle": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Minimum supported value of the hitch angle, using a Z-down coordinate frame. For fixed loads, this value will always be zero.",
+                    "scaleRange": {
+                      "scaleFactor": 9.587526218325454e-05,
+                      "bias": -3.141592653589793
+                    }
+                  },
+                  "MaximumRelativeHitchAngle": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Maximum supported value of the hitch angle, using a Z-down coordinate frame. For fixed loads, this value will always be zero.",
+                    "scaleRange": {
+                      "scaleFactor": 9.587526218325454e-05,
+                      "bias": -3.141592653589793
+                    }
+                  }
+                }
+              },
+              "AxleSpecificationsList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "axleX",
+                        "numberOfWheels"
+                      ],
+                      "properties": {
+                        "axleX": {
+                          "type": "UNKNOWN",
+                          "jausType": "float",
+                          "comment": "Distance along the X axis from the host vehicle coordinate frame to the center of the axle"
+                        },
+                        "numberOfWheels": {
+                          "type": "number",
+                          "jausType": "unsigned byte",
+                          "comment": "Total number of wheels associated with this axle. It is expected to be symmetric, such that half this number are on the left and half on the right."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "LoadingSpecificationsList"
+  ]
+}

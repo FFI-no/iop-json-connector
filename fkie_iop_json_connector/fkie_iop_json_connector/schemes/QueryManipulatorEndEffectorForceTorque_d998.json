@@ -1,0 +1,42 @@
+{
+  "title": "QueryManipulatorEndEffectorForceTorque",
+  "messageId": "d998",
+  "isCommand": false,
+  "description": "This message is used to query the end effector force/torque.  The presence vector may be used to scope the data being returned.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d998"
+        }
+      }
+    },
+    "QueryManipulatorEndEffectorForceTorqueRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "May be used to scope the data being returned. A value of 255 means all values."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryManipulatorEndEffectorForceTorqueRec"
+  ]
+}

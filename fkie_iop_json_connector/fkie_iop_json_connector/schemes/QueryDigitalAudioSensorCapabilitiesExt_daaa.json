@@ -1,0 +1,42 @@
+{
+  "title": "QueryDigitalAudioSensorCapabilitiesExt",
+  "messageId": "daaa",
+  "isCommand": false,
+  "description": "This message is used to query the extended set of digital audio sensor capabilities for one or more of its sensors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "daaa"
+        }
+      }
+    },
+    "QueryDigitalAudioSensorRecExt": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SensorID"
+      ],
+      "properties": {
+        "SensorID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Zero (0) may be used to request all sensors supported by the service. Otherwise, only the data for the specified sensor is returned."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryDigitalAudioSensorRecExt"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "title": "ReportTirePressureStatus",
+  "messageId": "d7b4",
+  "isCommand": false,
+  "description": "This message is used to report the current status of one or more tires.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7b4"
+        }
+      }
+    },
+    "TirePressureStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "TireID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "TireID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the tire to be queried. A value of zero (0) is not permitted."
+              },
+              "TirePressure": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "Current air pressure.",
+                "scaleRange": {
+                  "scaleFactor": 0.0392156862745098,
+                  "bias": 0.0
+                }
+              },
+              "LowPressureAlert": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Enumeration of low pressure alerts.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Normal"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "LowPressureAlert"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "RunFlatActive"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Normal",
+                  "LowPressureAlert",
+                  "RunFlatActive"
+                ]
+              },
+              "PressureControlStatus": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Enumeration of active tire pressure control.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Inactive"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Inflating"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Deflating"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Inactive",
+                  "Inflating",
+                  "Deflating"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TirePressureStatusList"
+  ]
+}

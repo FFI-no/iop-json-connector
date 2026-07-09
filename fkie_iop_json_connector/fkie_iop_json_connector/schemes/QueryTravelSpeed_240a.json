@@ -2,7 +2,7 @@
   "title": "QueryTravelSpeed",
   "messageId": "240a",
   "isCommand": false,
-  "description": "This message shall cause the receiving component to reply to the requestor with a \n      ID 440Ah: ReportTravelSpeed message.",
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 440Ah: ReportTravelSpeed message.",
   "type": "object",
   "properties": {
     "HeaderRec": {

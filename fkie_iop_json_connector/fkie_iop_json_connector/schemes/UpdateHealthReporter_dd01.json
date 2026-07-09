@@ -1,0 +1,27 @@
+{
+  "title": "UpdateHealthReporter",
+  "messageId": "dd01",
+  "isCommand": true,
+  "description": "This message is used to request Health Reporter initiation of commanded built-in-test (CBIT) for each Component the Health Reporter is responsible for.  Receipt of the UpdateHealthReporter causes the receiving HealthReporter to perform CBIT, the results of the test are returned via a subsequent ReportHealthDetails message, which provides the per-service heatlh status details.  A summarized health status report is available via ReportHealthSummary.  It is expected that if an UpdateHealthReporter request is pending, additional requests will neither queue an additional update nor interrupt an update in progress.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dd01"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

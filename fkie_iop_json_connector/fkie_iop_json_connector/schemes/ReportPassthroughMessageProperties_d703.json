@@ -1,0 +1,172 @@
+{
+  "title": "ReportPassthroughMessageProperties",
+  "messageId": "d703",
+  "isCommand": false,
+  "description": "This message reports properties related to the PassthroughMessage service, including the type of message filtering being done and the list of component for which this service filters.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d703"
+        }
+      }
+    },
+    "ReportPassthroughMessagePropertiesSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "FilterTypeRec",
+        "MappedComponentList"
+      ],
+      "properties": {
+        "FilterTypeRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "FilterType"
+          ],
+          "properties": {
+            "FilterType": {
+              "type": "object",
+              "comment": "A bit field where a high value (1) specifies this filter is used for that purpose",
+              "required": [
+                "SELF_COLLISION_AVOIDANCE"
+              ],
+              "properties": {
+                "SELF_COLLISION_AVOIDANCE": {
+                  "type": "string",
+                  "jausType": "unsigned short integer",
+                  "comment": "A bit field where a high value (1) specifies this filter is used for that purpose",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 0
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "FALSE"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "TRUE"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "FALSE",
+                    "TRUE"
+                  ]
+                }
+              },
+              "bitField": "unsigned short integer"
+            }
+          }
+        },
+        "MappedComponentList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "JAUS_ID"
+                ],
+                "properties": {
+                  "JAUS_ID": {
+                    "type": "object",
+                    "comment": "JAUS ID of the end component for which this service is acting as a filter",
+                    "required": [
+                      "ComponentID",
+                      "NodeID",
+                      "SubsystemID"
+                    ],
+                    "properties": {
+                      "ComponentID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the end component for which this service is acting as a filter",
+                        "bitRange": {
+                          "from": 0,
+                          "to": 7
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 254.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "NodeID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the end component for which this service is acting as a filter",
+                        "bitRange": {
+                          "from": 8,
+                          "to": 15
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 254.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "SubsystemID": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "JAUS ID of the end component for which this service is acting as a filter",
+                        "bitRange": {
+                          "from": 16,
+                          "to": 31
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 1.0,
+                              "maximum": 65534.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "bitField": "unsigned integer"
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": null,
+          "maxItems": null,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportPassthroughMessagePropertiesSeq"
+  ]
+}

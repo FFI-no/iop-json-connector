@@ -1,0 +1,42 @@
+{
+  "title": "ReportHourMeter",
+  "messageId": "fd03",
+  "isCommand": false,
+  "description": "ReportHourMeter provides cumulative operation (powered-on) minutes for the node or component hosting the HealthReporter.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fd03"
+        }
+      }
+    },
+    "HourMeterRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ElapsedMinutes"
+      ],
+      "properties": {
+        "ElapsedMinutes": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "Operational (powered-on) minutes for CM"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "HourMeterRec"
+  ]
+}

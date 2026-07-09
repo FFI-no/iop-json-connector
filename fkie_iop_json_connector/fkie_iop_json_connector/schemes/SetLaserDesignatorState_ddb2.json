@@ -1,0 +1,82 @@
+{
+  "title": "SetLaserDesignatorState",
+  "messageId": "ddb2",
+  "isCommand": true,
+  "description": "Sets the state of the laser designator.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ddb2"
+        }
+      }
+    },
+    "LaserDesignatorStateRecord": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "ID",
+        "State"
+      ],
+      "properties": {
+        "ID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the laser designator to set, a value of 0 is not valid.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65535.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "State": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "State of the laser designator. Disarmed indicates the laser designator is not armed and not able to actively emit a signal. Armed is considered an 'energized' state where the laser is not actively firing, but is ready to fire. Active means the laser designator is actively firing.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Disarmed"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Armed"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Active"
+              }
+            }
+          ],
+          "enum": [
+            "Disarmed",
+            "Armed",
+            "Active"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LaserDesignatorStateRecord"
+  ]
+}

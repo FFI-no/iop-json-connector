@@ -1,0 +1,80 @@
+{
+  "title": "SetFluidDeliveryConfigurationResponse",
+  "messageId": "da0f",
+  "isCommand": false,
+  "description": "This message returns the response to the DA02 SetRefuelingArmConfiguration message.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da0f"
+        }
+      }
+    },
+    "SetFluidDeliveryConfigurationResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "Response"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Local request ID associated with the Fluid Delivery Configuration"
+        },
+        "Response": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Response to the fluid delivery configuration command.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "EXECUTING"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "INVALID_FLUID_DELIVERY_CONFIGURATION"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "INSUFFICIENT_FLUID_AVAILABLE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "INVALID_RECIPIENT"
+              }
+            }
+          ],
+          "enum": [
+            "EXECUTING",
+            "INVALID_FLUID_DELIVERY_CONFIGURATION",
+            "INSUFFICIENT_FLUID_AVAILABLE",
+            "INVALID_RECIPIENT"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "SetFluidDeliveryConfigurationResponseRec"
+  ]
+}

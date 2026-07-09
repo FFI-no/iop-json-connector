@@ -1,0 +1,490 @@
+{
+  "title": "SetSurrogateRelativePoseResponse",
+  "messageId": "dc80",
+  "isCommand": false,
+  "description": "This message is a response to a pose change request, indicate success or failure.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc80"
+        }
+      }
+    },
+    "SetSurrogateRelativePoseResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Response",
+        "Reasons"
+      ],
+      "properties": {
+        "Response": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "REQUESTED_POSITION_INVALID"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "REQUESTED_ORIENTATION_INVALID"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "TETHER_ERROR"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "MOTORS_NOT_ENABLED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "OTHER_ERROR"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESS",
+            "REQUESTED_POSITION_INVALID",
+            "REQUESTED_ORIENTATION_INVALID",
+            "TETHER_ERROR",
+            "MOTORS_NOT_ENABLED",
+            "OTHER_ERROR"
+          ]
+        },
+        "Reasons": {
+          "type": "object",
+          "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+          "required": [
+            "X_POSITION_TOO_LARGE",
+            "X_POSITION_TOO_SMALL",
+            "Y_POSITION_TOO_LARGE",
+            "Y_POSITION_TOO_SMALL",
+            "Z_POSITION_TOO_LARGE",
+            "Z_POSITION_TOO_SMALL",
+            "ROLL_TOO_LARGE",
+            "ROLL_TOO_SMALL",
+            "PITCH_TOO_LARGE",
+            "PITCH_TOO_SMALL",
+            "HEADING_TOO_LARGE",
+            "HEADING_TOO_SMALL",
+            "DISTANCE_TOO_LARGE",
+            "DISTANCE_TOO_SMALL"
+          ],
+          "properties": {
+            "X_POSITION_TOO_LARGE": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 0,
+                "to": 0
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "X_POSITION_TOO_LARGE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "X_POSITION_TOO_LARGE"
+              ]
+            },
+            "X_POSITION_TOO_SMALL": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 1,
+                "to": 1
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "X_POSITION_TOO_SMALL"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "X_POSITION_TOO_SMALL"
+              ]
+            },
+            "Y_POSITION_TOO_LARGE": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 2,
+                "to": 2
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Y_POSITION_TOO_LARGE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "Y_POSITION_TOO_LARGE"
+              ]
+            },
+            "Y_POSITION_TOO_SMALL": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 3,
+                "to": 3
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Y_POSITION_TOO_SMALL"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "Y_POSITION_TOO_SMALL"
+              ]
+            },
+            "Z_POSITION_TOO_LARGE": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 4,
+                "to": 4
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Z_POSITION_TOO_LARGE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "Z_POSITION_TOO_LARGE"
+              ]
+            },
+            "Z_POSITION_TOO_SMALL": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 5,
+                "to": 5
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Z_POSITION_TOO_SMALL"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "Z_POSITION_TOO_SMALL"
+              ]
+            },
+            "ROLL_TOO_LARGE": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 6,
+                "to": 6
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ROLL_TOO_LARGE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "ROLL_TOO_LARGE"
+              ]
+            },
+            "ROLL_TOO_SMALL": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 7,
+                "to": 7
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "ROLL_TOO_SMALL"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "ROLL_TOO_SMALL"
+              ]
+            },
+            "PITCH_TOO_LARGE": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 8,
+                "to": 8
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "PITCH_TOO_LARGE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "PITCH_TOO_LARGE"
+              ]
+            },
+            "PITCH_TOO_SMALL": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 9,
+                "to": 9
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "PITCH_TOO_SMALL"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "PITCH_TOO_SMALL"
+              ]
+            },
+            "HEADING_TOO_LARGE": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 10,
+                "to": 10
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "HEADING_TOO_LARGE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "HEADING_TOO_LARGE"
+              ]
+            },
+            "HEADING_TOO_SMALL": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 11,
+                "to": 11
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "HEADING_TOO_SMALL"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "HEADING_TOO_SMALL"
+              ]
+            },
+            "DISTANCE_TOO_LARGE": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 12,
+                "to": 12
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "DISTANCE_TOO_LARGE"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "DISTANCE_TOO_LARGE"
+              ]
+            },
+            "DISTANCE_TOO_SMALL": {
+              "type": "string",
+              "jausType": "unsigned short integer",
+              "comment": "If Response is 1 or 2, at least one of the reason bits must be set to 1.",
+              "bitRange": {
+                "from": 13,
+                "to": 13
+              },
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "NOT_SET"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "DISTANCE_TOO_SMALL"
+                  }
+                }
+              ],
+              "enum": [
+                "NOT_SET",
+                "DISTANCE_TOO_SMALL"
+              ]
+            }
+          },
+          "bitField": "unsigned short integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetSurrogateRelativePoseResponseRec"
+  ]
+}

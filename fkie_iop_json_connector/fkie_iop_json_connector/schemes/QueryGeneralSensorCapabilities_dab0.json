@@ -1,0 +1,27 @@
+{
+  "title": "QueryGeneralSensorCapabilities",
+  "messageId": "dab0",
+  "isCommand": false,
+  "description": "This message is used to query the common capabilities of the underlying hardware.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dab0"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

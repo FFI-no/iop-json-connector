@@ -1,0 +1,66 @@
+{
+  "title": "QueryMissionPlans",
+  "messageId": "abcf",
+  "isCommand": false,
+  "description": "This message shall cause the receiving component to reply to the requestor with a ReportMissionPlans message. The requester can specify whether to include task information in the returned report or just the IDs and state of the stored mission(s). If the Mission ID is zero, all stored missions will be returned.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "abcf"
+        }
+      }
+    },
+    "IncludeTasksRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MissionID",
+        "IncludeMissionPlan"
+      ],
+      "properties": {
+        "MissionID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of a mission being queried. A value of zero indicates all stored mission plans"
+        },
+        "IncludeMissionPlan": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Whether or not to include the mission plan in the report or just the ID and state.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "False"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "True"
+              }
+            }
+          ],
+          "enum": [
+            "False",
+            "True"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "IncludeTasksRec"
+  ]
+}

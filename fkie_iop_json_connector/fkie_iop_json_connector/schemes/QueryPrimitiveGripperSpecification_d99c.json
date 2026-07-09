@@ -1,0 +1,27 @@
+{
+  "title": "QueryPrimitiveGripperSpecification",
+  "messageId": "d99c",
+  "isCommand": false,
+  "description": "This message is used to query the gripper specifications.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d99c"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

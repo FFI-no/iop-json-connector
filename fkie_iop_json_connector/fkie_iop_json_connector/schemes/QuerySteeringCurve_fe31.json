@@ -1,0 +1,27 @@
+{
+  "title": "QuerySteeringCurve",
+  "messageId": "fe31",
+  "isCommand": false,
+  "description": "Message used to query the vehicle for its current steering curve.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fe31"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

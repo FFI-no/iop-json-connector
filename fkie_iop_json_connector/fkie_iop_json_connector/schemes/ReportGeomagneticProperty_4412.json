@@ -2,7 +2,7 @@
   "title": "ReportGeomagneticProperty",
   "messageId": "4412",
   "isCommand": false,
-  "description": "This message is used to provide the receiver the current geomagnetic property value.  The message data and mapping of the \n      presence vector of this message are identical to ID 0412h: SetGeomagneticProperty.",
+  "description": "This message is used to provide the receiver the current geomagnetic property value. The message data and mapping of the presence vector of this message are identical to ID 0412h: SetGeomagneticProperty.",
   "type": "object",
   "properties": {
     "HeaderRec": {

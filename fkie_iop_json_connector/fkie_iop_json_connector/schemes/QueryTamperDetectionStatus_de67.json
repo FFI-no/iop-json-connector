@@ -1,0 +1,27 @@
+{
+  "title": "QueryTamperDetectionStatus",
+  "messageId": "de67",
+  "isCommand": false,
+  "description": "This message is used to request the current status of the anti-tamper detection.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "de67"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

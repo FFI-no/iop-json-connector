@@ -1,0 +1,86 @@
+{
+  "title": "SetLoggerState",
+  "messageId": "9109",
+  "isCommand": false,
+  "description": "Set the individual state (on/ off/ pause) of each logger",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "9109"
+        }
+      }
+    },
+    "LoggerStateList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "LoggerID",
+              "LoggerState"
+            ],
+            "properties": {
+              "LoggerID": {
+                "type": "number",
+                "jausType": "byte",
+                "comment": "ID of the logger, 0 reserved to be all loggers"
+              },
+              "LoggerState": {
+                "type": "string",
+                "jausType": "byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "LoggerOn"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "LoggerOff"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "LoggerPause"
+                    }
+                  }
+                ],
+                "enum": [
+                  "LoggerOn",
+                  "LoggerOff",
+                  "LoggerPause"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "LoggerStateList"
+  ]
+}

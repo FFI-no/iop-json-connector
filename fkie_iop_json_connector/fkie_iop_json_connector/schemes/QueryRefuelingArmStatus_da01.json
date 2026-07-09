@@ -1,0 +1,27 @@
+{
+  "title": "QueryRefuelingArmStatus",
+  "messageId": "da01",
+  "isCommand": false,
+  "description": "This message is used to query the current operational state of the refueling arm.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da01"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec"
+  ]
+}

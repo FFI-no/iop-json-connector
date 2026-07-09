@@ -1,0 +1,114 @@
+{
+  "title": "ReportPanTiltOperationalParameters",
+  "messageId": "f299",
+  "isCommand": false,
+  "description": "This message is used to report the per-joint operational parameters.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f299"
+        }
+      }
+    },
+    "PanTiltOperationalParametersRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Joint1Temperature": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -50.0
+          }
+        },
+        "Joint1BusVoltage": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0022888532845044634,
+            "bias": 0.0
+          }
+        },
+        "Joint1BusCurrent": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": 0.0
+          }
+        },
+        "Joint1PhaseCurrent": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": 0.0
+          }
+        },
+        "Joint2Temperature": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": -50.0
+          }
+        },
+        "Joint2BusVoltage": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0022888532845044634,
+            "bias": 0.0
+          }
+        },
+        "Joint2BusCurrent": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": 0.0
+          }
+        },
+        "Joint2PhaseCurrent": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "scaleRange": {
+            "scaleFactor": 0.0030518043793392844,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "PanTiltOperationalParametersRec"
+  ]
+}

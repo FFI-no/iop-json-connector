@@ -2,7 +2,7 @@
   "title": "ReportTransmissionCapabilities",
   "messageId": "4511",
   "isCommand": false,
-  "description": "Returns a bitfield of valid gears and transfer \n                    case settings",
+  "description": "Returns a bitfield of valid gears and transfer case settings",
   "type": "object",
   "properties": {
     "HeaderRec": {

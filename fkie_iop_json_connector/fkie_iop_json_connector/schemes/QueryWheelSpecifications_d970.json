@@ -1,0 +1,27 @@
+{
+  "title": "QueryWheelSpecifications",
+  "messageId": "d970",
+  "isCommand": false,
+  "description": "This message is used to query the specifications for the wheels (or tracks) of the platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d970"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

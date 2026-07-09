@@ -1,0 +1,104 @@
+{
+  "title": "ReportDebrisBlowerConfiguration",
+  "messageId": "d7bc",
+  "isCommand": false,
+  "description": "This message is used to report the current Configuration of the debris blower.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7bc"
+        }
+      }
+    },
+    "DebrisBlowerConfigurationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "OnOffStatus": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "OFF"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "ON_SingleSpeed"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "ON_Low"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "ON_Medium"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "ON_High"
+              }
+            }
+          ],
+          "enum": [
+            "OFF",
+            "ON_SingleSpeed",
+            "ON_Low",
+            "ON_Medium",
+            "ON_High"
+          ]
+        },
+        "Azimuth": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Desired azimuth angle of discharge, where a value of zero (0) represents the forward-direction of travel for the vehicle.",
+          "scaleRange": {
+            "scaleFactor": 9.587526218325454e-05,
+            "bias": -3.141592653589793
+          }
+        },
+        "Elevation": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Desired elevation angle of discharge, where a value of zero (0) represents the direction parallel to the ground.",
+          "scaleRange": {
+            "scaleFactor": 4.793763109162727e-05,
+            "bias": -1.5707963267948966
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DebrisBlowerConfigurationRec"
+  ]
+}

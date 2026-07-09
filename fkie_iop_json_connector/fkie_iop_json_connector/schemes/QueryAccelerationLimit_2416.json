@@ -2,7 +2,7 @@
   "title": "QueryAccelerationLimit",
   "messageId": "2416",
   "isCommand": false,
-  "description": "This message shall cause the receiving component to reply to the requestor with a \n      ID 4416h: ReportAccelerationLimit message.  Field #2 specifies the fields to be returned \n      in the Report Acceleration Limit message.",
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 4416h: ReportAccelerationLimit message.  Field #2 specifies the type of acceleration fields to be returned in the Report Acceleration Limit message. A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder.  The resulting message shall contain the fields indicated by the result of this logical AND operation.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -31,12 +31,12 @@
         "PresenceVector": {
           "type": "number",
           "jausType": "unsigned byte",
-          "comment": "See Report Velocity State Message"
+          "comment": "See Report Acceleration Limit Message"
         },
         "CommandType": {
           "type": "number",
           "jausType": "unsigned byte",
-          "comment": "See Report Velocity State Message"
+          "comment": "See Report Acceleration Limit Message"
         }
       }
     }

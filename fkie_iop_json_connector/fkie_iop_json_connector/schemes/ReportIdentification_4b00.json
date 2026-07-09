@@ -98,16 +98,40 @@
               }
             },
             {
-              "valueRange": {
-                "minimum": 10002.0,
-                "maximum": 20000.0,
-                "interpretation": "Reserved"
+              "valueEnum": {
+                "enumIndex": 20001,
+                "enumConst": "OCU"
               }
             },
             {
               "valueEnum": {
-                "enumIndex": 20001,
-                "enumConst": "OCU"
+                "enumIndex": 30001,
+                "enumConst": "OTHER_SUBSYSTEM"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 40001,
+                "enumConst": "NODE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 50001,
+                "enumConst": "PAYLOAD"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 60001,
+                "enumConst": "COMPONENT"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 10002.0,
+                "maximum": 20000.0,
+                "interpretation": "Reserved"
               }
             },
             {
@@ -118,22 +142,10 @@
               }
             },
             {
-              "valueEnum": {
-                "enumIndex": 30001,
-                "enumConst": "OTHER_SUBSYSTEM"
-              }
-            },
-            {
               "valueRange": {
                 "minimum": 30002.0,
                 "maximum": 40000.0,
                 "interpretation": "Reserved"
-              }
-            },
-            {
-              "valueEnum": {
-                "enumIndex": 40001,
-                "enumConst": "NODE"
               }
             },
             {
@@ -144,22 +156,10 @@
               }
             },
             {
-              "valueEnum": {
-                "enumIndex": 50001,
-                "enumConst": "PAYLOAD"
-              }
-            },
-            {
               "valueRange": {
                 "minimum": 50002.0,
                 "maximum": 60000.0,
                 "interpretation": "Reserved"
-              }
-            },
-            {
-              "valueEnum": {
-                "enumIndex": 60001,
-                "enumConst": "COMPONENT"
               }
             },
             {

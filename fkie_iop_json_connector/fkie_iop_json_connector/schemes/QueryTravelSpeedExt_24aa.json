@@ -1,0 +1,27 @@
+{
+  "title": "QueryTravelSpeedExt",
+  "messageId": "24aa",
+  "isCommand": false,
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 44AAh: ReportTravelSpeedExt  message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "24aa"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

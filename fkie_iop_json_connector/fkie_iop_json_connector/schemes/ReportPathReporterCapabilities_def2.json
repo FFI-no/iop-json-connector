@@ -2,7 +2,7 @@
   "title": "ReportPathReporterCapabilities",
   "messageId": "def2",
   "isCommand": false,
-  "description": "This message is used to report the capabilities for the service.  \n\t\t\tThis implementation may support one or more PathTypes, and specify further limitations on the \n\t\t\tconstraints used in the QueryPath message.  For example, an implementation may specify that \n\t\t\tit only supports a certain maximum number of points, and/or a fixed target resolution.",
+  "description": "This message is used to report the capabilities for the service.  \n\t\t\t\t\tThis implementation may support one or more PathTypes, and specify further limitations on the \n\t\t\t\t\tconstraints used in the QueryPath message.  For example, an implementation may specify that \n\t\t\t\t\tit only supports a certain maximum number of points, and/or a fixed target resolution.",
   "type": "object",
   "properties": {
     "DefaultHeaderRec": {

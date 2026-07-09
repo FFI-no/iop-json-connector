@@ -1,0 +1,51 @@
+{
+  "title": "QueryFollowerCapabilities",
+  "messageId": "f121",
+  "isCommand": false,
+  "description": "Queries the capabilities of an implementation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f121"
+        }
+      }
+    },
+    "QueryParameters": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "TargetSpeed": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "Target speed the vehicle is expected to achieve, which may impact capabilities report",
+          "scaleRange": {
+            "scaleFactor": 0.0049999237048905165,
+            "bias": 0.0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryParameters"
+  ]
+}

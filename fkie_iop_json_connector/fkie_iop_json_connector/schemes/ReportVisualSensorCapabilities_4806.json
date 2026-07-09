@@ -2,7 +2,7 @@
   "title": "ReportVisualSensorCapabilities",
   "messageId": "4806",
   "isCommand": false,
-  "description": "This message is used to report the \n            sensors\u2019 capabilities upon reciept of a Query Visual Sensor \n            Capabilities message. Capabilities include sensor properties, \n            values and ranges which can be modified by the Set Range Sensor \n            Configuration message.",
+  "description": "This message is used to report the sensors\u2019 capabilities upon receipt of a Query Visual Sensor Capabilities message. Capabilities include sensor properties, values and ranges which can be modified by the Set Range Sensor Configuration message.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -43,7 +43,16 @@
               "SensorID": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
               },
               "SensorName": {
                 "type": "string",
@@ -143,13 +152,13 @@
               },
               "ZoomModes": {
                 "type": "object",
-                "comment": "",
+                "comment": "While many cameras offer zoom using purely analog (or optical) or digital techniques, some use a 'mixed' mode where both are used in combination. This is often of the form of analog (optical) zoom to its physical maximum, e.g. 10x, and digital beyond that to achieve higher magnifications, e.g. 150x. Those cameras that offer mixed mode can usually be configured to perform in a purely analog or digital function, effectively shutting off the other zoom behavior. This bitfield specifies which zoom techniques are available in the interface.",
                 "required": [],
                 "properties": {
                   "Mixed": {
                     "type": "string",
                     "jausType": "unsigned byte",
-                    "comment": "",
+                    "comment": "While many cameras offer zoom using purely analog (or optical) or digital techniques, some use a 'mixed' mode where both are used in combination. This is often of the form of analog (optical) zoom to its physical maximum, e.g. 10x, and digital beyond that to achieve higher magnifications, e.g. 150x. Those cameras that offer mixed mode can usually be configured to perform in a purely analog or digital function, effectively shutting off the other zoom behavior. This bitfield specifies which zoom techniques are available in the interface.",
                     "bitRange": {
                       "from": 0,
                       "to": 0
@@ -176,7 +185,7 @@
                   "AnalogOnly": {
                     "type": "string",
                     "jausType": "unsigned byte",
-                    "comment": "",
+                    "comment": "While many cameras offer zoom using purely analog (or optical) or digital techniques, some use a 'mixed' mode where both are used in combination. This is often of the form of analog (optical) zoom to its physical maximum, e.g. 10x, and digital beyond that to achieve higher magnifications, e.g. 150x. Those cameras that offer mixed mode can usually be configured to perform in a purely analog or digital function, effectively shutting off the other zoom behavior. This bitfield specifies which zoom techniques are available in the interface.",
                     "bitRange": {
                       "from": 1,
                       "to": 1
@@ -203,7 +212,7 @@
                   "DigitalOnly": {
                     "type": "string",
                     "jausType": "unsigned byte",
-                    "comment": "",
+                    "comment": "While many cameras offer zoom using purely analog (or optical) or digital techniques, some use a 'mixed' mode where both are used in combination. This is often of the form of analog (optical) zoom to its physical maximum, e.g. 10x, and digital beyond that to achieve higher magnifications, e.g. 150x. Those cameras that offer mixed mode can usually be configured to perform in a purely analog or digital function, effectively shutting off the other zoom behavior. This bitfield specifies which zoom techniques are available in the interface.",
                     "bitRange": {
                       "from": 2,
                       "to": 2
@@ -230,7 +239,7 @@
                   "None": {
                     "type": "string",
                     "jausType": "unsigned byte",
-                    "comment": "",
+                    "comment": "While many cameras offer zoom using purely analog (or optical) or digital techniques, some use a 'mixed' mode where both are used in combination. This is often of the form of analog (optical) zoom to its physical maximum, e.g. 10x, and digital beyond that to achieve higher magnifications, e.g. 150x. Those cameras that offer mixed mode can usually be configured to perform in a purely analog or digital function, effectively shutting off the other zoom behavior. This bitfield specifies which zoom techniques are available in the interface.",
                     "bitRange": {
                       "from": 3,
                       "to": 3
@@ -627,6 +636,107 @@
                     "enum": [
                       "Unsupported",
                       "Supported"
+                    ]
+                  },
+                  "ThermalWhiteHot": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 4,
+                      "to": 4
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "ThermalBlackHot": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 5,
+                      "to": 5
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "ThermalRainbow": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 6,
+                      "to": 6
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Unsupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Unsupported",
+                      "Supported"
+                    ]
+                  },
+                  "ReservedForFutureUse": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 7,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Reserved"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Reserved"
                     ]
                   }
                 },

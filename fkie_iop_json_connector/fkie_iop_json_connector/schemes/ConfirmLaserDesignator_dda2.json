@@ -1,0 +1,126 @@
+{
+  "title": "ConfirmLaserDesignator",
+  "messageId": "dda2",
+  "isCommand": false,
+  "description": "Confirms the status of a laser designator command.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dda2"
+        }
+      }
+    },
+    "ConfirmLaserDesignatorRecord": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "ID",
+        "RequestedState",
+        "ResponseCode"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "ID": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the laser designator, a value of 0 is not valid.",
+          "valueSet": [
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65535.0,
+                "interpretation": ""
+              }
+            }
+          ]
+        },
+        "RequestedState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Requested state of the laser designator. Disarmed indicates the laser designator is not armed and not able to actively emit a signal. Armed is considered an 'energized' state where the laser is not actively firing, but is ready to fire. Active means the laser designator is actively firing.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Disarmed"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "Armed"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Active"
+              }
+            }
+          ],
+          "enum": [
+            "Disarmed",
+            "Armed",
+            "Active"
+          ]
+        },
+        "ResponseCode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Indicates the result of attempting to set the state of a laser designator. InvalidTransition indicates you cannot go from the current state of the designator to the commanded state (i.e. from Disarmed directly to Active.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "Success"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "InvalidTransition"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "Error"
+              }
+            }
+          ],
+          "enum": [
+            "Success",
+            "InvalidTransition",
+            "Error"
+          ]
+        },
+        "ResponseDescription": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Additional information related to the ResponseCode.",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ConfirmLaserDesignatorRecord"
+  ]
+}

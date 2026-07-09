@@ -2,7 +2,7 @@
   "title": "SetGlobalPose",
   "messageId": "0402",
   "isCommand": true,
-  "description": "This message is used to set the global pose values.",
+  "description": "This message is used to set the global pose values.  The position of the platform is given in latitude, longitude, and altitude.  All times are in Coordinated Universal Time (UTC).",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -35,7 +35,7 @@
         "Latitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 4.190951586745435e-08,
             "bias": -90.0
@@ -44,7 +44,7 @@
         "Longitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Decimal degrees",
           "scaleRange": {
             "scaleFactor": 8.38190317349087e-08,
             "bias": -180.0
@@ -53,7 +53,7 @@
         "Altitude": {
           "type": "number",
           "jausType": "unsigned integer",
-          "comment": "",
+          "comment": "Altitude with respect to WGS-84 reference ellipsoid",
           "scaleRange": {
             "scaleFactor": 1.0477378966863588e-05,
             "bias": -10000.0

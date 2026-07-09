@@ -1,0 +1,97 @@
+{
+  "title": "ReportOperationalParameters",
+  "messageId": "f291",
+  "isCommand": false,
+  "description": "This message is used to report the per-joint operational parameters.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f291"
+        }
+      }
+    },
+    "JointOperationalParametersList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "JointNumber"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "JointNumber": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "1 = first (most proximal) manipulator joint; largest joint number is most distal."
+              },
+              "JointTemperature": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0030518043793392844,
+                  "bias": -50.0
+                }
+              },
+              "BusVoltage": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0022888532845044634,
+                  "bias": 0.0
+                }
+              },
+              "BusCurrent": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0030518043793392844,
+                  "bias": 0.0
+                }
+              },
+              "PhaseCurrent": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "",
+                "scaleRange": {
+                  "scaleFactor": 0.0030518043793392844,
+                  "bias": 0.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "JointOperationalParametersList"
+  ]
+}

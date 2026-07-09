@@ -1,0 +1,42 @@
+{
+  "title": "QueryJointOperationalParameters",
+  "messageId": "f290",
+  "isCommand": false,
+  "description": "This message is query the per-joint operational parameters.  The presence vector \n                    is used to indicate which fields are desired in the corresponding report message; however, this request may \n                    not be honored if the underlying implementation does not support those fields.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f290"
+        }
+      }
+    },
+    "QueryJointOperationalParametersRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Report Operational Parameters for bitwise interpretation of the PV."
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "QueryJointOperationalParametersRec"
+  ]
+}

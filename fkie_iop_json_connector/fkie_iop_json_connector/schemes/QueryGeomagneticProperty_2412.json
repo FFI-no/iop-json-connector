@@ -2,7 +2,7 @@
   "title": "QueryGeomagneticProperty",
   "messageId": "2412",
   "isCommand": false,
-  "description": "This message shall cause the receiving component to reply to the requestor with a \n      ID 4412h: ReportGeomagneticProperty message.",
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 4412h: ReportGeomagneticProperty message.",
   "type": "object",
   "properties": {
     "HeaderRec": {

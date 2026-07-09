@@ -1,0 +1,115 @@
+{
+  "title": "SetRefuelingArmConfiguration",
+  "messageId": "da02",
+  "isCommand": true,
+  "description": "This message is used to issue a command to the refueling arm.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da02"
+        }
+      }
+    },
+    "SetRefuelingArmConfigurationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "RefuelingArmCommand"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Locally unique request ID for identifying the refueling arm state request"
+        },
+        "RefuelingArmCommand": {
+          "type": "string",
+          "jausType": "byte",
+          "comment": "The refueling arm command.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "STOW"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "GO_TO_READY"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "SCAN"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "ENGAGE_PORT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "DISENGAGE_PORT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "ABORT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "PAUSE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "RESUME"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "RETRY"
+              }
+            }
+          ],
+          "enum": [
+            "STOW",
+            "GO_TO_READY",
+            "SCAN",
+            "ENGAGE_PORT",
+            "DISENGAGE_PORT",
+            "ABORT",
+            "PAUSE",
+            "RESUME",
+            "RETRY"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "SetRefuelingArmConfigurationRec"
+  ]
+}

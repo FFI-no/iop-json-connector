@@ -1,0 +1,42 @@
+{
+  "title": "ReportHandoffDecisionTimeout",
+  "messageId": "ff46",
+  "isCommand": false,
+  "description": "Sent in response to a Query Handoff Decision Timeout message.  The handoff decision timeout is the amount of time that must pass between this service requesting a handoff from the current controlling client and this service receiving a ConfirmReleaseControl message in response before that handoff request is considered failed due to a timeout.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff46"
+        }
+      }
+    },
+    "ReportHandoffDecisionTimeoutRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "HandoffDecisionTimeout"
+      ],
+      "properties": {
+        "HandoffDecisionTimeout": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The handoff decision timeout is the amount of time that must pass between this service requesting a handoff from the current controlling client and this service receiving a ConfirmReleaseControl message in response before that handoff request is considered failed due to a timeout.. A value of zero indicates this feature is disabled."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportHandoffDecisionTimeoutRec"
+  ]
+}

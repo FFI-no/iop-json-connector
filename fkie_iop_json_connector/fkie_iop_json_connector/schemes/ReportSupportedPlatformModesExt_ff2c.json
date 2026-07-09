@@ -1,0 +1,114 @@
+{
+  "title": "ReportSupportedPlatformModesExt",
+  "messageId": "ff2c",
+  "isCommand": false,
+  "description": "Sent in response to a Query Supported Platform Modes Ext message.  Reports the support platform modes.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff2c"
+        }
+      }
+    },
+    "SupportedPlatformModesExtList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "PlatformMode"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "PlatformMode": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Standard_Operating"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Training"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Maintenance"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "LowPower"
+                    }
+                  },
+                  {
+                    "valueRange": {
+                      "minimum": 175.0,
+                      "maximum": 255.0,
+                      "interpretation": "Reserved for program specific modes"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Standard_Operating",
+                  "Training",
+                  "Maintenance",
+                  "LowPower"
+                ]
+              },
+              "Name": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human readable name of the mode",
+                "minLength": 0,
+                "maxLength": 20
+              },
+              "Description": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human readable description of the mode",
+                "minLength": 0,
+                "maxLength": 255
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SupportedPlatformModesExtList"
+  ]
+}

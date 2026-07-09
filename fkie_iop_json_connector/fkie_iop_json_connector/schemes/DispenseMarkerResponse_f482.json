@@ -1,0 +1,208 @@
+{
+  "title": "DispenseMarkerResponse",
+  "messageId": "f482",
+  "isCommand": false,
+  "description": "Indicates the success or failure status of a\n    DispenseMarker command.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f482"
+        }
+      }
+    },
+    "DispenseMarkerSequence": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "MarkerSystemResponse"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "MarkerSystemResponse": {
+          "type": "object",
+          "comment": "Indicates the overall status of the command.",
+          "required": [
+            "presenceVector",
+            "ResponseCode"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "ResponseCode": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Result of issuing the command.",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "SUCCESS"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "INDIVIDUAL_CONTROL_NOT_SUPPORTED"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "MARKING_UNIT_NOT_FOUND"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 3,
+                    "enumConst": "MARKING_SYSTEM_ERROR"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 4,
+                    "enumConst": "COMMAND_ALREADY_IN_PROGRESS"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 5,
+                    "enumConst": "COMMAND_TYPE_NOT_SUPPORTED"
+                  }
+                }
+              ],
+              "enum": [
+                "SUCCESS",
+                "INDIVIDUAL_CONTROL_NOT_SUPPORTED",
+                "MARKING_UNIT_NOT_FOUND",
+                "MARKING_SYSTEM_ERROR",
+                "COMMAND_ALREADY_IN_PROGRESS",
+                "COMMAND_TYPE_NOT_SUPPORTED"
+              ]
+            },
+            "ResponseDescription": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "Optional string that may be used to explain the status.",
+              "minLength": 0,
+              "maxLength": 255
+            }
+          }
+        },
+        "MarkerUnitResponseList": {
+          "type": "array",
+          "comment": "If there are individual marker units, may be used to provided information specific to each one.",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "ID",
+                  "ResponseCode"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "ID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "ID of the marking unit to command."
+                  },
+                  "ResponseCode": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Result of issuing the command.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "SUCCESS"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "INDIVIDUAL_CONTROL_NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "MARKING_UNIT_NOT_FOUND"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "MARKING_SYSTEM_ERROR"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "COMMAND_ALREADY_IN_PROGRESS"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "COMMAND_TYPE_NOT_SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "SUCCESS",
+                      "INDIVIDUAL_CONTROL_NOT_SUPPORTED",
+                      "MARKING_UNIT_NOT_FOUND",
+                      "MARKING_SYSTEM_ERROR",
+                      "COMMAND_ALREADY_IN_PROGRESS",
+                      "COMMAND_TYPE_NOT_SUPPORTED"
+                    ]
+                  },
+                  "ResponseDescription": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Optional string that may be used to explain the status.",
+                    "minLength": 0,
+                    "maxLength": 255
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DispenseMarkerSequence"
+  ]
+}

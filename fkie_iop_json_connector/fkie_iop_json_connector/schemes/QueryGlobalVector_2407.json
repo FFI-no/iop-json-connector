@@ -2,7 +2,7 @@
   "title": "QueryGlobalVector",
   "messageId": "2407",
   "isCommand": false,
-  "description": "This message shall cause the receiving component to reply to the requestor with a \n      ID 4407h: ReportGlobalVector message.  A logical AND shall be performed on the \n      requested presence vector and that representing the available fields from the responder.  \n      The resulting message shall contain the fields indicated by the result of this logical AND operation.",
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 4407h: ReportGlobalVector (Deprecated) message.  A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder.  The resulting message shall contain the fields indicated by the result of this logical AND operation.",
   "type": "object",
   "properties": {
     "HeaderRec": {

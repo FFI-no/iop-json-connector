@@ -1,0 +1,77 @@
+{
+  "title": "RegisterPolicyResponse",
+  "messageId": "d737",
+  "isCommand": false,
+  "description": "This message is used to report the result of a policy registration request.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d737"
+        }
+      }
+    },
+    "RegisterPolicyResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "RequestID",
+        "Result"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID used in the RegisterPolicy message to allow a client to associate requests and responses"
+        },
+        "Result": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "UNSUPPORTED_POLICY_TYPE"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESS",
+            "UNSUPPORTED_POLICY_TYPE"
+          ]
+        },
+        "PolicyID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique ID assigned to this policy if successfully registered"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "RegisterPolicyResponseRec"
+  ]
+}

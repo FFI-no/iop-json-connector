@@ -1,0 +1,149 @@
+{
+  "title": "ReportFluidDeliveryStatus",
+  "messageId": "da0d",
+  "isCommand": false,
+  "description": "",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da0d"
+        }
+      }
+    },
+    "FluidDeliveryStatusSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "FluidLevelStatusList",
+        "FluidDeliveryStatusVar"
+      ],
+      "properties": {
+        "FluidLevelStatusList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "SourceFluidTankID",
+                  "PercentRemainingFluid"
+                ],
+                "properties": {
+                  "SourceFluidTankID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "ID of the fluid tank from the capabilities message."
+                  },
+                  "PercentRemainingFluid": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 0,
+          "maxItems": 255,
+          "isVariant": false
+        },
+        "FluidDeliveryStatusVar": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "NoFluidDeliveryStatusRec": {
+              "type": "object",
+              "comment": "Status of non currently delivering fluid.",
+              "required": [
+                "NoFluidDelivery"
+              ],
+              "properties": {
+                "NoFluidDelivery": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": "This field shall be zero. It is reserved for future use."
+                }
+              }
+            },
+            "FluidDeliveryStatusRec": {
+              "type": "object",
+              "comment": "Status of the ongoing fluid delivery.",
+              "required": [
+                "presenceVector",
+                "SelectedSourceFluidID",
+                "DeliverySystemRemainingFluid"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "SelectedSourceFluidID": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": "ID of the fluid (from the capabilities message) that is being delivered."
+                },
+                "DeliverySystemRemainingFluid": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "The percentage of fluid currently remaining in the delivery system.",
+                  "scaleRange": {
+                    "scaleFactor": 0.0015259021896696422,
+                    "bias": 0.0
+                  }
+                },
+                "CurrentFluidDeliveryRateInLPS": {
+                  "type": "UNKNOWN",
+                  "jausType": "long float",
+                  "comment": "The rate at which fluid is being delivered by the system"
+                },
+                "CurrentFluidFillPercentage": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "The percentage of fluid currently in the recipient tank",
+                  "scaleRange": {
+                    "scaleFactor": 0.0015259021896696422,
+                    "bias": 0.0
+                  }
+                },
+                "FluidFilterPressureDifferential": {
+                  "type": "UNKNOWN",
+                  "jausType": "long float",
+                  "comment": "The pressure differential (Delta-P) across the fluid filter in Pascal."
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 1,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "FluidDeliveryStatusSeq"
+  ]
+}

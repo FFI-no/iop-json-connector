@@ -1,0 +1,42 @@
+{
+  "title": "QueryRegisteredPolicy",
+  "messageId": "d736",
+  "isCommand": false,
+  "description": "This message is used to query for a registered policy by ID.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d736"
+        }
+      }
+    },
+    "QueryRegisteredPolicyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PolicyID"
+      ],
+      "properties": {
+        "PolicyID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "ID of the policy to be returned, as generated in the RegisterPolicyResponse"
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "QueryRegisteredPolicyRec"
+  ]
+}

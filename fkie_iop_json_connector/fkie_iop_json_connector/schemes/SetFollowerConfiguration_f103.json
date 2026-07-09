@@ -1,0 +1,1572 @@
+{
+  "title": "SetFollowerConfiguration",
+  "messageId": "f103",
+  "isCommand": true,
+  "description": "This message sets the configuration for one or more \n                    followers.  A leader is specified by variant that refers to a \n                    Global Pose Sensor Service hosted by the leader, a Contact Tracking Service and Contact ID, \n                    or, if the variant is empty, the leader is assumed to be known a priory by the service.  \n                    The optional offset values specify the follow behavior such that MinimumFollowDistance and \n                    MaximumFollowDistance represents the safe operating range along the path and FollowGap represents \n                    the delay, in seconds or meters, that the follower should maintain from the leader.  Additional values \n                    allow for more complex configurations and are defined with respect to the path of the specified \n                    leader vehicle, where each offset may be relative to a different leader.  The LateralOffset refers \n                    to the distance from the path in the ground plane, while VerticalOffset refers to \n                    the heigh above or below the path measured tangentially to the ground plane.  \n                    Alternatively, the VerticalOffset value can be an absolute measure of the desired \n                    altitude with respect to Mean Sea Level (MSL), the Ground Level (AGL), or the \n                    Sea Floor (ASL).  When not explicitly specified in the message, the offset values \n                    are assumed to be equal to the relative position of the follower with respect to \n                    the leader at the time the SetFollowerState('START') is received.  Any specified \n                    offset values that cannot be satisfied due to physical constraints, such as \n                    Z-offset in a ground system or orientation in a fixed wing aircraft, shall be \n                    ignored.  This message may also contain optional maximum error values for each \n                    offset dimension.  When the follower error exceeds these bounds, the follower \n                    should stop and may also stop the lead vehicle if the appropriate flag is set \n                    in the ErrorBehavior bitfield.  If the ALLOW_LEADER_OVERRIDE bit is set, the \n                    follower may attempt to slow down or speed up the lead vehicle prior to exceeding \n                    the error bounds.  If the error values are not specified in the message, they \n                    are assumed to be infinite.\n                    \n                    The message must contain a complete description of the vehicle group to be valid. \n                    Any instances of an existing group with the same group ID are replaced.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "f103"
+        }
+      }
+    },
+    "FollowerConfigurationSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "FollowerConfigurationRec",
+        "FollowerConfigurationTypeVar"
+      ],
+      "properties": {
+        "FollowerConfigurationRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector",
+            "GroupID"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "GroupID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "ID of the group. A value of zero (0) is not allowed.",
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": 1.0,
+                    "maximum": 255.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "Name": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "An optional human readable name associated with this group",
+              "minLength": 0,
+              "maxLength": 255
+            },
+            "MaxSpeed": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "Maximum speed the group is expected to achieve",
+              "scaleRange": {
+                "scaleFactor": 0.0049999237048905165,
+                "bias": 0.0
+              }
+            }
+          }
+        },
+        "FollowerConfigurationTypeVar": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "AutomaticFormationSeq": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "AutomaticFormationRec",
+                "FollowerParticipantList"
+              ],
+              "properties": {
+                "AutomaticFormationRec": {
+                  "type": "object",
+                  "comment": "",
+                  "required": [
+                    "Formation"
+                  ],
+                  "properties": {
+                    "Formation": {
+                      "type": "string",
+                      "jausType": "unsigned byte",
+                      "comment": "",
+                      "valueSet": [
+                        {
+                          "valueEnum": {
+                            "enumIndex": 0,
+                            "enumConst": "Column"
+                          }
+                        },
+                        {
+                          "valueEnum": {
+                            "enumIndex": 1,
+                            "enumConst": "InvertedT"
+                          }
+                        },
+                        {
+                          "valueEnum": {
+                            "enumIndex": 2,
+                            "enumConst": "StaggeredColumn"
+                          }
+                        },
+                        {
+                          "valueRange": {
+                            "minimum": 3.0,
+                            "maximum": 100.0,
+                            "interpretation": "Reserved for future IOP use"
+                          }
+                        },
+                        {
+                          "valueRange": {
+                            "minimum": 101.0,
+                            "maximum": 255.0,
+                            "interpretation": "Reserved for project specific use"
+                          }
+                        }
+                      ],
+                      "enum": [
+                        "Column",
+                        "InvertedT",
+                        "StaggeredColumn"
+                      ]
+                    }
+                  }
+                },
+                "FollowerParticipantList": {
+                  "type": "array",
+                  "comment": "",
+                  "required": [],
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "comment": "",
+                        "required": [
+                          "presenceVector",
+                          "VehicleID"
+                        ],
+                        "properties": {
+                          "presenceVector": {
+                            "type": "number",
+                            "jausType": "unsigned byte",
+                            "comment": ""
+                          },
+                          "VehicleID": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "Subsystem ID of the follower being configured"
+                          },
+                          "FollowerErrorBehavior": {
+                            "type": "object",
+                            "comment": "",
+                            "required": [],
+                            "properties": {
+                              "FollowingError": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "bitRange": {
+                                  "from": 0,
+                                  "to": 1
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "LeaveGroup"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "AttemptSpeedOverrideButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 3,
+                                      "enumConst": "AttemptSpeedOverrideButStopOnFailure"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "StopLeader",
+                                  "LeaveGroup",
+                                  "AttemptSpeedOverrideButLeaveOnFailure",
+                                  "AttemptSpeedOverrideButStopOnFailure"
+                                ]
+                              },
+                              "LeaderFailureError": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "bitRange": {
+                                  "from": 2,
+                                  "to": 3
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "LeaveGroup"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 3,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButStopOnFailure"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "StopLeader",
+                                  "LeaveGroup",
+                                  "AttemptToConnectoToNewLeaderButLeaveOnFailure",
+                                  "AttemptToConnectoToNewLeaderButStopOnFailure"
+                                ]
+                              },
+                              "LostCommsFromLeader": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "bitRange": {
+                                  "from": 4,
+                                  "to": 6
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "LeaveGroup"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 3,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButStopOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 4,
+                                      "enumConst": "AttemptToFollowAnywayButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 5,
+                                      "enumConst": "AttemptToFollowAnywayButStopOnFailure"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "StopLeader",
+                                  "LeaveGroup",
+                                  "AttemptToConnectoToNewLeaderButLeaveOnFailure",
+                                  "AttemptToConnectoToNewLeaderButStopOnFailure",
+                                  "AttemptToFollowAnywayButLeaveOnFailure",
+                                  "AttemptToFollowAnywayButStopOnFailure"
+                                ]
+                              }
+                            },
+                            "bitField": "unsigned byte"
+                          },
+                          "LeaderErrorBehavior": {
+                            "type": "object",
+                            "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                            "required": [],
+                            "properties": {
+                              "FollowerCompromised": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                                "bitRange": {
+                                  "from": 0,
+                                  "to": 1
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "Continue"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "RemoveFollower"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "Continue",
+                                  "RemoveFollower",
+                                  "StopLeader"
+                                ]
+                              },
+                              "LostCommsFromFollower": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                                "bitRange": {
+                                  "from": 2,
+                                  "to": 3
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "Continue"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "RemoveFollower"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "Continue",
+                                  "RemoveFollower",
+                                  "StopLeader"
+                                ]
+                              }
+                            },
+                            "bitField": "unsigned byte"
+                          },
+                          "Roll": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": -3.141592653589793
+                            }
+                          },
+                          "Max_Roll_Error": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": 0.0
+                            }
+                          },
+                          "Pitch": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": -3.141592653589793
+                            }
+                          },
+                          "Max_Pitch_Error": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": 0.0
+                            }
+                          },
+                          "Heading": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": -3.141592653589793
+                            }
+                          },
+                          "Max_Heading_Error": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": 0.0
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "jausType": "unsigned byte",
+                  "minItems": null,
+                  "maxItems": null,
+                  "isVariant": false
+                }
+              }
+            },
+            "ManualFormationList": {
+              "type": "array",
+              "comment": "",
+              "required": [],
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "presenceVector",
+                      "FollowerParticipantRec"
+                    ],
+                    "properties": {
+                      "presenceVector": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": ""
+                      },
+                      "FollowerParticipantRec": {
+                        "type": "object",
+                        "comment": "",
+                        "required": [
+                          "presenceVector",
+                          "VehicleID"
+                        ],
+                        "properties": {
+                          "presenceVector": {
+                            "type": "number",
+                            "jausType": "unsigned byte",
+                            "comment": ""
+                          },
+                          "VehicleID": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "Subsystem ID of the follower being configured"
+                          },
+                          "FollowerErrorBehavior": {
+                            "type": "object",
+                            "comment": "",
+                            "required": [],
+                            "properties": {
+                              "FollowingError": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "bitRange": {
+                                  "from": 0,
+                                  "to": 1
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "LeaveGroup"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "AttemptSpeedOverrideButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 3,
+                                      "enumConst": "AttemptSpeedOverrideButStopOnFailure"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "StopLeader",
+                                  "LeaveGroup",
+                                  "AttemptSpeedOverrideButLeaveOnFailure",
+                                  "AttemptSpeedOverrideButStopOnFailure"
+                                ]
+                              },
+                              "LeaderFailureError": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "bitRange": {
+                                  "from": 2,
+                                  "to": 3
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "LeaveGroup"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 3,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButStopOnFailure"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "StopLeader",
+                                  "LeaveGroup",
+                                  "AttemptToConnectoToNewLeaderButLeaveOnFailure",
+                                  "AttemptToConnectoToNewLeaderButStopOnFailure"
+                                ]
+                              },
+                              "LostCommsFromLeader": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "",
+                                "bitRange": {
+                                  "from": 4,
+                                  "to": 6
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "LeaveGroup"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 3,
+                                      "enumConst": "AttemptToConnectoToNewLeaderButStopOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 4,
+                                      "enumConst": "AttemptToFollowAnywayButLeaveOnFailure"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 5,
+                                      "enumConst": "AttemptToFollowAnywayButStopOnFailure"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "StopLeader",
+                                  "LeaveGroup",
+                                  "AttemptToConnectoToNewLeaderButLeaveOnFailure",
+                                  "AttemptToConnectoToNewLeaderButStopOnFailure",
+                                  "AttemptToFollowAnywayButLeaveOnFailure",
+                                  "AttemptToFollowAnywayButStopOnFailure"
+                                ]
+                              }
+                            },
+                            "bitField": "unsigned byte"
+                          },
+                          "LeaderErrorBehavior": {
+                            "type": "object",
+                            "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                            "required": [],
+                            "properties": {
+                              "FollowerCompromised": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                                "bitRange": {
+                                  "from": 0,
+                                  "to": 1
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "Continue"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "RemoveFollower"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "Continue",
+                                  "RemoveFollower",
+                                  "StopLeader"
+                                ]
+                              },
+                              "LostCommsFromFollower": {
+                                "type": "string",
+                                "jausType": "unsigned byte",
+                                "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                                "bitRange": {
+                                  "from": 2,
+                                  "to": 3
+                                },
+                                "valueSet": [
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 0,
+                                      "enumConst": "Continue"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 1,
+                                      "enumConst": "RemoveFollower"
+                                    }
+                                  },
+                                  {
+                                    "valueEnum": {
+                                      "enumIndex": 2,
+                                      "enumConst": "StopLeader"
+                                    }
+                                  }
+                                ],
+                                "enum": [
+                                  "Continue",
+                                  "RemoveFollower",
+                                  "StopLeader"
+                                ]
+                              }
+                            },
+                            "bitField": "unsigned byte"
+                          },
+                          "Roll": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": -3.141592653589793
+                            }
+                          },
+                          "Max_Roll_Error": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": 0.0
+                            }
+                          },
+                          "Pitch": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": -3.141592653589793
+                            }
+                          },
+                          "Max_Pitch_Error": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": 0.0
+                            }
+                          },
+                          "Heading": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": -3.141592653589793
+                            }
+                          },
+                          "Max_Heading_Error": {
+                            "type": "number",
+                            "jausType": "unsigned short integer",
+                            "comment": "",
+                            "scaleRange": {
+                              "scaleFactor": 9.587526218325454e-05,
+                              "bias": 0.0
+                            }
+                          }
+                        }
+                      },
+                      "FollowGapSeq": {
+                        "type": "object",
+                        "comment": "",
+                        "required": [
+                          "FollowGapLeaderID",
+                          "FollowGapRec"
+                        ],
+                        "properties": {
+                          "FollowGapLeaderID": {
+                            "type": "object",
+                            "comment": "",
+                            "required": [],
+                            "properties": {
+                              "LeaderByJausIDRec": {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "JausID"
+                                ],
+                                "properties": {
+                                  "JausID": {
+                                    "type": "object",
+                                    "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                    "required": [
+                                      "ComponentID",
+                                      "NodeID",
+                                      "SubsystemID"
+                                    ],
+                                    "properties": {
+                                      "ComponentID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 0,
+                                          "to": 7
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "NodeID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 8,
+                                          "to": 15
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "SubsystemID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 16,
+                                          "to": 31
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 65535.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "bitField": "unsigned integer"
+                                  }
+                                }
+                              },
+                              "LeaderByContactID": {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "JausID",
+                                  "ContactID"
+                                ],
+                                "properties": {
+                                  "JausID": {
+                                    "type": "object",
+                                    "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                    "required": [
+                                      "ComponentID",
+                                      "NodeID",
+                                      "SubsystemID"
+                                    ],
+                                    "properties": {
+                                      "ComponentID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 0,
+                                          "to": 7
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "NodeID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 8,
+                                          "to": 15
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "SubsystemID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 16,
+                                          "to": 31
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 65535.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "bitField": "unsigned integer"
+                                  },
+                                  "ContactID": {
+                                    "type": "number",
+                                    "jausType": "unsigned short integer",
+                                    "comment": "ID of the contact to be followed. A value of zero (0) is not allowed."
+                                  }
+                                }
+                              },
+                              "Empty": {
+                                "type": "object",
+                                "comment": "The leader is not specified by a JAUS ID nor a Contact ID. The leader is assumed to be known a priori by the implementation",
+                                "required": [],
+                                "properties": {},
+                                "jausType": "unsigned byte",
+                                "vtagMin": null,
+                                "vtagMax": null,
+                                "isVariant": true
+                              }
+                            },
+                            "jausType": "unsigned byte",
+                            "vtagMin": null,
+                            "vtagMax": null,
+                            "isVariant": true
+                          },
+                          "FollowGapRec": {
+                            "type": "object",
+                            "comment": "",
+                            "required": [
+                              "presenceVector",
+                              "IdealFollowTarget"
+                            ],
+                            "properties": {
+                              "presenceVector": {
+                                "type": "number",
+                                "jausType": "unsigned byte",
+                                "comment": ""
+                              },
+                              "IdealFollowTarget": {
+                                "type": "array",
+                                "comment": "Ideal follow distance or time",
+                                "required": [],
+                                "items": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "jausType": "unsigned integer",
+                                      "comment": "",
+                                      "fieldIndex": 0,
+                                      "fieldUnits": "second",
+                                      "scaleRange": {
+                                        "scaleFactor": 8.381903173490871e-07,
+                                        "bias": 0.0
+                                      }
+                                    },
+                                    {
+                                      "type": "number",
+                                      "jausType": "unsigned integer",
+                                      "comment": "",
+                                      "fieldIndex": 1,
+                                      "fieldUnits": "meter",
+                                      "scaleRange": {
+                                        "scaleFactor": 2.3283064370807974e-05,
+                                        "bias": 0.0
+                                      }
+                                    }
+                                  ]
+                                },
+                                "jausType": "unsigned byte",
+                                "minItems": 1,
+                                "maxItems": 1
+                              },
+                              "MinimumFollowTime": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "Minimum time that the follower must maintain behind the leader or an error condition is triggered",
+                                "scaleRange": {
+                                  "scaleFactor": 8.381903173490871e-07,
+                                  "bias": 0.0
+                                }
+                              },
+                              "MaximumFollowTime": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "Maximum time that the follower must maintain behind the leader or an error condition is triggered",
+                                "scaleRange": {
+                                  "scaleFactor": 8.381903173490871e-07,
+                                  "bias": 0.0
+                                }
+                              },
+                              "MinimumFollowDistance": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "Minimum distance that the follower must maintain behind the leader or an error condition is triggered",
+                                "scaleRange": {
+                                  "scaleFactor": 2.3283064370807974e-05,
+                                  "bias": 0.0
+                                }
+                              },
+                              "MaximumFollowDistance": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "Maximum distance that the follower must maintain behind the leader or an error condition is triggered",
+                                "scaleRange": {
+                                  "scaleFactor": 2.3283064370807974e-05,
+                                  "bias": 0.0
+                                }
+                              },
+                              "MaxCatchUpSpeed": {
+                                "type": "number",
+                                "jausType": "unsigned short integer",
+                                "comment": "Maximum speed the follower is allowed to achieve to close a gap",
+                                "scaleRange": {
+                                  "scaleFactor": 0.0049999237048905165,
+                                  "bias": 0.0
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "LateralGapSeq": {
+                        "type": "object",
+                        "comment": "",
+                        "required": [
+                          "LateralGapLeaderID",
+                          "LateralGapRec"
+                        ],
+                        "properties": {
+                          "LateralGapLeaderID": {
+                            "type": "object",
+                            "comment": "",
+                            "required": [],
+                            "properties": {
+                              "LeaderByJausIDRec": {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "JausID"
+                                ],
+                                "properties": {
+                                  "JausID": {
+                                    "type": "object",
+                                    "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                    "required": [
+                                      "ComponentID",
+                                      "NodeID",
+                                      "SubsystemID"
+                                    ],
+                                    "properties": {
+                                      "ComponentID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 0,
+                                          "to": 7
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "NodeID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 8,
+                                          "to": 15
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "SubsystemID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 16,
+                                          "to": 31
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 65535.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "bitField": "unsigned integer"
+                                  }
+                                }
+                              },
+                              "LeaderByContactID": {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "JausID",
+                                  "ContactID"
+                                ],
+                                "properties": {
+                                  "JausID": {
+                                    "type": "object",
+                                    "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                    "required": [
+                                      "ComponentID",
+                                      "NodeID",
+                                      "SubsystemID"
+                                    ],
+                                    "properties": {
+                                      "ComponentID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 0,
+                                          "to": 7
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "NodeID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 8,
+                                          "to": 15
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "SubsystemID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 16,
+                                          "to": 31
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 65535.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "bitField": "unsigned integer"
+                                  },
+                                  "ContactID": {
+                                    "type": "number",
+                                    "jausType": "unsigned short integer",
+                                    "comment": "ID of the contact to be followed. A value of zero (0) is not allowed."
+                                  }
+                                }
+                              },
+                              "Empty": {
+                                "type": "object",
+                                "comment": "The leader is not specified by a JAUS ID nor a Contact ID. The leader is assumed to be known a priori by the implementation",
+                                "required": [],
+                                "properties": {},
+                                "jausType": "unsigned byte",
+                                "vtagMin": null,
+                                "vtagMax": null,
+                                "isVariant": true
+                              }
+                            },
+                            "jausType": "unsigned byte",
+                            "vtagMin": null,
+                            "vtagMax": null,
+                            "isVariant": true
+                          },
+                          "LateralGapRec": {
+                            "type": "object",
+                            "comment": "",
+                            "required": [
+                              "presenceVector",
+                              "LateralOffset"
+                            ],
+                            "properties": {
+                              "presenceVector": {
+                                "type": "number",
+                                "jausType": "unsigned byte",
+                                "comment": ""
+                              },
+                              "LateralOffset": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 4.656612874161595e-05,
+                                  "bias": -100000.0
+                                }
+                              },
+                              "MaxLateralError": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 2.3283064370807974e-05,
+                                  "bias": 0.0
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "VerticalPosSeq": {
+                        "type": "object",
+                        "comment": "",
+                        "required": [
+                          "presenceVector",
+                          "VerticalPosRec"
+                        ],
+                        "properties": {
+                          "presenceVector": {
+                            "type": "number",
+                            "jausType": "unsigned byte",
+                            "comment": ""
+                          },
+                          "VerticalPosRec": {
+                            "type": "object",
+                            "comment": "",
+                            "required": [
+                              "presenceVector",
+                              "VerticalPos"
+                            ],
+                            "properties": {
+                              "presenceVector": {
+                                "type": "number",
+                                "jausType": "unsigned byte",
+                                "comment": ""
+                              },
+                              "VerticalPos": {
+                                "type": "array",
+                                "comment": "",
+                                "required": [],
+                                "items": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "jausType": "unsigned integer",
+                                      "comment": "",
+                                      "fieldIndex": 0,
+                                      "fieldUnits": "meter",
+                                      "scaleRange": {
+                                        "scaleFactor": 2.3283064370807974e-05,
+                                        "bias": -50000.0
+                                      }
+                                    },
+                                    {
+                                      "type": "number",
+                                      "jausType": "unsigned integer",
+                                      "comment": "",
+                                      "fieldIndex": 1,
+                                      "fieldUnits": "meter",
+                                      "scaleRange": {
+                                        "scaleFactor": 2.3283064370807974e-05,
+                                        "bias": -50000.0
+                                      }
+                                    },
+                                    {
+                                      "type": "number",
+                                      "jausType": "unsigned integer",
+                                      "comment": "",
+                                      "fieldIndex": 2,
+                                      "fieldUnits": "meter",
+                                      "scaleRange": {
+                                        "scaleFactor": 2.3283064370807974e-05,
+                                        "bias": -50000.0
+                                      }
+                                    },
+                                    {
+                                      "type": "number",
+                                      "jausType": "unsigned integer",
+                                      "comment": "",
+                                      "fieldIndex": 3,
+                                      "fieldUnits": "meter",
+                                      "scaleRange": {
+                                        "scaleFactor": 2.3283064370807974e-05,
+                                        "bias": -50000.0
+                                      }
+                                    },
+                                    {
+                                      "type": "number",
+                                      "jausType": "unsigned integer",
+                                      "comment": "",
+                                      "fieldIndex": 4,
+                                      "fieldUnits": "meter",
+                                      "scaleRange": {
+                                        "scaleFactor": 2.3283064370807974e-05,
+                                        "bias": -50000.0
+                                      }
+                                    }
+                                  ]
+                                },
+                                "jausType": "unsigned byte",
+                                "minItems": 1,
+                                "maxItems": 1
+                              },
+                              "MaxVerticalError": {
+                                "type": "number",
+                                "jausType": "unsigned integer",
+                                "comment": "",
+                                "scaleRange": {
+                                  "scaleFactor": 2.3283064370807974e-05,
+                                  "bias": 0.0
+                                }
+                              }
+                            }
+                          },
+                          "VerticalGapLeaderID": {
+                            "type": "object",
+                            "comment": "ID of the leader from which the gap is being measured when 'Relative' offset is used",
+                            "required": [],
+                            "properties": {
+                              "LeaderByJausIDRec": {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "JausID"
+                                ],
+                                "properties": {
+                                  "JausID": {
+                                    "type": "object",
+                                    "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                    "required": [
+                                      "ComponentID",
+                                      "NodeID",
+                                      "SubsystemID"
+                                    ],
+                                    "properties": {
+                                      "ComponentID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 0,
+                                          "to": 7
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "NodeID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 8,
+                                          "to": 15
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "SubsystemID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Pose Sensor Service hosted on the leader",
+                                        "bitRange": {
+                                          "from": 16,
+                                          "to": 31
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 65535.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "bitField": "unsigned integer"
+                                  }
+                                }
+                              },
+                              "LeaderByContactID": {
+                                "type": "object",
+                                "comment": "",
+                                "required": [
+                                  "JausID",
+                                  "ContactID"
+                                ],
+                                "properties": {
+                                  "JausID": {
+                                    "type": "object",
+                                    "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                    "required": [
+                                      "ComponentID",
+                                      "NodeID",
+                                      "SubsystemID"
+                                    ],
+                                    "properties": {
+                                      "ComponentID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 0,
+                                          "to": 7
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "NodeID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 8,
+                                          "to": 15
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 255.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "SubsystemID": {
+                                        "type": "number",
+                                        "jausType": "unsigned integer",
+                                        "comment": "JAUS ID of a Global Contact Sensor Service from which the ContactID was assigned",
+                                        "bitRange": {
+                                          "from": 16,
+                                          "to": 31
+                                        },
+                                        "valueSet": [
+                                          {
+                                            "valueRange": {
+                                              "minimum": 0.0,
+                                              "maximum": 65535.0,
+                                              "interpretation": ""
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "bitField": "unsigned integer"
+                                  },
+                                  "ContactID": {
+                                    "type": "number",
+                                    "jausType": "unsigned short integer",
+                                    "comment": "ID of the contact to be followed. A value of zero (0) is not allowed."
+                                  }
+                                }
+                              },
+                              "Empty": {
+                                "type": "object",
+                                "comment": "The leader is not specified by a JAUS ID nor a Contact ID. The leader is assumed to be known a priori by the implementation",
+                                "required": [],
+                                "properties": {},
+                                "jausType": "unsigned byte",
+                                "vtagMin": null,
+                                "vtagMax": null,
+                                "isVariant": true
+                              }
+                            },
+                            "jausType": "unsigned byte",
+                            "vtagMin": null,
+                            "vtagMax": null,
+                            "isVariant": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "jausType": "unsigned byte",
+              "minItems": null,
+              "maxItems": null,
+              "isVariant": false
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": null,
+          "vtagMax": null,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "FollowerConfigurationSeq"
+  ]
+}

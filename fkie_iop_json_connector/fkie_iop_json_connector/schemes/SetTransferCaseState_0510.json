@@ -2,7 +2,7 @@
   "title": "SetTransferCaseState",
   "messageId": "0510",
   "isCommand": true,
-  "description": "Sets desired transfer case state for \n                  Front Wheel Drive or All Wheel Drive vehicles",
+  "description": "Sets desired transfer case state for Front Wheel Drive or All Wheel Drive vehicles",
   "type": "object",
   "properties": {
     "HeaderRec": {

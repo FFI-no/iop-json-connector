@@ -1,0 +1,55 @@
+{
+  "title": "QueryTirePressureStatus",
+  "messageId": "d7b1",
+  "isCommand": false,
+  "description": "This message is used to query if the status of one or more tires.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7b1"
+        }
+      }
+    },
+    "QueryTireList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "TireID"
+            ],
+            "properties": {
+              "TireID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the tire to be queried. A value of zero (0) implies all tires."
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryTireList"
+  ]
+}

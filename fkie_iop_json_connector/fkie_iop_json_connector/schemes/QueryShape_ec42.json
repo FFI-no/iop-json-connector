@@ -1,0 +1,27 @@
+{
+  "title": "QueryShape",
+  "messageId": "ec42",
+  "isCommand": false,
+  "description": "This message is used to obtain a ReportShape message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ec42"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "RequestGPSFix",
+  "messageId": "0428",
+  "isCommand": true,
+  "description": "This message is used to request that a GPS Fix be performed.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0428"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

@@ -2,7 +2,7 @@
   "title": "ConfirmDigitalResourceEndpoint",
   "messageId": "f703",
   "isCommand": false,
-  "description": "Confirm a digital resource endpoint registration or removal. Provides a unique ID for referencing the server in the future.",
+  "description": "Confirm a digital resource endpoint registration or removal.  Provides a unique ID for referencing the server in the future.",
   "type": "object",
   "properties": {
     "HeaderRec": {

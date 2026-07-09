@@ -1,0 +1,42 @@
+{
+  "title": "ReportHandoffRequestTimeout",
+  "messageId": "ff47",
+  "isCommand": false,
+  "description": "Sent in response to a Query Handoff Request Timeout message.  The handoff request timeout is the maximum amount of time between a client reasserting its desire for a handoff before that request for a handoff is considered timed out.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ff47"
+        }
+      }
+    },
+    "ReportHandoffRequestTimeoutRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "HandoffRequestTimeout"
+      ],
+      "properties": {
+        "HandoffRequestTimeout": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The handoff request timeout is the maximum amount of time between a client reasserting its desire for a handoff before that request for a handoff is considered timed out. A value of zero indicates this feature is disabled."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportHandoffRequestTimeoutRec"
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "title": "ReportShape",
+  "messageId": "fc42",
+  "isCommand": false,
+  "description": "This message provides a list of shapes defining the bounding volume of the \n          component. Each shape is represented in the list as a type, parameters, a location, and an orientation \n          defined by a quaternion. The location and orientation records define the coordinate frame transform \n          of the shape with origin coinciding with the geometric center of the shape. The coordinate frame \n          index identifies the parent coordinate frame for the shape. An untransformed cylinder grows \n          in length along the Y axis of its respective coordinate frame.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "fc42"
+        }
+      }
+    },
+    "ShapeList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "CoordinateFrameVar",
+              "ShapeLocationRec",
+              "ShapeOrientationRec",
+              "ShapeVar"
+            ],
+            "properties": {
+              "CoordinateFrameVar": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "ModuleFrameVar": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {},
+                    "jausType": "unsigned byte",
+                    "vtagMin": 0,
+                    "vtagMax": 0,
+                    "isVariant": true
+                  },
+                  "LinkFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "LinkIndex"
+                    ],
+                    "properties": {
+                      "LinkIndex": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "Index of the serial manipulator link for the selected coordinate frame."
+                      }
+                    }
+                  },
+                  "StabilizerFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "StabilizerID"
+                    ],
+                    "properties": {
+                      "StabilizerID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "ID of the stabilizer which the coordinate frame is representing"
+                      }
+                    }
+                  },
+                  "AttachmentFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "HostNodeID",
+                      "AttachmentID"
+                    ],
+                    "properties": {
+                      "HostNodeID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "Node ID of the module that hosts the attachment point"
+                      },
+                      "AttachmentID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "ID of the attachment which the coordinate frame is representing"
+                      }
+                    }
+                  }
+                },
+                "jausType": "unsigned byte",
+                "vtagMin": 0,
+                "vtagMax": 3,
+                "isVariant": true
+              },
+              "ShapeLocationRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "OffsetX",
+                  "OffsetY",
+                  "OffsetZ"
+                ],
+                "properties": {
+                  "OffsetX": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "X translation for selected frame of reference.",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  },
+                  "OffsetY": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Y translation for selected frame of reference.",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  },
+                  "OffsetZ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Z translation for selected frame of reference.",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  }
+                }
+              },
+              "ShapeOrientationRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "dComponentOfUnitQuaternionQ",
+                  "aComponentOfUnitQuaternionQ",
+                  "bComponentOfUnitQuaternionQ",
+                  "cComponentOfUnitQuaternionQ"
+                ],
+                "properties": {
+                  "dComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  },
+                  "aComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  },
+                  "bComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  },
+                  "cComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  }
+                }
+              },
+              "ShapeVar": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "BoxRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "LengthX",
+                      "LengthY",
+                      "LengthZ"
+                    ],
+                    "properties": {
+                      "LengthX": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "Length of box along X dimension",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-09,
+                          "bias": 0.0
+                        }
+                      },
+                      "LengthY": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "Length of box along Y dimension",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-09,
+                          "bias": 0.0
+                        }
+                      },
+                      "LengthZ": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "Length of box along Z dimension",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-09,
+                          "bias": 0.0
+                        }
+                      }
+                    }
+                  },
+                  "CylinderRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "Radius",
+                      "Length"
+                    ],
+                    "properties": {
+                      "Radius": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "Radius of the cylinder",
+                        "scaleRange": {
+                          "scaleFactor": 1.1641532185403987e-09,
+                          "bias": 0.0
+                        }
+                      },
+                      "Length": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "Length of the cylinder",
+                        "scaleRange": {
+                          "scaleFactor": 2.3283064370807974e-09,
+                          "bias": 0.0
+                        }
+                      }
+                    }
+                  },
+                  "SphereRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "Radius"
+                    ],
+                    "properties": {
+                      "Radius": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "Radius of the sphere",
+                        "scaleRange": {
+                          "scaleFactor": 1.1641532185403987e-09,
+                          "bias": 0.0
+                        }
+                      }
+                    }
+                  }
+                },
+                "jausType": "unsigned byte",
+                "vtagMin": 0,
+                "vtagMax": 2,
+                "isVariant": true
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ShapeList"
+  ]
+}

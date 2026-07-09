@@ -1,0 +1,27 @@
+{
+  "title": "QueryMassProperties",
+  "messageId": "ec40",
+  "isCommand": false,
+  "description": "This message is used to obtain a ReportMassProperties message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ec40"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

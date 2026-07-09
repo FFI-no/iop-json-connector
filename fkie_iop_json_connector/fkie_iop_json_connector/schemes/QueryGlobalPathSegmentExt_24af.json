@@ -1,0 +1,42 @@
+{
+  "title": "QueryGlobalPathSegmentExt",
+  "messageId": "24af",
+  "isCommand": false,
+  "description": "This message shall cause the receiving component to reply to the requestor with a ID 44AFh: ReportGlobalPathSegmentExt message.  A logical AND shall be performed on the requested presence vector and that representing the available fields from the responder. The resulting message shall contain the fields indicated by the result of this logical AND operation.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "24af"
+        }
+      }
+    },
+    "QueryGlobalPathSegmentExtRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PresenceVector"
+      ],
+      "properties": {
+        "PresenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "See Report Global Path Segment Ext Message"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryGlobalPathSegmentExtRec"
+  ]
+}

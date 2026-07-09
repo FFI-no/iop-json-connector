@@ -1,0 +1,66 @@
+{
+  "title": "RegisterFollowerResponse",
+  "messageId": "ffd5",
+  "isCommand": false,
+  "description": "This message is sent as a response to a register request, or may be sent asynchronously if the follower does not periodically resend a register request.  The required periodic rate is specified in the message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "ffd5"
+        }
+      }
+    },
+    "FollowerResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "Result",
+        "Timeout"
+      ],
+      "properties": {
+        "Result": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "CONNECTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "DISCONNECTED"
+              }
+            }
+          ],
+          "enum": [
+            "CONNECTED",
+            "DISCONNECTED"
+          ]
+        },
+        "Timeout": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "The follower must resend a Register request before the timeout elapses; otherwise, the leader may consider the follower as having disconnected."
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "FollowerResponseRec"
+  ]
+}

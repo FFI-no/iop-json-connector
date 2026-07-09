@@ -1,0 +1,80 @@
+{
+  "title": "TetherManagementResponse",
+  "messageId": "dc85",
+  "isCommand": false,
+  "description": "This message indicates the status of a tether management\n\t\t\tcommand.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc85"
+        }
+      }
+    },
+    "TetherManagementResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "Response"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "Response": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "SUCCESS"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "AWAITING_CONFIRMATION_COMMAND"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "FAILURE"
+              }
+            }
+          ],
+          "enum": [
+            "SUCCESS",
+            "AWAITING_CONFIRMATION_COMMAND",
+            "FAILURE"
+          ]
+        },
+        "ResponseMessage": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "Optional message providing more detail for given response code.",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TetherManagementResponseRec"
+  ]
+}

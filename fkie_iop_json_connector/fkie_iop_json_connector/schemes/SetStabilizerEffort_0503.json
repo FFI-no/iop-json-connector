@@ -15,7 +15,7 @@
         "MessageID": {
           "type": "string",
           "jausType": "unsigned short integer",
-          "comment": "A two byte field to hold the message ID of a message",
+          "comment": "Two byte field to hold message ID",
           "const": "0503"
         }
       }
@@ -42,7 +42,7 @@
               "Effort": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": "",
+                "comment": "As a percent of maximum. Positive effort moves the stabilizer upward.",
                 "scaleRange": {
                   "scaleFactor": 0.0030518043793392844,
                   "bias": -100.0

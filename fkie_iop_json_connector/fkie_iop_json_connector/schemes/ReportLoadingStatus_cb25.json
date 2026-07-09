@@ -1,0 +1,125 @@
+{
+  "title": "ReportLoadingStatus",
+  "messageId": "cb25",
+  "isCommand": false,
+  "description": "The ReportLoadingStatus message is used to describe the instantaneous load position by providing\n                    the current hitch angle between each load and its connected neighbor. If this value is not available\n                    in the underlying implementation, it is expected that a JAUS ID for a Global or Local Pose Sensor\n                    is provided by the ReportLoadingSpecifications message and that should be used instead.",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "cb25"
+        }
+      }
+    },
+    "LoadingStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "loadID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "loadID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the load. Zero is not a permitted value.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 255.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              },
+              "RelativeHitchAngle": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Instantaneous value of the hitch angle, using a Z-down coordinate frame. For fixed loads, this value will always be zero.",
+                "scaleRange": {
+                  "scaleFactor": 9.587526218325454e-05,
+                  "bias": -3.141592653589793
+                }
+              },
+              "RelativeHitchAngle_RMS": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "An RMS value indicating the validity of the hitch angle data.",
+                "scaleRange": {
+                  "scaleFactor": 4.793763109162727e-05,
+                  "bias": 0.0
+                }
+              },
+              "ForceX": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Force experienced by the load at the hitch in the vehicle frame X-direction.",
+                "scaleRange": {
+                  "scaleFactor": 4.656612874161595e-05,
+                  "bias": -100000.0
+                }
+              },
+              "ForceY": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Force experienced by the load at the hitch in the vehicle frame Y-direction.",
+                "scaleRange": {
+                  "scaleFactor": 4.656612874161595e-05,
+                  "bias": -100000.0
+                }
+              },
+              "ForceZ": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Force experienced by the load at the hitch in the vehicle frame Z-direction.",
+                "scaleRange": {
+                  "scaleFactor": 4.656612874161595e-05,
+                  "bias": -100000.0
+                }
+              },
+              "TimeSeconds": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "UTC POSIX-style time in seconds since 1 January 1970, time of last contact"
+              },
+              "TimeNanoSeconds": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Nanoseconds component of POSIX-style time, time of last contact"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "LoadingStatusList"
+  ]
+}

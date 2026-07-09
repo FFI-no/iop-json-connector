@@ -1,0 +1,453 @@
+{
+  "title": "SetCommunicatorConfiguration",
+  "messageId": "0901",
+  "isCommand": true,
+  "description": "The Set Communicator Configuration message allows the client component to set configuration values for the communication device.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "0901"
+        }
+      }
+    },
+    "SetCommunicatorConfigurationSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SetCommunicatorConfigurationRec",
+        "TransmitPowerVariant"
+      ],
+      "properties": {
+        "SetCommunicatorConfigurationRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "TransmitterStatus": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "TransmitOFF"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "TransmitON"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "Standby"
+                  }
+                }
+              ],
+              "enum": [
+                "TransmitOFF",
+                "TransmitON",
+                "Standby"
+              ]
+            },
+            "ModeOfOperation": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "Point_to_Point"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "Multipoint"
+                  }
+                }
+              ],
+              "enum": [
+                "Point_to_Point",
+                "Multipoint"
+              ]
+            },
+            "EncryptionMode": {
+              "type": "object",
+              "comment": "",
+              "required": [],
+              "properties": {
+                "TransmitterMode": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 0
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "DO_NOT_ENCRYPT"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "ENCRYPT"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "DO_NOT_ENCRYPT",
+                    "ENCRYPT"
+                  ]
+                }
+              },
+              "bitField": "unsigned byte"
+            },
+            "Channel": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Channel number as defined by the Report Capabilities message"
+            },
+            "FrequencyBand": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Band index as defined by the Report Capabilities message"
+            },
+            "ModulationScheme": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "AdaptiveModulation"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "MOD2_QAM"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 2,
+                    "enumConst": "MOD2_PSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 3,
+                    "enumConst": "MOD2_FSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 4,
+                    "enumConst": "MOD4_QAM"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 5,
+                    "enumConst": "MOD4_PSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 6,
+                    "enumConst": "MOD4_FSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 7,
+                    "enumConst": "MOD8_QAM"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 8,
+                    "enumConst": "MOD8_PSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 9,
+                    "enumConst": "MOD8_FSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 10,
+                    "enumConst": "MOD16_QAM"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 11,
+                    "enumConst": "MOD16_PSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 12,
+                    "enumConst": "MOD16_FSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 13,
+                    "enumConst": "MOD32_QAM"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 14,
+                    "enumConst": "MOD32_PSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 15,
+                    "enumConst": "MOD32_FSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 16,
+                    "enumConst": "MOD64_QAM"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 17,
+                    "enumConst": "MOD64_PSK"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 18,
+                    "enumConst": "MOD64_FSK"
+                  }
+                }
+              ],
+              "enum": [
+                "AdaptiveModulation",
+                "MOD2_QAM",
+                "MOD2_PSK",
+                "MOD2_FSK",
+                "MOD4_QAM",
+                "MOD4_PSK",
+                "MOD4_FSK",
+                "MOD8_QAM",
+                "MOD8_PSK",
+                "MOD8_FSK",
+                "MOD16_QAM",
+                "MOD16_PSK",
+                "MOD16_FSK",
+                "MOD32_QAM",
+                "MOD32_PSK",
+                "MOD32_FSK",
+                "MOD64_QAM",
+                "MOD64_PSK",
+                "MOD64_FSK"
+              ]
+            },
+            "OccupiedBandwidth": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.023283064370807974,
+                "bias": 0.0
+              }
+            },
+            "ReservedForFutureUse": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "This field is reserved for future use.",
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": -1.0,
+                    "maximum": -1.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            },
+            "ReservedForFutureIopUse": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "This field is reserved for future use.",
+              "valueSet": [
+                {
+                  "valueRange": {
+                    "minimum": -1.0,
+                    "maximum": -1.0,
+                    "interpretation": ""
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "TransmitPowerVariant": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "ContinuousAdjustableRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "TransmitPower"
+              ],
+              "properties": {
+                "TransmitPower": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Target value for the transmit power in watts. If the communicator supports only discrete values of power selection within the continuously adjustable range, this target value shall be rounded down to the nearest supported value by the implementation, such that the actual achieved value can never exceed the requested target value.",
+                  "scaleRange": {
+                    "scaleFactor": 0.00015259021896696422,
+                    "bias": 0.0
+                  }
+                }
+              }
+            },
+            "HighLowPowerRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "TransmitPower"
+              ],
+              "properties": {
+                "TransmitPower": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "LOW_POWER"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "HIGH_POWER"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "LOW_POWER",
+                    "HIGH_POWER"
+                  ]
+                }
+              }
+            },
+            "AutomaticPowerControlRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "MinTransmitPower",
+                "MaxTransmitPower",
+                "CurrentTransmitPower"
+              ],
+              "properties": {
+                "MinTransmitPower": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 0.00015259021896696422,
+                    "bias": 0.0
+                  }
+                },
+                "MaxTransmitPower": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 0.00015259021896696422,
+                    "bias": 0.0
+                  }
+                },
+                "CurrentTransmitPower": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "If reporting, indicates the current transmit power. If being used to set configuration, indicates a desired transmit power, but this is not guaranteed.",
+                  "scaleRange": {
+                    "scaleFactor": 0.00015259021896696422,
+                    "bias": 0.0
+                  }
+                }
+              }
+            },
+            "NoChangeRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "TransmitPower"
+              ],
+              "properties": {
+                "TransmitPower": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NO_CHANGE"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NO_CHANGE"
+                  ]
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 3,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetCommunicatorConfigurationSeq"
+  ]
+}

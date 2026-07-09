@@ -1,0 +1,224 @@
+{
+  "title": "SetFluidDeliveryConfiguration",
+  "messageId": "da0a",
+  "isCommand": true,
+  "description": "",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "da0a"
+        }
+      }
+    },
+    "FluidDeliveryConfigurationSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "FluidDeliveryRequestRec"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "FluidDeliveryRequestRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "RequestID"
+          ],
+          "properties": {
+            "RequestID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": "Local request ID for the Fluid Delivery Configuration"
+            }
+          }
+        },
+        "RequestFluidDeliverySeq": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "FluidDeliveryRec",
+            "FluidDeliveryRecipientRec"
+          ],
+          "properties": {
+            "FluidDeliveryRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "presenceVector",
+                "SourceFluidTankID"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "SourceFluidTankID": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": "ID of the fluid (from the capabilities message) that will be delivered."
+                },
+                "DesiredFluidDeliveryRateInLPS": {
+                  "type": "UNKNOWN",
+                  "jausType": "long float",
+                  "comment": "The desired rate at which fluid should be delivered by the system"
+                },
+                "MaximumRequestedDeliveryRateInLPS": {
+                  "type": "UNKNOWN",
+                  "jausType": "long float",
+                  "comment": "The maximum rate at which fluid should be delivered by the system"
+                },
+                "MinimumRequestedDeliveryRateInLPS": {
+                  "type": "UNKNOWN",
+                  "jausType": "long float",
+                  "comment": "The minimum rate at which fluid should be delivered by the system"
+                }
+              }
+            },
+            "FluidDeliveryRecipientRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "presenceVector",
+                "RecipientJausID",
+                "RecipientPowerPlantID"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "RecipientJausID": {
+                  "type": "object",
+                  "comment": "JAUS ID of the recipient vehicle.",
+                  "required": [
+                    "ComponentID",
+                    "NodeID",
+                    "SubsystemID"
+                  ],
+                  "properties": {
+                    "ComponentID": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "JAUS ID of the recipient vehicle.",
+                      "bitRange": {
+                        "from": 0,
+                        "to": 7
+                      },
+                      "valueSet": [
+                        {
+                          "valueRange": {
+                            "minimum": 1.0,
+                            "maximum": 255.0,
+                            "interpretation": ""
+                          }
+                        }
+                      ]
+                    },
+                    "NodeID": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "JAUS ID of the recipient vehicle.",
+                      "bitRange": {
+                        "from": 8,
+                        "to": 15
+                      },
+                      "valueSet": [
+                        {
+                          "valueRange": {
+                            "minimum": 1.0,
+                            "maximum": 255.0,
+                            "interpretation": ""
+                          }
+                        }
+                      ]
+                    },
+                    "SubsystemID": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "JAUS ID of the recipient vehicle.",
+                      "bitRange": {
+                        "from": 16,
+                        "to": 31
+                      },
+                      "valueSet": [
+                        {
+                          "valueRange": {
+                            "minimum": 1.0,
+                            "maximum": 65535.0,
+                            "interpretation": ""
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "bitField": "unsigned integer"
+                },
+                "RecipientPowerPlantID": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": "ID of the power plant with which this tank to be filled is associated."
+                },
+                "RecipientTankID": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": "ID of the tank into which the fluid will be delivered."
+                },
+                "DesiredFillAmount": {
+                  "type": "array",
+                  "comment": "The desired fluid delivery given as either an absolute amount to deliver or a desired fill percentage of the recipient tank.",
+                  "required": [],
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "UNKNOWN",
+                        "jausType": "long float",
+                        "comment": "",
+                        "fieldIndex": 1,
+                        "fieldUnits": "liter"
+                      },
+                      {
+                        "type": "number",
+                        "jausType": "unsigned short integer",
+                        "comment": "",
+                        "fieldIndex": 2,
+                        "fieldUnits": "percent",
+                        "scaleRange": {
+                          "scaleFactor": 0.0015259021896696422,
+                          "bias": 0.0
+                        }
+                      }
+                    ]
+                  },
+                  "jausType": "unsigned byte",
+                  "minItems": 1,
+                  "maxItems": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "FluidDeliveryConfigurationSeq"
+  ]
+}

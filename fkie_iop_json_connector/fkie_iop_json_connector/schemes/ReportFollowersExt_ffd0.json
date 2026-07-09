@@ -1,0 +1,216 @@
+{
+  "title": "ReportFollowersExt",
+  "messageId": "ffd0",
+  "isCommand": false,
+  "description": "This message reports a list of all followers registered with a leader.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "ffd0"
+        }
+      }
+    },
+    "FollowerList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "Follower_ID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "Follower_ID": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ComponentID",
+                  "NodeID",
+                  "SubsystemID"
+                ],
+                "properties": {
+                  "ComponentID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "NodeID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 8,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 255.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "SubsystemID": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 31
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 65535.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              },
+              "LeaderErrorBehavior": {
+                "type": "object",
+                "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                "required": [],
+                "properties": {
+                  "FollowerCompromised": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Continue"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "RemoveFollower"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "StopLeader"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Continue",
+                      "RemoveFollower",
+                      "StopLeader"
+                    ]
+                  },
+                  "LostCommsFromFollower": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Error behavior desired for the leader. This value is expected to be passed to the leader via LeaderManagement::RegisterFollower",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Continue"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "RemoveFollower"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "StopLeader"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Continue",
+                      "RemoveFollower",
+                      "StopLeader"
+                    ]
+                  }
+                },
+                "bitField": "unsigned byte"
+              },
+              "CurrentSpeedOverridePercent": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "Current speed override percentage requested by the follower",
+                "scaleRange": {
+                  "scaleFactor": 0.39215686274509803,
+                  "bias": 0.0
+                }
+              },
+              "CurrentSpeedOverrideAbsolute": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current absolute speed override requested by the follower",
+                "scaleRange": {
+                  "scaleFactor": 0.0049999237048905165,
+                  "bias": 0.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "FollowerList"
+  ]
+}

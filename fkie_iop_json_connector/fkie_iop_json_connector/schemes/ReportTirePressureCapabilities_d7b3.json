@@ -1,0 +1,195 @@
+{
+  "title": "ReportTirePressureCapabilities",
+  "messageId": "d7b3",
+  "isCommand": false,
+  "description": "This message is used to report the capabilities for all tires on the platform.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "d7b3"
+        }
+      }
+    },
+    "TirePressureCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "TireID",
+              "Description",
+              "NominalTirePressure",
+              "TireCapabilities"
+            ],
+            "properties": {
+              "TireID": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "ID of the tire to be queried. A value of zero (0) is not permitted."
+              },
+              "Description": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Human-readable string for describing the tire.",
+                "minLength": 0,
+                "maxLength": 256
+              },
+              "NominalTirePressure": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "Normal operating air pressure.",
+                "scaleRange": {
+                  "scaleFactor": 0.0392156862745098,
+                  "bias": 0.0
+                }
+              },
+              "TireCapabilities": {
+                "type": "object",
+                "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+                "required": [
+                  "AirPressureMeasurement",
+                  "LowPressureAlert",
+                  "TireInflateDeflateControl",
+                  "RunFlatCapabable"
+                ],
+                "properties": {
+                  "AirPressureMeasurement": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "LowPressureAlert": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "TireInflateDeflateControl": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "RunFlatCapabable": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Bit field representing the underlying hardware capabilities. A value of one (1) means the capability is supported.",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned byte"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": null,
+      "maxItems": null,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TirePressureCapabilitiesList"
+  ]
+}

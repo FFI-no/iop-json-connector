@@ -1,0 +1,302 @@
+{
+  "title": "ReportLoggerStatus",
+  "messageId": "9211",
+  "isCommand": false,
+  "description": "Report the status of a set of loggers",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "9211"
+        }
+      }
+    },
+    "LoggerStatusList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "LoggerID",
+              "LoggerState"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "LoggerID": {
+                "type": "number",
+                "jausType": "byte",
+                "comment": "ID of the logger, 0 reserved to be all loggers"
+              },
+              "LoggerState": {
+                "type": "string",
+                "jausType": "byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "LoggerOn"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "LoggerOff"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "LoggerPause"
+                    }
+                  }
+                ],
+                "enum": [
+                  "LoggerOn",
+                  "LoggerOff",
+                  "LoggerPause"
+                ]
+              },
+              "FillSize": {
+                "type": "number",
+                "jausType": "unsigned long integer",
+                "comment": "Filled size of log(s) in MB"
+              },
+              "FillPercentageRec": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "Percentage of space filled by log(s)",
+                "scaleRange": {
+                  "scaleFactor": 0.39215686274509803,
+                  "bias": 0.0
+                }
+              },
+              "BeginningTimestamp": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "Milliseconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 9
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 999.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Seconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 10,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 59.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Minutes": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 21
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 59.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Hour": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 22,
+                      "to": 26
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 23.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Day": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 27,
+                      "to": 31
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 31.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              },
+              "EndingTimestamp": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "Day": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 27,
+                      "to": 31
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 31.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Milliseconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 9
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 999.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Seconds": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 10,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 59.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Minutes": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 21
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 59.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "Hour": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 22,
+                      "to": 26
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 23.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "LoggerStatusList"
+  ]
+}

@@ -36,24 +36,24 @@
         "CommandType": {
           "type": "string",
           "jausType": "unsigned byte",
-          "comment": "",
+          "comment": "Where acceleration/deceleration limits are applicable in both directions, e.g. linear X is forward and backward, and angular Z is left and right.",
           "valueSet": [
             {
               "valueEnum": {
                 "enumIndex": 1,
-                "enumConst": "Set maximum allowed values"
+                "enumConst": "MaxAccel"
               }
             },
             {
               "valueEnum": {
                 "enumIndex": 2,
-                "enumConst": "Set minimum allowed values"
+                "enumConst": "MaxDecel"
               }
             }
           ],
           "enum": [
-            "Set maximum allowed values",
-            "Set minimum allowed values"
+            "MaxAccel",
+            "MaxDecel"
           ]
         },
         "Acceleration_X": {

@@ -1,0 +1,238 @@
+{
+  "title": "DispenseMarker",
+  "messageId": "f402",
+  "isCommand": true,
+  "description": "Dispenses the marker for the marking system, either \n    as a discrete dispensing action or continuously.  This message may be sent continuously\n    to also cause continuous marker dispensing, in addition to using \n    the ContinuousDispenseMarkerRec.  If the MarkerUnitList is provided, only the units\n    in that list are commanded, assuming individual control is supported.  This message\n    yields a DispenseMarkerResponse response message indicating the success or failure of\n    the command.  While dispensing is in progress using a continuous command, discrete marking\n    commands indicating a command type of \"STOP\" or \"CONTINUE\" may be issued to stop the\n    continuous command or prevent a timeout of the continuous command, respectively.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f402"
+        }
+      }
+    },
+    "DispenseMarkerSequence": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "CommandTypeVariant"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "CommandTypeVariant": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "DiscreteCommandRecord": {
+              "type": "object",
+              "comment": "This record is used to either issue a discrete command to dispense a marker, to stop a continuous marking command that is already in progress, or to explicitly continue an already in progress marking command. The CONTINUE_COMMAND CommandType maybe be used by implementations that require routine positive re-affirmation of a continuous marking command.",
+              "required": [
+                "CommandType"
+              ],
+              "properties": {
+                "CommandType": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "Indicates either a command to halt a continuous marker dispensing command, to initiate a one-time discrete dispensing of a marker or markers, or to re-affirm a previous continuous marker dispensing command.",
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "STOP_COMMAND"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "DISPENSE_MARKER_COMMAND"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 2,
+                        "enumConst": "CONTINUE_COMMAND"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "STOP_COMMAND",
+                    "DISPENSE_MARKER_COMMAND",
+                    "CONTINUE_COMMAND"
+                  ]
+                }
+              }
+            },
+            "ContinuousCommandSequence": {
+              "type": "object",
+              "comment": "This sequence is used when commanding a continuous dispensing action of a marker.",
+              "required": [
+                "presenceVector",
+                "ContinuousDispenseMarkerVar"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": ""
+                },
+                "ContinuousDispenseMarkerVar": {
+                  "type": "object",
+                  "comment": "",
+                  "required": [],
+                  "properties": {
+                    "SetDistanceRec": {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "Distance"
+                      ],
+                      "properties": {
+                        "Distance": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "If included and supported, this field specifies continuous dispensing of a marker for the specified distance along a path. The distance along the path is different than the 'as a bird flies' distance for any path that is not a straight line."
+                        }
+                      }
+                    },
+                    "DistanceIntervalRec": {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "OnInterval",
+                        "OffInterval"
+                      ],
+                      "properties": {
+                        "OnInterval": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "If included and supported, this field specifies the 'ON' distance interval along the path of travel of marker dispensing. 'ON' distance is the amount of distance continuous marker dispensing is active. 'ON' distance always starts first, and alternates with 'OFF' distance until the end criteria (distance or time) of the continuous marking command is met, or marking material runs out."
+                        },
+                        "OffInterval": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "If included and supported, this field specifies the 'OFF' distance interval along the path of travel of marker dispensing. 'OFF' distance is the amount of distance continuous marker dispensing is inactive. 'OFF' distance occurs after 'ON' distance is met, and alternates with 'ON' distance until the end criteria (distance or time) of the continuous marking command is met, or marking material runs out."
+                        }
+                      }
+                    },
+                    "TimeIntervalRec": {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "OnInterval",
+                        "OffInterval"
+                      ],
+                      "properties": {
+                        "OnInterval": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "If included and supported, this field specifies the 'ON' time interval along the path of travel of marker dispensing. 'ON' time is the amount of time continuous marker dispensing is active. 'ON' time always starts first, and alternates with 'OFF' time until the end criteria (distance or time) of the continuous marking command is met, or marking material runs out."
+                        },
+                        "OffInterval": {
+                          "type": "UNKNOWN",
+                          "jausType": "long float",
+                          "comment": "If included and supported, this field specifies the 'OFF' time interval along the path of travel of marker dispensing. 'OFF' time is the amount of time continuous marker dispensing is inactive. 'OFF' time occurs after 'ON' time expires, and alternates with 'ON' time until the end criteria (distance or time) of the continuous marking command is met, or marking material runs out."
+                        }
+                      }
+                    }
+                  },
+                  "jausType": "unsigned byte",
+                  "vtagMin": 0,
+                  "vtagMax": 2,
+                  "isVariant": true
+                },
+                "DurationLimitRec": {
+                  "type": "object",
+                  "comment": "",
+                  "required": [
+                    "presenceVector"
+                  ],
+                  "properties": {
+                    "presenceVector": {
+                      "type": "number",
+                      "jausType": "unsigned byte",
+                      "comment": ""
+                    },
+                    "Duration": {
+                      "type": "UNKNOWN",
+                      "jausType": "long float",
+                      "comment": "If included and supported, this field specifies the duration of a continuous marker dispensing. If excluded, the continuous marker dispensing lasts until distance criteria is met, the command is cancelled, or marking materials are gone."
+                    }
+                  }
+                },
+                "DistanceLimitRec": {
+                  "type": "object",
+                  "comment": "",
+                  "required": [
+                    "presenceVector"
+                  ],
+                  "properties": {
+                    "presenceVector": {
+                      "type": "number",
+                      "jausType": "unsigned byte",
+                      "comment": ""
+                    },
+                    "DistanceLimit": {
+                      "type": "UNKNOWN",
+                      "jausType": "long float",
+                      "comment": "If included and supported, this field specifies the maxium distance travelled for a continuous marker dispensing. If excluded, the continuous marker dispensing lasts until duration criteria is met, the command is cancelled, or marking materials are gone."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 1,
+          "isVariant": true
+        },
+        "MarkerUnitList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "ID"
+                ],
+                "properties": {
+                  "ID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "ID of the marking unit to command."
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned byte",
+          "minItems": 1,
+          "maxItems": 255,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DispenseMarkerSequence"
+  ]
+}

@@ -31,7 +31,7 @@
             "comment": "",
             "required": [
               "SensorID",
-              "ReportCoordinateSystem",
+              "CoordinateSystemEnum",
               "QueryPresenceVector"
             ],
             "properties": {
@@ -40,7 +40,7 @@
                 "jausType": "unsigned short integer",
                 "comment": ""
               },
-              "ReportCoordinateSystem": {
+              "CoordinateSystemEnum": {
                 "type": "string",
                 "jausType": "unsigned byte",
                 "comment": "",

@@ -1,0 +1,88 @@
+{
+  "title": "SetCoordinateFrameResponse",
+  "messageId": "eef3",
+  "isCommand": false,
+  "description": "",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "eef3"
+        }
+      }
+    },
+    "SetCoordinateFrameResponseRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SetResponse"
+      ],
+      "properties": {
+        "SetResponse": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "ACCEPTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "FRAME_NOT_SUPPORTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "FOLLOW_MODE_NOT_SUPPORTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "SPECIFIED_JAUS_ID_IS_NOT_VALID"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "SPECIFIED_JAUS_ID_DOES_NOT_EXIST"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "SPECIFIED_LINK_DOES_NOT_EXIST"
+              }
+            }
+          ],
+          "enum": [
+            "ACCEPTED",
+            "FRAME_NOT_SUPPORTED",
+            "FOLLOW_MODE_NOT_SUPPORTED",
+            "SPECIFIED_JAUS_ID_IS_NOT_VALID",
+            "SPECIFIED_JAUS_ID_DOES_NOT_EXIST",
+            "SPECIFIED_LINK_DOES_NOT_EXIST"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetCoordinateFrameResponseRec"
+  ]
+}

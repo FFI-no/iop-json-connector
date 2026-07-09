@@ -1,0 +1,94 @@
+{
+  "title": "ReportTransitionCompleted",
+  "messageId": "f0f4",
+  "isCommand": false,
+  "description": "This message is sent to notify a client when a transition is completed, or when a transition cannot be completed, with the reason why.  This message shall be sent immediately back to the client upon receiving a request to transition to an invalid (or non-existing) pose given the current pose, otherwise, it shall be sent upon successfully arriving in a new pose.  If the return status is TRANSITION_FAILED_ORIGINAL_POSE_RESTORED, it means that the original pose (before the transition started) is the current pose.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f0f4"
+        }
+      }
+    },
+    "TransitionCompletedRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestID",
+        "Status"
+      ],
+      "properties": {
+        "RequestID": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": "Unique identifier associated with a SetCurrentPose request."
+        },
+        "Status": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "TRANSITION_COMPLETED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "INVALID_TRANSITION"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "UNRECOGNIZED_POSE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "TRANSITION_FAILED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "TRANSITION_FAILED_ORIGINAL_POSE_RESTORED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "TRANSITION_TIMED_OUT"
+              }
+            }
+          ],
+          "enum": [
+            "TRANSITION_COMPLETED",
+            "INVALID_TRANSITION",
+            "UNRECOGNIZED_POSE",
+            "TRANSITION_FAILED",
+            "TRANSITION_FAILED_ORIGINAL_POSE_RESTORED",
+            "TRANSITION_TIMED_OUT"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "TransitionCompletedRec"
+  ]
+}

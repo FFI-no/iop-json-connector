@@ -1,0 +1,55 @@
+{
+  "title": "QueryLoggerConfiguration",
+  "messageId": "9112",
+  "isCommand": false,
+  "description": "Query the configuration of selected loggers",
+  "type": "object",
+  "properties": {
+    "DefaultHeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "9112"
+        }
+      }
+    },
+    "LoggerIDList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "LoggerID"
+            ],
+            "properties": {
+              "LoggerID": {
+                "type": "number",
+                "jausType": "byte",
+                "comment": "ID of the logger, 0 reserved to be all loggers"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "DefaultHeaderRec",
+    "LoggerIDList"
+  ]
+}

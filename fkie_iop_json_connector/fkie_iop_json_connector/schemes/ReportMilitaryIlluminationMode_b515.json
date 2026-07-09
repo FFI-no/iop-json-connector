@@ -1,0 +1,60 @@
+{
+  "title": "ReportMilitaryIlluminationMode",
+  "messageId": "b515",
+  "isCommand": false,
+  "description": "This message reports the current illumination mode. When set to ON, the vehicle should engage the blackout variant of each vehicle light instead of the traditional vehicle light.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "b515"
+        }
+      }
+    },
+    "illuminationRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "blackout_mode"
+      ],
+      "properties": {
+        "blackout_mode": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "When this enumeration is ON the following is the interpretation of the illuminationRec ::illumination bit_field in the parent service is the following: Bit 0: ConvoyDrivingLamp Bit 1: ConvoyLampSelect Bit 2: FrontBlackOutMarkerLamp Bit 3: RearBlackOutMarkerLamp Bit 4: BlackoutBrakeLamp Bit 5: BlackoutWorkLamp Bit 6: NightVisionIlluminator Bit 7-10: VariableDashLighting Bits 11-31 reserved When this enumeration is ON the following is the interpretation of the illuminatorTypes ::types bit_field in the parent service is the following: Bit 0: ConvoyDrivingLamp Bit 1: ConvoyLampSelect Bit 2: FrontBlackOutMarkerLamp Bit 3: RearBlackOutMarkerLamp Bit 4: BlackoutBrakeLamp Bit 5: BlackoutWorkLamp Bit 6: NightVisionIlluminator Bit 7: Dash lighting Bits 8-31 reserved",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "OFF"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "ON"
+              }
+            }
+          ],
+          "enum": [
+            "OFF",
+            "ON"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "illuminationRec"
+  ]
+}

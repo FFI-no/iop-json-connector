@@ -1,0 +1,60 @@
+{
+  "title": "SetUninterruptiblePowerSupply",
+  "messageId": "ea02",
+  "isCommand": true,
+  "description": "Allows a controlling client to manually turn the uninterruptible power supply on or off.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "ea02"
+        }
+      }
+    },
+    "SetUninterruptiblePowerSupplyRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "State"
+      ],
+      "properties": {
+        "State": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "OFF"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "ON"
+              }
+            }
+          ],
+          "enum": [
+            "OFF",
+            "ON"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "SetUninterruptiblePowerSupplyRec"
+  ]
+}

@@ -2,7 +2,7 @@
   "title": "SetElement",
   "messageId": "041a",
   "isCommand": true,
-  "description": "This message is used to add, insert or replace one or more elements in a list.  Each element is uniquely \n      identified by the UID, and the sequence within the list is specified by the previous (parent) and next (child) \n      elements.  This message can also be used to update an existing element.",
+  "description": "This message is used to add, insert or replace one or more elements in a list.  Each element is uniquely identified by the UID, and the sequence within the list is specified by the previous (parent) and next (child) elements.  This message can also be used to update an existing element.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -125,8 +125,8 @@
             ]
           },
           "jausType": "unsigned byte",
-          "minItems": null,
-          "maxItems": null,
+          "minItems": 0,
+          "maxItems": 255,
           "isVariant": false
         }
       }

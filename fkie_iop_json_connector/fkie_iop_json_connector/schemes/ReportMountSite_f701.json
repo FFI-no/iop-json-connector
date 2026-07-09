@@ -1,0 +1,222 @@
+{
+  "title": "ReportMountSite",
+  "messageId": "f701",
+  "isCommand": false,
+  "description": "This message reports a list of registered mount-site locations and orientations with \n          respect to the coordinate frame of the host node. This list includes either the mount \n          site associated with the given node ID or all available mount-sites.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "f701"
+        }
+      }
+    },
+    "MountSitePropertiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "ChildNodeIDRec",
+              "CoordinateFrameVar",
+              "LocationRec",
+              "OrientationRec"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "ChildNodeIDRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "NodeID"
+                ],
+                "properties": {
+                  "NodeID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "The JAUS Node ID byte representing the child node that can be mounted at this location."
+                  }
+                }
+              },
+              "AttachmentIDRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "AttachmentID"
+                ],
+                "properties": {
+                  "AttachmentID": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "ID of the attachment site which is being reported. The attachment site is associated with the child node. Attachment IDs are defined by the child node."
+                  }
+                }
+              },
+              "CoordinateFrameVar": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "ModuleFrameVar": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [],
+                    "properties": {},
+                    "jausType": "unsigned byte",
+                    "vtagMin": 0,
+                    "vtagMax": 0,
+                    "isVariant": true
+                  },
+                  "LinkFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "LinkIndex"
+                    ],
+                    "properties": {
+                      "LinkIndex": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "Index of the serial manipulator link for the selected coordinate frame."
+                      }
+                    }
+                  },
+                  "StabilizerFrameRec": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "StabilizerID"
+                    ],
+                    "properties": {
+                      "StabilizerID": {
+                        "type": "number",
+                        "jausType": "unsigned byte",
+                        "comment": "ID of the stabilizer which the coordinate frame is representing."
+                      }
+                    }
+                  }
+                },
+                "jausType": "unsigned byte",
+                "vtagMin": 0,
+                "vtagMax": 2,
+                "isVariant": true
+              },
+              "LocationRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "OffsetX",
+                  "OffsetY",
+                  "OffsetZ"
+                ],
+                "properties": {
+                  "OffsetX": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "X coordinate of mount site location in selected frame of reference.",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  },
+                  "OffsetY": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Y coordinate of mount site location in selected frame of reference.",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  },
+                  "OffsetZ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "Z coordinate of mount site location in selected frame of reference.",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-07,
+                      "bias": -500.0
+                    }
+                  }
+                }
+              },
+              "OrientationRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "dComponentOfUnitQuaternionQ",
+                  "aComponentOfUnitQuaternionQ",
+                  "bComponentOfUnitQuaternionQ",
+                  "cComponentOfUnitQuaternionQ"
+                ],
+                "properties": {
+                  "dComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  },
+                  "aComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  },
+                  "bComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  },
+                  "cComponentOfUnitQuaternionQ": {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 4.656612874161595e-10,
+                      "bias": -1.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned byte",
+      "minItems": 0,
+      "maxItems": 255,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "MountSitePropertiesList"
+  ]
+}

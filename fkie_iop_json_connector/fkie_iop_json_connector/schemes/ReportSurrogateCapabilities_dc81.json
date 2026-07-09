@@ -1,0 +1,541 @@
+{
+  "title": "ReportSurrogateCapabilities",
+  "messageId": "dc81",
+  "isCommand": false,
+  "description": "Reports the capabilities of the surrogate UAV driver.\n\t\tFor maximum and minimum commandable positions, the exclusion of a limit on any axis implies\n\t\tthe limit for that axis is either unknown or does not apply.  The maximum and minimum commandable\n\t\trelative positions are defined using Relative Pose.  Relative pose is defined as \n\t\ta position and orientation relative to the Host Frame of reference, as defined in \n\t\tSection 3 Common Conventions.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "dc81"
+        }
+      }
+    },
+    "ReportSurrogateCapabilitiesSequence": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "presenceVector",
+        "LaunchAndRecoverCapabilities",
+        "TetherManagementCapabilities"
+      ],
+      "properties": {
+        "presenceVector": {
+          "type": "number",
+          "jausType": "unsigned byte",
+          "comment": ""
+        },
+        "LaunchAndRecoverCapabilities": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector",
+            "SupportedLaunchAndRecoveryBehaviors"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "SupportedLaunchAndRecoveryBehaviors": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "AutonomousLaunch",
+                "AutonomousRecovery",
+                "RecoverOnDifferentPlatform",
+                "RecoverOnMovingPlatform",
+                "RecoverAtLocalPosition",
+                "RecoverAtGlobalPosition"
+              ],
+              "properties": {
+                "AutonomousLaunch": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 0
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "AutonomousRecovery": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 1,
+                    "to": 1
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "RecoverOnDifferentPlatform": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 2,
+                    "to": 2
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "RecoverOnMovingPlatform": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 3,
+                    "to": 3
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "RecoverAtLocalPosition": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 4,
+                    "to": 4
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "RecoverAtGlobalPosition": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 5,
+                    "to": 5
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                }
+              },
+              "bitField": "unsigned byte"
+            },
+            "MaximumCommandableRelativeXPosition": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "Maximum commandable X position where 0 meters is considered the resting state (landed position) of the surrogate prior to launch."
+            },
+            "MinimumCommandableRelativeXPosition": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "Minimum commandable X position where 0 meters is considered the resting state (landed position) of the surrogate prior to launch."
+            },
+            "MaximumCommandableRelativeYPosition": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "Maximum commandable Y position where 0 meters is considered the resting state (landed position) of the surrogate prior to launch."
+            },
+            "MinimumCommandableRelativeYPosition": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "Minimum commandable Y position where 0 meters is considered the resting state (landed position) of the surrogate prior to launch."
+            },
+            "MaximumCommandableRelativeZPosition": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "Maximum commandable Z position where 0 meters is considered the resting state (landed position) of the surrogate prior to launch."
+            },
+            "MinimumCommandableRelativeZPosition": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "Minimum commandable Z position where 0 meters is considered the resting state (landed position) of the surrogate prior to launch."
+            },
+            "HostPlatformID": {
+              "type": "object",
+              "comment": "",
+              "required": [],
+              "properties": {
+                "ComponentID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 7
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 0.0,
+                        "maximum": 255.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "NodeID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 8,
+                    "to": 15
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 0.0,
+                        "maximum": 255.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                },
+                "SubsystemID": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 16,
+                    "to": 31
+                  },
+                  "valueSet": [
+                    {
+                      "valueRange": {
+                        "minimum": 0.0,
+                        "maximum": 65535.0,
+                        "interpretation": ""
+                      }
+                    }
+                  ]
+                }
+              },
+              "bitField": "unsigned integer"
+            }
+          }
+        },
+        "TetherManagementCapabilities": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector",
+            "SupportedTetherManagementBehaviors"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "SupportedTetherManagementBehaviors": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "CommandedUntwist",
+                "AutomaticUntwist",
+                "CommandedTetherDisengagement",
+                "AutomaticTetherDisengagement"
+              ],
+              "properties": {
+                "CommandedUntwist": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 0,
+                    "to": 0
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "AutomaticUntwist": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 1,
+                    "to": 1
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "CommandedTetherDisengagement": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 2,
+                    "to": 2
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                },
+                "AutomaticTetherDisengagement": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "bitRange": {
+                    "from": 3,
+                    "to": 3
+                  },
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "NOT_SUPPORTED"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "SUPPORTED"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "NOT_SUPPORTED",
+                    "SUPPORTED"
+                  ]
+                }
+              },
+              "bitField": "unsigned byte"
+            },
+            "MaximumNumberOfTwists": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "The maximum number of twists of the tether before safety or performance of the tether is significantly negatively affected."
+            },
+            "MaximumTwistsPerMeter": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "The maximum number of twists of the tether per meter of surrogate altitude before safety or performance of the tether is significantly negatively affected."
+            },
+            "MinimumMetersPerTwist": {
+              "type": "UNKNOWN",
+              "jausType": "float",
+              "comment": "The maximum number meters of altitude per twist of the tether before safety or performance of the tether is significantly negatively affected."
+            }
+          }
+        },
+        "InitialLaunchPositionOffset": {
+          "type": "object",
+          "comment": "Offset of the inital launch position of the surrogate, thus defining the origin of the host frame with respect to the vehicle coordinate frame.",
+          "required": [
+            "PositionVector"
+          ],
+          "properties": {
+            "PositionVector": {
+              "type": "array",
+              "comment": "",
+              "required": [
+                "PositionVectorElement"
+              ],
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 1.3969838622484784e-08,
+                      "bias": -30.0
+                    }
+                  }
+                ]
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        },
+        "RecoveryPositionOffset": {
+          "type": "object",
+          "comment": "Offset of the recovery position (landed position) of the surrogate within the host coorindate frame. May be used to describe a recovery position that is separate from the initial launch position.",
+          "required": [
+            "PositionVector"
+          ],
+          "properties": {
+            "PositionVector": {
+              "type": "array",
+              "comment": "",
+              "required": [
+                "PositionVectorElement"
+              ],
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 1.3969838622484784e-08,
+                      "bias": -30.0
+                    }
+                  }
+                ]
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportSurrogateCapabilitiesSequence"
+  ]
+}
