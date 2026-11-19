@@ -1,0 +1,27 @@
+{
+  "title": "QueryPortMappings",
+  "messageId": "2815",
+  "isCommand": false,
+  "description": "This message is sent to request a list of all current mappings",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "2815"
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec"
+  ]
+}

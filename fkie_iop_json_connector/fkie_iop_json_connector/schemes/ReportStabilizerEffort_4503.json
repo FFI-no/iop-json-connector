@@ -20,7 +20,7 @@
         }
       }
     },
-    "StabilizerEffort": {
+    "stabilizerEffort": {
       "type": "array",
       "comment": "",
       "required": [],
@@ -60,6 +60,6 @@
   },
   "required": [
     "HeaderRec",
-    "StabilizerEffort"
+    "stabilizerEffort"
   ]
 }

@@ -1,0 +1,1459 @@
+{
+  "title": "ReportH264VideoEncodingCapabilities",
+  "messageId": "480e",
+  "isCommand": false,
+  "description": "This message is used to report which configuration options are supported on one or more H264 encoded video streams.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "480e"
+        }
+      }
+    },
+    "H264CapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Note: 0 is not a valid VisualSensorID value"
+              },
+              "SupportedProfiles": {
+                "type": "object",
+                "comment": "A high value (1) for a bit means the profile is supported.",
+                "required": [],
+                "properties": {
+                  "Baseline": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ConstrainedBaseline": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Main": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Extended": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "High": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 4,
+                      "to": 4
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ProgressiveHigh": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 5,
+                      "to": 5
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ConstrainedHigh": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 6,
+                      "to": 6
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "High10": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 7,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "High422": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 8,
+                      "to": 8
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "High444Predictive": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 9,
+                      "to": 9
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "High10Intra": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 10,
+                      "to": 10
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "High422Intra": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 11,
+                      "to": 11
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "High444Intra": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 12,
+                      "to": 12
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "CAVLC444": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 13,
+                      "to": 13
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ScalableBaseline": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 14,
+                      "to": 14
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ScalableConstrainedBaseline": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 15,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ScalableHigh": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 16
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ScalableConstrainedHigh": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 17,
+                      "to": 17
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "ScalableHighIntra": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 18,
+                      "to": 18
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "StereoHigh": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 19,
+                      "to": 19
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "MultiviewHigh": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the profile is supported.",
+                    "bitRange": {
+                      "from": 20,
+                      "to": 20
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              },
+              "SupportedLevels": {
+                "type": "object",
+                "comment": "A high value (1) for a bit means the level is supported.",
+                "required": [],
+                "properties": {
+                  "Level_1": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_1B": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_11": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_12": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_13": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 4,
+                      "to": 4
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_2": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 5,
+                      "to": 5
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_21": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 6,
+                      "to": 6
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_22": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 7,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_3": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 8,
+                      "to": 8
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_31": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 9,
+                      "to": 9
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_32": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 10,
+                      "to": 10
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_4": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 11,
+                      "to": 11
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_41": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 12,
+                      "to": 12
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_42": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 13,
+                      "to": 13
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_5": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 14,
+                      "to": 14
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_51": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 15,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_52": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 16
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_6": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 17,
+                      "to": 17
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_61": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 18,
+                      "to": 18
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Level_62": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "A high value (1) for a bit means the level is supported.",
+                    "bitRange": {
+                      "from": 19,
+                      "to": 19
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              },
+              "SupportedPresets": {
+                "type": "object",
+                "comment": "A high value (1) for a bit means the preset is supported.",
+                "required": [],
+                "properties": {
+                  "LowLatency": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "SlowComms": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "PersistentStare": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "DriveVision": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Manipulation": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 4,
+                      "to": 4
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "BestQuality": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 5,
+                      "to": 5
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NotSupported"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Supported"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NotSupported",
+                      "Supported"
+                    ]
+                  },
+                  "Reserved": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 6,
+                      "to": 11
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 63.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "ProgramSpecific": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "A high value (1) for a bit means the preset is supported.",
+                    "bitRange": {
+                      "from": 12,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 0.0,
+                          "maximum": 15.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                "bitField": "unsigned short integer"
+              },
+              "GroupOfPicturesSupported": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Boolean for Group of Pictures support",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "FALSE"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "TRUE"
+                    }
+                  }
+                ],
+                "enum": [
+                  "FALSE",
+                  "TRUE"
+                ]
+              },
+              "GradualDecoderRefreshSupported": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Boolean for Gradual Decoder Refresh (Periodic Intra Refresh) support",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "FALSE"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "TRUE"
+                    }
+                  }
+                ],
+                "enum": [
+                  "FALSE",
+                  "TRUE"
+                ]
+              },
+              "RegionOfInterestSupported": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "Boolean for Region of Interest (foveation) support",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "FALSE"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "TRUE"
+                    }
+                  }
+                ],
+                "enum": [
+                  "FALSE",
+                  "TRUE"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "H264CapabilitiesList"
+  ]
+}

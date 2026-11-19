@@ -1,0 +1,60 @@
+{
+  "title": "QueryDigitalAudioOutputCapabilities",
+  "messageId": "2819",
+  "isCommand": false,
+  "description": "This message is used to query the full set of capabilities (supported performance levels) for one or more sensors.  A SensorID of zero (0) may be used to query all sensors supported by the service in a single message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "2819"
+        }
+      }
+    },
+    "QueryDigitalAudioRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SensorID"
+      ],
+      "properties": {
+        "SensorID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the sensor being queried. Zero (0) is used to query all sensors associated with this service.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "AllSensors"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65535.0,
+                "interpretation": "Specific ID to be queried"
+              }
+            }
+          ],
+          "enum": [
+            "AllSensors"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryDigitalAudioRec"
+  ]
+}

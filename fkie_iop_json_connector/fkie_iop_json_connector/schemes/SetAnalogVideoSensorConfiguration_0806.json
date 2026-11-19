@@ -2,7 +2,7 @@
   "title": "SetAnalogVideoSensorConfiguration",
   "messageId": "0806",
   "isCommand": true,
-  "description": "This message is used to set the \n            configuration of the analog video sensor associated with the \n            service. Configuration is based off of each sensor\u2019s capabilities \n            as described in the Report Analog Video Sensor Capabilities \n            message. This message shall cause the receiving service to reply \n            to the sender with a Confirm Sensor Configuration message. If \n            the configuration specified is invalid for a given sensor ID, \n            the confirm message shall contain an Analog Video Error Record \n            for the given Sensor ID however other, valid, configurations \n            specified shall be set (if they exist).",
+  "description": "This message is used to set the configuration of the analog video sensor associated with the service. Configuration is based off of each sensor\u2019s capabilities as described in the Report Analog Video Sensor Capabilities message. This message shall cause the receiving service to reply to the sender with a Confirm Sensor Configuration message. If the configuration specified is invalid for a given sensor ID, the confirm message shall contain an Analog Video Error Record for the given Sensor ID however other, valid, configurations specified shall be set (if they exist).",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -59,7 +59,16 @@
                   "SensorID": {
                     "type": "number",
                     "jausType": "unsigned short integer",
-                    "comment": ""
+                    "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 65535.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
                   },
                   "AnalogFormat": {
                     "type": "string",

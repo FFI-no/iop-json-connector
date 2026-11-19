@@ -1,0 +1,345 @@
+{
+  "title": "ReportDigitalAudioSensorConfiguration",
+  "messageId": "480f",
+  "isCommand": false,
+  "description": "This message is used to report the current configuration for one or more audio sensors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "480f"
+        }
+      }
+    },
+    "DigitalAudioSensorConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              },
+              "Sensitivity": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "The gain or volume applied to the input as a percent. A value of 0% indicates that no output signal is generated, while a value of 100% indicates that maximum amplification is applied to the input.",
+                "scaleRange": {
+                  "scaleFactor": 0.0015259021896696422,
+                  "bias": 0.0
+                }
+              },
+              "MinimumBitRate": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "kilobits per second. Different min and max bitrates may result in a Variable Bit Rate (VBR) stream, if supported."
+              },
+              "MaximumBitRate": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "kilobits per second. Different min and max bitrates may result in a Variable Bit Rate (VBR) stream, if supported."
+              },
+              "DigitalFormat": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "LPCM_PCM"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "AIFF"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "WAV"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "ALAC"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "FLAC"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 5,
+                      "enumConst": "RealAudio"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 6,
+                      "enumConst": "WMA9_LOSSLESS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 7,
+                      "enumConst": "TrueAudio"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 8,
+                      "enumConst": "DolbyDigital"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 9,
+                      "enumConst": "DTS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 10,
+                      "enumConst": "MP2"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 11,
+                      "enumConst": "MP3"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 12,
+                      "enumConst": "AAC_MPEG2"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 13,
+                      "enumConst": "AAC_MPEG4"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 14,
+                      "enumConst": "VORBIS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 15,
+                      "enumConst": "WMA"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 16,
+                      "enumConst": "Speex"
+                    }
+                  }
+                ],
+                "enum": [
+                  "LPCM_PCM",
+                  "AIFF",
+                  "WAV",
+                  "ALAC",
+                  "FLAC",
+                  "RealAudio",
+                  "WMA9_LOSSLESS",
+                  "TrueAudio",
+                  "DolbyDigital",
+                  "DTS",
+                  "MP2",
+                  "MP3",
+                  "AAC_MPEG2",
+                  "AAC_MPEG4",
+                  "VORBIS",
+                  "WMA",
+                  "Speex"
+                ]
+              },
+              "SampleRate": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Samples per second"
+              },
+              "BitDepth": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "EIGHT_BITS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "TEN_BITS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "TWELVE_BITS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "FOURTEEN_BITS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "SIXTEEN_BITS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 5,
+                      "enumConst": "TWENTY_BITS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 6,
+                      "enumConst": "TWENTY_FOUR_BITS"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 7,
+                      "enumConst": "THIRTY_TWO_BITS"
+                    }
+                  }
+                ],
+                "enum": [
+                  "EIGHT_BITS",
+                  "TEN_BITS",
+                  "TWELVE_BITS",
+                  "FOURTEEN_BITS",
+                  "SIXTEEN_BITS",
+                  "TWENTY_BITS",
+                  "TWENTY_FOUR_BITS",
+                  "THIRTY_TWO_BITS"
+                ]
+              },
+              "EncodingQuality": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "Best"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "Better"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 2,
+                      "enumConst": "Good"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 3,
+                      "enumConst": "Average"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 4,
+                      "enumConst": "Adequate"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 5,
+                      "enumConst": "Poor"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 6,
+                      "enumConst": "Worst"
+                    }
+                  }
+                ],
+                "enum": [
+                  "Best",
+                  "Better",
+                  "Good",
+                  "Average",
+                  "Adequate",
+                  "Poor",
+                  "Worst"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DigitalAudioSensorConfigurationList"
+  ]
+}

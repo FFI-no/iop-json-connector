@@ -20,7 +20,7 @@
         }
       }
     },
-    "StabilizerCapabilities": {
+    "stabilizerCapabilities": {
       "type": "array",
       "comment": "",
       "required": [],
@@ -30,11 +30,11 @@
             "type": "object",
             "comment": "",
             "required": [
-              "StabilizerCapabilitiesRec",
-              "StabilizerDimensionsList"
+              "stabilizerCapabilitiesRec",
+              "stabilizerDimensionsList"
             ],
             "properties": {
-              "StabilizerCapabilitiesRec": {
+              "stabilizerCapabilitiesRec": {
                 "type": "object",
                 "comment": "",
                 "required": [
@@ -68,7 +68,7 @@
                   }
                 }
               },
-              "StabilizerDimensionsList": {
+              "stabilizerDimensionsList": {
                 "type": "array",
                 "comment": "",
                 "required": [],
@@ -131,6 +131,6 @@
   },
   "required": [
     "HeaderRec",
-    "StabilizerCapabilities"
+    "stabilizerCapabilities"
   ]
 }

@@ -1,0 +1,360 @@
+{
+  "title": "ReportLocalLoiter",
+  "messageId": "4426",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver with the current values of the safety zones. The message data for this message are identical to the ID 0426h: SetLocalLoiter message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4426"
+        }
+      }
+    },
+    "LocalLoiterSpecification": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "LocalLoiterRec",
+        "Loiter"
+      ],
+      "properties": {
+        "LocalLoiterRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector",
+            "X",
+            "Y"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            },
+            "X": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Y": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "ZPosition": {
+              "type": "array",
+              "comment": "",
+              "required": [],
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 0,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 1,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 2,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 3,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  },
+                  {
+                    "type": "number",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "fieldIndex": 4,
+                    "fieldUnits": "meter",
+                    "scaleRange": {
+                      "scaleFactor": 2.3283064370807974e-05,
+                      "bias": -50000.0
+                    }
+                  }
+                ]
+              },
+              "jausType": "unsigned byte",
+              "minItems": 1,
+              "maxItems": 1
+            }
+          }
+        },
+        "Loiter": {
+          "type": "object",
+          "comment": "",
+          "required": [],
+          "properties": {
+            "HoverRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "HoverPreference",
+                "XYTolerance",
+                "ZTolerance"
+              ],
+              "properties": {
+                "HoverPreference": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "XYPriority"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "ZPriority"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "XYPriority",
+                    "ZPriority"
+                  ]
+                },
+                "XYTolerance": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 2.3283064370807974e-05,
+                    "bias": 0.0
+                  }
+                },
+                "ZTolerance": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.1641532185403987e-05,
+                    "bias": 0.0
+                  }
+                }
+              }
+            },
+            "PolygonRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "NumberLoiterVertices",
+                "XYExtent",
+                "LoiterDirection",
+                "LoiterBearing"
+              ],
+              "properties": {
+                "NumberLoiterVertices": {
+                  "type": "number",
+                  "jausType": "unsigned byte",
+                  "comment": "Number of vertices in loiter convex, regular polygon 0 and 1 are a circular loiter; 2 forms a linear loiter"
+                },
+                "XYExtent": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Distance from loiter reference position to polygon vertices",
+                  "scaleRange": {
+                    "scaleFactor": 2.3283064370807974e-05,
+                    "bias": 0.0
+                  }
+                },
+                "LoiterDirection": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "VehicleDependent"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "Clockwise"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 2,
+                        "enumConst": "CounterClockwise"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "VehicleDependent",
+                    "Clockwise",
+                    "CounterClockwise"
+                  ]
+                },
+                "LoiterBearing": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Angular offset from the X-axis in a right-hand sense about Z-axis from the loiter point to the first vertex of the polygon; a value of zero for a 4-vertex polygon would create a diamond while a value of PI/4 would create a square with respect to the local coordinate system.",
+                  "scaleRange": {
+                    "scaleFactor": 4.793763109162727e-05,
+                    "bias": 0.0
+                  }
+                }
+              }
+            },
+            "RaceTrackRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "LoiterType",
+                "LoiterRadius",
+                "LoiterLength",
+                "LoiterDirection",
+                "LoiterBearing"
+              ],
+              "properties": {
+                "LoiterType": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "Racetrack"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "Figure8"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "Racetrack",
+                    "Figure8"
+                  ]
+                },
+                "LoiterRadius": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Width (smaller distance) of racetrack or figure 8",
+                  "scaleRange": {
+                    "scaleFactor": 4.656612874161595e-05,
+                    "bias": 0.0
+                  }
+                },
+                "LoiterLength": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Length (larger distance) of racetrack or figure 8",
+                  "scaleRange": {
+                    "scaleFactor": 4.656612874161595e-05,
+                    "bias": 0.0
+                  }
+                },
+                "LoiterDirection": {
+                  "type": "string",
+                  "jausType": "unsigned byte",
+                  "comment": "",
+                  "valueSet": [
+                    {
+                      "valueEnum": {
+                        "enumIndex": 0,
+                        "enumConst": "VehicleDependent"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 1,
+                        "enumConst": "Clockwise"
+                      }
+                    },
+                    {
+                      "valueEnum": {
+                        "enumIndex": 2,
+                        "enumConst": "CounterClockwise"
+                      }
+                    }
+                  ],
+                  "enum": [
+                    "VehicleDependent",
+                    "Clockwise",
+                    "CounterClockwise"
+                  ]
+                },
+                "LoiterBearing": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Angular offset of the length axis from the X-axis in a right-hand sense about Z-axis; a value of zero would align the \u201cLoiterLength\u201d with the X-axis while a value of PI/2 would align it with the Y-axis.",
+                  "scaleRange": {
+                    "scaleFactor": 4.793763109162727e-05,
+                    "bias": 0.0
+                  }
+                }
+              }
+            }
+          },
+          "jausType": "unsigned byte",
+          "vtagMin": 0,
+          "vtagMax": 2,
+          "isVariant": true
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "LocalLoiterSpecification"
+  ]
+}

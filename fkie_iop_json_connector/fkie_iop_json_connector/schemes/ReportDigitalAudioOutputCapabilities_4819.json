@@ -1,0 +1,781 @@
+{
+  "title": "ReportDigitalAudioOutputCapabilities",
+  "messageId": "4819",
+  "isCommand": false,
+  "description": "This message is used to report full set of capabilities (supported performance levels) for one or more sensors.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4819"
+        }
+      }
+    },
+    "DigitalAudioOutputCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
+              },
+              "MinimumAllowedBitRate": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "kilobits per second"
+              },
+              "MaximumAllowedBitRate": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "kilobits per second"
+              },
+              "SupportedDigitalFormats": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "LPCM_PCM": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "AIFF": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "WAV": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "ALAC": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "SUPPORTED",
+                      "NOT_SUPPORTED"
+                    ]
+                  },
+                  "FLAC": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 4,
+                      "to": 4
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "RealAudio": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 5,
+                      "to": 5
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "WMA9_Lossless": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 6,
+                      "to": 6
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "TrueAudio": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 7,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "DolbyDigital": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 8,
+                      "to": 8
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "DTS": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 9,
+                      "to": 9
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "MP2": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 10,
+                      "to": 10
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "MP3": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 11,
+                      "to": 11
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "AAC_MPEG2": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 12,
+                      "to": 12
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "AAC_MPEG4": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 13,
+                      "to": 13
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "VORBIS": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 14,
+                      "to": 14
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "WMA": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 15,
+                      "to": 15
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "Speex": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 16,
+                      "to": 16
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  }
+                },
+                "bitField": "unsigned integer"
+              },
+              "MinSampleRate": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Samples per second"
+              },
+              "MaxSampleRate": {
+                "type": "number",
+                "jausType": "unsigned integer",
+                "comment": "Samples per second"
+              },
+              "SupportedBitDepths": {
+                "type": "object",
+                "comment": "",
+                "required": [],
+                "properties": {
+                  "EIGHT_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 0,
+                      "to": 0
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "TEN_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 1,
+                      "to": 1
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "TWELVE_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 2,
+                      "to": 2
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "FOURTEEN_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 3,
+                      "to": 3
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "SIXTEEN_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 4,
+                      "to": 4
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "TWENTY_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 5,
+                      "to": 5
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "TWENTY_FOUR_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 6,
+                      "to": 6
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  },
+                  "THIRTY_TWO_BITS": {
+                    "type": "string",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "bitRange": {
+                      "from": 7,
+                      "to": 7
+                    },
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "NOT_SUPPORTED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SUPPORTED"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "NOT_SUPPORTED",
+                      "SUPPORTED"
+                    ]
+                  }
+                },
+                "bitField": "unsigned short integer"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DigitalAudioOutputCapabilitiesList"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "title": "QueryVideoIlluminatorCapabilities",
+  "messageId": "281b",
+  "isCommand": false,
+  "description": "This message requests a report of the capabilities of the illuminator device associated with the specified illuminatorID(s).",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "281b"
+        }
+      }
+    },
+    "IlluminatorIDList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "IlluminatorID"
+            ],
+            "properties": {
+              "IlluminatorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Identifies an illumination device supported by the service. A value of zero shall be interpreted as query for all available illuminators."
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "IlluminatorIDList"
+  ]
+}

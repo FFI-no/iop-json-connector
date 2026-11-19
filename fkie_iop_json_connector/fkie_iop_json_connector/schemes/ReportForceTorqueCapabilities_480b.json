@@ -1,0 +1,200 @@
+{
+  "title": "ReportForceTorqueCapabilities",
+  "messageId": "480b",
+  "isCommand": false,
+  "description": "This message is used to report the capabilities of one or more force/torque sensing devices.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "480b"
+        }
+      }
+    },
+    "ReportForceTorqueCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID",
+              "SensorName"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "The ID of the sensor. A value of zero (0) means all sensors"
+              },
+              "SensorName": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "minLength": 0,
+                "maxLength": 255
+              },
+              "CoordinateTransformSupported": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "True or false depending on if the service supports transforming data into the vehicle coordinate system.",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "False"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "True"
+                    }
+                  }
+                ],
+                "enum": [
+                  "False",
+                  "True"
+                ]
+              },
+              "MinForceX": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most negative force measurable in the X-direction.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MaxForceX": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most positive force measurable in the X-direction.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MinForceY": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most negative force measurable in the Y-direction.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MaxForceY": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most positive force measurable in the Y-direction.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MinForceZ": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most negative force measurable in the Z-direction.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MaxForceZ": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most positive force measurable in the Z-direction.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MinTorqueX": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most negative torque measurable around the X-axis.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MaxTorqueX": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most positive torque measurable around the X-axis.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MinTorqueY": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most negative torque measurable around the Y-axis.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MaxTorqueY": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most positive torque measurable around the Y-axis.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MinTorqueZ": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most negative torque measurable around the Z-axis.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "MaxTorqueZ": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Most positive torque measurable around the Z-axis.",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportForceTorqueCapabilitiesList"
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "title": "ReportForceTorque",
+  "messageId": "480c",
+  "isCommand": false,
+  "description": "This message is used to report the measured force/torque for one or more sensing devices.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "480c"
+        }
+      }
+    },
+    "ReportForceTorqueList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "SensorID",
+              "CoordinateSystem"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "The ID of the sensor. A value of zero (0) is not allowed"
+              },
+              "CoordinateSystem": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "NativeCoordinateSystems"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "VehicleCoordinateSystems"
+                    }
+                  }
+                ],
+                "enum": [
+                  "NativeCoordinateSystems",
+                  "VehicleCoordinateSystems"
+                ]
+              },
+              "ForceX": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current force measured in the X-direction",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "ForceY": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current force measured in the Y-direction",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "ForceZ": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current force measured in the Z-direction",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "TorqueX": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current torque measured around the X-axis",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "TorqueY": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current torque measured around the Y-axis",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              },
+              "TorqueZ": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "Current torque measured around the Z-axis",
+                "scaleRange": {
+                  "scaleFactor": 0.15259021896696423,
+                  "bias": -5000.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "ReportForceTorqueList"
+  ]
+}

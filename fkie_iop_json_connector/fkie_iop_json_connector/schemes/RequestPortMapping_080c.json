@@ -1,0 +1,72 @@
+{
+  "title": "RequestPortMapping",
+  "messageId": "080c",
+  "isCommand": false,
+  "description": "This message is sent to request a port mapping at the network gateway (node hosting the PortMapper) such that network packets arriving on the gateway\u2019s mapped port are forwarded to the endpoint specified in this request.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "080c"
+        }
+      }
+    },
+    "RequestPortMappingRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SocketType",
+        "IPAddr",
+        "Port"
+      ],
+      "properties": {
+        "SocketType": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "UDP"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "TCP"
+              }
+            }
+          ],
+          "enum": [
+            "UDP",
+            "TCP"
+          ]
+        },
+        "IPAddr": {
+          "type": "number",
+          "jausType": "unsigned integer",
+          "comment": "IPv4 address of endpoint port to which PortMapper will map, in network byte order"
+        },
+        "Port": {
+          "type": "number",
+          "jausType": "unsigned short integer",
+          "comment": ""
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "RequestPortMappingRec"
+  ]
+}

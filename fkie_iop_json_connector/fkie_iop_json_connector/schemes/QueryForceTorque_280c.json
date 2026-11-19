@@ -1,0 +1,85 @@
+{
+  "title": "QueryForceTorque",
+  "messageId": "280c",
+  "isCommand": false,
+  "description": "This message is used to query the force/torque for one or more devices. Note that the requested coordinate system may not be respected if the underlying service does not support transformations, as given in the ReportForceTorqueCapabilities message.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "280c"
+        }
+      }
+    },
+    "QueryForceTorqueList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "CoordinateSystem",
+              "QueryPresenceVector"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "The ID of the sensor. A value of zero (0) means all sensors"
+              },
+              "CoordinateSystem": {
+                "type": "string",
+                "jausType": "unsigned byte",
+                "comment": "",
+                "valueSet": [
+                  {
+                    "valueEnum": {
+                      "enumIndex": 0,
+                      "enumConst": "NativeCoordinateSystems"
+                    }
+                  },
+                  {
+                    "valueEnum": {
+                      "enumIndex": 1,
+                      "enumConst": "VehicleCoordinateSystems"
+                    }
+                  }
+                ],
+                "enum": [
+                  "NativeCoordinateSystems",
+                  "VehicleCoordinateSystems"
+                ]
+              },
+              "QueryPresenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": "See ReportForceTorqueRec"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryForceTorqueList"
+  ]
+}

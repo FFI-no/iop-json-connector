@@ -1,0 +1,697 @@
+{
+  "title": "ReportNavigation",
+  "messageId": "4421",
+  "isCommand": false,
+  "description": "This message is used to provide the receiver the global position, local position, attitude, velocity, and acceleration of the platform. Reporting of these values is consistent with GlobalPoseSensor, LocalPoseSensor, VelocityStateSensor, and AccelerationStateSensor services.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4421"
+        }
+      }
+    },
+    "NavigationSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SyncTimeRec",
+        "ReportGlobalPoseExtRec",
+        "ReportLocalPoseExtRec",
+        "ReportVelocityStateExtSeq",
+        "ReportAccelerationStateExtRec"
+      ],
+      "properties": {
+        "SyncTimeRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "TimeSeconds",
+            "TimeNanoSeconds"
+          ],
+          "properties": {
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "UTC POSIX-style time in seconds since 1 January 1970. If all data is captured simultaneously, this is the capture time. Otherwise, it is the time when the disparate data is combined."
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Nanoseconds component of POSIX-style time. If all data is captured simultaneously, this is the capture time. Otherwise, it is the time when the disparate data is combined."
+            }
+          }
+        },
+        "ReportGlobalPoseExtRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "Latitude": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Decimal degrees",
+              "scaleRange": {
+                "scaleFactor": 4.190951586745435e-08,
+                "bias": -90.0
+              }
+            },
+            "Longitude": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Decimal degrees",
+              "scaleRange": {
+                "scaleFactor": 8.38190317349087e-08,
+                "bias": -180.0
+              }
+            },
+            "AltitudeAGL": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "AltitudeMSL": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "AltitudeASF": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "Depth": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "XYPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "ZPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "Roll": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Pitch": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Heading": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Attitude_RMS": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "An RMS value indicating the validity of the orientation data.",
+              "scaleRange": {
+                "scaleFactor": 4.793763109162727e-05,
+                "bias": 0.0
+              }
+            },
+            "Course": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Nanoseconds component of POSIX-style time"
+            }
+          }
+        },
+        "ReportLocalPoseExtRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "X": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "Y": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 0.00931322574832319,
+                "bias": -20000000.0
+              }
+            },
+            "AltitudeAGL": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "AltitudeMSL": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "AltitudeASF": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "Depth": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "ZLocal": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-05,
+                "bias": -50000.0
+              }
+            },
+            "XYPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "ZPositionRMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the position data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "Roll": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Pitch": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Heading": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "Attitude_RMS": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "An RMS value indicating the validity of the orientation data.",
+              "scaleRange": {
+                "scaleFactor": 4.793763109162727e-05,
+                "bias": 0.0
+              }
+            },
+            "Course": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 9.587526218325454e-05,
+                "bias": -3.141592653589793
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Nanoseconds component of POSIX-style time"
+            }
+          }
+        },
+        "ReportVelocityStateExtSeq": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "VelocityVar",
+            "ReportVelocityStateExtRec"
+          ],
+          "properties": {
+            "VelocityVar": {
+              "type": "object",
+              "comment": "",
+              "required": [],
+              "properties": {
+                "VelocityVehicleXYZRec": {
+                  "type": "object",
+                  "comment": "Velocity measured in platform frame",
+                  "required": [
+                    "presenceVector"
+                  ],
+                  "properties": {
+                    "presenceVector": {
+                      "type": "number",
+                      "jausType": "unsigned byte",
+                      "comment": ""
+                    },
+                    "Velocity_X": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    },
+                    "Velocity_Y": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    },
+                    "Velocity_Z": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    }
+                  }
+                },
+                "VelocityLocalXYZRec": {
+                  "type": "object",
+                  "comment": "Velocity measured in local coordinate frame",
+                  "required": [
+                    "presenceVector"
+                  ],
+                  "properties": {
+                    "presenceVector": {
+                      "type": "number",
+                      "jausType": "unsigned byte",
+                      "comment": ""
+                    },
+                    "Velocity_X": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    },
+                    "Velocity_Y": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    },
+                    "Velocity_Z": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    }
+                  }
+                },
+                "VelocityNEDRec": {
+                  "type": "object",
+                  "comment": "Velocity measured in global (north, east, down) coordinate frame",
+                  "required": [
+                    "presenceVector"
+                  ],
+                  "properties": {
+                    "presenceVector": {
+                      "type": "number",
+                      "jausType": "unsigned byte",
+                      "comment": ""
+                    },
+                    "Velocity_N": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    },
+                    "Velocity_E": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    },
+                    "Velocity_D": {
+                      "type": "number",
+                      "jausType": "unsigned integer",
+                      "comment": "",
+                      "scaleRange": {
+                        "scaleFactor": 1.5258556235409007e-07,
+                        "bias": -327.68
+                      }
+                    }
+                  }
+                }
+              },
+              "jausType": "unsigned byte",
+              "vtagMin": 0,
+              "vtagMax": 2,
+              "isVariant": true
+            },
+            "ReportVelocityStateExtRec": {
+              "type": "object",
+              "comment": "",
+              "required": [
+                "presenceVector"
+              ],
+              "properties": {
+                "presenceVector": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": ""
+                },
+                "Velocity_RMS": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "An RMS value indicating the validity of the velocity data.",
+                  "scaleRange": {
+                    "scaleFactor": 2.3283064370807974e-08,
+                    "bias": 0.0
+                  }
+                },
+                "RollRate": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409003e-08,
+                    "bias": -32.768
+                  }
+                },
+                "PitchRate": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409003e-08,
+                    "bias": -32.768
+                  }
+                },
+                "YawRate": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 1.5258556235409003e-08,
+                    "bias": -32.768
+                  }
+                },
+                "Rate_RMS": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "An RMS value indicating the validity of the rotational velocity data.",
+                  "scaleRange": {
+                    "scaleFactor": 0.0015259021896696422,
+                    "bias": 0.0
+                  }
+                },
+                "SpeedOverGround": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Scalar speed measured relative to fixed coordinate system",
+                  "scaleRange": {
+                    "scaleFactor": 0.01,
+                    "bias": -327.68
+                  }
+                },
+                "SpeedRelativeToMedium": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "Scalar speed measured relative to medium, such as air or water currents",
+                  "scaleRange": {
+                    "scaleFactor": 0.01,
+                    "bias": -327.68
+                  }
+                },
+                "RotationsPerMinute": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 0.030518043793392843,
+                    "bias": -1000.0
+                  }
+                },
+                "IndicatedSpeed": {
+                  "type": "number",
+                  "jausType": "unsigned short integer",
+                  "comment": "",
+                  "scaleRange": {
+                    "scaleFactor": 0.01,
+                    "bias": -327.68
+                  }
+                },
+                "TimeSeconds": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+                },
+                "TimeNanoSeconds": {
+                  "type": "number",
+                  "jausType": "unsigned integer",
+                  "comment": "Nanoseconds component of POSIX-style time"
+                }
+              }
+            }
+          }
+        },
+        "ReportAccelerationStateExtRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "presenceVector"
+          ],
+          "properties": {
+            "presenceVector": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            },
+            "Acceleration_X": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 6.103329361906119e-07,
+                "bias": -1310.68
+              }
+            },
+            "Acceleration_Y": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 6.103329361906119e-07,
+                "bias": -1310.68
+              }
+            },
+            "Acceleration_Z": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 6.103329361906119e-07,
+                "bias": -1310.68
+              }
+            },
+            "Acceleration_RMS": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "An RMS value indicating the validity of the acceleration data.",
+              "scaleRange": {
+                "scaleFactor": 2.3283064370807974e-08,
+                "bias": 0.0
+              }
+            },
+            "RollAcceleration": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 6.103329361906118e-06,
+                "bias": -13106.8
+              }
+            },
+            "PitchAcceleration": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 6.103329361906118e-06,
+                "bias": -13106.8
+              }
+            },
+            "YawAcceleration": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "",
+              "scaleRange": {
+                "scaleFactor": 6.103329361906118e-06,
+                "bias": -13106.8
+              }
+            },
+            "RotationalAcceleration_RMS": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": "An RMS value indicating the validity of the rotational acceleration data.",
+              "scaleRange": {
+                "scaleFactor": 0.015259021896696421,
+                "bias": 0.0
+              }
+            },
+            "TimeSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "UTC POSIX-style time in seconds since 1 January 1970"
+            },
+            "TimeNanoSeconds": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "Nanoseconds component of POSIX-style time"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "NavigationSeq"
+  ]
+}

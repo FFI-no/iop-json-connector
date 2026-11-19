@@ -1,0 +1,164 @@
+{
+  "title": "SetVideoIlluminatorConfiguration",
+  "messageId": "081a",
+  "isCommand": true,
+  "description": "This message commands a level of illumination output to the device associated with the specified illuminatorID.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "081a"
+        }
+      }
+    },
+    "IlluminatorSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestIdRec",
+        "IlluminatorList"
+      ],
+      "properties": {
+        "RequestIdRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "RequestID"
+          ],
+          "properties": {
+            "RequestID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            }
+          }
+        },
+        "IlluminatorList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "IlluminatorID",
+                  "Level"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "IlluminatorID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Identifies an illumination device supported by the service. Zero is not a valid value."
+                  },
+                  "Level": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Desired intensity level, as a percent of capability. If the illuminator does not support variable levels of brightness, any non-zero value shall be interpreted as on, and a zero level value shall be interpreted as off.",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  },
+                  "Mode": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "VISIBLE"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "INFRARED"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "GREYSCALE"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "LOWLIGHT"
+                        }
+                      },
+                      {
+                        "valueRange": {
+                          "minimum": 4.0,
+                          "maximum": 20.0,
+                          "interpretation": "These values are reserved for future use"
+                        }
+                      },
+                      {
+                        "valueRange": {
+                          "minimum": 21.0,
+                          "maximum": 31.0,
+                          "interpretation": "These values are reserved for program- or implementation-specific use"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "VISIBLE",
+                      "INFRARED",
+                      "GREYSCALE",
+                      "LOWLIGHT"
+                    ]
+                  },
+                  "BeamWidth": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.005493247882810712,
+                      "bias": 0.0
+                    }
+                  },
+                  "BeamHeight": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.005493247882810712,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned short integer",
+          "minItems": 0,
+          "maxItems": 65535,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "IlluminatorSeq"
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "title": "ReportInertialSensorStatus",
+  "messageId": "4429",
+  "isCommand": false,
+  "description": "This message is used to report the current operational status of the inertial sensor.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "A two byte field to hold the message ID of a message",
+          "const": "4429"
+        }
+      }
+    },
+    "InertialSensorStatusRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "PowerState",
+        "OperatingState"
+      ],
+      "properties": {
+        "PowerState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "OFF"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "ON"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "RESTARTING"
+              }
+            }
+          ],
+          "enum": [
+            "OFF",
+            "ON",
+            "RESTARTING"
+          ]
+        },
+        "OperatingState": {
+          "type": "string",
+          "jausType": "unsigned byte",
+          "comment": "",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "INIT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 1,
+                "enumConst": "OPERATIONAL"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 2,
+                "enumConst": "COARSE_STATIONARY_ALIGNMENT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 3,
+                "enumConst": "COARSE_GPS_ALIGNMENT"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 4,
+                "enumConst": "FINE_STATIONARY_ALIGNMENT_STARTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 5,
+                "enumConst": "FINE_STATIONARY_ALIGNMENT_COMPLETE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 6,
+                "enumConst": "FINE_GPS_ALIGNMENT_STARTED"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 7,
+                "enumConst": "FINE_GPS_ALIGNMENT_COMPLETE"
+              }
+            },
+            {
+              "valueEnum": {
+                "enumIndex": 8,
+                "enumConst": "INERTIAL_SENSOR_FAILURE"
+              }
+            }
+          ],
+          "enum": [
+            "INIT",
+            "OPERATIONAL",
+            "COARSE_STATIONARY_ALIGNMENT",
+            "COARSE_GPS_ALIGNMENT",
+            "FINE_STATIONARY_ALIGNMENT_STARTED",
+            "FINE_STATIONARY_ALIGNMENT_COMPLETE",
+            "FINE_GPS_ALIGNMENT_STARTED",
+            "FINE_GPS_ALIGNMENT_COMPLETE",
+            "INERTIAL_SENSOR_FAILURE"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "InertialSensorStatusRec"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "title": "QueryDigitalAudioOutputSource",
+  "messageId": "2818",
+  "isCommand": false,
+  "description": "This message is used to query the stream source currently being played for each sensor.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "2818"
+        }
+      }
+    },
+    "QueryDigitalAudioRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "SensorID"
+      ],
+      "properties": {
+        "SensorID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "ID of the sensor being queried. Zero (0) is used to query all sensors associated with this service.",
+          "valueSet": [
+            {
+              "valueEnum": {
+                "enumIndex": 0,
+                "enumConst": "AllSensors"
+              }
+            },
+            {
+              "valueRange": {
+                "minimum": 1.0,
+                "maximum": 65535.0,
+                "interpretation": "Specific ID to be queried"
+              }
+            }
+          ],
+          "enum": [
+            "AllSensors"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryDigitalAudioRec"
+  ]
+}

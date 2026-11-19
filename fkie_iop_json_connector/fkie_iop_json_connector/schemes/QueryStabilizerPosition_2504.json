@@ -20,7 +20,7 @@
         }
       }
     },
-    "StabilizerID": {
+    "stabilizerID": {
       "type": "array",
       "comment": "",
       "required": [],
@@ -50,6 +50,6 @@
   },
   "required": [
     "HeaderRec",
-    "StabilizerID"
+    "stabilizerID"
   ]
 }

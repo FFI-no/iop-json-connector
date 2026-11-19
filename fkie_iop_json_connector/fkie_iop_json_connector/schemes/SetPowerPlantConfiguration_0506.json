@@ -20,7 +20,7 @@
         }
       }
     },
-    "powerPlantConfigurationList": {
+    "PowerPlantConfigurationList": {
       "type": "array",
       "comment": "",
       "required": [],
@@ -30,18 +30,18 @@
             "type": "object",
             "comment": "",
             "required": [
-              "powerPlantID",
-              "powerPlantConfigurationVar"
+              "PowerPlantID",
+              "PowerPlantConfigurationVar"
             ],
             "properties": {
-              "powerPlantID": {
+              "PowerPlantID": {
                 "type": "object",
                 "comment": "",
                 "required": [
-                  "powerPlantID"
+                  "PowerPlantID"
                 ],
                 "properties": {
-                  "powerPlantID": {
+                  "PowerPlantID": {
                     "type": "number",
                     "jausType": "unsigned byte",
                     "comment": "This is a unique ID for each powerplant and is provided by 4507 Report PowerPlant Capabilities message.",
@@ -57,17 +57,17 @@
                   }
                 }
               },
-              "powerPlantConfigurationVar": {
+              "PowerPlantConfigurationVar": {
                 "type": "object",
                 "comment": "",
                 "required": [],
                 "properties": {
-                  "gasEngineConfigurationRec": {
+                  "GasEngineConfigurationRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
                       "presenceVector",
-                      "powerState"
+                      "PowerState"
                     ],
                     "properties": {
                       "presenceVector": {
@@ -75,7 +75,7 @@
                         "jausType": "unsigned byte",
                         "comment": ""
                       },
-                      "powerState": {
+                      "PowerState": {
                         "type": "string",
                         "jausType": "unsigned byte",
                         "comment": "",
@@ -105,12 +105,12 @@
                           "POWER_STANDBY"
                         ]
                       },
-                      "rpm": {
+                      "Rpm": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "Rotations per minute. Units here are one since JSIDL does not support RPM natively."
                       },
-                      "throttle": {
+                      "Throttle": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "As a percent of maximum",
@@ -121,12 +121,12 @@
                       }
                     }
                   },
-                  "dieselEngineConfigurationRec": {
+                  "DieselEngineConfigurationRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
                       "presenceVector",
-                      "powerState"
+                      "PowerState"
                     ],
                     "properties": {
                       "presenceVector": {
@@ -134,7 +134,7 @@
                         "jausType": "unsigned byte",
                         "comment": ""
                       },
-                      "powerState": {
+                      "PowerState": {
                         "type": "string",
                         "jausType": "unsigned byte",
                         "comment": "",
@@ -164,12 +164,12 @@
                           "POWER_STANDBY"
                         ]
                       },
-                      "rpm": {
+                      "Rpm": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "Rotations per minute. Units here are one since JSIDL does not support RPM natively."
                       },
-                      "throttle": {
+                      "Throttle": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "As a percent of maximum",
@@ -178,7 +178,7 @@
                           "bias": 0.0
                         }
                       },
-                      "plugState": {
+                      "PlugState": {
                         "type": "string",
                         "jausType": "unsigned byte",
                         "comment": "",
@@ -203,14 +203,14 @@
                       }
                     }
                   },
-                  "batteryConfigurationRec": {
+                  "BatteryConfigurationRec": {
                     "type": "object",
                     "comment": "This contains settable state for various powerplant types",
                     "required": [
-                      "powerState"
+                      "PowerState"
                     ],
                     "properties": {
-                      "powerState": {
+                      "PowerState": {
                         "type": "string",
                         "jausType": "unsigned byte",
                         "comment": "",
@@ -242,14 +242,14 @@
                       }
                     }
                   },
-                  "hydraulicConfigurationRec": {
+                  "HydraulicConfigurationRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
-                      "powerState"
+                      "PowerState"
                     ],
                     "properties": {
-                      "powerState": {
+                      "PowerState": {
                         "type": "string",
                         "jausType": "unsigned byte",
                         "comment": "",
@@ -281,14 +281,14 @@
                       }
                     }
                   },
-                  "fuelCellConfigurationRecs": {
+                  "FuelCellConfigurationRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
-                      "powerState"
+                      "PowerState"
                     ],
                     "properties": {
-                      "powerState": {
+                      "PowerState": {
                         "type": "string",
                         "jausType": "unsigned byte",
                         "comment": "",
@@ -338,6 +338,6 @@
   },
   "required": [
     "HeaderRec",
-    "powerPlantConfigurationList"
+    "PowerPlantConfigurationList"
   ]
 }

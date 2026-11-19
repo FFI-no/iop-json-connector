@@ -2,7 +2,7 @@
   "title": "ReportAnalogVideoSensorConfiguration",
   "messageId": "4811",
   "isCommand": false,
-  "description": "This message is sent in response \n            to a Query Analog Video Sensor Configuration message. It is \n            populated with the current sensor configuration (per sensor ID) \n            as defined in the table below.",
+  "description": "This message is sent in response to a Query Analog Video Sensor Configuration message. It is populated with the current sensor configuration (per sensor ID) as defined in the table below.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -37,7 +37,16 @@
               "SensorID": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
               },
               "AnalogFormat": {
                 "type": "string",

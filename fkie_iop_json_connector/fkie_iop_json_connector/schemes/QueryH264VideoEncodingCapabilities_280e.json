@@ -1,0 +1,55 @@
+{
+  "title": "QueryH264VideoEncodingCapabilities",
+  "messageId": "280e",
+  "isCommand": false,
+  "description": "This message must be used to query for the H264 encoding capabilities of one or more visual sensors on the receiving service.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "280e"
+        }
+      }
+    },
+    "QueryH264VideoEncodingCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "The ID of the sensor for which the capabilities are being queried.Note: A value of 0 shall be interpreted as all associated sensors."
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryH264VideoEncodingCapabilitiesList"
+  ]
+}

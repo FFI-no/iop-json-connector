@@ -20,7 +20,7 @@
         }
       }
     },
-    "idList": {
+    "IdList": {
       "type": "array",
       "comment": "",
       "required": [],
@@ -30,10 +30,10 @@
             "type": "object",
             "comment": "",
             "required": [
-              "powerPlantID"
+              "PowerPlantID"
             ],
             "properties": {
-              "powerPlantID": {
+              "PowerPlantID": {
                 "type": "number",
                 "jausType": "unsigned byte",
                 "comment": "A list of IDs to query. If the list is empty (count_field=0), all vehicle powerplants will be returned.",
@@ -59,6 +59,6 @@
   },
   "required": [
     "HeaderRec",
-    "idList"
+    "IdList"
   ]
 }

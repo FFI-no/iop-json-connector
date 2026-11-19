@@ -1,0 +1,61 @@
+{
+  "title": "QueryForceTorqueCapabilities",
+  "messageId": "280b",
+  "isCommand": false,
+  "description": "This message is used to query the capabilities for one or more force/torque devices.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "280b"
+        }
+      }
+    },
+    "QueryForceTorqueCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "SensorID",
+              "QueryPresenceVector"
+            ],
+            "properties": {
+              "SensorID": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "The ID of the sensor. A value of zero (0) means all sensors"
+              },
+              "QueryPresenceVector": {
+                "type": "number",
+                "jausType": "unsigned short integer",
+                "comment": "See ReportForceTorqueCapabilites"
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "QueryForceTorqueCapabilitiesList"
+  ]
+}

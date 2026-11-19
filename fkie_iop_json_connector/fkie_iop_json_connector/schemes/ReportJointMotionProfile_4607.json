@@ -109,15 +109,15 @@
               }
             },
             "jausType": "unsigned byte",
-            "vtagMin": null,
-            "vtagMax": null,
+            "vtagMin": 0,
+            "vtagMax": 1,
             "isVariant": true
           }
         ]
       },
       "jausType": "unsigned byte",
-      "minItems": null,
-      "maxItems": null,
+      "minItems": 0,
+      "maxItems": 255,
       "isVariant": false
     }
   },

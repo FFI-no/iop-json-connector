@@ -2,7 +2,7 @@
   "title": "ExecuteList",
   "messageId": "061e",
   "isCommand": false,
-  "description": "This message is used to begin execution of a sequential list of motion commands.  Optionally,\n      the starting element UID can also be specified, \n      where an unspecified value or a value of zero (0) indicates the first (head) element in the list.",
+  "description": "This message is used to begin execution of a sequential list of motion commands.  Optionally, the starting element UID can also be specified, where an unspecified value or a value of zero (0) indicates the first (head) element in the list.",
   "type": "object",
   "properties": {
     "HeaderRec": {

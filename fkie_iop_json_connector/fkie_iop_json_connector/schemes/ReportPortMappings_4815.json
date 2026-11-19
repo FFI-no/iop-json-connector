@@ -1,0 +1,102 @@
+{
+  "title": "ReportPortMappings",
+  "messageId": "4815",
+  "isCommand": false,
+  "description": "This message is includes a list of all current mappings.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "4815"
+        }
+      }
+    },
+    "MappingSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestPortMappingRec",
+        "GrantPortMappingRec"
+      ],
+      "properties": {
+        "RequestPortMappingRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "SocketType",
+            "IPAddr",
+            "Port"
+          ],
+          "properties": {
+            "SocketType": {
+              "type": "string",
+              "jausType": "unsigned byte",
+              "comment": "",
+              "valueSet": [
+                {
+                  "valueEnum": {
+                    "enumIndex": 0,
+                    "enumConst": "UDP"
+                  }
+                },
+                {
+                  "valueEnum": {
+                    "enumIndex": 1,
+                    "enumConst": "TCP"
+                  }
+                }
+              ],
+              "enum": [
+                "UDP",
+                "TCP"
+              ]
+            },
+            "IPAddr": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "IPv4 address of endpoint port to which PortMapper will map, in network byte order"
+            },
+            "Port": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            }
+          }
+        },
+        "GrantPortMappingRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "IPAddr",
+            "Port"
+          ],
+          "properties": {
+            "IPAddr": {
+              "type": "number",
+              "jausType": "unsigned integer",
+              "comment": "IPv4 address of client side mapping of endpoint, in network byte order"
+            },
+            "Port": {
+              "type": "number",
+              "jausType": "unsigned short integer",
+              "comment": ""
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "MappingSeq"
+  ]
+}

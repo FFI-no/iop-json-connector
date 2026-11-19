@@ -15,7 +15,7 @@
         "MessageID": {
           "type": "string",
           "jausType": "unsigned short integer",
-          "comment": "",
+          "comment": "A two byte field to hold the message ID of a message",
           "const": "f92b"
         }
       }
@@ -26,8 +26,7 @@
       "required": [
         "presenceVector",
         "DeviceRec",
-        "ReadingsList",
-        "GlobalPoseRec"
+        "ReadingsList"
       ],
       "properties": {
         "presenceVector": {
@@ -133,7 +132,7 @@
                         "jausType": "unsigned byte",
                         "comment": "sometimes the resulting values are accumulated, so you can specify the details"
                       },
-                      "Avarage": {
+                      "Average": {
                         "type": "number",
                         "jausType": "unsigned byte",
                         "comment": "sometimes the resulting values are accumulated, so you can specify the details"

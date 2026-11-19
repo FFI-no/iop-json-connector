@@ -2,7 +2,7 @@
   "title": "ReportAnalogVideoSensorCapabilities",
   "messageId": "4810",
   "isCommand": false,
-  "description": "This message is used to report the \n            sensors\u2019 capabilities upon reciept of a Query Analog Video Sensor\n            Capabilities message. Capabilities include sensor properties, \n            values and ranges which can be modified by the Set Analog Video \n            Sensor Configuration message.",
+  "description": "This message is used to report the sensors\u2019 capabilities upon receipt of a Query Analog Video Sensor Capabilities message. Capabilities include sensor properties, values and ranges which can be modified by the Set Analog Video Sensor Configuration message.",
   "type": "object",
   "properties": {
     "HeaderRec": {
@@ -37,7 +37,16 @@
               "SensorID": {
                 "type": "number",
                 "jausType": "unsigned short integer",
-                "comment": ""
+                "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                "valueSet": [
+                  {
+                    "valueRange": {
+                      "minimum": 1.0,
+                      "maximum": 65535.0,
+                      "interpretation": ""
+                    }
+                  }
+                ]
               },
               "SupportedAnalogFormats": {
                 "type": "object",

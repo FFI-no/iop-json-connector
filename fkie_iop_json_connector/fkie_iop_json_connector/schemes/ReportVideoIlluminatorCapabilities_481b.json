@@ -1,0 +1,312 @@
+{
+  "title": "ReportVideoIlluminatorCapabilities",
+  "messageId": "481b",
+  "isCommand": false,
+  "description": "This message provides a report of the capabilities of the specified illuminator device.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "481b"
+        }
+      }
+    },
+    "IlluminatorCapabilitiesList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "IlluminatorCapabilitiesRec",
+              "SensorIDList"
+            ],
+            "properties": {
+              "IlluminatorCapabilitiesRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "IlluminatorID",
+                  "IlluminatorName",
+                  "SupportedIlluminationModes"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "IlluminatorID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Identifies an illumination device supported by the service. Zero is not a valid value."
+                  },
+                  "IlluminatorName": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "",
+                    "minLength": 0,
+                    "maxLength": 255
+                  },
+                  "SupportedIlluminationModes": {
+                    "type": "object",
+                    "comment": "",
+                    "required": [
+                      "Visible",
+                      "Infrared",
+                      "GreyScale",
+                      "LowLight",
+                      "ReservedForFutureUse",
+                      "ReservedForProgramOrImplementationSpecificUse"
+                    ],
+                    "properties": {
+                      "Visible": {
+                        "type": "string",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 0,
+                          "to": 0
+                        },
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "NOT_SUPPORTED"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "SUPPORTED"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "NOT_SUPPORTED",
+                          "SUPPORTED"
+                        ]
+                      },
+                      "Infrared": {
+                        "type": "string",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 1,
+                          "to": 1
+                        },
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "NOT_SUPPORTED"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "SUPPORTED"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "NOT_SUPPORTED",
+                          "SUPPORTED"
+                        ]
+                      },
+                      "GreyScale": {
+                        "type": "string",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 2,
+                          "to": 2
+                        },
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "NOT_SUPPORTED"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "SUPPORTED"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "NOT_SUPPORTED",
+                          "SUPPORTED"
+                        ]
+                      },
+                      "LowLight": {
+                        "type": "string",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 3,
+                          "to": 3
+                        },
+                        "valueSet": [
+                          {
+                            "valueEnum": {
+                              "enumIndex": 0,
+                              "enumConst": "NOT_SUPPORTED"
+                            }
+                          },
+                          {
+                            "valueEnum": {
+                              "enumIndex": 1,
+                              "enumConst": "SUPPORTED"
+                            }
+                          }
+                        ],
+                        "enum": [
+                          "NOT_SUPPORTED",
+                          "SUPPORTED"
+                        ]
+                      },
+                      "ReservedForFutureUse": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 4,
+                          "to": 20
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      },
+                      "ReservedForProgramOrImplementationSpecificUse": {
+                        "type": "number",
+                        "jausType": "unsigned integer",
+                        "comment": "",
+                        "bitRange": {
+                          "from": 21,
+                          "to": 31
+                        },
+                        "valueSet": [
+                          {
+                            "valueRange": {
+                              "minimum": 0.0,
+                              "maximum": 1.0,
+                              "interpretation": ""
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "bitField": "unsigned integer"
+                  },
+                  "MinimumIntensity": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Minimum achievable brightness level. If this value is the same as the maximum, the illuminator is assumed to not support variable levels, and acts in an on/off fashion only."
+                  },
+                  "MaximumIntensity": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Maximum achievable brightness level. If this value is the same as the minimum, the illuminator is assumed to not support variable levels, and acts in an on/off fashion only."
+                  },
+                  "MinimumSupportedBeamWidth": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.005493247882810712,
+                      "bias": 0.0
+                    }
+                  },
+                  "MaximumSupportedBeamWidth": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.005493247882810712,
+                      "bias": 0.0
+                    }
+                  },
+                  "MinimumSupportedBeamHeight": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.005493247882810712,
+                      "bias": 0.0
+                    }
+                  },
+                  "MaximumSupportedBeamHeight": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "",
+                    "scaleRange": {
+                      "scaleFactor": 0.005493247882810712,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              },
+              "SensorIDList": {
+                "type": "array",
+                "comment": "",
+                "required": [],
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "comment": "",
+                      "required": [
+                        "SensorID"
+                      ],
+                      "properties": {
+                        "SensorID": {
+                          "type": "number",
+                          "jausType": "unsigned short integer",
+                          "comment": "SensorID of a camera associated with this illuminator."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "jausType": "unsigned byte",
+                "minItems": 0,
+                "maxItems": 255,
+                "isVariant": false
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "IlluminatorCapabilitiesList"
+  ]
+}

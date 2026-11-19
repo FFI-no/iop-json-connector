@@ -1,0 +1,600 @@
+{
+  "title": "ReportH264VideoEncodingConfiguration",
+  "messageId": "480d",
+  "isCommand": false,
+  "description": "This message is used to report the active configuration for one or more H264 encoded video streams.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "480d"
+        }
+      }
+    },
+    "H264ConfigurationList": {
+      "type": "array",
+      "comment": "",
+      "required": [],
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "comment": "",
+            "required": [
+              "presenceVector",
+              "H264ConfigurationRec"
+            ],
+            "properties": {
+              "presenceVector": {
+                "type": "number",
+                "jausType": "unsigned byte",
+                "comment": ""
+              },
+              "H264ConfigurationRec": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "presenceVector",
+                  "SensorID"
+                ],
+                "properties": {
+                  "presenceVector": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": ""
+                  },
+                  "SensorID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Note: 0 is not a valid VisualSensorID value"
+                  },
+                  "Profile": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Enumeration for h264 profile setting.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Baseline"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "ConstrainedBaseline"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "Main"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "Extended"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "High"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "ProgressiveHigh"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 6,
+                          "enumConst": "ConstrainedHigh"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 7,
+                          "enumConst": "High10"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 8,
+                          "enumConst": "High422"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 9,
+                          "enumConst": "High444Predictive"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 10,
+                          "enumConst": "High10Intra"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 11,
+                          "enumConst": "High422Intra"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 12,
+                          "enumConst": "High444Intra"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 13,
+                          "enumConst": "CAVLC444"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 14,
+                          "enumConst": "ScalableBaseline"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 15,
+                          "enumConst": "ScalableConstrainedBaseline"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 16,
+                          "enumConst": "ScalableHigh"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 17,
+                          "enumConst": "ScalableConstrainedHigh"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 18,
+                          "enumConst": "ScalableHighIntra"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 19,
+                          "enumConst": "StereoHigh"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 20,
+                          "enumConst": "MultiviewHigh"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Baseline",
+                      "ConstrainedBaseline",
+                      "Main",
+                      "Extended",
+                      "High",
+                      "ProgressiveHigh",
+                      "ConstrainedHigh",
+                      "High10",
+                      "High422",
+                      "High444Predictive",
+                      "High10Intra",
+                      "High422Intra",
+                      "High444Intra",
+                      "CAVLC444",
+                      "ScalableBaseline",
+                      "ScalableConstrainedBaseline",
+                      "ScalableHigh",
+                      "ScalableConstrainedHigh",
+                      "ScalableHighIntra",
+                      "StereoHigh",
+                      "MultiviewHigh"
+                    ]
+                  },
+                  "Level": {
+                    "type": "string",
+                    "jausType": "unsigned integer",
+                    "comment": "Enumeration for target h264 level.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "Level_1"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "Level_1B"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "Level_11"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "Level_12"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "Level_13"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "Level_2"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 6,
+                          "enumConst": "Level_21"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 7,
+                          "enumConst": "Level_22"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 8,
+                          "enumConst": "Level_3"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 9,
+                          "enumConst": "Level_31"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 10,
+                          "enumConst": "Level_32"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 11,
+                          "enumConst": "Level_4"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 12,
+                          "enumConst": "Level_41"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 13,
+                          "enumConst": "Level_42"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 14,
+                          "enumConst": "Level_5"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 15,
+                          "enumConst": "Level_51"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 16,
+                          "enumConst": "Level_52"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 17,
+                          "enumConst": "Level_6"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 18,
+                          "enumConst": "Level_61"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 19,
+                          "enumConst": "Level_62"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "Level_1",
+                      "Level_1B",
+                      "Level_11",
+                      "Level_12",
+                      "Level_13",
+                      "Level_2",
+                      "Level_21",
+                      "Level_22",
+                      "Level_3",
+                      "Level_31",
+                      "Level_32",
+                      "Level_4",
+                      "Level_41",
+                      "Level_42",
+                      "Level_5",
+                      "Level_51",
+                      "Level_52",
+                      "Level_6",
+                      "Level_61",
+                      "Level_62"
+                    ]
+                  },
+                  "Preset": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Preconfigured settings for hardware specific H264 settings. The actual values for each preset are not specified by the standard and are up to the implementation.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "LowLatency"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "SlowComms"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 2,
+                          "enumConst": "PersistentStare"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 3,
+                          "enumConst": "DriveVision"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 4,
+                          "enumConst": "Manipulation"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 5,
+                          "enumConst": "BestQuality"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 12,
+                          "enumConst": "ProgramSpecific_1"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 13,
+                          "enumConst": "ProgramSpecific_2"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 14,
+                          "enumConst": "ProgramSpecific_3"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 15,
+                          "enumConst": "ProgramSpecific_4"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "LowLatency",
+                      "SlowComms",
+                      "PersistentStare",
+                      "DriveVision",
+                      "Manipulation",
+                      "BestQuality",
+                      "ProgramSpecific_1",
+                      "ProgramSpecific_2",
+                      "ProgramSpecific_3",
+                      "ProgramSpecific_4"
+                    ]
+                  },
+                  "GroupOfPictures": {
+                    "type": "number",
+                    "jausType": "unsigned byte",
+                    "comment": "Number of interim frames before sending a key frame"
+                  },
+                  "GradualDecoderRefreshOnOff": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Turn on/off Gradual Decoder Refresh, also called Periodic Intra Refresh.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "OFF"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "ON"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "OFF",
+                      "ON"
+                    ]
+                  },
+                  "RegionOfInterestOnOff": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Turn on/off region of interest (foveation) encoding, if supported. The region of interest is specified by the RegionOfInterestParams array.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "OFF"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "ON"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "OFF",
+                      "ON"
+                    ]
+                  },
+                  "IntraMacroRefresh": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "This parameter is the random intra macroblock refresh; it provides the refresh rate in Macroblocks per picture.",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              },
+              "RegionOfInterestParams": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "X_Start",
+                  "Y_Start",
+                  "Width",
+                  "Height",
+                  "HighBitRate",
+                  "LowBitRate"
+                ],
+                "properties": {
+                  "X_Start": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Horizontal start location of high bitrate window, measured as percent of total image width from the left",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  },
+                  "Y_Start": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Vertical start location of high bitrate window, measured as percent of total image height from the top",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  },
+                  "Width": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Width of high bitrate window, measured as percent of total image width",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  },
+                  "Height": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Height of high bitrate window , measured as percent of total image height",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  },
+                  "HighBitRate": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Bitrate of ROI window, measured in kilobits per second"
+                  },
+                  "LowBitRate": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "Bitrate of ROI window, measured in kilobits per second"
+                  }
+                }
+              },
+              "GradualDecoderRefreshParams": {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "GDR_Duration",
+                  "GDR_Interval"
+                ],
+                "properties": {
+                  "GDR_Duration": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "The number of frames needed to completely refresh the image"
+                  },
+                  "GDR_Interval": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "The number of frames that need to be transmitted before starting a new GDR cycle. Note that the interval must be greater than or equal to the duration"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "jausType": "unsigned short integer",
+      "minItems": 0,
+      "maxItems": 65535,
+      "isVariant": false
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "H264ConfigurationList"
+  ]
+}

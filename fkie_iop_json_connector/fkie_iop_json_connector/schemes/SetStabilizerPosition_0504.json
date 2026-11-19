@@ -20,7 +20,7 @@
         }
       }
     },
-    "StabilizerPosition": {
+    "stabilizerPosition": {
       "type": "array",
       "comment": "",
       "required": [],
@@ -60,6 +60,6 @@
   },
   "required": [
     "HeaderRec",
-    "StabilizerPosition"
+    "stabilizerPosition"
   ]
 }

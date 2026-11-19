@@ -2,7 +2,7 @@
   "title": "ControlDigitalVideoSensorRecording",
   "messageId": "0810",
   "isCommand": true,
-  "description": "This message is used to control the recording state of the video from a digital video service. The details of the recording (filename, location, maximum file size, etc) are left to the implementation.",
+  "description": "This message is used to control the recording state of the video from a digital video service. The details of the recording (filename, location,\n\t\t\tmaximum file size, etc) are left to the implementation.",
   "type": "object",
   "properties": {
     "HeaderRec": {

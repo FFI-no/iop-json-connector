@@ -1,0 +1,130 @@
+{
+  "title": "SetDigitalAudioOutputSource",
+  "messageId": "0818",
+  "isCommand": true,
+  "description": "This message is used to specify the stream source to play.  Note that the specified stream must not require a DNS lookup to resolve.",
+  "type": "object",
+  "properties": {
+    "HeaderRec": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "MessageID"
+      ],
+      "properties": {
+        "MessageID": {
+          "type": "string",
+          "jausType": "unsigned short integer",
+          "comment": "",
+          "const": "0818"
+        }
+      }
+    },
+    "DigitalAudioOutputSeq": {
+      "type": "object",
+      "comment": "",
+      "required": [
+        "RequestIdRec",
+        "DigitalAudioOutputSourceList"
+      ],
+      "properties": {
+        "RequestIdRec": {
+          "type": "object",
+          "comment": "",
+          "required": [
+            "RequestID"
+          ],
+          "properties": {
+            "RequestID": {
+              "type": "number",
+              "jausType": "unsigned byte",
+              "comment": ""
+            }
+          }
+        },
+        "DigitalAudioOutputSourceList": {
+          "type": "array",
+          "comment": "",
+          "required": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "comment": "",
+                "required": [
+                  "SensorID",
+                  "StreamURL",
+                  "Repeat",
+                  "Volume"
+                ],
+                "properties": {
+                  "SensorID": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "ID of the sensor. Zero (0) is not a valid ID in this message.",
+                    "valueSet": [
+                      {
+                        "valueRange": {
+                          "minimum": 1.0,
+                          "maximum": 65535.0,
+                          "interpretation": ""
+                        }
+                      }
+                    ]
+                  },
+                  "StreamURL": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "URL of the source of the stream. This URL should not require a DNS to resolve; hence, an IP address should be substituted for a host name.",
+                    "minLength": 0,
+                    "maxLength": 255
+                  },
+                  "Repeat": {
+                    "type": "string",
+                    "jausType": "unsigned byte",
+                    "comment": "Specifies behavior for RTSP streams that have a finite play time.",
+                    "valueSet": [
+                      {
+                        "valueEnum": {
+                          "enumIndex": 0,
+                          "enumConst": "PlayOnce"
+                        }
+                      },
+                      {
+                        "valueEnum": {
+                          "enumIndex": 1,
+                          "enumConst": "RepeatUntilNewStreamSpecified"
+                        }
+                      }
+                    ],
+                    "enum": [
+                      "PlayOnce",
+                      "RepeatUntilNewStreamSpecified"
+                    ]
+                  },
+                  "Volume": {
+                    "type": "number",
+                    "jausType": "unsigned short integer",
+                    "comment": "The gain or volume applied to the input as a percent. A value of 0% indicates that no output signal is generated, while a value of 100% indicates that maximum amplification is applied to the input.",
+                    "scaleRange": {
+                      "scaleFactor": 0.0015259021896696422,
+                      "bias": 0.0
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "jausType": "unsigned short integer",
+          "minItems": 0,
+          "maxItems": 65535,
+          "isVariant": false
+        }
+      }
+    }
+  },
+  "required": [
+    "HeaderRec",
+    "DigitalAudioOutputSeq"
+  ]
+}

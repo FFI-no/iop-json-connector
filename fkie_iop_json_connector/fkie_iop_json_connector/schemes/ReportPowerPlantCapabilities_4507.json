@@ -20,7 +20,7 @@
         }
       }
     },
-    "powerPlantCapabilitiesList": {
+    "PowerPlantCapabilitiesList": {
       "type": "array",
       "comment": "",
       "required": [],
@@ -31,18 +31,18 @@
             "comment": "",
             "required": [
               "PowerPlantDescRec",
-              "powerPlantCapabilitiesVar"
+              "PowerPlantCapabilitiesVar"
             ],
             "properties": {
               "PowerPlantDescRec": {
                 "type": "object",
                 "comment": "",
                 "required": [
-                  "powerPlantID",
+                  "PowerPlantID",
                   "description"
                 ],
                 "properties": {
-                  "powerPlantID": {
+                  "PowerPlantID": {
                     "type": "number",
                     "jausType": "unsigned byte",
                     "comment": "Each powerplant has a unique ID associated with it. This ID is used in subsequent messages."
@@ -56,12 +56,12 @@
                   }
                 }
               },
-              "powerPlantCapabilitiesVar": {
+              "PowerPlantCapabilitiesVar": {
                 "type": "object",
                 "comment": "",
                 "required": [],
                 "properties": {
-                  "gasEngineCapabilitiesRec": {
+                  "GasEngineCapabilitiesRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
@@ -73,7 +73,7 @@
                         "jausType": "unsigned byte",
                         "comment": ""
                       },
-                      "fuelCapacity": {
+                      "FuelCapacity": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -82,7 +82,7 @@
                           "bias": 0.0
                         }
                       },
-                      "oilCapacity": {
+                      "OilCapacity": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -91,7 +91,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxOilPressure": {
+                      "MaxOilPressure": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -100,7 +100,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxOilTemp": {
+                      "MaxOilTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -109,7 +109,7 @@
                           "bias": -75.0
                         }
                       },
-                      "maxEngineTemp": {
+                      "MaxEngineTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -118,7 +118,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxCoolantLevel": {
+                      "MaxCoolantLevel": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -127,7 +127,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxCoolantTemp": {
+                      "MaxCoolantTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -138,7 +138,7 @@
                       }
                     }
                   },
-                  "dieselEngineCapabilitiesRec": {
+                  "DieselEngineCapabilitiesRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
@@ -150,7 +150,7 @@
                         "jausType": "unsigned short integer",
                         "comment": ""
                       },
-                      "fuelCapacity": {
+                      "FuelCapacity": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -159,7 +159,7 @@
                           "bias": 0.0
                         }
                       },
-                      "oilCapacity": {
+                      "OilCapacity": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -168,7 +168,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxOilPressure": {
+                      "MaxOilPressure": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -177,7 +177,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxOilTemp": {
+                      "MaxOilTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -186,7 +186,7 @@
                           "bias": -75.0
                         }
                       },
-                      "maxEngineTemp": {
+                      "MaxEngineTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -195,7 +195,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxCoolantLevel": {
+                      "MaxCoolantLevel": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -204,7 +204,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxCoolantTemp": {
+                      "MaxCoolantTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -213,7 +213,7 @@
                           "bias": -75.0
                         }
                       },
-                      "maxGlowPlugTemp": {
+                      "MaxGlowPlugTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -222,7 +222,7 @@
                           "bias": 0.0
                         }
                       },
-                      "glowPlugTime": {
+                      "GlowPlugTime": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -233,7 +233,7 @@
                       }
                     }
                   },
-                  "batteryCapabilitiesList": {
+                  "BatteryCapabilitiesList": {
                     "type": "array",
                     "comment": "",
                     "required": [],
@@ -251,7 +251,7 @@
                               "jausType": "unsigned byte",
                               "comment": ""
                             },
-                            "nominalVoltage": {
+                            "NominalVoltage": {
                               "type": "number",
                               "jausType": "unsigned short integer",
                               "comment": "",
@@ -260,7 +260,7 @@
                                 "bias": 0.0
                               }
                             },
-                            "maxCharge": {
+                            "MaxCharge": {
                               "type": "number",
                               "jausType": "unsigned integer",
                               "comment": "",
@@ -269,7 +269,7 @@
                                 "bias": 0.0
                               }
                             },
-                            "maxCrankingAmps": {
+                            "MaxCrankingAmps": {
                               "type": "number",
                               "jausType": "unsigned short integer",
                               "comment": "",
@@ -287,7 +287,7 @@
                     "maxItems": 255,
                     "isVariant": false
                   },
-                  "hydraulicCapabilitiesRec": {
+                  "HydraulicCapabilitiesRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
@@ -299,7 +299,7 @@
                         "jausType": "unsigned byte",
                         "comment": ""
                       },
-                      "fluidCapacity": {
+                      "FluidCapacity": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -308,7 +308,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxPressure": {
+                      "MaxPressure": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -317,7 +317,7 @@
                           "bias": 0.0
                         }
                       },
-                      "maxTemp": {
+                      "MaxTemp": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -328,7 +328,7 @@
                       }
                     }
                   },
-                  "fuelCellCapabilitiesRec": {
+                  "FuelCellCapabilitiesRec": {
                     "type": "object",
                     "comment": "",
                     "required": [
@@ -340,7 +340,7 @@
                         "jausType": "unsigned byte",
                         "comment": ""
                       },
-                      "fuelCapacity": {
+                      "FuelCapacity": {
                         "type": "number",
                         "jausType": "unsigned short integer",
                         "comment": "",
@@ -369,6 +369,6 @@
   },
   "required": [
     "HeaderRec",
-    "powerPlantCapabilitiesList"
+    "PowerPlantCapabilitiesList"
   ]
 }

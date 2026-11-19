@@ -35,7 +35,7 @@
             {
               "valueEnum": {
                 "enumIndex": 0,
-                "enumConst": "TIMEOUT_FEATURE_DISABLED"
+                "enumConst": "TIMEOUT_FEATURE _DISABLED"
               }
             },
             {
@@ -47,7 +47,7 @@
             }
           ],
           "enum": [
-            "TIMEOUT_FEATURE_DISABLED"
+            "TIMEOUT_FEATURE _DISABLED"
           ]
         }
       }
